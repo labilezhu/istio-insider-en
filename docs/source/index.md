@@ -18,7 +18,7 @@ There is Chinese(中文版本) version too: [https://istio-insider.mygraphql.com
 
 This book is not a manual. Not from the user's point of view, teaching how to learn Istio in simple terms. It won't preach how powerful Istio is, let alone teach how to use Istio. There are already too many excellent books, articles, and documents on the Internet.
 
-> 🤷 : [Yet, another](https://en.wikipedia.org/wiki/Yet_another) Istio User Guide?
+> 🤷 : [Yet, another](https://en.wikipedia.org/wiki/Yet_another) Istio User Guide?  
 > 🙅 : No!
 
 
