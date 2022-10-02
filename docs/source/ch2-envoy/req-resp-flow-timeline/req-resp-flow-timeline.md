@@ -6,15 +6,15 @@ typora-root-url: ../..
 
 🎤 Before the official compilation. I would like to talk about some of the reasons for writing this chapter. Why study Envoy's request and response scheduling?
 
-It originated from a customer requirement and needed to do some research on the fast recovery of Istio grid node failures. To this end, I read a lot of Istio/Envoy documentation, blogs of big names. I saw a lot of messy information:
+It originated from a requirement that needs to do some research on the fast recovery of node failures in Istio Service Mesh. I read a lot of Istio/Envoy documentation, Blogs. I saw a lot of fragmented information:
  - Health check
- - blown
+ - Circuit Breaker
  - Various mysterious and intricate timeout configurations in Envoy
  - Request Retry
  - `TCP keepalive`, `TCP_USER_TIMEOUT` configuration
 
-At the end of the mess, I had to write an article to sort out the information: [A preliminary study on the rapid recovery of Istio grid node failure](https://blog.mygraphql.com/zh/posts/low-tec/network/tcp-close/ tcp-half-open/) . But the information is sorted out, but the basic principles are not straightened out. So, I decided to delve into the Envoy documentation. Yes, in fact, Envoy's documentation has been written in detail. only:
- - Information is scattered in web pages, and cannot be organized by time sequence and process to form an organic whole.
+At the end of the mess, I had to write an article to defrag the information: [A preliminary study on the rapid recovery of Istio Service Mesh node failure](https://blog.mygraphql.com/zh/posts/low-tec/network/tcp-close/ tcp-half-open/) . But  the basic principles are not structured. So, I decided to delve into the Envoy documentation. Yes, in fact, Envoy's documentation is detailed. However:
+ - Information is scattered in web pages, and cannot be organized by time sequence and process to form an full p.
  - It is impossible to rationally weigh these parameters without understanding the overall cooperation relationship, just looking at each parameter separately.
  - Indicators and indicators, indicators and parameters, the relationship is complex
  - The above relationships can be connected in series through the request and response scheduling process
@@ -220,7 +220,7 @@ Correspondingly, the relationship between the relevant timeout configuration and
 
 - httpprotocoloptions.idle_timeout
 
-## Summarize
+## Summary
 
 In order for Envoy to have a more expected performance under stress and abnormal conditions, it is necessary to give Envoy some configurations that are reasonable for the specific application environment and scenario. The premise of configuring these parameters is the insight into the relevant processing flow and logic. The `Request and Response Scheduling` and the `Request and Response Scheduling Sequence Line` have been reviewed above. I hope it will be helpful to understand these aspects.
 

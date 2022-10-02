@@ -4,7 +4,9 @@
 
 
 ```{attention}
-This is a work-in-progress book, and it's only at the draft stage. The title of the book is "Istio & Envoy Insider", and the English name is "Istio & Envoy Insider".
+This is a work-in-progress book, and it's only at the draft stage. The title of the book is "Istio & Envoy Insider", and the Chinese name is "Istio & Envoy 内幕".  
+
+This English version is under translation from the Chinese version. So, you may see there are some Chinese parts here.
 ````
 
 There is Chinese(中文版本) version too: [https://istio-insider.mygraphql.com/zh_CN/latest/](https://istio-insider.mygraphql.com/zh_CN/latest/)
