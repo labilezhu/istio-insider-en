@@ -77,7 +77,7 @@ Interactive Books:
 
 *Figure - Envoy request and response scheduling*
 :::
-*[Open with Draw.io](https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline-schedule. drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fen%2Flatest%2F_images%2Freq-resp-flow-timeline-schedule.drawio.svg)*
 
 ### Related Components
 
@@ -146,7 +146,7 @@ Let’s talk about the flow of the request component first. The flow chart can b
 
 *Figure - Envoy request scheduling flow chart*
 :::
-*[Open with Draw.io](https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline-flowchart. drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fen%2Flatest%2F_images%2Freq-resp-flow-timeline-flowchart.drawio.svg)*
 
 ## Request and response scheduling sequence
 
@@ -173,7 +173,7 @@ The following figure is the timing line of request and response, as well as rela
 
 *Figure - Envoy request and response timing line*
 :::
-*[Open with Draw.io](https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline.drawio. svg)*
+*[Open with Draw.io](https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fen%2Flatest%2F_images%2Freq-resp-flow-timeline.drawio. svg)*
 
 
 
