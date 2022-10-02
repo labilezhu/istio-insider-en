@@ -43,9 +43,9 @@ This book mainly talks about the design and implementation mechanism of Istio/En
 
 ### Book access address
 
-- [https://istio-insider.mygraphql.com](https://istio-insider.mygraphql.com/en/latest/)
-- [https://istio-insider.readthedocs.io](https://istio-insider.readthedocs.io/en/latest/)
-- [https://istio-insider.rtfd.io](https://istio-insider.rtfd.io/en/latest/)
+- [https://istio-insider.mygraphql.com/en/latest/](https://istio-insider.mygraphql.com/en/latest/)
+- [https://istio-insider.readthedocs.io/en/latest/](https://istio-insider.readthedocs.io/en/latest/)
+- [https://istio-insider.rtfd.io/en/latest/](https://istio-insider.rtfd.io/en/latest/)
 
 
 ### About the author
