@@ -2,7 +2,7 @@
 typora-root-url: ../..
 ---
 
-# Envoy request and response scheduling
+# Request and Response scheduling
 
 🎤 Before the official compilation. I would like to talk about some of the reasons for writing this chapter. Why study Envoy's request and response scheduling?
 
