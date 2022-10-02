@@ -32,16 +32,20 @@ What the book says is just my thinking and recording after researching and using
 
 In the process of researching Istio. There is a lot of valuable information on the Internet. However, either it is mainly based on the user, and the implementation mechanism is not mentioned; or the mechanism is said, and it is well said, but the content is less systematic and coherent.
 
-### Reader object
+### Reader
+
 This book mainly talks about the design and implementation mechanism of Istio/Envoy. It is assumed that the reader already has some experience with Istio. and are interested in further research on its realization mechanism
 
 ### Book access address
-- [https://istio-insider.mygraphql.com](https://istio-insider.mygraphql.com)
-- [https://istio-insider.readthedocs.io](https://istio-insider.readthedocs.io)
-- [https://istio-insider.rtfd.io](https://istio-insider.rtfd.io)
 
+- [https://istio-insider.mygraphql.com](https://istio-insider.mygraphql.com/en/latest/)
+- [https://istio-insider.readthedocs.io](https://istio-insider.readthedocs.io/en/latest/)
+- [https://istio-insider.rtfd.io](https://istio-insider.rtfd.io/en/latest/)
+
+There is Chinese(中文版本) version too: [https://istio-insider.mygraphql.com/zh_CN/latest/](https://istio-insider.mygraphql.com/zh_CN/latest/)
 
 ### About the author
+
 My name is Mark Zhu, a middle-aged programmer with little hair. I am not an Istio expert, nor an Istio Committer. Not even the employees of big Internet companies.
 
 Why do you still learn to write books with limited level? Because of this sentence:
@@ -50,11 +54,11 @@ Why do you still learn to write books with limited level? Because of this senten
 Blog: [https://blog.mygraphql.com/](https://blog.mygraphql.com/)
 In order to facilitate readers to follow the updates of the Blog and this book, a synchronized `WeChat Official Account` has been opened:
 
-:::{figure-md} WeChat Official Account: Mark's Meditations on Cloud and BPF
+:::{figure-md} WeChat Official Account: Mark的Cloud与BPF沉思录
 
 <img src="_static/my-wechat-blog-qr.png" alt="my-wechat-blog-qr.png">
 
-*WeChat Official Account: Mark's Cloud and BPF Meditations*
+*WeChat Official Account: Mark的Cloud与BPF沉思录*
 :::
 
 

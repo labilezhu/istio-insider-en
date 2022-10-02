@@ -1,41 +1,40 @@
-# 重要：互动图书阅读方式             
+# INTERACTIVE BOOK READING
 
-## 互动图书
+## Interactive Book
 
-人类发展到现代，我想，图书应该扩展一下定义了。随着技术知识的复杂化，互动的、电子化的展示方法可能更适合于复杂技术知识的深入学习。或者这么说，入门时，更希望抽象和简化，深入后，更希望理清内部的联系。
+Human beings have developed into modern times, I think, books should expand the definition. As technical knowledge becomes more complex, interactive, electronic presentation methods may be more suitable for in-depth study of complex technical knowledge. In other words, when getting started, I prefer abstraction and simplification, and after going deeper, I prefer to clarify the internal connections.
 
-这本不是一本《深入 xyz 源码》类型的书。甚至可以说，我尽了最大的努力少在书中直接贴源码。看源码是掌握实现细节必须的一步，但在书中浏览源码的体验一般非常糟糕。反而，一个源码的导航图可能更来得实用。
+This is not a "Dive into xyz source code" type of book. It can even be said that I tried my best not to paste the source code directly in the book. Looking at the source code is a necessary step to grasp the implementation details, but the experience of browsing the source code in a book is generally very poor. Instead, a source navigation map may be more practical.
 
-可以这样说，我写作的大部时间不是花在文字上，是在绘图上。所以用电脑去读图，才是本书的正确打开方法。手机，只是个引流的阳谋。
-这里的图大多比较复杂，不是 PPT 大饼图。所以，基本也不适合打印出纸质书。但我会让图与读者互动：
+It can be said that most of my writing time is not spent writing, but drawing. Therefore, using a computer to read the pictures is the correct way to open this book. Mobile phones are just a conspiracy to drain traffic.
+Most of the diagrams here are more complex, not PPT big pie charts. Therefore, it is basically not suitable for printing out paper books. But I'll let the graph interact with the reader:
 
-- 原创的图，多数是用 Draw.io 制作的 SVG 图片：`*.drawio.svg`。
+- Original drawings, mostly SVG images made with Draw.io: `*.drawio.svg`.
 
-复杂的图，建议 `用 draw.io 打开` ：
-- 有的图片提供了 `用 draw.io 打开` 的链接，可以在浏览器用互动性更强的方式浏览:
-  - 有的地方（带下划线的文字），链接到相关文档和代码行。
-  - 鼠标放上去，会弹出 `hover` 窗口，提示更多的信息。如配置文件内容。
+For complex diagrams, it is recommended to `open with draw.io`:
+- Some images provide a `Open with draw.io` link, which can be viewed in a more interactive way in the browser:
+  - Where there is (underlined text), links to related documentation and lines of code.
+  - Put the mouse on it and a `hover` window will pop up, prompting more information. Such as configuration file content.
 
-如果不喜欢 draw.io 那么直接看 SVG:
-- 浏览 SVG 图片的正确姿势是浏览器中图片处右键，选择 `新 Tab 中打开图片` 。大的 SVG 图片，按下鼠标中键，自由滚动/拖动。
-- SVG 图片可以点击链接，直接跳转到相应源码网页(或相关文档)，有时会精确到源码行。
-- SVG 有时有排版问题，特别是图中内嵌的代码段，这时，只能用 drawio 打开了。
+If you don't like draw.io then just look at SVG:
+- The correct posture to browse SVG images is to right-click on the image in the browser and select `Open Image in New Tab`. Large SVG image, middle mouse button pressed, free scroll/drag.
+- SVG images can click the link to directly jump to the corresponding source page (or related documents), sometimes accurate to the source line.
+- SVG sometimes has typesetting problems, especially the code segment embedded in the figure. At this time, it can only be opened with drawio.
 
 ```{hint}
- - 大图用 Draw.io 打开。图中包含大量的链接，链接到每一个组件、配置项、指标的文档。有时链接到 github 代码行。
- - 双屏，一屏看图，一屏看文档，是本书的正确阅读姿势。如果你在用手机看，那么，忽略我吧 🤦
-```
+ - Large images are opened with Draw.io. The diagram contains numerous links to the documentation for each component, configuration item, and indicator. Sometimes links to github lines of code.
+ - Dual screens, one screen for pictures and one screen for documents, is the correct reading posture for this book. If you are watching on your phone, then ignore me 🤦
+````
 
-## 语言风格
-由于本文不打算打印出版。也不是什么官方文档。所以语言上我是口语化的。如果读者的期望是阅读一本非常严肃的书，那么可能会失望。但不严肃不代表不严谨。  
-因为这是我写的第一本书，没多少经验。也没专人和我做校对和勘误，所以如果有错，读者可以提 Github Issue。
+## Language Style
+As this book is not intended for print publication. Nor is it official documentation. So language-wise I am colloquial. If the reader's expectation is to read a very serious book, they may be disappointed. But not serious does not mean not rigorous.
+Since this is the first book I've written, I don't have much experience. There is no person to do proofreading and errata with me, so if there is a mistake, the reader can raise a Github Issue.
 
 
-## 画图风格
+## Drawing Style
 
-业界有种架构图、流程图、等等软件工程使用的画图，从一个方面来划分，可以有两种风格：
-- 整齐漂亮工整、甚至注意美学与配色等因素；并限制每张图的复杂度，能抽象的，就不要一下深入。这种风格更多见于 PPT 和 纸质书。
-- 工程师图， 事无具细，只在复杂度实在超过人可以在一个平面中理解的最大限度时，才进行抽象。这种图通常规整度有限，比较工程师文化。这种风格更多见于技术电子文档。
+There are architecture diagrams, flowcharts, and other drawings used in software engineering in the industry. From one aspect, there are two styles:
+- Neat, beautiful and neat, even pay attention to factors such as aesthetics and color matching; and limit the complexity of each picture, if it can be abstract, don't go into it. This style is more seen in PPT and paper books.
+- Engineer's diagram, nothing is detailed, and abstraction is only performed when the complexity exceeds the maximum that a person can understand in a plane. Such graphs are generally of limited regularity and compare engineer cultures. This style is more common in technical electronic documents.
 
-本书这两种风格的图均有。
-
+There are pictures in both styles of this book.
