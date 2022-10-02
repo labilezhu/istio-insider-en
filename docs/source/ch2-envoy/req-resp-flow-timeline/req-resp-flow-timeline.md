@@ -70,12 +70,12 @@ Interactive Books:
  - Dual screens, one screen for pictures and one screen for documents, is the correct reading posture for this book. If you are watching on your phone, then ignore me 🤦
 ````
 
-:::{figure-md} Figure: Envoy request and response scheduling
+:::{figure-md} Figure - Envoy request and response scheduling
 :class: full-width
 
-<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline-schedule.drawio.svg" alt="Figure: Envoy request with Response Scheduling">
+<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline-schedule.drawio.svg" alt="Figure - Envoy request with Response Scheduling">
 
-*Figure: Envoy request and response scheduling*
+*Figure - Envoy request and response scheduling*
 :::
 *[Open with Draw.io](https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline-schedule. drawio.svg)*
 
@@ -139,12 +139,12 @@ Since the relationship between indicators, components, and configuration items h
 
 Let’s talk about the flow of the request component first. The flow chart can be inferred from the relevant documents as (not fully verified, there are partial inferences):
 
-:::{figure-md} Figure: Envoy request scheduling flowchart
+:::{figure-md} Figure - Envoy request scheduling flowchart
 :class: full-width
 
-<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline-flowchart.drawio.svg" alt="Figure: Envoy request with Response timing line">
+<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline-flowchart.drawio.svg" alt="Figure - Envoy request with Response timing line">
 
-*Figure: Envoy request scheduling flow chart*
+*Figure - Envoy request scheduling flow chart*
 :::
 *[Open with Draw.io](https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline-flowchart. drawio.svg)*
 
@@ -166,12 +166,12 @@ For `network partition or peer crash or high load`, which needs to be discovered
 
 The following figure is the timing line of request and response, as well as related timeout configuration and generated metrics, and their connection.
 
-:::{figure-md} Figure: Envoy request and response sequence
+:::{figure-md} Figure - Envoy request and response sequence
 :class: full-width
 
-<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline.drawio.svg" alt="Figure: Envoy Request and Response Timeline">
+<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline.drawio.svg" alt="Figure - Envoy Request and Response Timeline">
 
-*Figure: Envoy request and response timing line*
+*Figure - Envoy request and response timing line*
 :::
 *[Open with Draw.io](https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline.drawio. svg)*
 
