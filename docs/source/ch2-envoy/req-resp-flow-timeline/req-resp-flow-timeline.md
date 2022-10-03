@@ -2,7 +2,7 @@
 typora-root-url: ../..
 ---
 
-# Request and Response scheduling
+# Request and Response scheduling of Envoy
 
 🎤 Before get started. I would like to talk about some of the reasons for writing this chapter. Why study Envoy's request and response scheduling?
 
@@ -21,7 +21,7 @@ At the end of the mess, I had to write an article to defrag the information: [A 
 
 For above reasons. I summarize the following flow from documentation, parameters, metrics. <mark>NOTICE: It has not been verified in the code, please refer to it with caution. </mark>
 
-## Request and response scheduling
+## Request and Response scheduling
 
 Essentially, Envoy is a proxy. The first impression of a proxy should be a software/hardware component with the following processes:
 1. Receive `Request` from `downstream`
