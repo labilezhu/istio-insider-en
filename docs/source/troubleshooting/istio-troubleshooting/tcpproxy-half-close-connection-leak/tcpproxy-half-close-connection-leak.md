@@ -132,6 +132,12 @@ Only happens in these cases:
 
 ![](./1-TCPProxy-connections-ESTABLISHED.drawio.svg)
 
+**[**Open with Draw.io**](*https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fen%2Flatest%2F_images%2F1-TCPProxy-connections-ESTABLISHED.drawio.svg*)**
+
+
+
+
+
 
 ```bash
 fortio-server-l2-0:/ $ nc -p 44410 172.21.206.198 7777
@@ -155,6 +161,10 @@ tcp   ESTAB  0  0     127.0.0.1:15001  172.29.73.7:44410        users:(("envoy",
 ### 2. TCPProxy: upstream service active close connection
 
 ![](./2-TCPProxy-upstream-service-active-close-connection.drawio.svg)
+
+**[**Open with Draw.io**](*https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fen%2Flatest%2F_images%2F2-TCPProxy-upstream-service-active-close-connection.drawio.svg*)**
+
+
 
 
 ```bash
@@ -189,6 +199,8 @@ Pod main-app(nc) close connection - FIN not reach peer. So  socket `127.0.0.1:15
 
 
 ![](./4-pod-main-app(nc)-close-connection-FIN-not-reach-peer.drawio.svg)
+
+**[**Open with Draw.io**](*https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fen%2Flatest%2F_images%2F4-pod-main-app(nc)-close-connection-FIN-not-reach-peer.drawio.svg*)**
 
 
 
