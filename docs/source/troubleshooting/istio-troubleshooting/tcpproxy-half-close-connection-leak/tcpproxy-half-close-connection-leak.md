@@ -16,6 +16,8 @@ We know that, gernally speaking, `FIN_WAIT2` socket has timer to close it: `/pro
 
 But for a half-closed `FIN_WAIT2` socket(`shutdown(fd,ENVOY_SHUT_WR)`), no timer exists.
 
+
+
 Good news is:`Envoy TCPProxy Filter` has an [idle_timeout](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/network/tcp_proxy/v3/tcp_proxy.proto) setting which by default is 1 hour. So above problem will have a 1 hour leak window before being GC.
 
 ## Base knowledge
