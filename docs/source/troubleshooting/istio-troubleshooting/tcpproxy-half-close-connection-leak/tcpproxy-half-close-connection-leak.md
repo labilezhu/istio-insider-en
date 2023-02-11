@@ -20,6 +20,11 @@ But for a half-closed `FIN_WAIT2` socket(`shutdown(fd,ENVOY_SHUT_WR)`), no timer
 
 Good news is:`Envoy TCPProxy Filter` has an [idle_timeout](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/network/tcp_proxy/v3/tcp_proxy.proto) setting which by default is 1 hour. So above problem will have a 1 hour leak window before being GC.
 
+
+
+But in some scenarios, it will be an issue anyway.
+The github issue I submited: [TCP Proxy half-closed connection leak for 1 hour in some scenarios #43297](https://github.com/istio/istio/issues/43297)
+
 ## Base knowledge
 
 - Make a connection by specified ephemeral port. e.g:
@@ -220,9 +225,9 @@ conntrack -L 2>&1 | egrep "10.104.76.163|172.21.206.198"
 [None]
 ```
 
-### 4. pod main-app(nc) close connection - FIN not reach peer
+### 4. app close connection - FIN not reach peer
 
-Pod main-app(nc) close connection - FIN not reach peer. So  socket `127.0.0.1:15001  172.29.73.7:44410        users:(("envoy",pid=51435,fd=121))` stuck in `FIN-WAIT-2`.
+The `app` close connection - FIN not reach peer. So  socket `127.0.0.1:15001  172.29.73.7:44410        users:(("envoy",pid=51435,fd=121))` stuck in `FIN-WAIT-2`.
 
 
 

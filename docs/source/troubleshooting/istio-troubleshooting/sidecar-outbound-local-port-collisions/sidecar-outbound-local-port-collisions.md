@@ -1,8 +1,5 @@
 
-# Story
-
-
-## Base knowledge
+# sidecar outbound-local-port-collisions
 
 - Make a connection by specified ephemeral port. e.g:
 
