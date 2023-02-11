@@ -1,5 +1,22 @@
-# TCP Proxy half-closed connection leak
+# TCP Proxy half-closed connection leak for 1 hour in some scenarios
 
+Sidecar intercept and TCP proxy all outbound TCP connection by default:
+`(app --[conntrack DNAT]--> sidecar) -----> upstream-tcp-service`
+
+1. When `upstream-tcp-service` want to disconnect, it sent `FIN`.
+2. `sidecar` received `FIN` and call [shutdown(fd,ENVOY_SHUT_WR)](https://github.com/envoyproxy/envoy/pull/2386) syscall on the downsteam socket to forward the `FIN` to `app` and keep the connection half-close. The socket state is `FIN_WAIT2` now.
+3. `conntrack table` will start a 60s timer(`/proc/sys/net/netfilte/nf_conntrack_tcp_timeout_close_wait`). After timeout, DNAT entry will be removed.
+4. `app` received `FIN` 
+5. In normal scenarios, after receive `FIN`, the `app` will call `close()` quickly and it close the socket and reply `FIN`, then all 2 sockets in sidecar will be closed. 
+6. BUT, if the `app` call `close()` after 60s. The `FIN` sent by `app` will not deliver to `sidecar`. Because the conntrack table DNAT entry was removed at 60s.
+
+So 2 sockets leaked on `sidecar`.
+
+We know that, gernally speaking, `FIN_WAIT2` socket has timer to close it: `/proc/sys/net/ipv4/tcp_fin_timeout`
+
+But for a half-closed `FIN_WAIT2` socket(`shutdown(fd,ENVOY_SHUT_WR)`), no timer exists.
+
+Good news is:`Envoy TCPProxy Filter` has an [idle_timeout](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/network/tcp_proxy/v3/tcp_proxy.proto) setting which by default is 1 hour. So above problem will have a 1 hour leak window before being GC.
 
 ## Base knowledge
 
@@ -41,9 +58,18 @@ Conntrack by default will not DNAT some invalid tcp packet.
 
 ## Environment
 
-Istio: istio-1.16.2
+```
+$ ./istioctl version
+client version: 1.16.2
+control plane version: 1.16.2
+data plane version: 1.16.2 (4 proxies)
 
-Kubernetes: 1.25
+$ kubectl version --short
+Flag --short has been deprecated, and will be removed in the future. The --short output will become the default.
+Client Version: v1.25.3
+Kustomize Version: v4.5.7
+Server Version: v1.25.6
+```
 
 CNI: Calico
 
