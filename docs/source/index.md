@@ -98,6 +98,7 @@ ch1-istio-arch/index
 ch2-envoy/index
 ch3-control-panel/index
 ch4-istio-ctrl-envoy/index
+troubleshooting/troubleshooting.md
 ````
 
 ## Appendix
