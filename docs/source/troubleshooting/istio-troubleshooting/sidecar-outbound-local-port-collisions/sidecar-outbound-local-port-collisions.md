@@ -16,9 +16,9 @@ Scenarios:
    tcp FIN-WAIT-2 0 0 127.0.0.1:15001  172.29.73.7:44410(POD_IP:ephemeral_port)
    ```
 
-    This can be happen, eg:  [TCP Proxy half-closed connection leak for 1 hour in some scenarios #43297](https://github.com/istio/istio/issues/43297)
+    This can happen, eg:  [TCP Proxy half-closed connection leak for 1 hour in some scenarios #43297](https://github.com/istio/istio/issues/43297)
 
-   There is no  track entry in conntrack table because `nf_conntrack_tcp_timeout_close_wait` time out and expired.
+   There is no track entry in conntrack table because `nf_conntrack_tcp_timeout_close_wait` time out and expired.
 
 2. App invoke syscall `connect(sockfd, peer_addr)` , kernel allocation a `ephemeral port`(44410 in this case) , bind the new socket to that  `ephemeral port` and sent `SYN` packet to peer.
 
@@ -65,7 +65,7 @@ cat: /proc/sys/net/netfilter/nf_conntrack_tcp_ignore_invalid_rst: No such file o
 
 
 
-It seem related to kernel patch: [Add tcp_ignore_invalid_rst sysctl to allow to disable out of
+It seems related to kernel patch: [Add tcp_ignore_invalid_rst sysctl to allow to disable out of
    segment RSTs](https://github.com/torvalds/linux/commit/d7fba8ff3e50fb25ffe583bf945df052f6caffa2) which merge to kernel after kernel v5.14
 
 Good news is that, someone will fix the problem at kernel v6.2-rc7: [netfilter: conntrack: handle tcp challenge acks during connection reuse](https://github.com/torvalds/linux/commit/c410cb974f2ba562920ecb8492ee66945dcf88af):
@@ -88,6 +88,10 @@ initator gives up or peer starts responding with syn/ack.
 
 
 But in some scenarios and kernel version, it will be an issue anyway.
+
+
+
+Github issue: [App outbound connecting timed out because sidecar select ephemeral port collisions with socket on 15001(outbound) listener #43301](https://github.com/istio/istio/issues/43301)
 
 
 
@@ -220,9 +224,9 @@ fortio-server-l2-0:/ # nc -p 44410 172.21.206.198 7777 #pid=144426
 fortio-server-l2-0:/ # ss -naoep | egrep '44410|7777'
 
 tcp   SYN-SENT    0  1  172.29.73.7:44410    172.21.206.198:7777         users:(("nc",pid=144426,fd=3)) timer:(on,1.684ms,2) ino:2024378629 sk:aa4e2 <->
-tcp   FIN-WAIT-2  0  0     127.0.0.1:15001  172.29.73.7:44410        users:(("envoy",pid=51435,fd=121)) uid:201507 ino:2023763691 sk:aa125 <--
+tcp   FIN-WAIT-2  0  0     127.0.0.1:15001  172.29.73.7:44410        users:(("envoy",pid=51435,fd=121)) ino:2023763691 sk:aa125 <--
 
-#tcp   CLOSE-WAIT  0  0  172.29.73.7:38076    172.21.206.198:7777         users:(("envoy",pid=51435,fd=135)) uid:201507 ino:2023763692 sk:aa123 -->
+#tcp   CLOSE-WAIT  0  0  172.29.73.7:38076    172.21.206.198:7777         users:(("envoy",pid=51435,fd=135)) ino:2023763692 sk:aa123 -->
 #tcp   CLOSE-WAIT  0  0  172.29.73.7:38078    172.21.206.198:7777         users:(("nc",pid=88235,fd=3)) ino:2024198076 sk:aa3d7 -->
 
 fortio-server-l2-0:/ # conntrack -L 2>&1 | egrep "192.168.7.|10.96.94.44|172.21.206.198"
@@ -344,6 +348,8 @@ tcpdump: listening on lo, link-type EN10MB (Ethernet), capture size 262144 bytes
 ```
 
 
+
+## Skills
 
 
 
