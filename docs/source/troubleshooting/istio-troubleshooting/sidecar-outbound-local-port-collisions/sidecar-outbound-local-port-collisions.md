@@ -1,22 +1,97 @@
-
-# sidecar outbound-local-port-collisions
-
-- Make a connection by specified ephemeral port. e.g:
-
-  ```bash
-  nc -p 44410 172.21.206.198 7777
-  ```
+# App outbound connecting timed out because sidecar select ephemeral port collisions with socket on 15001(outbound) listener
 
 
-- List sockets with timer(state/retry timeout) info. e.g:
 
-  ```bash
-  ss -naoep
-  
-  tcp   SYN-SENT    0  1  172.29.73.7:44410    172.21.206.198:7777         users:(("nc",pid=144426,fd=3)) timer:(on,1.684ms(timeout),2(retry counter)) ino:2024378629 sk:aa4e2 <->
-  ```
+Sidecar intercept and TCP proxying all outbound TCP connection by default:
+`(app --[conntrack DNAT]--> sidecar) -----> upstream-tcp-service`
 
-### Conntrack base knowledge
+But in some scenarios, App just get a connect timed out error when connecting to the sidecar 15001(outbound) listener.
+
+Scenarios:
+
+1. When sidecar has a half-open connection to App. e.g: 
+
+   ```
+   $ ss
+   tcp FIN-WAIT-2 0 0 127.0.0.1:15001  172.29.73.7:44410(POD_IP:ephemeral_port)
+   ```
+
+    This can be happen, eg:  [TCP Proxy half-closed connection leak for 1 hour in some scenarios #43297](https://github.com/istio/istio/issues/43297)
+
+   There is no  track entry in conntrack table because `nf_conntrack_tcp_timeout_close_wait` time out and expired.
+
+2. App invoke syscall `connect(sockfd, peer_addr)` , kernel allocation a `ephemeral port`(44410 in this case) , bind the new socket to that  `ephemeral port` and sent `SYN` packet to peer.
+
+3.  `SYN` packet reach conntrack and it create a `track entry` in `conntrack table`:
+
+   ```
+   $ conntrack -L
+   tcp  6 108 SYN_SENT src=172.29.73.7 dst=172.21.206.198 sport=44410 dport=7777 src=127.0.0.1 dst=172.29.73.7 sport=15001 dport=44410
+   ```
+
+   
+
+4.  `SYN` packet DNAT to `127.0.0.1:15001`
+
+5. `SYN` packet reach the already existing `FIN-WAIT-2 127.0.0.1:15001  172.29.73.7:44410` socket, then sidecar reply a `TCP Challenge ACK` (TCP seq-no is from the old `FIN-WAIT-2`) packet to App
+
+6. App reply the  `TCP Challenge ACK` with a `RST`(TCP seq-no is from the `TCP Challenge ACK`)
+
+7. `Conntrack` get the `RST` packet and check it. In some kernel version, `conntrack` just `invalid` the `RST` packet because the `seq-no` is out of the  `track entry` in `conntrack table` which created in step 3.
+
+8. App will retransmit `SYN` but all without an expected `SYN/ACK` reply.  Connect timed out will happen on App user space.
+
+
+
+Different kernel version may have different packet validate rule in step 7:
+
+```bash
+RST packet mark as invalid:
+  SUSE Linux Enterprise Server 15 SP4:
+    5.14.21-150400.24.21-default
+
+# cat /proc/sys/net/netfilter/nf_conntrack_tcp_ignore_invalid_rst
+0
+
+####################
+    
+RST packet passed check and NATed:
+  Ubuntu 20.04.2:
+    5.4.0-137-generic
+    
+# cat /proc/sys/net/netfilter/nf_conntrack_tcp_ignore_invalid_rst
+cat: /proc/sys/net/netfilter/nf_conntrack_tcp_ignore_invalid_rst: No such file or directory    
+```
+
+
+
+It seem related to kernel patch: [Add tcp_ignore_invalid_rst sysctl to allow to disable out of
+   segment RSTs](https://github.com/torvalds/linux/commit/d7fba8ff3e50fb25ffe583bf945df052f6caffa2) which merge to kernel after kernel v5.14
+
+Good news is that, someone will fix the problem at kernel v6.2-rc7: [netfilter: conntrack: handle tcp challenge acks during connection reuse](https://github.com/torvalds/linux/commit/c410cb974f2ba562920ecb8492ee66945dcf88af):
+
+```
+When a connection is re-used, following can happen:
+[ connection starts to close, fin sent in either direction ]
+ > syn   # initator quickly reuses connection
+ < ack   # peer sends a challenge ack
+ > rst   # rst, sequence number == ack_seq of previous challenge ack
+ > syn   # this syn is expected to pass
+
+Problem is that the rst will fail window validation, so it gets
+tagged as invalid.
+
+If ruleset drops such packets, we get repeated syn-retransmits until
+initator gives up or peer starts responding with syn/ack.
+```
+
+
+
+But in some scenarios and kernel version, it will be an issue anyway.
+
+
+
+## Base knowledge
 
 ### TCP
 
@@ -43,18 +118,99 @@ Conntrack by default will not DNAT any invalid(Not in tcp connection window) tcp
 
 
 
+## Environment
+
+```
+$ ./istioctl version
+client version: 1.16.2
+control plane version: 1.16.2
+data plane version: 1.16.2 (4 proxies)
+
+$ kubectl version --short
+Flag --short has been deprecated, and will be removed in the future. The --short output will become the default.
+Client Version: v1.25.3
+Kustomize Version: v4.5.7
+Server Version: v1.25.6
+```
+
+CNI: Calico
+
+### Testing POD
+
+```
+IP: 172.29.73.7
+POD Name: fortio-server-l2-0
+pod running at worker node: sle
+
+Worker Node:
+Kernel: 5.14.21-150400.24.21-default
+Linux distros: SUSE Linux Enterprise Server 15 SP4
+```
+
+### TCP service pod
+
+```
+IP: 172.21.206.198
+POD Name: netshoot-0
+```
+
+```bash
+# listen on port 7777
+
+kubectl -it exec netshoot-0 -- nc -l -k 7777
+```
+
+### enable conntrack's invalid packet log on Testing POD
+
+enable `nf_log_all_netns` on worker node:
+
+```bas
+sle:/proc/sys # sudo su
+sle:/proc/sys # echo 1 > /proc/sys/net/netfilter/nf_log_all_netns
+```
+
+add iptables rule on container:
+
+```bash
+fortio-server-l2-0:/ $
+
+iptables -t mangle -N ISTIO_INBOUND_LOG
+iptables -t mangle -A ISTIO_INBOUND_LOG -m conntrack --ctstate INVALID -j LOG --log-level debug --log-prefix 'ISTIO_INBOUND_INVALID: '
+iptables -t mangle -A PREROUTING -p tcp -j ISTIO_INBOUND_LOG 
+
+iptables -t mangle -N ISTIO_OUTBOUND_LOG
+iptables -t mangle -A ISTIO_OUTBOUND_LOG -m conntrack --ctstate INVALID -j LOG --log-level debug --log-prefix 'ISTIO_OUTBOUND_INVALID: '
+iptables -t mangle -A OUTPUT -p tcp -j ISTIO_OUTBOUND_LOG 
+```
 
 
 
 ## New connection timeout
 
-### pod main-app(nc) build connection on same ephemeral port
+### App build connection on the same ephemeral port
 
-#### 5.1 connect timed out by collision ephemeral port
+- Make a connection by specified ephemeral port. e.g:
+
+  ```bash
+  nc -p 44410 172.21.206.198 7777
+  ```
+
+
+- List sockets with timer(state/retry timeout) info. e.g:
+
+  ```bash
+  ss -naoep
+  
+  tcp   SYN-SENT    0  1  172.29.73.7:44410    172.21.206.198:7777         users:(("nc",pid=144426,fd=3)) timer:(on,1.684ms(timeout),2(retry counter)) ino:2024378629 sk:aa4e2 <->
+  ```
+
+#### Case 1: connect timed out by collision ephemeral port
 
 
 
 ![](./5-1-connect-timed-out-by-collision-ephemeral-port.drawio.svg)
+
+**[Open with Draw.io](https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fen%2Flatest%2F_images%2F5-1-connect-timed-out-by-collision-ephemeral-port.drawio.svg)**
 
 
 
@@ -151,98 +307,9 @@ tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 262144 byt
     172.29.73.7.44410 > 172.21.206.198.7777: Flags [R], cksum 0x47ee (correct), seq 1382665639, win 0, length 0
 ```
 
-##### 5.1.1 Java to service connect timed out(HTTP)
-
-precondition: have a half-open FIN_WAIT2 socket on port 38120
-
-![](./5-1-1-java-connect-timed-out-by-collision-ephemeral-port.drawio.svg)
 
 
-
-
-
-```bash
-fortio-server-l2-0:/ cd /tmp
-cat <<"EOF" > /tmp/Main.java
-...
-EOF
-javac Main.java
-
-
-export eric_idm_client_ClusterIP=10.96.94.44
-export addressPrefix=$eric_idm_client_ClusterIP
-export threadCount=1
-export connectTimeout=10000
-export keepLoopSocketOpenMilliSec=10
-export closeByRST=true
-java Main $addressPrefix $threadCount $connectTimeout $keepLoopSocketOpenMilliSec $closeByRST
-
-...Runing a long time....
-
-connect IOException:, localPort:-1, exceptionMsg: connect timed out
-java.net.SocketTimeoutException: connect timed out
-   at java.net.PlainSocketImpl.socketConnect(Native Method)
-   at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
-   at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
-   at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
-   at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-   at java.net.Socket.connect(Socket.java:607)
-   at Main$Task.call(Main.java:55)
-   at Main$Task.call(Main.java:27)
-   at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-   at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-   at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-   at java.lang.Thread.run(Thread.java:750)
-
-```
-
-
-
-```bash
-fortio-server-l2-0:/home/eccd # sudo tcpdump -i lo -n -v "port 38120"       
-tcpdump: listening on lo, link-type EN10MB (Ethernet), capture size 262144 bytes
-15:09:24.112919 IP (tos 0x0, ttl 64, id 52558, offset 0, flags [DF], proto TCP (6), length 60)
-    172.29.73.7.38120 > 127.0.0.1.15001: Flags [S], cksum 0x43fd (incorrect -> 0x9cff), seq 2101091510, win 62720, options [mss 8960,sackOK,TS val 3391168843 ecr 0,nop,wscale 11], length 0
-
-# TcpExtTCPChallengeACK: (from sidecar)
-15:09:24.112939 IP (tos 0x0, ttl 64, id 17799, offset 0, flags [DF], proto TCP (6), length 52)
-    10.96.94.44.8080 > 172.29.73.7.38120: Flags [.], cksum 0x2d80 (incorrect -> 0x1d17), ack 4204570456, win 32, options [nop,nop,TS val 2231283044 ecr 1330103382], length 0
-    
-15:09:25.132029 IP (tos 0x0, ttl 64, id 52559, offset 0, flags [DF], proto TCP (6), length 60)
-    172.29.73.7.38120 > 127.0.0.1.15001: Flags [S], cksum 0x43fd (incorrect -> 0x9904), seq 2101091510, win 62720, options [mss 8960,sackOK,TS val 3391169862 ecr 0,nop,wscale 11], length 0
-15:09:25.132067 IP (tos 0x0, ttl 64, id 17800, offset 0, flags [DF], proto TCP (6), length 52)
-    10.96.94.44.8080 > 172.29.73.7.38120: Flags [.], cksum 0x2d80 (incorrect -> 0x191b), ack 1, win 32, options [nop,nop,TS val 2231284064 ecr 1330103382], length 0
-15:09:27.148043 IP (tos 0x0, ttl 64, id 52560, offset 0, flags [DF], proto TCP (6), length 60)
-    172.29.73.7.38120 > 127.0.0.1.15001: Flags [S], cksum 0x43fd (incorrect -> 0x9124), seq 2101091510, win 62720, options [mss 8960,sackOK,TS val 3391171878 ecr 0,nop,wscale 11], length 0
-15:09:27.148073 IP (tos 0x0, ttl 64, id 17801, offset 0, flags [DF], proto TCP (6), length 52)
-    10.96.94.44.8080 > 172.29.73.7.38120: Flags [.], cksum 0x2d80 (incorrect -> 0x113b), ack 1, win 32, options [nop,nop,TS val 2231286080 ecr 1330103382], length 0
-15:09:31.308038 IP (tos 0x0, ttl 64, id 52561, offset 0, flags [DF], proto TCP (6), length 60)
-    172.29.73.7.38120 > 127.0.0.1.15001: Flags [S], cksum 0x43fd (incorrect -> 0x80e4), seq 2101091510, win 62720, options [mss 8960,sackOK,TS val 3391176038 ecr 0,nop,wscale 11], length 0
-15:09:31.308072 IP (tos 0x0, ttl 64, id 17802, offset 0, flags [DF], proto TCP (6), length 52)
-    10.96.94.44.8080 > 172.29.73.7.38120: Flags [.], cksum 0x2d80 (incorrect -> 0x00fb), ack 1, win 32, options [nop,nop,TS val 2231290240 ecr 1330103382], length 0
-
-
-fortio-server-l2-0:/home/eccd # sudo tcpdump -i eth0 -n -v "host 10.96.94.44"
-# RST from 172.29.73.7.38120 (Conntrack Invalid)
-15:09:24.112956 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 40)
-    172.29.73.7.38120 > 10.96.94.44.8080: Flags [R], cksum 0x2c19 (correct), seq 4204570456, win 0, length 0
-15:09:25.132084 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 40)
-    172.29.73.7.38120 > 10.96.94.44.8080: Flags [R], cksum 0x2c19 (correct), seq 4204570456, win 0, length 0
-15:09:27.148089 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 40)
-    172.29.73.7.38120 > 10.96.94.44.8080: Flags [R], cksum 0x2c19 (correct), seq 4204570456, win 0, length 0
-15:09:31.308090 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 40)
-    172.29.73.7.38120 > 10.96.94.44.8080: Flags [R], cksum 0x2c19 (correct), seq 4204570456, win 0, length 0
-
-
-[Sun Feb  5 15:08:47 2023] ISTIO_OUTBOUND_INVALID: IN= OUT=eth0 SRC=172.29.73.7 DST=10.96.94.44 LEN=40 TOS=0x00 PREC=0x00 TTL=64 ID=0 DF PROTO=TCP SPT=38120 DPT=8080 WINDOW=0 RES=0x00 RST URGP=0 
-[Sun Feb  5 15:08:48 2023] ISTIO_OUTBOUND_INVALID: IN= OUT=eth0 SRC=172.29.73.7 DST=10.96.94.44 LEN=40 TOS=0x00 PREC=0x00 TTL=64 ID=0 DF PROTO=TCP SPT=38120 DPT=8080 WINDOW=0 RES=0x00 RST URGP=0 
-[Sun Feb  5 15:08:50 2023] ISTIO_OUTBOUND_INVALID: IN= OUT=eth0 SRC=172.29.73.7 DST=10.96.94.44 LEN=40 TOS=0x00 PREC=0x00 TTL=64 ID=0 DF PROTO=TCP SPT=38120 DPT=8080 WINDOW=0 RES=0x00 RST URGP=0 
-[Sun Feb  5 15:08:54 2023] ISTIO_OUTBOUND_INVALID: IN= OUT=eth0 SRC=172.29.73.7 DST=10.96.94.44 LEN=40 TOS=0x00 PREC=0x00 TTL=64 ID=0 DF PROTO=TCP SPT=38120 DPT=8080 WINDOW=0 RES=0x00 RST URGP=0 
-```
-
-
-
-#### 5.2 connect by collision ephemeral port but seq-no happens to be in the TCP window of the old connection
+#### Case 2: connect by collision ephemeral port but seq-no happens to be in the TCP window of the old connection
 
 When connect by collision ephemeral port but seq-no happens to be in the TCP window of the old connection(FIN-WAIT-2 state). Connect successed.
 
