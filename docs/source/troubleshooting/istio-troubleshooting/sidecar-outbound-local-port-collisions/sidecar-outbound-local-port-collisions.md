@@ -320,7 +320,7 @@ When connect by collision ephemeral port but seq-no happens to be in the TCP win
 
 
 ```bash
-fortio-server-l2-0:/home/eccd # sudo tcpdump -i lo -n -v "port 44410"
+fortio-server-l2-0:/home/user # sudo tcpdump -i lo -n -v "port 44410"
 tcpdump: listening on lo, link-type EN10MB (Ethernet), capture size 262144 bytes
 # SYN retrans
 16:23:32.466286 IP (tos 0x0, ttl 64, id 6422, offset 0, flags [DF], proto TCP (6), length 60)
