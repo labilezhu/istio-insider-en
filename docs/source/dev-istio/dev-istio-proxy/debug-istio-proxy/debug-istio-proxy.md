@@ -1,4 +1,4 @@
-# Debugging Envoy sidecar C++ code in an Istio mesh
+# Remote debugging an Envoy sidecar running in an Istio mesh by lldb at C++ source code level
 
 ## Introduction
 
