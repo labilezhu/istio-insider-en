@@ -59,7 +59,7 @@ templates_path = ['_templates']
 
 html_theme = 'sphinx_book_theme'
 numfig = False
-language = 'en'
+language = 'en_US'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
