@@ -1,4 +1,4 @@
-# App outbound connecting timed out because sidecar select ephemeral port collisions with socket on 15001(outbound) listener
+# App outbound connecting timed out because App selected a ephemeral port which collisions with the existing socket on 15001(outbound) listener
 
 
 
