@@ -7,7 +7,7 @@ copyright = '2022, Mark Zhu'
 author = 'Mark Zhu'
 
 release = '0.1'
-version = '0.1.0'
+version = 'latest'
 
 # -- General configuration
 
@@ -18,8 +18,11 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
     'sphinx.ext.autosectionlabel',
-    'myst_parser'
+    'myst_parser',
+    'sphinx_sitemap'
 ]
+
+html_baseurl = 'https://istio-insider.mygraphql.com/'
 
 autosectionlabel_prefix_document = True
 

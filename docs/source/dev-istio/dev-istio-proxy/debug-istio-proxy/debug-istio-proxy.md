@@ -17,7 +17,7 @@ For me, Deep dive into the behavior of sidecar (istio-proxy) in Istio service me
 :::{figure-md} Figure: Remote lldb debug istio-proxy
 :class: full-width
 
-<img src="/dev-istio/dev-istio-proxy/debug-istio-proxy/remote-lldb-istio-proxy.drawio.svg" alt="Figure: Remote lldb debug istio-proxy">
+<img src="/dev-istio/dev-istio-proxy/debug-istio-proxy/remote-lldb-istio-proxy.drawio.svg" alt="Figure: Remote lldb debug istio-proxy" />
 
 *Figure: Remote lldb debug istio-proxy*
 :::
@@ -103,7 +103,8 @@ make build BAZEL_STARTUP_ARGS='' BAZEL_BUILD_ARGS='-s  --explain=explain.txt --c
 
 It took me 3 hours to build it on my 2 cores CPU and 64GB ram machine. More core will be faster.
 
-You can check the output ELF after build finished：
+You can check the output ELF after build finished:
+
 ```bash
 ## goto istio-proxy-builder container
 docker exec -it istio-proxy-builder bash
