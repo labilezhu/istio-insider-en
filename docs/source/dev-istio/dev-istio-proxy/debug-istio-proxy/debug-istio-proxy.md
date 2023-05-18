@@ -14,14 +14,15 @@ For me, Deep dive into the behavior of sidecar (istio-proxy) in Istio service me
 
 ## Architecture
 
-:::{figure-md} Figure: Remote lldb debug istio-proxy
+:::{figure-md} Figure:Remote lldb debug istio-proxy
 :class: full-width
 
-<img src="/dev-istio/dev-istio-proxy/debug-istio-proxy/remote-lldb-istio-proxy.drawio.svg" alt="Figure: Remote lldb debug istio-proxy" />
+<img src="/dev-istio/dev-istio-proxy/debug-istio-proxy/remote-lldb-istio-proxy.drawio.svg" alt="Figure:Remote lldb debug istio-proxy" />
 
-*Figure: Remote lldb debug istio-proxy*
+*Figure:Remote lldb debug istio-proxy*
 :::
 *[Open in Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fremote-lldb-istio-proxy.drawio.svg)*
+
 
 ## Environment Assumption
 
