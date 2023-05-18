@@ -366,11 +366,11 @@ Pure cloud native flavor is the target. In order to make debugging istio-proxy m
  - `Remote Containers: Attach to Running Container` can replace by a [`VSCode-server`](https://github.com/coder/code-server) k8s service which can easily access by any web browser. A Node with X11 desktop / VSCode GUI app and docker or ssh connection is not required anymore. Just expose the `VSCode-server` as a k8s service and access it on the web browser.
 
 
-:::{figure-md} Figure: Remote lldb debug istio-proxy
+:::{figure-md} Figure:Remote lldb debug istio-proxy
 :class: full-width
 
-<img src="/dev-istio/dev-istio-proxy/debug-istio-proxy/remote-lldb-istio-proxy.drawio.svg" alt="Figure: Remote lldb debug istio-proxy">
+<img src="/dev-istio/dev-istio-proxy/debug-istio-proxy/remote-lldb-istio-proxy.drawio.svg" alt="Figure:Remote lldb debug istio-proxy" />
 
-*Figure: Remote lldb debug istio-proxy*
+*Figure:Remote lldb debug istio-proxy*
 :::
 *[Open in Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fremote-lldb-istio-proxy.drawio.svg)*
