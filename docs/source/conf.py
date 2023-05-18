@@ -66,3 +66,5 @@ epub_show_urls = 'footnote'
 
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
+
+latex_documents = []
