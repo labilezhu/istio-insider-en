@@ -1,17 +1,25 @@
 # Debugging Envoy sidecar C++ code in an Istio mesh
 
-For a more in-depth study of the underlying behavior of sidecar (istio-proxy) under Istio service mesh. In order to write my book [Istio Insider](http://istio-insider.mygraphql.com/) better, I use the (`lldb`/`gdb`) + `VSCode` to debug the  `Envoy`(C++ code) which running on Istio service mesh. This article records my method of debugging Envoy(istio-proxy) sidecar in Istio service mesh, and I hope it can be useful to readers.
+## Introduction
 
+Debugging Envoy sidecar C++ code running in Istio mesh. It helps deep dive into the sidecar at code level. It makes us more confident when troubleshooting Istio problem or writing better EnvoyFilter or eBPF trace program. This article guides how to use `VSCode` and `lldb` to debug Envoy istio-proxy sidecar.
+
+## My motivation 
+
+Years ago, I wrote an article:
+[[gdb debug istio-proxy(envoy) (Chinese)]](https://blog.mygraphql.com/zh/notes/cloud/envoy/gdb-envoy/). It is only debugging an Envoy process out of Istio mesh.
+
+For me, Deep dive into the behavior of sidecar (istio-proxy) in Istio service mesh make me more confidence to finish my book: [Istio Insider](http://istio-insider.mygraphql.com/). I want to use (`lldb`/`gdb`) + `VSCode` to debug  `Envoy`(C++ code) which running on an Istio service mesh. 
 
 
 ## Architecture
 
-:::{figure-md} Figure：Remote lldb debug istio-proxy
+:::{figure-md} Figure: Remote lldb debug istio-proxy
 :class: full-width
 
-<img src="/dev-istio/dev-istio-proxy/debug-istio-proxy/remote-lldb-istio-proxy.drawio.svg" alt="Figure：Remote lldb debug istio-proxy">
+<img src="/dev-istio/dev-istio-proxy/debug-istio-proxy/remote-lldb-istio-proxy.drawio.svg" alt="Figure: Remote lldb debug istio-proxy">
 
-*Figure：Remote lldb debug istio-proxy*
+*Figure: Remote lldb debug istio-proxy*
 :::
 *[Open in Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fremote-lldb-istio-proxy.drawio.svg)*
 
@@ -39,7 +47,7 @@ Environment assumption:
 
 
 
-## Steps
+## Environment construction steps
 
 ### 1. Build istio-proxy with debug info
 
@@ -61,7 +69,7 @@ Compiling a large project like istio-proxy is an environment-related job. For a 
 1. The environment is consistent with the official Istio version to avoid version pitfalls. Theoretically the generated executable is the same
 2. Built-in tools, easy to use
 
-> Note: The build-tools-proxy container image list can be found at [https://console.cloud.google.com/gcr/images/istio-testing/global/build-tools-proxy](https://console.cloud.google.com/gcr/images/istio-testing/global/build-tools-proxy) available. Please select the image corresponding to the version of istio-proxy you want to compile. The method is to use the Filter function in the web page. The following only takes release-1.17 as an example.
+> Note: The build-tools-proxy container image list can be found at [https://console.cloud.google.com/gcr/images/istio-testing/global/build-tools-proxy](https://console.cloud.google.com/gcr/images/istio-testing/global/build-tools-proxy). Please select the image corresponding to the version of istio-proxy you want to compile. The method is to use the Filter function in the web page. The following only takes release-1.17 as an example.
 
 ```bash
 # optional
@@ -238,7 +246,7 @@ attach --pid 15
 exit
 ```
 
-### 3. Attach testing istio with debuger
+### 3. Attach testing istio-proxy with debuger
 
 #### 3.1 start lldb-vscode-server container
 
@@ -266,7 +274,7 @@ docker run \
 #### 3.2 VSCode attach `lldb-vscode-server` container
 
 1. Start VSCode GUI on `labile-T30`. 
-2. Run vscode command: `Remote Containers: Attach to Running Container`, select `lldb-vscode-server` container.
+2. Run vscode command(Ctrl+Shift+p): `Remote Containers: Attach to Running Container`, select `lldb-vscode-server` container.
 3. After attached to container, open folder: `/work`.
 4. Install VSCode extensions:
    - CodeLLDB
@@ -304,7 +312,7 @@ Create `.vscode/launch.json` in `/work`
 
 ##### 3.3.2 Attach remote process
 
-Run and debug: `AttachLLDBRemote`.
+Run and debug: `AttachLLDBRemote` in VSCode.
 
 It may took about 1 minute to load the 1GB ELF. Please be patient.
 
@@ -345,3 +353,22 @@ Please update `/home/.cache/bazel/_bazel_root/1e0bb3bee2d09d2e4ad3523530d3b40c` 
 
 I was hit by many issues when use `gdb`.
 
+## More Cloud native flavor of remote debugging
+
+Years ago, I wrote an article:
+[Rethinking the development environment in the cloud-native era - from Dev-to-Cloud to Dev@Cloud](https://blog.mygraphql.com/zh/posts/cloud/devcloud/devcloud-idea/). It introduce how to install a Pod running X11 desktop environment in k8s cluster and connect to the desktop just by an web browser.
+
+Pure cloud native flavor is the target. In order to make debugging istio-proxy more cloud native flavor. You can replace some components in below diagram with k8s component. It can also lower the threshold for developers to access the debugging environment. For example:
+ - Sharing folders between docker containers running on `labile-T30` could be replaced with k8s RWX(ReadWriteMany) PV. e.g NFS/CephFS.
+ - `istio-proxy-builder` and `lldb-vscode-server` container can run as Pods in k8s and mount RWX PVCs.
+ - `Remote Containers: Attach to Running Container` can replace by a [`VSCode-server`](https://github.com/coder/code-server) k8s service which can easily access by any web browser. A Node with X11 desktop / VSCode GUI app and docker or ssh connection is not required anymore. Just expose the `VSCode-server` as a k8s service and access it on the web browser.
+
+
+:::{figure-md} Figure: Remote lldb debug istio-proxy
+:class: full-width
+
+<img src="/dev-istio/dev-istio-proxy/debug-istio-proxy/remote-lldb-istio-proxy.drawio.svg" alt="Figure: Remote lldb debug istio-proxy">
+
+*Figure: Remote lldb debug istio-proxy*
+:::
+*[Open in Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fremote-lldb-istio-proxy.drawio.svg)*
