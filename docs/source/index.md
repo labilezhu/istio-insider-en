@@ -51,12 +51,12 @@ Why do I learn from others and write a book when my level is limited? Because of
 Blog: [https://blog.mygraphql.com/](https://blog.mygraphql.com/)  
 In order to facilitate readers to follow the Blog and the book's updates, opened a synchronized WeChat public number: Mark's full of paper sugar cube words
 
-:::{figure-md} WeChat public number: Mark's full of paper square sugar words
+:::{figure-md} WeChat subscription: Mark的滿紙方糖言
 
 <img src="_static/my-wechat-blog-qr.png" alt="my-wechat-blog-qr.png">
 
-*WeChat: Mark's Paper Full of Sugar Candy Words*.
-:::.
+*WeChat: Mark的滿紙方糖言*.
+:::
 
 
 
@@ -91,7 +91,7 @@ There is an Chinese version: [中文版](https://istio-insider.mygraphql.com/zh-
 ```{toctree}
 :caption: Catalog
 :maxdepth: 5
-:includehidden: ch0/index
+:includehidden: 
 
 ch0/index
 ch1-istio-arch/index
@@ -108,7 +108,7 @@ dev-istio/dev-istio.md
 ```{toctree}
 :caption: appendix
 :maxdepth: 5
-:includehidden: appendix-lab-env/index.md
+:includehidden: 
 
 appendix-lab-env/index.md
 ```
