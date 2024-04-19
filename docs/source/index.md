@@ -88,7 +88,7 @@ There is an Chinese version: [中文版](https://istio-insider.mygraphql.com/zh-
 ## Catalog
 
 
-``{toctree}
+```{toctree}
 :caption: Catalog
 :maxdepth: 5
 :includehidden: ch0/index
@@ -105,7 +105,7 @@ dev-istio/dev-istio.md
 
 ## Appendix
 
-``{toctree}
+```{toctree}
 :caption: appendix
 :maxdepth: 5
 :includehidden: appendix-lab-env/index.md
