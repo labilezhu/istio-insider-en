@@ -1,3 +1,5 @@
 {
-    "window.title": "istio-insider-EN/source ${separator} ${dirty}${activeEditorShort} ${separator}${appName}"
+    "window.title": "Is-In-en/source ${separator} ${dirty}${activeEditorShort} ${separator}${appName}",
+    "window.zoomPerWindow": false,
+    "window.titleSeparator": "- "
 }

@@ -1,40 +1,44 @@
-# INTERACTIVE BOOK READING
+# Reading interactive book
 
 ## Interactive Book
 
-Human beings have developed into modern times, I think, books should expand the definition. As technical knowledge becomes more complex, interactive, electronic presentation methods may be more suitable for in-depth study of complex technical knowledge. In other words, when getting started, I prefer abstraction and simplification, and after going deeper, I prefer to clarify the internal connections.
+Humanity has evolved to the point where I think it's time for books to expand their definition. As technical knowledge becomes more complex, interactive, electronic presentations may be better suited for in-depth learning of complex technical knowledge. When getting started, one prefers abstraction and simplification, and when going deeper, one prefers to make sense of internal connections.
 
-This is not a "Dive into xyz source code" type of book. It can even be said that I tried my best not to paste the source code directly in the book. Looking at the source code is a necessary step to grasp the implementation details, but the experience of browsing the source code in a book is generally very poor. Instead, a source navigation map may be more practical.
+This is not a "deep dive into xyz source code" type of book. I can even say that I did my best not to post the source code directly in the book. Looking at the source code is a necessary step to grasp the details of the implementation, but navigating through the source code in a book is generally a very poor experience. Instead, a navigation chart of the source code is probably more helpful.
 
-It can be said that most of my writing time is not spent writing, but drawing. Therefore, using a computer to read the pictures is the correct way to open this book. Mobile phones are just a conspiracy to drain traffic.
-Most of the diagrams here are more complex, not PPT big pie charts. Therefore, it is basically not suitable for printing out paper books. But I'll let the graph interact with the reader:
+I spend most of my writing time not on words, but on diagrams. So using a PC to read the diagrams is the right way to open the book.
+Most of the diagrams here are complex, not like PPT charts. So, basically, they are not suitable for printing out a paper book either. But I will let the diagrams interactive with the reader:
 
-- Original drawings, mostly SVG images made with Draw.io: `*.drawio.svg`.
+- For original diagrams, most are SVG images made with Draw.io: `*.drawio.svg`.
 
 For complex diagrams, it is recommended to `open with draw.io`:
-- Some images provide a `Open with draw.io` link, which can be viewed in a more interactive way in the browser:
-  - Where there is (underlined text), links to related documentation and lines of code.
-  - Put the mouse on it and a `hover` window will pop up, prompting more information. Such as configuration file content.
+- Some images provide links to `open with draw.io` for a more interactive browser view: `*.drawio.svg`.
+  - In some places (underlined text), links to related documentation and lines of code.
+  - In some place(💡 icon on diagrams), When your mouse over, a `hover` window pops up with more information. For example, the contents of a configuration file.
 
-If you don't like draw.io then just look at SVG:
-- The correct posture to browse SVG images is to right-click on the image in the browser and select `Open Image in New Tab`. Large SVG image, middle mouse button pressed, free scroll/drag.
-- SVG images can click the link to directly jump to the corresponding source page (or related documents), sometimes accurate to the source line.
-- SVG sometimes has typesetting problems, especially the code segment embedded in the figure. At this time, it can only be opened with drawio.
+If you don't like draw.io, then look at SVG.
+- The proper way to view an SVG image is to right-click on the image in your browser and select `Open Image in New Tab`. For large SVG images, press the middle mouse button and scroll/drag freely.
+- SVG images can be clicked on a link to go directly to the corresponding source page (or related documentation), sometimes down to the source line.
+- SVGs sometimes have layout problems, especially with embedded snippets in the image, which can only be opened with drawio.
 
 ```{hint}
- - Large images are opened with Draw.io. The diagram contains numerous links to the documentation for each component, configuration item, and indicator. Sometimes links to github lines of code.
- - Dual screens, one screen for pictures and one screen for documents, is the correct reading posture for this book. If you are watching on your phone, then ignore me 🤦
-````
+ - For big dragram is recommended to opened with Draw.io The diagram contains a lot of links to the documentation for each component, configuration item, and metric. Sometimes it links to the github code line.
+ - Dual screens, one for the diagrams and one for the documentation, is the correct reading position for this book. If you're reading it on your phone, then, ignore me 🤦
+```
 
-## Language Style
-As this book is not intended for print publication. Nor is it official documentation. So language-wise I am colloquial. If the reader's expectation is to read a very serious book, they may be disappointed. But not serious does not mean not rigorous.
-Since this is the first book I've written, I don't have much experience. There is no person to do proofreading and errata with me, so if there is a mistake, the reader can raise a Github Issue.
+## Language style
+As this article is not intended for print publication. Nor is it an official document of any kind. So language wise I am colloquial. If the reader's expectation is to read a very serious book, they may be disappointed. But not being serious doesn't mean it's not rigorous.  
+Because this is the first book I've written, I don't have much experience. I didn't have anyone to proofread and errata with, so if there are any mistakes, readers can raise a Github Issue.
 
 
-## Drawing Style
+## Drawing styles
 
-There are architecture diagrams, flowcharts, and other drawings used in software engineering in the industry. From one aspect, there are two styles:
-- Neat, beautiful and neat, even pay attention to factors such as aesthetics and color matching; and limit the complexity of each picture, if it can be abstract, don't go into it. This style is more seen in PPT and paper books.
-- Engineer's diagram, nothing is detailed, and abstraction is only performed when the complexity exceeds the maximum that a person can understand in a plane. Such graphs are generally of limited regularity and compare engineer cultures. This style is more common in technical electronic documents.
+The diagrams used in the software engineering industry, such as architecture diagrams, flowcharts, and so on, can be categorized into two styles:
+- Neat, beautiful and neat, even pay attention to aesthetics and color and other factors; and limit the complexity of each diagram, can be abstract, do not go deeper. This style is more often seen in PPT and paper books.
+- Engineer's diagrams, everything is not detailed, only when the complexity is really more than the maximum human can understand in a plane, then the abstraction. This type of diagram is usually of limited regularity and is more of an engineer's culture. This style is more commonly found in technical electronic documentation.
 
-There are pictures in both styles of this book.
+This book uses both styles of diagrams. However, the latter is more commonly used.
+
+
+
+Translated with DeepL.com (free version)

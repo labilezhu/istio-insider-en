@@ -2,236 +2,242 @@
 typora-root-url: ../..
 ---
 
-# Request and Response scheduling of Envoy
+# Envoy 请求与响应调度 
 
-🎤 Before get started. I would like to talk about some of the reasons for writing this chapter. Why study Envoy's request and response scheduling?
+🎤 正式开编前。想说说写本节的一些故事缘由。为何去研究 Envoy 的请求与响应调度？  
 
-It originated from a requirement that needs to do some research on the fast recovery of node failures in Istio Service Mesh. I read a lot of Istio/Envoy documentation, Blogs. I saw a lot of fragmented information:
- - Health check
- - Circuit Breaker
- - Various mysterious and intricate timeout configurations in Envoy
- - Request Retry
- - `TCP keepalive`, `TCP_USER_TIMEOUT` configuration
+缘起于一个客户需求，需要对 Istio 网格节点故障快速恢复做一些调研。为此，我翻阅了大量的 Istio/Envoy 文档、大咖 Blog。看了很多很杂乱的信息：
+ - 健康检测
+ - 熔断
+ - Envoy 中的各个神秘又关系千丝万缕的 timeout 配置
+ - 请求 Retry
+ - `TCP keepalive`、`TCP_USER_TIMEOUT` 配置
 
-At the end of the mess, I had to write an article to defrag the information: [A preliminary study on the rapid recovery of Istio Service Mesh node failure](https://blog.mygraphql.com/zh/posts/low-tec/network/tcp-close/ tcp-half-open/) . But  the basic principles are not structured. So, I decided to delve into the Envoy documentation. Yes, in fact, Envoy's documentation is detailed. However:
- - Information is scattered in web pages, and cannot be organized by time sequence and process to form an full picture.
- - It is impossible to tune these parameters without understanding the overall cooperation relationship. Just looking at each parameter separately is not enough
- - The relationship between Metrics / Parameters are complex
- - All above relationships can be connected through the request and response process
+杂乱到最后，我不得不写个文章去梳理一下信息：[Istio 网格节点故障快速恢复初探](https://blog.mygraphql.com/zh/posts/low-tec/network/tcp-close/tcp-half-open/) 。 但信息是梳理了，基础原理却没理顺。于是，我下决心去钻研一下 Envoy 的文档。是的，其实 Envoy 的文档已经写得比较细致。只是：
+ - 信息散落在一个个网页中，无法用时序和流程的方法组织起来，构成一个有机的整体。
+ - 不去了解这个整体协作关系，只是一个一个参数分开来看，是无法理性去权衡这些参数的。
+ - 指标与指标，指标与参数，关系复杂
+ - 而上面的关系，都可以通过请求与响应调度流程串联起来
 
-For above reasons. I summarize the following flow from documentation, parameters, metrics. <mark>NOTICE: It has not been verified in the code, please refer to it with caution. </mark>
+基于上面原因。我从文档、参数、指标推导出以下流程。<mark>注意：暂时未在代码中验证，请谨慎参考。</mark>
 
-## Request and Response scheduling
+## 请求与响应调度
 
-Essentially, Envoy is a proxy. The first impression of a proxy should be a software/hardware component with the following processes:
-1. Receive `Request` from `downstream`
-2. Do some logic, modify `Request` if necessary, and determine the `upstream` destination
-3. Forward (modified) `Request` to `upstream`
-4. If the protocol is a `Request` & `Reponse` style protocol (such as HTTP)
-   1. The proxy usually receives the `Response` of `upstream`
-   2. Do some logic, modify `Response` if necessary
-   3. Forward `Response` to `downstream`
+本质上说，Envoy 就是一个代理。说起代理，第一反应应该是有以下流程的软件/硬件：
+1. 接收来自 `downstream` 的 `Request`
+2. 做一些逻辑，必要时修改 `Request` ，并判定`upstream`目的地
+3. 转发（修改后）的 `Request` 到`upstream`
+4. 如果协议是一个 `Request` & `Reponse` 式的协议（如 HTTP）
+   1. 代理通常会接收`upstream`的`Response`
+   2. 做一些逻辑，必要时修改 `Response` 
+   3. 转发 `Response` 给 `downstream`
 
-Indeed, this is also the high level flow of Envoy proxying the HTTP protocol. But Envoy has to implement a lot of features:
-1. Efficient `downstream` / `upstream` transmission ➡️ requires `connection multiplexing` and `connection pool`
-2. Flexible policy of forwarding target service strategy ➡️ `Router` configuration strategy and implementation logic are required
-3. Resilient micro-services
-   1. Load Balancing
-   2. Reduce peaks and valleys for burst traffic ➡️ Request queuing: pending request
-   3. Deal with abnormal upstream, circuit breakers, and protect services from avalanches ➡️ Various timeout configurations, Health checking, Outlier detection, Circuit breaking
-   4. Resilient retry ➡️ retry
-4. Observability ➡️ Performance metrics everywhere
-5. Dynamic programming configuration interface ➡️ xDS: EDS/LDS/...
+的确，这也是 Envoy 代理 HTTP 协议的概要流程。但 Envoy 还要实现很多特性：
+1. 高效的 `downstream` / `upstream` 传输 ➡️ 需要`连接复用`与`连接池`
+2. 灵活配置的转发目标服务策略 ➡️ 需要 `Router`配置策略与实现逻辑
+3. 弹性服务 (resilient micro-services)
+   1. 负载均衡
+   2. 突发流量的削峰平谷 ➡️ 请求排队： pending request
+   3. 应对异常 upstream、熔断器、保护服务不雪崩 ➡️ 各种 timeout 配置、 Health checking 、 Outlier detection 、 Circuit breaking
+   4. 弹性重试 ➡️ retry
+4. 可观察性 ➡️ 无处不在的性能指标
+5. 动态编程配置接口 ➡️ xDS: EDS/LDS/...
 
-To achieve these features, the process of request and response naturally cannot be simple.
-
-```{hint}
-At this point, readers may have questions, the title of this section is called "Request and Response Scheduling"? Does Envoy need to schedule and process Requests like the Linux Kernel schedules threads?
-
-Yep, you're right!
-````
-
-Envoy applies the `event-driven` design pattern. `Event-driven` programs, compared with `non-event-driven` programs:
-
-- can use fewer threads and more flexibly  tasks scheduling control. That is, more flexible scheduling logic. 
-- Further, because there is not much data shared between threads, the data concurrency control(race) of threads is simplified at the same time.
-
-In this section, the event types includes but not limited to:
-
- - socket readable, writable, connection close events
- - Various timers
-   - Retry timing
-   - Various timeout configuration
-
-Since infinite requests are allocated to finite threads, and requests need to be retried, threads must have a set of logic to tell which requests should be processed first. Any request that should fail immediately due to a `timeout` or resource usage `exceeding the configured limit`.
-
-According to the style of this book, the summarized figure is shown first. Later, this figure will be explained step by step.
+要实现这些特性，请求与响应的流程自然不可能简单。  
 
 ```{hint}
-Interactive Books:
- - It is recommended to use `Open with Draw.io` when digging into the figure. The diagram contains numerous links to the documentation for each component, configuration item, and indicator.
- - Dual screens, one screen for pictures and the other screen for documents, is the correct reading way for this book. If you are reading me on your phone, then ignore me 🤦
-````
+看到这里，读者可能有疑问，本节的标题叫 “请求与响应调度” ？ 难度 Envoy 需要类似 Linux Kernel 调度线程一样，去调度处理 Request 吗？   
 
-:::{figure-md} Figure - Envoy request and response scheduling
+对的，你说到点上了。
+```
+
+Envoy 应用了 `事件驱动` 设计模式。`事件驱动` 的程序，相对于 `非事件驱动` 的程序，可以用更少的线程，更灵活地控制在什么时候做什么任务，即更灵活的调度逻辑。且更绝的是：由于线程间共享的数据不多，线程的数据并发控制同时被大大简化。
+
+在本节中，事件类型最少有：
+
+ - 外部的网络可读、可写、连接关闭事件
+ - 各类定时器
+   - 重试定时
+   - 各种超时配置定时
+
+由于使用了无限的请求分配到有限的线程的模式，加上请求可能需要重试，所以线程一定要有一系列的逻辑，来 “排序” 什么请求应该先处理。什么请求由于 `超时` 或资源使用 `超过配置上限` 而应立即返回失败。
+
+按本书的习惯，先上图。后面，对这个图一步步展开和说明。
+
+```{hint}
+互动图书：
+ - 建议用 Draw.io 打开。图中包含大量的链接，链接到每一个组件、配置项、指标的文档说明。
+ - 双屏，一屏看图，一屏看文档，是本书的正确阅读姿势。如果你在用手机看，那么，忽略我吧 🤦
+```
+
+:::{figure-md} 图：Envoy 请求与响应调度
 :class: full-width
 
-<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline-schedule.drawio.svg" alt="Figure - Envoy request with Response Scheduling">
+<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline-schedule.drawio.svg" alt="图：Envoy 请求与响应调度">
 
-*Figure - Envoy request and response scheduling*
+*图：Envoy 请求与响应调度*
 :::
-*[Open with Draw.io](https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fen%2Flatest%2F_images%2Freq-resp-flow-timeline-schedule.drawio.svg)*
+*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline-schedule.drawio.svg)*
 
-### Related Components
+### 相关组件
 
-The above diagram is an attempt to illustrate the `Envoy request and response scheduling` process, and the coordination of related components. Some components description:
+上图是尝试说明 `Envoy 请求与响应调度 ` 过程，以及串联相关的组件。其中可以看到一些组件：
 
-- Listener - responds to downstream connection requests
-- HTTP Connection Manager (HCM) - the core component of HTTP, which driving the reading, interpretation, and routing of HTTP streams (Router)
-- HCM-router - HTTP routing core component, responsible for:
-  - Determine the target cluster of the HTTP next hop, that is, the upsteam cluster
-  - Retry
-- Load balancing - Load balancing between the hosts of upstream cluster
-- pending request queue - `Queue of requests waiting for available connections from the connection pool`
-- requests bound to connection - requests that have been assigned to the connection
-- connection pool - dedicated connection pool between worker threads and upstream host
-- health checker/outlier detection - upsteam host health monitoring to detect abnormal hosts and isolate them.
+- Listener - 应答 downstream 连接请求
+- HTTP Connection Manager(HCM) - HTTP 的核心组件，推动 http 流的读取、解释、路由(Router)
+- HCM-router - HTTP 路由核心组件，职责是:
+  - 判定 HTTP 下一跳的目标 cluster，即 upsteam cluster
+  - 重试
+- Load balancing - upstream cluster 内的负载均衡
+- pending request queue - `等待连接池可用连接的请求队列`
+- requests bind to connection - 已经分配到连接的请求
+- connection pool - worker 线程与 upstream host 专用的连接池
+- health checker/Outlier detection - upsteam host 健康监视，发现异常 host 并隔离。
 
-and some `Circuit breaking` limit conditions:
+和一些  `Circuit breaking(熔断开关) `上限条件：
 
-- `max_retries` - maximum retry concurrency limit
-- `max_pending_requests` - the maximum queue limit for `pending request queue`
-- `max_request` - the maximum number of concurrent requests
-- `max_connections` - the maximum connection limit for the upstream cluster
+- `max_retries` - 最大重试并发上限
+- `max_pending_requests` -  `pending request queue` 的队列上限
+- `max_request` - 最大并发请求数上限
+- `max_connections` - upstream cluster 的最大连接上限
 
-It should be noted that above parameters are for the entire upstream cluster, that is, the upper limit of the aggregation of all worker threads and all upstream hosts.
+需要注意的是，上面的参数是对于整个 upstream cluster 的，即是所有 worker thread、upstream host 汇总的上限。
 
-### Related monitoring metrics
+### 相关的监控指标
 
-We classify metrics using a methodology similar to the well-known [Utilization Saturation and Errors (USE)](https://www.brendangregg.com/usemethod.html).
+我们用类似著名的 [Utilization Saturation and Errors (USE)](https://www.brendangregg.com/usemethod.html) 方法学来分类指标。
 
-Resource overload metrics:
+资源过载型的指标：
 
 - [downstream_cx_overflow](https://www.envoyproxy.io/docs/envoy/v1.15.2/configuration/listeners/stats#listener:~:text=downstream_cx_overflow)
 - upstream_rq_retry_overflow
 - upstream_rq_pending_overflow
 - upstream_cx_overflow
 
-Resource Saturation metrics:
+资源饱和度指标：
 
 - upstream_rq_pending_active
 - upstream_rq_pending_total
 - upstream_rq_active
 
-Wrongly metrics:
+错误型的指标：
 
 - upstream_rq_retry
 - ejections_acive
 - ejections_*
 - ssl.connection_error
 
-Informational metrics:
+信息型的指标：
 
 - upstream_cx_total
 - upstream_cx_active
 - upstream_cx_http*_total
 
-Since the relationship between metrics, components, and configuration items has been explained in the figure, so it will not be described again. The figure also provides links to the metrics documentation and related configuration.
+由于图中已经说明了指标、组件、配置项的关系，这里就不再文字叙述了。图中也提供了到指标文档和相关配置的链接。
 
-### Request scheduling process
+### Envoy 请求调度流程
 
-Let’s talk about the flow of the request component first. The flow chart can be inferred from the relevant documents as (not fully verified, there are partial inferences):
+先说说请求组件流转部分，流程图可以从相关的文档推理为（未完全验证，存在部分推理）：
 
-:::{figure-md} Figure - Envoy request scheduling flowchart
+:::{figure-md} 图：Envoy 请求调度流程图
 :class: full-width
 
-<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline-flowchart.drawio.svg" alt="Figure - Envoy request with Response timing line">
+<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline-flowchart.drawio.svg" alt="图：Envoy 请求与响应时序线">
 
-*Figure - Envoy request scheduling flow chart*
+*图：Envoy 请求调度流程图*
 :::
-*[Open with Draw.io](https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fen%2Flatest%2F_images%2Freq-resp-flow-timeline-flowchart.drawio.svg)*
+*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline-flowchart.drawio.svg)*
 
-## Request and response scheduling sequence
+## 请求与响应调度时序线
 
-As mentioned at the beginning of this section, the direct reason for writing this section is that we need to do some research on the rapid recovery of Istio Service Mesh node failures. The premise of `quick recovery` is:
+本节开头说了，写本节的直接缘由是: 需要对 Istio 网格节点故障快速恢复做一些调研。`快速恢复` 的前提是：
 
-- Failed to quickly respond  to requests that have been sent to or bound to the `fault upstream host`
-- Use `Outlier detection / health checker` to identify the `faulty upstream host` and remove it from the load balancer list
+- 对已经发送到 `故障 upstream host` 或绑定到 `故障 upstream host` 的请求，快速响应失败
+- 用 `Outlier detection / health checker`  识别出   `故障 upstream host` ，并把它移出负载均衡列表
 
-All questions depend on one question: how to define and discover what `upstream host` is faulty?
+所有问题都依赖于一个问题：如何定义和发现 `upstream host` 出了故障？
 
-- network partition or peer crash or overload
-  - Most of the time, distributed systems can only find this kind of problem by timing out. So, to detect `failure upstream host` or `failure request` , you need to configure the timeout.
-- If there is a error response from the peer, L7 layer failure (such as HTTP 500), or L3 layer failure (such as TCP REST/No router to destination/ICMP error)
-  - This is a failure that can be found quickly
+- 网络分区或对端崩溃或负载过高
+  - 大多数情况下，分布式系统只能通过超时来发现这种问题。所以，要快速发现 `故障 upstream host` 或 `故障 request` ，需要配置合理的 timeout
+- 对端有响应，L7 层的失败（如 HTTP 500），或 L3 层的失败（如 TCP REST/No router to destination/ICMP error）
+  - 这是可以快速发现的失败
 
-For `network partition or peer crash or high load`, which needs to be discovered by timeout, Envoy provides rich timeout configuration. There are too many configurations about timeout that sometimes people don't know which one to use is reasonable. So, I try to use the `request and response scheduling sequence line`, and then see which point in this timeline the related timeout configuration is related to, then the whole logic is clear. Configuration is also easier to rationalize.
+对于 `网络分区或对端崩溃或负载过高`，需要 timeout 发现的情况，Envoy 提供了丰富的 timeout 配置。丰富到有时让人不知道应该用哪个才是合理的。甚至配置一不小心，就配置出一些逻辑上长短与实现设计矛盾的值。所以，我尝试理清楚 `请求与响应调度时序线` ，然后看相关 timeout 配置关联到这个时间线的哪个点，那么整个逻辑就清楚了。配置也更容易合理化了。
 
-The following figure is the timing line of request and response, as well as related timeout configuration and generated metrics, and their connection.
+下图是请求与响应的时序线，以及相关的 timeout 配置与产生的指标，以及它们的联系。
 
-:::{figure-md} Figure - Envoy request and response sequence
+:::{figure-md} 图：Envoy 请求与响应时序线
 :class: full-width
 
-<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline.drawio.svg" alt="Figure - Envoy Request and Response Timeline">
+<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline.drawio.svg" alt="图：Envoy 请求与响应时序线">
 
-*Figure - Envoy request and response timing line*
+*图：Envoy 请求与响应时序线*
 :::
-*[Open with Draw.io](https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fen%2Flatest%2F_images%2Freq-resp-flow-timeline.drawio.svg)*
+*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline.drawio.svg)*
 
 
 
-Briefly explain the timeline:
+简单说明一下时间线：
 
-1. If the downstream reuses the previous connection, you can skip 2 & 3
-2. The downstream initiates a new connection (TCP handshake)
-3. TLS handshake
-4. Envoy receives downstream request header & body
-5. Envoy executes the routing (Router) rules to determine the upstream cluster of the next hop
-6. Envoy executes the Load Balancing algorithm to determine the upstream host of the next hop upstream cluster
-7. If Envoy already has an idle connection to the upstream host, skip 8 & 9
-8. Envoy initiates a new connection to the upstream host (TCP handshake)
-9. Envoy initiates a TLS handshake to the upstream host
-10. Envoy forwards the request header & body to the upstream host
-11. Envoy receives the response header & body of the upstream host response
-12. The upstream host connection starts to be idle
-13. Envoy sends response header & body to downstream
-14. The downstream host connection starts to be idle
+1. 如果 downstream 复用了之前的连接，可以跳过 2 & 3
+2. downstream发起 新连接(TCP 握手)
+3. TLS 握手
+4. Envoy 接收 downstream request header & body
+5. Envoy 执行路由(Router)规则，判定下一跳的 upstream cluster
+6. Envoy 执行 Load Balancing 算法 ，判定下一跳的 upstream cluster 的 upstream host
+7. 如果 Envoy 已经有空闲连接到 upstream host，则跳过 8 & 9
+8. Envoy 向 upstream host 发起新连接(TCP 握手)
+9. Envoy 向 upstream host 发起TLS 握手
+10. Envoy 向 upstream host 转发送 requst header & body
+11. Envoy 接收 upstream host 响应的 response header & body
+12. upstream host 连接开始 idle
+13. Envoy 向 downstream 转发送 response header & body
+14. downstream host 连接开始 idle
 
-Correspondingly, the relationship between the relevant timeout configuration and the timeline steps is also marked in the figure, and the timing sequence from the beginning is as follows
+相应地，图中也标注了相关超时配置与时间线步骤的关系，从开始计时顺序排列如下
 
-- `max_connection_duration`
-- `transport_socket_connect_timeout`
-  
-  - Metric `listener.downstream_cx_transport_socket_connect_timeout`
-  
-- `request_headers_timeout`
+- max_connection_duration
+- transport_socket_connect_timeout
+  - 指标 `listener.downstream_cx_transport_socket_connect_timeout`
 
-- `request_timeout`
+- request_headers_timeout
 
-- Envoy's `route.timeout` is Istio's [`Istio request timeout(outbound)`](https://istio.io/latest/docs/tasks/traffic-management/request-timeouts/)
+- requst_timeout
 
-  Note that this timeout value takes into account the actual total retry time while the request is being processed.
+- Envoy 的 route.timeout 即 Istio 的 [`Istio request timeout(outbound)`](https://istio.io/latest/docs/tasks/traffic-management/request-timeouts/)
 
-  - Metric `cluster.upstream_rq_timeout`
-  - Metric `vhost.vcluster.upstream_rq_timeout`
+  注意，这个超时值是把 请求处理时实际的 retry 的总时间也算上的。
 
-- `max_connection_duration`
+  - 指标 `cluster.upstream_rq_timeout`
+  - 指标 `vhost.vcluster.upstream_rq_timeout`
 
-- `connection_timeout`
-  
-  - Metric `upstream_cx_connect_timeout`
-  
-- `transport_socket_connect_timeout`
+- max_connection_duration
 
-- `httpprotocoloptions.idle_timeout`
+- connection_timeout
+  - 指标 `upstream_cx_connect_timeout`
 
-## Summary
+- transport_socket_connect_timeout
 
-In order for Envoy to have a more predictable performance under stress and abnormal conditions, it is necessary to give Envoy some configurations that are reasonable for the specific application environment and scenario. The premise of configuring these parameters is insight into the relevant processing flow and logic. The `Request and Response Scheduling` and the `Request and Response Scheduling timeline` have been describe above. I hope it will be helpful to understand these aspects.
+- httpprotocoloptions.idle_timeout
 
-Not just Envoy, but all middleware that does proxying, probably the most core concept are similar. So, don't expect to know everything at once. Here, I just hope that readers can have a clue in these processes, and then learn through the clues, so as not to lose their way.
 
-## Some interesting extended reading
+
+## 总结
+
+想要 Envoy 在压力与异常情况下，有个比较符合预期的表现，需要给 Envoy 一些合理于具体应用环境与场景的配置。而要配置好这堆参数的前提，是对相关处理流程与逻辑的洞察。 上面把 `请求与响应调度` 与 `请求与响应调度时序线`  都过了一遍。希望对了解这些方面有一定的帮助。
+
+不只是 Envoy ，其实所有做代理的中间件，可能最核心的东西都在这一块了。所以，不要期望一下把知识完全吃透。这里，也只是希望让读者在这些流程上，有一个线索，然后通过线索去学习，方可不迷失方向。
+
+
+```{toctree}
+:maxdepth: 3
+http-timeout.md
+```
+
+
+
+## 一些有趣的扩展阅读
 
 > - [https://www.istioworkshop.io/09-traffic-management/06-circuit-breaker/](https://www.istioworkshop.io/09-traffic-management/06-circuit-breaker/)
 > - [https://tech.olx.com/demystifying-istio-circuit-breaking-27a69cac2ce4](https://tech.olx.com/demystifying-istio-circuit-breaking-27a69cac2ce4)
+> - [https://www.envoyproxy.io/docs/envoy/latest/faq/configuration/timeouts](https://www.envoyproxy.io/docs/envoy/latest/faq/configuration/timeouts)

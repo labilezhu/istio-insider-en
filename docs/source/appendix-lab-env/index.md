@@ -1,4 +1,4 @@
-# 实验环境总述
+# General description of the lab environment
 
 这里列出了本书用到的实现环境和相关的重要配置。
 
@@ -60,25 +60,38 @@ export PATH=$ISTIO_HOME/bin:$PATH
 ```yaml
 
 cat <<"EOF" | kubectl -n mark apply -f -
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: StatefulSet
 metadata:
   name: netshoot
+  labels:
+    app: netshoot
 spec:
-  containers:
-  - name: netshoot
-    image: docker.io/nicolaka/netshoot:latest
-    command: ["/bin/sleep"]
-    args: ["100d"]    
-    ports:
-    - containerPort: 9999
-      name: tcp
-      protocol: TCP
-    - containerPort: 80
-      name: http-80
-      protocol: TCP
-    securityContext:
-        privileged: true
+  replicas: 2
+  selector:
+    matchLabels:
+      app: netshoot
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"    
+      labels:
+        app: netshoot
+    spec:
+      containers:
+      - name: netshoot
+        image: docker.io/nicolaka/netshoot:latest
+        command: ["/bin/sleep"]
+        args: ["100d"]    
+        ports:
+        - containerPort: 9999
+          name: tcp
+          protocol: TCP
+        - containerPort: 80
+          name: http-80
+          protocol: TCP
+        securityContext:
+            privileged: true
 EOF
 
 ```
@@ -106,8 +119,8 @@ metadata:
 spec:
   ports:
   - name: http
-    port: 8000
-    targetPort: 80
+    port: 80
+    targetPort: 8080
   selector:
     app: httpbin
 ---
@@ -128,12 +141,14 @@ spec:
         version: v1
     spec:
       serviceAccountName: httpbin
+      imagePullSecrets:
+      - name: docker-registry-key
       containers:
       - image: docker.io/kennethreitz/httpbin
         imagePullPolicy: IfNotPresent
         name: httpbin
         ports:
-        - containerPort: 80
+        - containerPort: 8080
 EOF
 
 

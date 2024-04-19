@@ -1,113 +1,115 @@
 ![Book Cover](./book-cover-mockup.jpg)
 
-# Preface
+# Foreword
+
+## Overview of this book
+
+This book is called Istio & Envoy Insider. It is a book in progress, now in draft stage.
+
+### What this book is about
+
+This book includes: Envoy source code deep dive, in-depth Envoy fundamentals  analysis , Istio fundamentals analysis. But it's not a traditional "deep dive xyz source code" type of book. on the contrary, I have done my best not to directly paste source code in the book. Reading source code is a necessary step to grasp the details of the implementation, but browsing source code in a book is generally a very bad experience. So, this book uses source code navigation diagrams to let readers understand the full picture of the implementation, rather than getting lost in the details of fragmented source code snippets and forgetting the whole picture.
+
+In this book, I've tried to think as systematically as possible from a design and implementation perspective:
+- The design and implementation details of Envoy
+- Why Istio is what it is
+- The Truth Behind Those Magic Configurations: Linux + Envoy
+  - How traffic is intercepted to the Envoy using Linux's netfilter technology.
+  - How istiod programs the Envoy to fulfill the traffic policies of the Service Grid.
+- What Istio might look like in the future
 
 
-```{attention}
-This is a work-in-progress book, and it's only at the draft stage. The title of the book is "Istio & Envoy Insider", and the Chinese name is "Istio & Envoy 内幕".  
+The book is just a collection of thoughts and notes after I've been researching and using Istio for a while. I've just been troubleshooting some Istio/Envoy related functionality and performance issues, and browsing and debugging some Istio/Envoy code.
 
-This English version is under translation from the Chinese version. So, you may see there are some Chinese parts here.
-````
-
-There is Chinese(中文版本) version too: [https://istio-insider.mygraphql.com/zh_CN/latest/](https://istio-insider.mygraphql.com/zh_CN/latest/)
-
-
-## Book overview
+While diving into Istio. I found that there is a lot of valuable information on the Internet. However, either it is mainly from the user's point of view, but does not talk about the implementation mechanism; or it does talk about the mechanism, but the content lacks systematization and consistency.
 
 ### What this book is not
 
-This book is not a manual. Not from the user's point of view, teaching how to learn Istio in simple terms. It won't preach how powerful Istio is, let alone teach how to use Istio. There are already too many excellent books, articles, and documents on the Internet.
+This book is not a user's manual. It does not teach how to learn Istio from a user's point of view, it does not preach how powerful Istio is, and it does not teach how to use Istio, there are too many excellent books, articles, and documents on this topic.
 
 > 🤷 : [Yet, another](https://en.wikipedia.org/wiki/Yet_another) Istio User Guide?  
 > 🙅 : No!
 
 
 
-### What is this book
+### Target Audience
 
-In this book, I try to think systematically as much as possible from the perspective of design and implementation:
-- Why is Istio the way it is?
-- The truth behind those magic configs: Linux + Envoy
-  - How traffic is intercepted to Envoy using Linux's netfilter technology
-  - How istiod programmed Envoy to implement `service mesh` traffic policy
-- What Istio might look like in the future
-
-
-What the book says is just my thinking and recording after researching and using Istio for a period of time. I just checked some Istio/Envoy related functions and performance issues, browsed and debugged some Istio/Envoy codes.
-
-In the process of researching Istio. There is a lot of valuable information on the Internet. However, either it is mainly based on the user, and the implementation mechanism is not mentioned; or the mechanism is said, and it is well said, but the content is less systematic and coherent.
-
-### Reader
-
-This book mainly talks about the design and implementation mechanism of Istio/Envoy. It is assumed that the reader already has some experience with Istio. and are interested in further research on its realization mechanism
+This book focuses on the design and implementation mechanism of Istio/Envoy. It is assumed that the reader already has some experience in using Istio and is interested in further studying its implementation mechanism.
 
 ### Book access address
+- [https://istio-insider.mygraphql.com](https://istio-insider.mygraphql.com/en)
+- [https://istio-insider.readthedocs.io](https://istio-insider.readthedocs.io/en)
+- [https://istio-insider.rtfd.io](https://istio-insider.rtfd.io/en)
 
-- [https://istio-insider.mygraphql.com/en/latest/](https://istio-insider.mygraphql.com/en/latest/)
-- [https://istio-insider.readthedocs.io/en/latest/](https://istio-insider.readthedocs.io/en/latest/)
-- [https://istio-insider.rtfd.io/en/latest/](https://istio-insider.rtfd.io/en/latest/)
 
+### About the Author
+My name is Mark Zhu, a middle-aged programmer with little hair. I'm not an Istio expert, not even an Istio Committer, not even an employee of a major Internet company.
 
-### About the author
+Why do I learn from others and write a book when my level is limited? Because of this sentence:
+> You don't need to be great to get started, but you do need to get started to be great.
 
-My name is Mark Zhu, a middle-aged programmer with little hair. I am not an Istio expert, nor an Istio Committer. Not even the employees of big Internet companies.
+Blog: [https://blog.mygraphql.com/](https://blog.mygraphql.com/)  
+In order to facilitate readers to follow the Blog and the book's updates, opened a synchronized WeChat public number: Mark's full of paper sugar cube words
 
-Why do you still learn to write books with limited level? Because of this sentence:
-> You don't need to be great to start, but you need to start to be great.
-
-Blog: [https://blog.mygraphql.com/](https://blog.mygraphql.com/)
-In order to facilitate readers to follow the updates of the Blog and this book, a synchronized `WeChat Official Account` has been opened:
-
-:::{figure-md} WeChat Official Account: Mark的Cloud与BPF沉思录
+:::{figure-md} WeChat public number: Mark's full of paper square sugar words
 
 <img src="_static/my-wechat-blog-qr.png" alt="my-wechat-blog-qr.png">
 
-*WeChat Official Account: Mark的Cloud与BPF沉思录*
-:::
+*WeChat: Mark's Paper Full of Sugar Candy Words*.
+:::.
 
 
 
 
-### Involved in the preparation
-If you are also interested in writing this book, please contact me. The starting point of this book is not to brush a resume, nor does it have this ability. Moreover, such non-`short and fast` and `TL;DR` books are destined to be a niche product.
+### Participate in writing
+If you are also interested in writing this book, feel free to contact me.
 
+
+#### Thanks to the fellow who suggested the Issue 🌻
+- [tanjunchen](https://github.com/tanjunchen): lots of very good comments on the reading experience and typography.
 
 ### Dedication 💞
 First, to my dear parents, for showing me how to live a happy
-and productive life. To my dear wife and our amazing kid – thanks for all your love and patience.
+and productive life. To my dear wife and our amazing kid - thanks for all your love and patience.
 
-
-### Copyleft Statement
-Whether it is text or pictures, if reproduced or modified, please indicate the original source.
+### Copyleft Disclaimer
+If you reproduce or modify any text or image, please give credit to the original source.
 
 ### Feedback
-Since it claims to be an interactive book, reader feedback is of course very important. If you find an error in the book, or have a better suggestion, feel free to file an Issue here:
+As this is an open source interactive book, feedback from readers is of course very important. If you find a mistake in the book, or have a better suggestion, you may want to submit an Issue: []().  
 [https://github.com/labilezhu/istio-insider/issues](https://github.com/labilezhu/istio-insider/issues)
 
 
-## Table of contents
+
+## Chinese version
+
+There is an Chinese version: [中文版](https://istio-insider.mygraphql.com/zh-cn/latest) .
+
+## Catalog
 
 
-```{toctree}
-:caption: directory
+``{toctree}
+:caption: Catalog
 :maxdepth: 5
-:includehidden:
+:includehidden: ch0/index
 
 ch0/index
 ch1-istio-arch/index
 ch2-envoy/index
-ch3-control-panel/index
-ch4-istio-ctrl-envoy/index
+performance/performance.md
+disruptions/disruptions.md
+observability/observability.md
 troubleshooting/troubleshooting.md
-dev-istio/dev-istio-proxy/debug-istio-proxy/debug-istio-proxy.md
-````
+dev-istio/dev-istio.md
+```
 
 ## Appendix
 
-```{toctree}
-:caption: Appendix
+``{toctree}
+:caption: appendix
 :maxdepth: 5
-:includehidden:
+:includehidden: appendix-lab-env/index.md
 
 appendix-lab-env/index.md
-````
+```
+

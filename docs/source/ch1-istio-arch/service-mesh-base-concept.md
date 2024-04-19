@@ -24,6 +24,12 @@
  - 如果站在 `service A` 上，我们把 `service B` 叫 upstream。
 ```
 
+### Upstream Cluster & Downstream Cluster
+
+`Upstream Cluster` / `Downstream Cluster` 主要是 Envoy 中的概念。  
+
+一般来说，一个 `Upstream` / `Downstream` 指代一个具体的主机(Host)。而 `Upstream Cluster` / `Downstream Cluster` 是指运行同一服务的，同构的的一群主机。在 k8s 环境下，一般就是对应同一 `k8s Deployment` 的所有 POD 了。
+
 ### Inbound & Outbound
 
 从 K8s 的 pod 的角度看：
@@ -33,7 +39,7 @@
 <img src="service-mesh-base-concept.assets/inbound-outbound-concept.drawio.svg" alt="Inbound与Outbound概念">
 
 *图：Inbound与Outbound概念*
-[用 Draw.io 打开](https://app.diagrams.net/#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Finbound-outbound-concept.drawio.svg)
+[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Finbound-outbound-concept.drawio.svg)
 :::
 
 
