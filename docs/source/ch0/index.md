@@ -1,6 +1,6 @@
-# Reading interactive book
+# Interactive Book
 
-## Interactive Book
+## How to read interactively
 
 Humanity has evolved to the point where I think it's time for books to expand their definition. As technical knowledge becomes more complex, interactive, electronic presentations may be better suited for in-depth learning of complex technical knowledge. When getting started, one prefers abstraction and simplification, and when going deeper, one prefers to make sense of internal connections.
 
