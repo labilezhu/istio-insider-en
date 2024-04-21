@@ -86,11 +86,11 @@ Readers who don't know much about Envoy's http-connection-manager and http filte
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fflow-control-1-upstream-backs-up-simple.drawio.svg)*
 
 
-:::{figure-md} Upstream connection
+:::{figure-md} Figure Upstream connection back-up and backpressure 2
 
 <img src="/ch2-envoy/arch/flow-control/flow-control-1-upstream-backs-up-simple.drawio.svg" alt="Figure Upstream connection back up and backpressure">
 
-*Figure Upstream connection back up and backpressure*
+*Figure Upstream connection back up and backpressure 2*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fflow-control-1-upstream-backs-up-simple.drawio.svg)*
 
