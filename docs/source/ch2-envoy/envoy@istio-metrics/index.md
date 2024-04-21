@@ -1,51 +1,51 @@
-# Istio 与 Envoy 指标
+# Istio and Envoy Metrics
 
-指标监控，可能是 DevOps 监控最重要的一环。但同时也可能是最难的一环。你可以从网上找到各种系统和中间件的 Grafana 监控仪表盘，它们大都设计得很漂亮得体，让人感觉监控已经完美无缺。  
+Metrics monitoring is probably the most important aspect of DevOps monitoring. But it can also be the hardest. You can find Grafana monitoring dashboards for all sorts of systems and middleware on the web, and most of them are beautifully designed to make it feel like the monitoring is already perfect.  
 
-但是，不知道你是否与我有同样的经历：在系统遇到问题时，手头有一大堆指标和监控仪表盘。
-- 却不知道哪个指标才是问题相关的。
-- 或者是，问题已经有个方向定位，却发现这个方向上，根本没有记录指标。
+But I don't know if you've had the same experience as me: having a bunch of indicators and monitoring dashboards at hand when your system is experiencing a problem.
+- But you don't know which metrics are relevant to the problem.
+- Or, the problem is already oriented in a certain direction, only to realize that there are no recorded indicators in that direction.
 
-事情终究是要人来解决，再多的数据，如果：
-- 不去理解这些数据背后的意义
-- 不去主动分析自己的应用场景和部署环境需要什么数据，只是系统默认给什么就用什么
+After all, people have to solve things, and more data, if:
+- Do not understand the meaning behind the data
+- Do not take the initiative to analyze their own application scenarios and deployment environment what data is needed, just what the system defaults to what to use!
 
-那么指标越多，越让人迷失在茫茫指标的海洋中。
+Then the more indicators, the more people get lost in the sea of indicators.
 
-作为一个混后端江湖多年的老程（老程序员），总有很多东西不懂，却难以启齿的。其中一个就是一些具体指标的意义。举个两个例子：
-1. 我之前定位一个 Linux 下的网络问题，用了一个叫 `nstat` 的工具，它输出了非常多的指标，但很多会发现，有些指标是死活找不到说明文档的。这也是开源软件一直以来的问题，变化快，文档跟不上，甚至错误或过时未更新。
-2. 我之前定位一个 Linux 下的 TCP 连接问题，用了一个叫 `ss` 的工具，它输出的神指标，也是搜索引擎也无能为力去解释。最后不得不看原码。还好，我把调查结果记录到 Blog 中：[《可能是最完整的 TCP 连接健康指标工具 ss 的说明》](https://blog.mygraphql.com/zh/notes/low-tec/network/tcp-inspect/)，希望对后来人有一些参考作用吧。
+As a mix of back-end jianghu for many years old Cheng (old programmer), there are always a lot of things do not understand, but it is difficult to say. One of them is the meaning of some specific indicators. Let's take two examples. 1:
+1. I used a tool called `nstat` to locate a network problem under Linux, it outputs a lot of metrics, but many will find that some of the metrics are dead on arrival to find the documentation. This has always been a problem with open source software, it changes so fast that the documentation can't keep up, or is even incorrect or out of date.
+2. I used a tool called `ss` to locate a TCP connection problem under Linux, it outputs a god indicator that search engines can't do anything to explain. In the end, I had to look at the original code. Luckily, I recorded my findings in Blog: ["Probably the most complete description of the TCP connection health metrics tool, ss"](https://blog.mygraphql.com/zh/notes/low-tec/network/tcp-inspect/), so I hope there will be some references for those who come after me.
 
 
-故事说完了，回到本书的主角 Istio 与 Envoy 上。它们的指标说明文档比上面的老爷车开源软件好一些。起码基本每个指标都有一行文字说明，虽然文字一样非常短且模糊。
+With that out of the way, let's get back to Istio and Envoy, the main characters in this book. Their metrics documentation is a bit better than that of the older open source software. At least each indicator has a line of text, although the text is very short and vague.
 
 ## Istio 与 Envoy 指标概述
 
-Istio 的 istio-proxy 的数据面指标是 基于 Envoy 的指标构架实现的。所以，后面我将先说 Envoy 的指标架构。
+Istio's istio-proxy data plane metrics are based on Envoy's metrics architecture. So, I will start with Envoy's metrics architecture.
 
 
 ```{hint}
-如果你和我一样，是个急性子。那么下图就是 Istio & Envoy 的指标地图了。它说明了指标产生在什么地方。后面内容会一步步推导出这个地图。
+If you're like me, you're a hothead. Then the image below is Istio & Envoy's metrics map. It illustrates where the indicators are generated. Later content will derive this map step by step.
 ```
 
-:::{figure-md} 图：Envoy@Istio的指标
+:::{figure-md} Figure: Envoy@Istio metrics
 
-<img src="/ch2-envoy/envoy@istio-metrics/index.assets/envoy@istio-metrics.drawio.svg" alt="Inbound与Outbound概念">
+<img src="/ch2-envoy/envoy@istio-metrics/index.assets/envoy@istio-metrics.drawio.svg" alt="Figure - Envoy@Istio metrics">
 
-*图：Envoy@Istio的指标*
+*Figure: Envoy@Istio metrics*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy@istio-metrics.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy@istio-metrics.drawio.svg)*
 
 
 
 :::{figure-md}
 :class: full-width
 
-<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline.drawio.svg" alt="图：Envoy 请求与响应时序线上的指标">
+<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline.drawio.svg" alt="Figure - Metrics on the Envoy Request and Response Timeline">
 
-*图：Envoy 请求与响应时序线上的指标*
+*Figure: Metrics on the Envoy Request and Response Timeline*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline.drawio.svg)*
 
 
 ```{toctree}

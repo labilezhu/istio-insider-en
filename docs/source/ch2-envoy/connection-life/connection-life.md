@@ -1,25 +1,26 @@
-# HTTP 连接生命周期管理
+## HTTP Connection Lifecycle Management
 
-## Upstream/Downstream 连接解藕
+## Upstream/Downstream connection uncoupling
 
-> HTTP/1.1 规范有这个设计：
-> HTTP Proxy 是 L7 层的代理，应该和 L3/L4 层的连接生命周期分开。
+> The HTTP/1.1 specification has this design:
+> HTTP Proxy is a L7 proxy and should be separate from the L3/L4 connection lifecycle.
+Therefore, headers like `Connection: Close` and `Connection: Keepalive` from Downstream will not be forwarded to Upstream by the Envoy. The lifecycle of the Downstream connection is of course controlled by the `Connection: xyz` directive. However, the connection lifecycle of the Upstream connection is not affected by the connection lifecycle of the Downstream connection. That is, there are two separate connection lifecycles.
 
-所以，像从 Downstream 来的 `Connection: Close` 、 `Connection: Keepalive` 这种 Header， Envoy 不会 Forward 到 Upstream 。 Downstream 连接的生命周期，当然会遵从 `Connection: xyz` 的指示控制。但 Upstream 的连接生命周期不会被 Downstream 的连接生命周期影响。 即，这是两个独立的连接生命周期管理。
 
 > [Github Issue: HTTP filter before and after evaluation of Connection: Close header sent by upstream#15788](https://github.com/envoyproxy/envoy/issues/15788#issuecomment-811429722) 说明了这个问题：
 > This doesn't make sense in the context of Envoy, where downstream and upstream are decoupled and can use different protocols. I'm still not completely understanding the actual problem you are trying to solve?
 
-## 连接超时相关配置参数
+## Connection timeout related configuration parameters
 
 :::{figure-md}
 :class: full-width
 
-<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline.drawio.svg" alt="图：Envoy 连接 timeout 时序线">
+<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline.drawio.svg" alt="Figure - Envoy connecting timeout timing lines
+">
 
-*图：Envoy 连接 timeout 时序线*
+*Figure : Envoy connecting timeout timing lines*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline.drawio.svg)*
 
 ### idle_timeout
 
@@ -52,7 +53,7 @@ If the [overload action](https://www.envoyproxy.io/docs/envoy/latest/configurati
 >
 > Note that `max_requests_per_connection` isn't (yet) implemented/supported for downstream connections.
 >
-> For HTTP/1, Envoy will send a `Connection: close` header after `max_connection_duration` （且在 `drain_timeout` 前） if another request comes in. If not, after some period of time, it will just close the connection.
+> For HTTP/1, Envoy will send a `Connection: close` header after `max_connection_duration` (and before `drain_timeout`) if another request comes in. If not, after some period of time, it will just close the connection.
 >
 > I don't know what your downstream LB is going to do, but note that according to the spec, the `Connection` header is hop-by-hop for HTTP proxies.
 
@@ -79,9 +80,9 @@ If the [overload action](https://www.envoyproxy.io/docs/envoy/latest/configurati
 After the grace period, a final GOAWAY frame is sent and Envoy will start refusing new streams. Draining occurs both when:
 
 * a connection hits the `idle timeout` 
-  * 即系连接到达 `idle_timeout` 或 `max_connection_duration`后，都会开始 `draining` 的状态和`drain_timeout`计时器。对于 HTTP/1.1，在 `draining` 状态下。如果 downstream 过来请求，Envoy 都在响应中加入 `Connection: close`  header。
+  * i.e., a connection that hits the `idle_timeout` or `max_connection_duration` starts the `draining` state and the `drain_timeout` timer. For HTTP/1.1, in the `draining` state. If a downstream request comes in, Envoy adds a `Connection: close` header to the response.
+  * So the `draining` state and the `drain_timeout` timer will only be entered if the connection has an `idle_timeout` or `max_connection_duration`.
 
-  * 所以只有连接发生 `idle_timeout` 或 `max_connection_duration`后，才会进入 `draining` 的状态和`drain_timeout`计时器。
 
 * or during general server draining. 
 
@@ -91,40 +92,41 @@ The default grace period is 5000 milliseconds (5 seconds) if this option is not 
 
 > [https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/draining](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/draining)
 >
-> By default, the `HTTP connection manager filter` will add “`Connection: close`” to HTTP1 requests(笔者注：By HTTP Response), send HTTP2 GOAWAY, and terminate connections on request completion (after the delayed close period).
+> By default, the `HTTP connection manager filter` will add “`Connection: close`” to HTTP1 requests(Author's Notes: By HTTP Response), send HTTP2 GOAWAY, and terminate connections on request completion (after the delayed close period).
 
 
 
-我曾经认为， drain 只在 Envoy 要 shutdown 时才触发。现在看来，只要是有计划的关闭连接（连接到达 `idle_timeout` 或 `max_connection_duration`后），都应该走 drain 流程。
+I used to think that drain was only triggered when the Envoy was going to shutdown. Now it seems that whenever there is a planned shutdown of a connection (after the connection reaches `idle_timeout` or `max_connection_duration`), the drain should be triggered.
+
 
 ###  delayed_close_timeout - for downstream only
 
-(Duration) The delayed close timeout is for downstream connections managed by the HTTP connection manager. It is defined as a grace period after connection close processing has been locally initiated during which Envoy will wait for the peer to close (i.e., a TCP FIN/RST is received by Envoy from the downstream connection) prior to Envoy closing the socket associated with that connection。
+> (Duration) The delayed close timeout is for downstream connections managed by the HTTP connection manager. It is defined as a grace period after connection close processing has been locally initiated during which Envoy will wait for the peer to close (i.e., a TCP FIN/RST is received by Envoy from the downstream connection) prior to Envoy closing the socket associated with that connection。
 
-即系在一些场景下，Envoy 会在未完全读取完 HTTP Request 前，就回写 HTTP Response 且希望关闭连接。这叫 `服务端过早关闭连接(Server Prematurely/Early Closes Connection)`。这时有几种可能情况：
+That is, in some scenarios, Envoy will write back an HTTP Response before it has finished reading the HTTP Request and wants to close the connection. This is called `Server Prematurely/Early Closes Connection`. There are several possible scenarios:
 
-- downstream 还在发送 HTTP Reqest 当中(socket write)。
-- 或者是 Envoy 的 kernel 中，还有 `socket recv buffer` 未被 Envoy user-space 进取。通常是 HTTP Conent-Lentgh 大小的 BODY 还在内核的 `socket recv buffer` 中，未完整加载到 Envoy user-space
+- The downstream is still sending the HTTP Request (socket write).
+- Or there is a `socket recv buffer` in the Envoy kernel that has not been accessed by the Envoy user-space. Typically, the HTTP Content-Length sized body is still in the kernel's `socket recv buffer` and has not been fully loaded into the Envoy user-space.
 
-这两种情况下， 如果 Envoy 调用 `close(fd)` 去关闭连接， downstream 均可能会收到来自 Envoy kernel 的 `RST` 。最终 downstream 可能不会 read socket 中的 HTTP Response 就直接认为连接异常，向上层报告异常：`Peer connection rest`。
+In both cases, if the Envoy calls `close(fd)` to close the connection, the downstream may receive an `RST` from the Envoy kernel. Eventually the downstream may not read the HTTP Response in the socket and just assume that the connection is abnormal and report an exception to the upper layers: `Peer connection rest`.
 
-详见：{doc}`connection-life-race` 。
+See: {doc}`connection-life-race` for details.
 
-为缓解这种情况，Envoy 提供了延后关闭连接的配置。希望等待 downstream 完成 socket write 的过程。让  `kernel socket recv buffer`  数据都加载到 `user space` 中。再去调用 `close(fd)`。
+To mitigate this, Envoy provides a configuration that delays connection closure. Which wants to wait for the downstream to complete the socket write process. Let the `kernel socket recv buffer` be loaded into `user space`. Then call `close(fd)`.
 
 
+> NOTE: This timeout is enforced even when the socket associated with the downstream connection is pending a flush of the write buffer. However, any progress made writing data to the socket will restart the timer associated with this timeout. This means that the total grace period for a socket in this state will be `<total_time_waiting_for_write_buffer_flushes>+<delayed_close_timeout>`.
 
-NOTE: This timeout is enforced even when the socket associated with the downstream connection is pending a flush of the write buffer. However, any progress made writing data to the socket will restart the timer associated with this timeout. This means that the total grace period for a socket in this state will be `<total_time_waiting_for_write_buffer_flushes>+<delayed_close_timeout>`.
+That is, every time the write socket succeeds, the timer will be rested.
 
-即系，每次 write socket 成功，这个 timer 均会被 rest.
 
-Delaying Envoy’s connection close and giving the peer the opportunity to initiate the close sequence mitigates(缓解) a race condition that exists when **downstream clients do not drain/process data in a connection’s receive buffer** after a remote close has been detected via a socket write().  即系，可以缓解 downsteam 在 write socket 失败后，就不去 read socket 取 Response 的情况。
+> Delaying Envoy’s connection close and giving the peer the opportunity to initiate the close sequence mitigates a race condition that exists when **downstream clients do not drain/process data in a connection’s receive buffer** after a remote close has been detected via a socket write().  
 
-This race leads to such clients failing to process the response code sent by Envoy, which could result in erroneous downstream processing.
+ That is, it can alleviate the situation where downsteam does not read the socket to get a Response after the write socket fails.
 
-If the timeout triggers, Envoy will close the connection’s socket.
-
-The default timeout is 1000 ms if this option is not specified.
+> This race leads to such clients failing to process the response code sent by Envoy, which could result in erroneous downstream processing.
+> If the timeout triggers, Envoy will close the connection’s socket.
+> The default timeout is 1000 ms if this option is not specified.
 
 > Note:
 >
@@ -138,7 +140,8 @@ The default timeout is 1000 ms if this option is not specified.
 
 
 
-需要注意的是，为了不影响性能，delayed_close_timeout 在很多情况下是不会生效的：
+Note that `delayed_close_timeout` will not take effect in many cases in order not to impact performance:
+
 
 > [Github PR: http: reduce delay-close issues for HTTP/1.1 and below #19863](https://github.com/envoyproxy/envoy/pull/19863)
 >
@@ -151,7 +154,7 @@ The default timeout is 1000 ms if this option is not specified.
 > Addresses the Envoy-specific parts of #19821
 > Runtime guard: `envoy.reloadable_features.skip_delay_close`
 >
-> 同时出现在 [Envoy 1.22.0 的 Release Note](https://www.envoyproxy.io/docs/envoy/latest/version_history/v1.22/v1.22.0) 里：
+> Also appears in [Release Note for Envoy 1.22.0](https://www.envoyproxy.io/docs/envoy/latest/version_history/v1.22/v1.22.0):
 >
 > **http**: avoiding `delay-close` for:
 >
@@ -162,7 +165,7 @@ The default timeout is 1000 ms if this option is not specified.
 
 
 
-## Envoy 连接关闭后的竞态条件
+## Racing conditions after Envoy connection closure
 
 ```{toctree}
 connection-life-race.md
