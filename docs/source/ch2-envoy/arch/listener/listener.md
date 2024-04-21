@@ -14,6 +14,7 @@ Download the Envoy configuration here yaml {download}`envoy@istio-conf-eg-inboun
 :::{figure-md}
 :class: full-width
 <img src="/ch1-istio-arch/istio-ports-components.assets/istio-ports-components.drawio.svg" alt="Istio port and components">
+
 *Figure - Istio ports and components*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fistio-ports-components.drawio.svg)*
