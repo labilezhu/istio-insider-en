@@ -134,8 +134,9 @@ If you're careful, you'll see something trick:
 
 
 ### Code-level startup sequence
-:::{figure-md} Figure : Listener TCP Connection Establishment Flow
+:::{figure-md} Figure: Listener TCP Connection Establishment Flow
 <img src="/ch2-envoy/arch/listener/listener.assets/envoy-classes-listen-flow.drawio.svg" alt="Figure - Listener TCP connection establishment flow">
+
 *Figure: Listener TCP connection establishment flow*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-classes-listen-flow.drawio.svg)*

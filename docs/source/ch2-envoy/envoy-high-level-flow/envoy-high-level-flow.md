@@ -39,7 +39,7 @@ In Istio, from the point of view of the Envoy Proxy within a POD, an app/service
 
 <img src="/ch2-envoy/envoy-high-level-flow/envoy-high-level-flow.assets/envoy-high-level-flow-abstract.drawio.svg" alt="Upstream and downstream abstract flows from Envoy concepts. upstream vs. downstream abstract flow">
 
-*upstream and downstream abstraction flows from Envoy concepts*
+*Figure: upstream and downstream abstraction flows from Envoy concepts*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-high-level-flow-abstract.drawio.svg)*
 

@@ -42,7 +42,7 @@ Analyzing the Envoy configuration obtained above, you can "infer" the following 
 :class: full-width
 <img src="envoy@istio-conf-eg.assets/envoy@istio-conf-eg-inbound.drawio.svg" alt="Figure - Example of Envoy Inbound Configuration in Istio">
 
-*Drawing: Example of Envoy Inbound Configuration in Istio*
+*Figure: Example of Envoy Inbound Configuration in Istio*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy@istio-conf-eg-inbound.drawio.svg)*
 
@@ -227,7 +227,7 @@ The following figure illustrates logging related components with source code lin
 :class: full-width
 <img src="envoy@istio-conf-eg.assets/log-envoy@istio-conf-eg-inbound.drawio.svg" alt="Diagram - Envoy Inbound component and logging in Istio">
 
-*Diagram: Envoy Inbound component in Istio with logs*
+*Figure: Envoy Inbound component in Istio with logs*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Flog-envoy@istio-conf-eg-inbound.drawio.svg)*
 
@@ -240,7 +240,7 @@ Analyzing the Envoy configuration obtained above, the following Outbound data fl
 :class: full-width
 <img src="envoy@istio-conf-eg.assets/envoy@istio-conf-eg-outbound.drawio.svg" alt="Diagram - Envoy Outbound configuration example in Istio">
 
-*Diagram: Envoy Outbound Configuration Example from Istio*
+*Figure: Envoy Outbound Configuration Example from Istio*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy@istio-conf-eg-outbound.drawio.svg)*
 
@@ -248,4 +248,4 @@ Analyzing the Envoy configuration obtained above, the following Outbound data fl
 
 ## Checking the stream with bpftrace
 
-See my Blog: [Reverse Engineering and Cloud Native Site Analysis Part3 -- eBPF Trace Istio/Envoy Event Driven Model, Connection Establishment, TLS Handshake and filter_chain Selection (Chinese)](https://blog.mygraphql.com/zh/posts/low-tec/trace/trace-istio/trace-istio-part3/)
+See my blog: [Reverse Engineering and Cloud Native Site Analysis Part3 -- eBPF Trace Istio/Envoy Event Driven Model, Connection Establishment, TLS Handshake and filter_chain Selection (Chinese)](https://blog.mygraphql.com/zh/posts/low-tec/trace/trace-istio/trace-istio-part3/)
