@@ -1,4 +1,4 @@
-# General description of the lab environment
+# Lab Environment
 
 这里列出了本书用到的实现环境和相关的重要配置。
 
