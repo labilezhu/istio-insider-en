@@ -1,67 +1,67 @@
-# 源码设计
+## Source code design
 
 
 
-## 设计模式与行话
+## Design Patterns and Jargon
 
-时常有人问，如何快速系统地学习一个领域的知识。现代社会，大部分知识是可以公开访问到的。但让人烦恼的是，文档都有了，源码也有了，文档中的每一个单词都懂，源码中的每一小段好像也懂。但要整体把握一个系统的机理，还是相当困难。哪怕把范畴缩小到学习一个软件系统，或者直接说，是 Envoy。
+From time to time, people ask how to quickly and systematically learn about a domain. In the modern world, most knowledge is publicly accessible. But the annoying thing is that the documentation is all there, the source code is there, every word in the documentation is understood, and every line in the source code seems to be understood. But it is still quite difficult to grasp the mechanics of a system as a whole. Even if you narrow down the scope to learning a software system, or just say, Envoy.
 
-Envoy 是开源软件，文档也写得相当细致，这在开源项目中是少有的细致。C++ 14 的写法比起 C 和 C++ 1998 已经很平易近人了。可读性已经比较接近 Java，并且不像看 Linux 内核一样那么多缩写术语。但和任何其它软件源码一样，Envoy 有自己的设计模式和行话术语，要读懂其中的行话，就会事半功倍。
-
-
-
-### Callback回调设计模式
-
-Gang of Four (GoF) 的 《*Design Patterns*》 中，并没有一个设计模式叫 Callback 的。`Callback 设计模式`其实是 [`Observer pattern(观察者模式)`](https://en.wikipedia.org/wiki/Observer_pattern) 的一个变体或应用。
+Envoy is an open-source software, and the documentation is very detail that is rare in open-source projects; C++14 is written in a way that is much more approachable than C and C++1998. The readability is close to that of Java, and there are not as many acronyms as when looking at the Linux kernel. But like any other software source code, Envoy has its own design patterns and jargon, and understanding the jargon makes understanding source code more easy.
 
 
 
-> 观察者模式解决了以下问题：
+### Callback design pattern
+
+Gang of Four's (GoF) *Design Patterns* does not have a design pattern called `Callback`. The `Callback design pattern` is actually a variant or application of the [`Observer pattern`](https://en.wikipedia.org/wiki/Observer_pattern).
+
+
+> The Observer pattern solves the following problems:
 >
-> - 解藕对象之间的一对多依赖关系，避免对象紧密耦合。
-> - 当一个对象更改状态时，自动更新不限数量的依赖对象。
-> - 一个对象可以通知多个其他对象。
+> - Uncoupling one-to-many dependencies between objects to avoid tight coupling of objects.
+> - Automatically update an unlimited number of dependent objects when an object changes state.
+> - An object can notify multiple other objects.
 
-以上是  [Wkipedia](https://en.wikipedia.org/wiki/Observer_pattern) 关于`Observer pattern(观察者模式)`  的解释。我觉得本质上，观察者模式 更多是一种运用 `agnosticism(不可知论) `让对象依赖反转的设计模式。
+Above is an explanation of the `Observer pattern` from [Wkipedia](https://en.wikipedia.org/wiki/Observer_pattern). I think essentially the observer pattern is more of a design pattern that uses `agnosticism` to invert object dependencies.
 
-在 Envoy 中，它的主要作用是让各子系统在设计时可以互相独立。减少直接（起码是编译期）的依赖。Envoy 大量使用了这种 `Callback 设计模式`，并有自己的命名规范。这是要读懂 Envoy 代码要过的门槛。
-
-
-
-![*OOP 子系统回调设计模式*](./oop-subsystem-callback.drawio.svg)
+In Envoy, its main purpose is to allow subsystems to be designed independently of each other. Envoy makes extensive use of this `Callback Design Pattern` and has its own naming convention. This is the hurdle to cross in order to understanding Envoy code.
 
 
 
-上面有两个子系统，`Network::TransportSocket`  与  `Network::Connection` 。你可以这么想，如果 每个使用 `Network::TransportSocket`  的子系统都要 `Network::TransportSocket` 去依赖通知，结果是一个循环依赖。而 Callback 的设计模式，避免了这个问题。
+![*OOP Subsystem Callback Design Pattern*](./oop-subsystem-callback.drawio.svg)
+*OOP Subsystem Callback Design Pattern*
 
 
 
-## 子系统
-
-Envoy 为了模块化，设计出很多在编译期相互独立的子系统。而这些子系统通过 显式依赖和 Callback 胶水等的依赖反转方法，实现互动。一般，每个子系统都有自己的 C++ namespace(名几个相关的子系统共用一个 namespace)。以下列出主要的子系统：
+There are two subsystems above, `Network::TransportSocket` and `Network::Connection`. If every subsystem that uses `Network::TransportSocket` had to rely on `Network::TransportSocket` for notifications, the result would be a circular dependency. The Callback design pattern avoids this problem.
 
 
 
-- `Buffer`  - 缓存块
-- `Api` - 操作系统调用
-- `Config` - XDS 等配置
-- `Event` - 事件驱动
-- `Http` - HTTP 相关
-  - `Http::ConnectionPool` - HTTP 连接池相关
-  - `Http1` - HTTP/1.1 相关
-  - `Http2` - HTTP/2 相关
-- `Network` - IP/TCP/DNS/Socket  层，即 OSI 的 L3/L4 层相关。包括 `Envoy Network Filter` 、`Listener`
-  - `Network::Address` - IP 地址相关
+## Subsystems
 
-- `Server` - Envoy 作为服务 Daemon  lifecycle 相关的实现
-- `Stats` - 监控指标相关
-- `Tcp` - TCP 与连接池相关
-- `Upstream` - Upstream 相关的负载均衡、健康检查等等
+Envoy is designed to be modular, with many subsystems that are independent of each other at compile time. These subsystems interact with each other through explicit dependencies and dependency inversion methods such as Callback glue. In general, each subsystem has its own C++ namespace (several related subsystems share a namespace). The main subsystems are listed below:
+
+
+
+- `Buffer` - the buffer block
+- `Api` - operating system calls
+- `Config` - Configurations such as XDS.
+- `Event` - event drivers
+- `Http` - HTTP related
+  - `Http::ConnectionPool` - HTTP connection pooling related
+  - `Http1` - HTTP/1.1 related
+  - `Http2` - HTTP/2 related
+- `Network` - IP/TCP/DNS/Socket layer, i.e. OSI L3/L4 related. Includes `Envoy Network Filter`, `Listener`, `Network::Address` and `Listener`.
+  - `Network::Address` - IP address related
+
+- `Server` - Envoy's implementation of the Daemon lifecycle as a service.
+- `Stats` - monitoring metrics
+- `Tcp` - TCP and connection pooling related
+- `Upstream` - Upstream related load balancing, health checks, etc.
 - ``
 
 
 
-其中，大部分子系统均有自己的功能 `C++ Class/Interface`，如 `Envoy Network Filter`  的 `ReadFilter`，以及其配套的 Callback 接口定义，如 `ReadFilterCallbacks` 。
+Most of these subsystems have their own functional `C++ Class/Interface`, such as `ReadFilter` for `Envoy Network Filter`, and their accompanying Callback interface definitions, such as `ReadFilterCallbacks`.
 
 
 

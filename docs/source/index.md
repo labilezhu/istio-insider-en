@@ -48,8 +48,13 @@ My name is Mark Zhu, a middle-aged programmer with little hair. I'm not an Istio
 Why do I learn from others and write a book when my level is limited? Because of this sentence:
 > You don't need to be great to get started, but you do need to get started to be great.
 
-Blog: [https://blog.mygraphql.com/](https://blog.mygraphql.com/)  
-In order to facilitate readers to follow the Blog and the book's updates, opened a synchronized WeChat public number: Mark's full of paper sugar cube words
+
+
+In order to facilitate readers to follow the book's updates:
+- Blog(English, RSS subscription supported): [https://blog.mygraphql.com/en/](https://blog.mygraphql.com/en/)  
+- Medium: [Mark Zhu](https://mark-zhu.medium.com/)
+- Blog(Chinese): [https://blog.mygraphql.com/](https://blog.mygraphql.com/)  
+- WeChat public number: Mark's full of paper sugar cube words
 
 :::{figure-md} WeChat subscription: Mark的滿紙方糖言
 
