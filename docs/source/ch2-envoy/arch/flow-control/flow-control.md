@@ -15,7 +15,7 @@ If someone asked me what was the hardest part of learning the Envoy implementati
 It should be notice that the "flow control" in this section does not mean that we generally do microservice APIs, control API TPS to prevent the service from crashing in the high-frequency API calls to protect the service from such overload. It's more of a `backpressure` based protection to prevent a single connection/http2 stream from using too much memory buffer when the Envoy is processing a data stream such as request body/response body.
 
 
-Envoy has an [Envoy Flow Conrol document](https://github.com/envoyproxy/envoy/blob/main/source/docs/flow_control.md) that describes some of these details. In this section, I document the results of some of my study research based on this, but also added a lot of my interpretation.
+Envoy has an [Envoy Flow Control document](https://github.com/envoyproxy/envoy/blob/main/source/docs/flow_control.md) that describes some of these details. In this section, I document the results of some of my study research based on this, but also added a lot of my interpretation.
 
 
 Traffic control in Envoy is accomplished by limiting each Buffer with `watermark callbacks`. When a Buffer contains more data than the configured limit, a `high watermark callback` is triggered, which triggers a series of events that eventually **notify the data source to stop sending data**. This suppression may be immediate (e.g., stopping reads from sockets) or gradual (e.g., stopping HTTP/2 window updates), so all Buffer limits in the Envoy are considered `soft limits`. 
