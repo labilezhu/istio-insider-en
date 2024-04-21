@@ -1,55 +1,55 @@
-# Istio 组件架构
+# Istio Architecture
 
-还记得，小时候什么电器都喜欢拆拆合合的，收音机、CD机、电脑。但总有一种神奇的能力把拆散的东西整合回来，然后，就了解它的结构了。话说到这里，再看看我家娃这代，好像完全没这个兴趣和机会了，想想，哪个小孩会去拆 pad。就算拆了，也因元件太小和精密，看不出什么机理来。很难找到自驱型学习的人了。
+I remember, when I was a kid, I liked to take apart and put back together any electrical appliance - radio, CD player, computer. But there is always a magical ability to integrate the disassembled things back, and then, understand its structure. However, when I look at my children's generation, I don't think they have the interest or opportunity to do that at all... Think about it... What kind of kid would take a ipad apart... And even if they did, the components are so small and sophisticated that they can't see the mechanism. It's hard to find people who are self-driven learners now.
 
-技术学习和学习收音机的机理一样，有两个方向：
+Technological learning, like learning the mechanics of radio, has two directions:
 
-- 从大到小（或叫自顶向下）
+- From big to small (or top-down)
 
-  从整体上看功能、架构组件、组件关系、对外接口、数据流。如一个 HTTP 请求在 Istio 体系中的旅行。
+  From the whole, look at functionality, architectural components, component relationships, external interfaces, and data flow. Such as an HTTP request traveling through the Istio architecture.
 
-- 从小到大（或叫自下向上，或叫从底层到高层）
+- From small to large (or bottom up, or bottom to top)
 
-  举几个栗子：
+  For example:
 
-  - iptable / netfilter / conntrack 之于 Istio sidecar 流量拦截
-  - Envoy HTTP Filter / Route 之于 Istio Destination Rule 与 Istio Virtual Service
+  - iptable / netfilter / conntrack for Istio sidecar traffic interception.
+  - Envoy HTTP Filter / Route for Istio Destination Rule and Istio Virtual Service.
 
-但更多时候，是以上两个方法的综合使用。
-
-
+But in most cases, it's a combination of these two methods.
 
 
-## Istio 整体架构
-
-Istio 整体架构不是本书的重点。相信有兴趣看本书的读者也了解过了。
-本节主要目的是回顾一下整体架构。我相信读者都是 Istio 用户，甚至是资深的 Istio 用户。但有时人就是这样，太深度介入一样事物时，就很容易忘记事物的全貌。  
-
-这里也顺道说明本书后面内容的重点。毕竟精力和兴趣有限，我只会专注一部分。
 
 
-:::{figure-md} Istio整体架构
+## Istio Overall Architecture
 
-<img src="index.assets/istio-arch.svg" alt="Istio 整体架构">
+The overall architecture of Istio is not the focus of this book. I'm sure that those who are interested in reading this book have already learned about it.
+The main purpose of this section is to review the overall architecture. I'm sure the reader is an Istio user, or even an experienced Istio user. But sometimes, when you get too deeply involved in something, it's easy to forget the whole picture.  
 
-图：Istio 整体架构图  
-来自：https://istio.io/latest/docs/ops/deployment/architecture/  
+This is also a good place to explain the focus of the rest of the book. After all, I have limited energy and interest, so I'm only going to focus on some parts of Istio.
+
+
+:::{figure-md} Istio's overall architecture.
+
+<img src="index.assets/istio-arch.svg" alt="Istio overall architecture">
+
+Figure : Istio architecture  
+From: https://istio.io/latest/docs/ops/deployment/architecture/  
 :::
 
 
 - Proxy 
-  这个应该不用多介绍。数据面最重要的组件。也是本书的重点。因为，相较控制面，我对数据面更有兴趣。需要注意的是，这里的 Proxy 是指 `istio-proxy` 这个 container。正如你知道的，它里面最少有两个组件：
-  - 属于控制面的 `pilot-agent`。外号：本地管理员。
-  - 属于数据面的 `Envoy Proxy`。外号：本地执行者。这是本书的第一个重点。
+  This should not need much introduction. The most important component of the data plane. It is also the focus of this book. Because I'm more interested in the data plane than the control plane. Note that the Proxy here is the `istio-proxy` container, which, as you know, has at least two components:
+  - `pilot-agent` which belongs to the control plane. 
+  - The `Envoy Proxy`, which belongs to the data plane.This is the first focus of the book.
 - istiod  
-  外号：控制面大脑、战略级的指挥中心、权威认证授权机构。
+  Nickname: control plane brain, strategic-level command center, authoritative certification authority.
 
 
-好，大饼图先到这里。后面，我们开始拆解这些组件，和分析它们的交互。Let's go!
+Okay, that's enough of the high level chart for now. After that, we'll start disassembling these components, and analyzing their interactions. Let's go!
 
 
 ```{toctree}
-:hidden:
+:hidden.
 service-mesh-base-concept
 istio-ports-components
 istio-data-panel-arch
