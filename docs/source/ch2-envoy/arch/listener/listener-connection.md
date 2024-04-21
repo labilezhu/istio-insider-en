@@ -16,7 +16,7 @@ Take a look at the code to get a general idea of how the connection is establish
 
 :::{figure-md}
 :class: full-width
-<img src="/ch2-envoy/arch/listener/listener-connection.assets/envoy-classes-accept-flow.drawio.svg" alt="Figure: Listener TCP Connection Establishment Process">
+<img src="/ch2-envoy/arch/listener/listener-connection.assets/envoy-classes-accept-flow.drawio.svg" alt="Figure - Listener TCP Connection Establishment Process">
 *Figure: Listener TCP Connection Establishment Process*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-classes-accept-flow.drawio.svg)*

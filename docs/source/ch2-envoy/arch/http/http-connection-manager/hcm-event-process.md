@@ -21,7 +21,7 @@ The following is a 5-step explanation of the HTTP proxy process, using HTTP/1.1 
 
 ### Downstream Read Request Module Collaboration
 :::{figure-md} Figure : Downstream Read-Ready Module Collaboration
-<img src="/ch2-envoy/arch/http/http-connection-manager/hcm-event-process.assets/envoy-hcm-read-down-req.drawio.svg" alt="Figure: Downstream Read-Ready Module Collaboration">
+<img src="/ch2-envoy/arch/http/http-connection-manager/hcm-event-process.assets/envoy-hcm-read-down-req.drawio.svg" alt="Figure - Downstream Read-Ready Module Collaboration">
 *Diagram: Downstream Read-Ready Module Collaboration*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-hcm-read-down-req.drawio.svg)*
@@ -41,7 +41,7 @@ A rough description of the process:
 #### Downstream Request Router Module Collaboration
 
 :::{figure-md} Figure: Downstream Request Router Module Collaboration
-<img src="/ch2-envoy/arch/http/http-connection-manager/hcm-event-process.assets/envoy-hcm-router-on-down-req-complete.drawio.svg" alt="Figure: Downstream Request Router Module Collaboration">
+<img src="/ch2-envoy/arch/http/http-connection-manager/hcm-event-process.assets/envoy-hcm-router-on-down-req-complete.drawio.svg" alt="Figure - Downstream Request Router Module Collaboration">
 *Figure: Downstream Request Router Module Collaboration*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-hcm-router-on-down-req-complete.drawio.svg)*
@@ -64,7 +64,7 @@ A rough description of the process:
 ### Upstream Write Request Module Collaboration
 
 :::{figure-md} Figure: Upstream connect & write module collaboration
-<img src="/ch2-envoy/arch/http/http-connection-manager/hcm-event-process.assets/envoy-hcm-upstream-flow-connected-write.drawio.svg" alt="Figure: Upstream connect & write module collaboration">
+<img src="/ch2-envoy/arch/http/http-connection-manager/hcm-event-process.assets/envoy-hcm-upstream-flow-connected-write.drawio.svg" alt="Figure - Upstream connect & write module collaboration">
 *Figure: Upstream connect & write module collaboration*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-hcm-upstream-flow-connected-write.drawio.svg)*
@@ -80,7 +80,7 @@ A rough description of the flow:
 
 ### Upstream Read Response Module Collaboration
 :::{figure-md} Figure: Upstream Read-Response Module Collaboration
-<img src="/ch2-envoy/arch/http/http-connection-manager/hcm-event-process.assets/envoy-hcm-upstream-flow-read-resp.drawio.svg" alt="Figure: Upstream Read-Response Module Collaboration">
+<img src="/ch2-envoy/arch/http/http-connection-manager/hcm-event-process.assets/envoy-hcm-upstream-flow-read-resp.drawio.svg" alt="Figure - Upstream Read-Response Module Collaboration">
 *Figure: Upstream Read-Response Module Collaboration*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-hcm-upstream-flow-read-resp.drawio.svg)*
@@ -88,7 +88,7 @@ A rough description of the flow:
 ### Downstream Write Response Module Collaboration
 
 :::{figure-md} Figure: Downstream Write Response Module Collaboration
-<img src="/ch2-envoy/arch/http/http-connection-manager/hcm-event-process.assets/envoy-hcm-write-down-resp.drawio.svg" alt="Figure: Downstream Write Response module collaboration">
+<img src="/ch2-envoy/arch/http/http-connection-manager/hcm-event-process.assets/envoy-hcm-write-down-resp.drawio.svg" alt="Figure - Downstream Write Response module collaboration">
 *Figure: Downstream Write Response Module Collaboration*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-hcm-write-down-resp.drawio.svg)*

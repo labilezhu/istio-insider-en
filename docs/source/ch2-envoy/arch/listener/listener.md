@@ -61,7 +61,7 @@ As you can see, the name Istio gives to the Listener is a bit hard to understand
 
 ## Listener internal components
 :::{figure-md} Figure: Listener Internal Components
-<img src="/ch2-envoy/arch/listener/listener.assets/listener.drawio.svg" alt="Figure: Listener Internal Components">
+<img src="/ch2-envoy/arch/listener/listener.assets/listener.drawio.svg" alt="Figure - Listener Internal Components">
 *Figure: Listener Internal Components*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Flistener.drawio.svg)*
@@ -91,7 +91,7 @@ Each `Network Filter Chain` consists of sequentialized `Network Filters`. The `N
 
 ## Listener related components and startup sequence
 :::{figure-md} Figure: Listener core objects and startup sequence
-<img src="/ch2-envoy/arch/listener/listener.assets/listener-core-classes-startup-process.drawio.svg" alt="Figure: Listener core objects and startup sequence">
+<img src="/ch2-envoy/arch/listener/listener.assets/listener-core-classes-startup-process.drawio.svg" alt="Figure - Listener core objects and startup sequence">
 *Figure: Listener core objects and startup sequence*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Flistener-core-classes-startup-process.drawio.svg)*
@@ -130,7 +130,7 @@ If you're careful, you'll see something trick:
 
 ### Code-level startup sequence
 :::{figure-md} Figure : Listener TCP Connection Establishment Flow
-<img src="/ch2-envoy/arch/listener/listener.assets/envoy-classes-listen-flow.drawio.svg" alt="Figure: Listener TCP connection establishment flow">
+<img src="/ch2-envoy/arch/listener/listener.assets/envoy-classes-listen-flow.drawio.svg" alt="Figure - Listener TCP connection establishment flow">
 *Figure: Listener TCP connection establishment flow*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-classes-listen-flow.drawio.svg)*

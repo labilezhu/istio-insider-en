@@ -81,23 +81,9 @@ Readers who don't know much about Envoy's http-connection-manager and http filte
 
 <img src="/ch2-envoy/arch/flow-control/flow-control-1-upstream-backs-up-simple.drawio.svg" alt="Figure Upstream connection back up and backpressure">
 
-*Figure Upstream connection back up and backpressure*
+*Figure: Upstream connection back up and backpressure*
 :::
-*[Open with Draw.io 8](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fflow-control-1-upstream-backs-up-simple.drawio.svg)*
-
-
-
-
-:::{figure-md} Upstream connection 拥塞与背压
-
-<img src="/ch2-envoy/arch/flow-control/flow-control-1-upstream-backs-up-simple.drawio.svg" alt="Upstream connection 拥塞与背压">
-
-*Upstream connection 拥塞与背压*
-:::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fflow-control-1-upstream-backs-up-simple.drawio.svg)*
-
-
-
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fflow-control-1-upstream-backs-up-simple.drawio.svg)*
 
 
 The `Unbounded buffer` above does not mean that the buffer does not have a limit, it means that the limit is a `soft limit`.
@@ -150,7 +136,7 @@ Example:
 
 :::{figure-md} Figure: Upstream connection and Upstream http stream back-up at the same time
 
-<img src="/ch2-envoy/arch/flow-control/flow-control-2-upstream-backs-up-counter.drawio.svg" alt="Figure: Upstream connection and Upstream http stream back-up at the same time">
+<img src="/ch2-envoy/arch/flow-control/flow-control-2-upstream-backs-up-counter.drawio.svg" alt="Figure - Upstream connection and Upstream http stream back-up at the same time">
 
 *Figure: Upstream connection and Upstream http stream back-up at the same time*
 :::
@@ -164,7 +150,7 @@ Example:
 
 :::{figure-md} Figure: Collaboration of Router::Filter during Upstream back-up
 
-<img src="/ch2-envoy/arch/flow-control/flow-control-3-upstream-backs-up-router.drawio.svg" alt="Figure: Collaboration of Router::Filter during Upstream back-up">
+<img src="/ch2-envoy/arch/flow-control/flow-control-3-upstream-backs-up-router.drawio.svg" alt="Figure - Collaboration of Router::Filter during Upstream back-up">
 
 *Figure: Collaboration of Router::Filter during Upstream back-up*
 :::
@@ -178,7 +164,7 @@ Example:
 
 :::{figure-md} Figure: Collaboration of Http::ConnectionManagerImpl when Downstream back-up
 
-<img src="/ch2-envoy/arch/flow-control/flow-control-4-downstream-conn-backs-up.drawio.svg" alt="Figure: Collaboration of Http::ConnectionManagerImpl when Downstream back-up">
+<img src="/ch2-envoy/arch/flow-control/flow-control-4-downstream-conn-backs-up.drawio.svg" alt="Figure - Collaboration of Http::ConnectionManagerImpl when Downstream back-up">
 
 *Figure: Collaboration of Http::ConnectionManagerImpl when Downstream back-up*
 :::
@@ -257,7 +243,7 @@ For the low watermark path:
 
 :::{figure-md} Figure: Collaboration of Router::Filter during Upstream back-up(2)
 
-<img src="/ch2-envoy/arch/flow-control/flow-control-3-upstream-backs-up-router.drawio.svg" alt="Figure: Collaboration of Router::Filter during Upstream back-up">
+<img src="/ch2-envoy/arch/flow-control/flow-control-3-upstream-backs-up-router.drawio.svg" alt="Figure - Collaboration of Router::Filter during Upstream back-up">
 
 *Figure: Collaboration of Router::Filter during Upstream back-up*
 :::
@@ -296,7 +282,7 @@ As with the downstream network buffer, it is important that as new upstream stre
 
 :::{figure-md} Figure: Collaboration of Router::Filter when Upstream connection back-up
 
-<img src="/ch2-envoy/arch/flow-control/flow-control-3-2-upstream-conn-backs-up-router.drawio.svg" alt="Figure: Collaboration of Router::Filter when Upstream connection back-up">
+<img src="/ch2-envoy/arch/flow-control/flow-control-3-2-upstream-conn-backs-up-router.drawio.svg" alt="Figure - Collaboration of Router::Filter when Upstream connection back-up">
 
 *Figure: Collaboration of Router::Filter when Upstream connection back-up*
 :::
