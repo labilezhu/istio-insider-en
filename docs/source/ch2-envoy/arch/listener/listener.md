@@ -14,22 +14,26 @@ Download the Envoy configuration here yaml {download}`envoy@istio-conf-eg-inboun
 :::{figure-md}
 :class: full-width
 <img src="/ch1-istio-arch/istio-ports-components.assets/istio-ports-components.drawio.svg" alt="Istio port and components">
-*Figure: Istio ports and components*  
+*Figure - Istio ports and components*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fistio-ports-components.drawio.svg)*
 
 
 :::{figure-md}
 :class: full-width
+
 <img src="/ch2-envoy/envoy@istio-conf-eg.assets/envoy@istio-conf-eg-inbound.drawio.svg" alt="Inbound vs Outbound concepts">
-*Figure: Example of Envoy Inbound configuration in Istio*
+
+*Figure - Example of Envoy Inbound configuration in Istio*
+
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy@istio-conf-eg-inbound.drawio.svg)*
 
 :::{figure-md}
 :class: full-width
 <img src="/ch2-envoy/envoy@istio-conf-eg.assets/envoy@istio-conf-eg-outbound.drawio.svg" alt="Diagram - Example of Envoy Outbound configuration in Istio">
-*Figure : Envoy Outbound Configuration Example in Istio*
+
+*Figure - Envoy Outbound Configuration Example in Istio*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy@istio-conf-eg-outbound.drawio.svg)*
 
