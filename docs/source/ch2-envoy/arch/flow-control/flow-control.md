@@ -83,7 +83,7 @@ Readers who don't know much about Envoy's http-connection-manager and http filte
 
 *Figure: Upstream connection back up and backpressure*
 :::
-*[Open with Draw.io 4](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fflow-control-1-upstream-backs-up-simple.drawio.svg)*
+*[Open with Draw.io 5](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fflow-control-1-upstream-backs-up-simple.drawio.svg)*
 
 
 
