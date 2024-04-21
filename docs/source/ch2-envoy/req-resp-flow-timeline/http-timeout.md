@@ -1,4 +1,4 @@
-# HTTP Timeout 配置(草稿)
+# HTTP Timeout setting(draft)
 
 ## MAX Timeout
 
