@@ -77,7 +77,7 @@ Readers who don't know much about Envoy's http-connection-manager and http filte
 > For HTTP/2, when filters, streams, or connections back up, the end result is `readDisable(true)` being called on the source stream. This results in the stream ceasing to consume window, and so not sending further flow control window updates to the peer. This will result in the peer eventually stopping sending data when the available window is consumed (or nghttp2 closing the connection if the peer violates the flow control limit) and so limiting the amount of data Envoy will buffer for each stream. 
 
 
-:::{figure-md} Figure: Upstream connection back up and backpressure
+:::{figure-md} Figure Upstream connection back up and backpressure
 
 <img src="/ch2-envoy/arch/flow-control/flow-control-1-upstream-backs-up-simple.drawio.svg" alt="Figure: Upstream connection back up and backpressure">
 
