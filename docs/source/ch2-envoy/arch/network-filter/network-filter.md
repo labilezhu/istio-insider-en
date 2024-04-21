@@ -79,7 +79,7 @@ Below, the classic TCP Proxy Filter is used as an example.
 
 :::{figure-md} Figure : Network Filter Framework - TCP Proxy Filter Example
 
-<img src="/ch2-envoy/arch/network-filter/network-filter-tcpproxy.drawio.svg" alt="Figure : Network Filter Framework - TCP Proxy Filter Example">
+<img src="/ch2-envoy/arch/network-filter/network-filter-tcpproxy.drawio.svg" alt="Figure - Network Filter Framework - TCP Proxy Filter Example">
 
 *Figure : Network Filter Framework - TCP Proxy Filter Example*
 :::
@@ -90,7 +90,7 @@ Below, the classic TCP Proxy Filter is used as an example.
 
 :::{figure-md} Figure : Network Filter - ReadFilter Collaboration
 
-<img src="/ch2-envoy/arch/network-filter/network-filter-readfilter.drawio.svg" alt="Figure : Network Filter - ReadFilter Collaboration">
+<img src="/ch2-envoy/arch/network-filter/network-filter-readfilter.drawio.svg" alt="Figure - Network Filter - ReadFilter Collaboration">
 
 *Figure : Network Filter - ReadFilter Collaboration*
 :::

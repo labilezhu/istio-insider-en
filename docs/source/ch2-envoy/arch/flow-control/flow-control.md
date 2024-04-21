@@ -150,7 +150,7 @@ Example:
 
 :::{figure-md} Figure: Collaboration of Router::Filter during Upstream back-up
 
-<img src="/ch2-envoy/arch/flow-control/flow-control-3-upstream-backs-up-router.drawio.svg" alt="Figure - Collaboration of Router::Filter during Upstream back-up">
+<img src="/ch2-envoy/arch/flow-control/flow-control-3-upstream-backs-up-router.drawio.svg" alt="Figure - Collaboration of Router--Filter during Upstream back-up">
 
 *Figure: Collaboration of Router::Filter during Upstream back-up*
 :::
@@ -164,7 +164,7 @@ Example:
 
 :::{figure-md} Figure: Collaboration of Http::ConnectionManagerImpl when Downstream back-up
 
-<img src="/ch2-envoy/arch/flow-control/flow-control-4-downstream-conn-backs-up.drawio.svg" alt="Figure - Collaboration of Http::ConnectionManagerImpl when Downstream back-up">
+<img src="/ch2-envoy/arch/flow-control/flow-control-4-downstream-conn-backs-up.drawio.svg" alt="Figure - Collaboration of Http--ConnectionManagerImpl when Downstream back-up">
 
 *Figure: Collaboration of Http::ConnectionManagerImpl when Downstream back-up*
 :::
@@ -243,7 +243,7 @@ For the low watermark path:
 
 :::{figure-md} Figure: Collaboration of Router::Filter during Upstream back-up(2)
 
-<img src="/ch2-envoy/arch/flow-control/flow-control-3-upstream-backs-up-router.drawio.svg" alt="Figure - Collaboration of Router::Filter during Upstream back-up">
+<img src="/ch2-envoy/arch/flow-control/flow-control-3-upstream-backs-up-router.drawio.svg" alt="Figure - Collaboration of Router--Filter during Upstream back-up">
 
 *Figure: Collaboration of Router::Filter during Upstream back-up*
 :::
@@ -282,7 +282,7 @@ As with the downstream network buffer, it is important that as new upstream stre
 
 :::{figure-md} Figure: Collaboration of Router::Filter when Upstream connection back-up
 
-<img src="/ch2-envoy/arch/flow-control/flow-control-3-2-upstream-conn-backs-up-router.drawio.svg" alt="Figure - Collaboration of Router::Filter when Upstream connection back-up">
+<img src="/ch2-envoy/arch/flow-control/flow-control-3-2-upstream-conn-backs-up-router.drawio.svg" alt="Figure - Collaboration of Router--Filter when Upstream connection back-up">
 
 *Figure: Collaboration of Router::Filter when Upstream connection back-up*
 :::

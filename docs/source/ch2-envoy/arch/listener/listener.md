@@ -28,7 +28,7 @@ Download the Envoy configuration here yaml {download}`envoy@istio-conf-eg-inboun
 
 :::{figure-md}
 :class: full-width
-<img src="/ch2-envoy/envoy@istio-conf-eg.assets/envoy@istio-conf-eg-outbound.drawio.svg" alt="Diagram: Example of Envoy Outbound configuration in Istio">
+<img src="/ch2-envoy/envoy@istio-conf-eg.assets/envoy@istio-conf-eg-outbound.drawio.svg" alt="Diagram - Example of Envoy Outbound configuration in Istio">
 *Figure : Envoy Outbound Configuration Example in Istio*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy@istio-conf-eg-outbound.drawio.svg)*
