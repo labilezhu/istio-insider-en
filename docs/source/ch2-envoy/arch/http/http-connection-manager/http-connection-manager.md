@@ -33,6 +33,7 @@ HttpFilter is called `StreamFilter` or more precisely `Http::StreamFilterBase` i
 :::{figure-md} Figure: http filter abstract object
 :class: full-width
 <img src="/ch2-envoy/arch/http/http-connection-manager/http-connection-manager.assets/http-filter-abstract.drawio.svg" alt="Figure - http filter abstract object">
+
 *Figure: http filter abstract object*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fhttp-filter-abstract.drawio.svg)*
