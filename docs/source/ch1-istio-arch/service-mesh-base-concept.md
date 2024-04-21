@@ -37,7 +37,7 @@ From a K8s pod perspective:
 
 <img src="service-mesh-base-concept.assets/inbound-outbound-concept.drawio.svg" alt="Inbound & Outbound Concepts">
 
-*Drawing: Inbound vs. Outbound Concepts
+*Drawing: Inbound vs. Outbound Concepts*
 [Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Finbound-outbound-concept.drawio.svg)
 :::
 

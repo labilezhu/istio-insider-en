@@ -1,24 +1,24 @@
-# Istio 端口 与 组件
+# Istio Ports and Components
 
-Istio 的每个组件都监听一堆端口。对于初学者，可能很难弄明白每个端口的作用。这里，用 {ref}`图：Istio端口与组件` 说明 Istio 在默认的部署下，各组件的通讯端口和相关的功能。
+Each component of Istio listens to a bunch of ports. For beginners, it can be difficult to figure out what each port does. Here, the {ref}`Figure: Istio Ports and Components` illustrates the ports and related functionality of each component when Istio is deployed by default.
 
 
-:::{figure-md} 图：Istio端口与组件
+:::{figure-md} Figure: Istio Ports and Components
 :class: full-width
 
-<img src="istio-ports-components.assets/istio-ports-components.drawio.svg" alt="Istio端口与组件">
+<img src="istio-ports-components.assets/istio-ports-components.drawio.svg" alt="Istio ports and components">
 
-*图：Istio 端口与组件*  
+*Figure: Istio Ports and Components*  
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fistio-ports-components.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fistio-ports-components.drawio.svg)*
 
-上图需要说明的是：
-- istio-proxy 容器与 应用容器(app container) 共享同一 Linux `network namespace`。 
-- `network namespace` 是内核内用于隔离多个不同网络配置的技术。其中一个配置就是 netfilter，即我们常说的 iptables。我们将在后面说说它的故事。
+The above image needs to be clarified:
+- The istio-proxy container shares the same Linux `network namespace` as other containers in the same pod. 
+- A `network namespace` is a technique used within the kernel to isolate multiple different network configurations. One of these configurations is `netfilter`, often referred to as `iptables`, which we'll talk about later.
 
-## 监听端口
+## Listening on ports
 
-可以用以下方式查看监听的端口：
+You can see which ports you are listening on in the following way:
 
 ```bash
 
@@ -82,17 +82,17 @@ $ iptables-save
 COMMIT
 ```
 
-## 连接
-{ref}`图：Istio端口与组件` 中包含了一些在 Istio 中时行 pod 内部的 TCP 连接的说明（见其中的 `ss` 命令输出）。在此不再赘述。
+## Connections
+{ref}`Figure: Istio Ports and Components` contains some descriptions of the TCP connections inside a  pod running in Istio (see the `ss` command output therein). I will not go through them one by one.
 
 
-## 运维杂项
+## Miscellaneous Ops guide
 
-### 抓包
+### Packet captures
 
-#### Sidecar 抓包
+#### Sidecar packet capture
 
-{ref}`图：Istio端口与组件` 中包含了一些在 Istio 中时行 tcpdump 的说明。在此不再赘述。要补充一下是的 tcpdump 的抓包点。因为，这个点影响了，tcpdump 的过滤条件与输出。主要是这个点与 iptables 的 redirect 规则生效的前后问题。
+{ref}`Figure: Istio Ports and Components` contains some instructions for running `tcpdumps` in Istio. I won't repeat them here. One thing to highlight is the `tcpdump` capture point. This point affects the filtering conditions and output of `tcpdump`. It is importance to know if the capture point is before or after redirect rule of iptables.
 
 > tcpdump capture pinpoint:
 >
@@ -116,10 +116,10 @@ export LOCAL_IP=$(ip addr show lo | grep "inet\b" | awk '{print $2}' | cut -d/ -
 
 # inbound mTLS
 sudo tcpdump -i eth0 -n -vvvv  "(dst port 8080 and dst $ETH0_IP) or (src port 8080 and src $ETH0_IP)"
-# inbound 明文
+# inbound plain text
 sudo tcpdump -i lo -n -vvvv -A "(dst port 8080 and dst $ETH0_IP) or (src port 8080 and src $ETH0_IP)"
 
-# outbound 明文
+# outbound plain text
 sudo tcpdump -i lo -n -vvvv -A  "((dst port 15001 and dst 127.0.0.1) or (dst portrange 20000-65535 and dst $ETH0_IP))"
 # outbound mTLS
 sudo tcpdump -i eth0 -n -vvvv -A  "((src portrange 20000-65535 and src $ETH0_IP) or (dst portrange 20000-65535 and dst $ETH0_IP))"
@@ -127,17 +127,17 @@ sudo tcpdump -i eth0 -n -vvvv -A  "((src portrange 20000-65535 and src $ETH0_IP)
 
 
 
-有一点比较麻烦的是，`outbound 明文`抓包，出向 ip packet 抓到的是 redirect 后的 127.0.0.1，入向 ip packet 抓到的是未 redirect 前的 ip 地址。如果你用 Wireshark 等工具分析。是无法 Follow TCP Stream 的。
+One problem is that `outbound plaintext` packet capture, outbound IP packet captures 127.0.0.1 after redirect, inbound IP packet captures the ip address before redirect. If you analyze these packets with tools like Wireshark, you will not be able to Follow TCP Stream.
 
 
 
-#### Istio Gateway 抓包
+#### Istio Gateway packet capture
 
-一般，Istio Gateway 的 upsteam （Cluster 内部），与 downsteam（Cluster 外部）会在不同的 subnet，所以，可以用 CIDR 去区分。
+Generally, Istio Gateway's upstream (inside the Cluster) and downstream (outside the Cluster) will be in different subnet, so you can use CIDR to distinguish them.
 
 
 
-首先，看看 kubernetes cluster 的 pod 的 cidr 范围：
+First, let's look at the CIDR range of a pod in a Kubernetes cluster:
 
 ```bash
 ps -ef | grep cidr
@@ -146,26 +146,25 @@ root      48587  20177  0 Dec08 ?        00:21:25 kube-controller-manager ... --
 
 
 
-这时，如果尝试直接使用上面的参数会出错：
+Then, attempting to use the above parameter directly will result in an error:
 
 ```bash
-$ sudo tcpdump -i br0 -vvvv -A  net 192.168.0.0/12
+$ sudo tcpdump -i br0 -vvvv -A  net 192.168.0.0/12  #168 here
 tcpdump: non-network bits set in "192.168.0.0/12"
 ```
 
 
 
-发现，tcpdump 对 cidr 的格式要求比较严格，要求用首个可用 ip 段。使用 [https://cidr.xyz/](https://cidr.xyz/) 分析出 `192.168.0.0/12` 的首个可用 ip 为 `192.160.0.1`，固：
+I found that tcpdump is quite strict on the format of cidr, requiring the first available ip address segment. Using [https://cidr.xyz/](https://cidr.xyz/), we analyzed the first available ip address of `192.168.0.0/12` to be `192.160.0.1`, so:
 
 ```bash
-sudo tcpdump -i br0 -vvvv -A  net 192.160.0.0/12
+$ sudo tcpdump -i br0 -vvvv -A  net 192.160.0.0/12  #160(NOT 168) here
 ```
 
 
+### Miraculous 127.0.0.6
 
-### 神奇的 127.0.0.6
-
-出于非常多的原因，inbound 流量在由 Envoy 转到 app 时，Envoy 建立的 TCP 连接 bind 的 ip 地址是一个`ip addr`也查不到的，在 `lo` 接口上的 `127.0.0.6`。如果你好奇，可以看：
+For very many reasons, the ip address that Envoy binds the TCP connection it establishes when inbound traffic goes from Envoy to app is one that `ip addr` command can't even find: `127.0.0.6` on the `lo` interface. If you're curious, see:
 
 > Why the bind magic `127.0.0.6` ?
 >
@@ -176,9 +175,9 @@ sudo tcpdump -i br0 -vvvv -A  net 192.160.0.0/12
 
 
 
-## 一点感想
+## Ending words
 
-如果用传统 Linux 网络运维的方法，去解决 Istio 复杂实现下的网络问题，非常不直观和容易。在 Service Mesh 应用的同时，可观察性的工具和方法应该作出相应的变化。不然大规模使用后，问题的解决将花费相当大的代价。
+It is very unintuitive and easy to solve network problems under the complex implementation of Istio with the traditional Linux network operation and maintenance approach. While Service Mesh is being applied, observability tools and methods should be changed accordingly. Otherwise, after large-scale use, problem solving will cost quite a lot.
 
 
 
