@@ -1,59 +1,59 @@
-# Istio 下 Envoy 配置举例
+# Envoy Configuration Example under Istio
 
-大部分书籍和文档，都是按架构分层，自上而下(Top down) ，从概念、高层设计、基本原理、抽象流程去说明一个软件架构的。这个套路很学院派，也是非常稳重踏实的选择。但本节不采用这种方式。本节先举例分析一个具体场景下的现场分析。从具体和整体上，先让读者对设计有个感性的理解。再去分析为何要这样 “配置”，背后的抽象概念和基本原理。这样，可以让学习的人保持兴趣，也比较合符人类自然的，从具体中提炼出抽象的学习习惯。毕竟，笔者是个念过师范专业的人，虽然连个 "教师资格证" 也没拿到。
+Most books and documents describe a software architecture in terms of concepts, high-level design, fundamentals, and abstraction processes in a hierarchical, top-down fashion. This approach is very collegiate and a very solid choice. However, this section does not adopt this approach. This section starts with an example of a site analysis in a specific scenario. Specifically and as a whole, it first gives the reader a perceptual understanding of the design. Then go on to analyze why it is "configured" the way it is, the abstract concepts and basic principles behind it. In this way, it can keep the interest of those who learn, and is more in line with the natural human, abstract learning habit of distilling the abstract from the concrete. After all, I'm a person who has read the teacher training program, although even a "teaching certificate" did not get.
 
-要理解 Istio 数据面基理，首先要看懂 sidecar proxy - Envoy 的配置。本节用一个例子，看看 istiod 写了什么 “代码” 去控制这个 “可编程代理” —— Envoy 。
+To understand the Istio data surface fundamentals, you first need to look at the configuration of the sidecar proxy - Envoy. This section uses an example to see what "code" istiod has written to control this "programmable proxy" - Envoy.
 
-## 实验环境
+## Experimental Environment
 
-本节的实验环境说明见于： {ref}`appendix-lab-env/appendix-lab-env-base:简单分层实验环境`。  
+A description of the experimental environment for this section can be found in: {ref}`appendix-lab-env/appendix-lab-env-base:Simple layered lab environment`.  
 
 
-架构图：
-:::{figure-md} 图:Istio 里的 Envoy 配置 - 部署
+Architecture diagram:
+:::{figure-md} Figure:Envoy configuration in Istio - Deployment
 
-<img src="/ch1-istio-arch/istio-data-panel-arch.assets/istio-data-panel-arch.drawio.svg" alt="Inbound与Outbound概念">
+<img src="/ch1-istio-arch/istio-data-panel-arch.assets/istio-data-panel-arch.drawio.svg" alt="Inbound and Outbound concepts">
 
-*图:Istio 里的 Envoy 配置 - 部署*
+*Figure:Envoy Configuration in Istio - Deployment*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fistio-data-panel-arch.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fistio-data-panel-arch.drawio.svg)*
 
 
 
-首先看看 Envoy 的配置：
+First, look at the Envoy configuration:
 
 ```bash
-kubectl exec fortio-server -c istio-proxy  -- \
+kubectl exec fortio-server -c istio-proxy -- \
 curl 'localhost:15000/config_dump?include_eds' | \
 yq eval -P > envoy@istio-conf-eg-inbound.envoy_conf.yaml
 ```
 
 ```{note}
-这里下载 {download}`envoy@istio-conf-eg-inbound.envoy_conf.yaml </ch2-envoy/envoy@istio-conf-eg.assets/envoy@istio-conf-eg-inbound.envoy_conf.yaml>` .
+Download here {download}`envoy@istio-conf-eg-inbound.envoy_conf.yaml </ch2-envoy/envoy@istio-conf-eg.assets/envoy@istio-conf-eg-inbound.envoy_conf.yaml>` .
 ```
 
-下面先不展开说明配置文件，直接看分析过程，最后，会回归到这个配置中。
+Without go through the description of the configuration file for now, let's just look at the analysis process, then, in the end, will return to this configuration.
 
-## Inbound 数据流 “推断”
+## Inbound Data Flow "Inference"
 
-分析上面获取到的 Envoy 配置，可以 “推断” 到下面 Inbound 数据流图：
+Analyzing the Envoy configuration obtained above, you can "infer" the following Inbound data flow diagram:
 
-:::{figure-md} 图：Istio里的 Envoy Inbound 配置举例
+:::{figure-md} Figure: Example of Envoy Inbound Configuration in Istio
 :class: full-width
-<img src="envoy@istio-conf-eg.assets/envoy@istio-conf-eg-inbound.drawio.svg" alt="Inbound与Outbound概念">
+<img src="envoy@istio-conf-eg.assets/envoy@istio-conf-eg-inbound.drawio.svg" alt="Figure: Example of Envoy Inbound Configuration in Istio">
 
-*图：Istio里的 Envoy Inbound 配置举例*
+*Drawing: Example of Envoy Inbound Configuration in Istio*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy@istio-conf-eg-inbound.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy@istio-conf-eg-inbound.drawio.svg)*
 
 
-喜欢较真的程序员，对 “推断” 的事情有天然的不安感。那么，我们想法子 debug 一下，验证上图的可靠性。
+Programmers who like to take things seriously have a natural uneasiness about "inferring" things. So, let's try to debug it and verify the reliability of the above diagram.
 
 
-### 用日志检查数据流
+### Examining data flow with logs
 
 
-1. 开始前，先看看环境细节：
+1. Before you begin, take a look at the environment details:
 
 ```bash
 labile@labile-T30 ➜ labile $ k get pod netshoot -owide
@@ -79,12 +79,13 @@ fortio-server   172.21.206.230:8079,172.21.206.230:8070,172.21.206.230:8080   8d
 
 
 
-2. 开一个专用 `监控日志终端窗口`，：
+2. Open a dedicated `Monitor Log Terminal Window':
+
 ```bash
 k logs -f fortio-server -c istio-proxy
 ```
 
-3. 看看客户端(netshoot) 到 fortio-server 的连接情况。发现未有连接，即到 fortio-server 的连接池未初始化。
+3. Look at the connections from the client(netshoot) to the fortio-server. No connection is found, i.e. the connection pool to fortio-server is not initialized.
 
 ```
 $ k exec -it netshoot -- ss -tr
@@ -98,18 +99,18 @@ ESTAB 0      0          localhost:15020                             localhost:52
 ESTAB 0      0          localhost:15020                             localhost:51978       
 ```
 
-解释一下上面的命令。`-t` 是只看 tcp 连接。`-r` 是尝试对 ip 地址反向解释回域名。
+Explain the above command. `-t` is to look only at tcp connections. `-r` is to try to reverse the interpretation of the ip address back to the domain name.
 
 ````{tip}
-如果你的环境中发现已经有连接，那么，强制断开它。因为后面要分析一下建立新连接的日志。这里有个 强制断开连接的 ss 命令的秘技：
+If you find a connection already in your environment, force it to disconnect. This is because you will have to analyze the logs of the new connection being made later. Here's a secret trick for the `ss` command to force a connection to be disconnected:
 ```bash
 k exec -it netshoot -- ss -K 'dst 172-21-206-230.fortio-server.mark.svc.cluster.local'
 ```
-其中 `dst 172-21-206-230.fortio-server.mark.svc.cluster.local` 是个过滤器条件，用于指定执行断开的连接。命令的意思是断开`对端目标地址`为 `172-21-206-230.fortio-server.mark.svc.cluster.local` 的连接。`172-21-206-230.fortio-server.mark.svc.cluster.local`就是 k8s 自动给这个 fortio-server POD 的域名了。
+where `dst 172-21-206-230.fortio-server.mark.svc.cluster.local` is a filter condition that specifies the connection to perform the disconnect. The command means to disconnect the connection whose `pair target address` is `172-21-206-230.fortio-server.mark.svc.cluster.local`. `172-21-206-230.fortio-server.mark.svc.cluster.local` is the domain name that k8s automatically gives to this fortio-server POD.
 ````
 
 
-3. 修改日志级别：
+3. Modify the log level:
 ```bash
 
 k exec fortio-server -c istio-proxy -- curl -XPOST http://localhost:15000/logging
@@ -118,12 +119,12 @@ k exec fortio-server -c istio-proxy -- curl -XPOST curl -XPOST 'http://localhost
 
 
 
-4. 在 k8s cluster 内发起请求：
+4. Initiate the request within the k8s cluster:
 ```bash
 sleep 5 && k exec -it netshoot -- curl -v http://fortio-server:8080/
 ```
 
-5. 查看连接
+5. inspect connections
 ```bash
 $ k exec -it netshoot -- ss -trn | grep fortio
 
@@ -133,8 +134,8 @@ ESTAB  0       0               netshoot:52352     172-21-206-230.fortio-server.m
 ...
 ```
 
-6. 查看日志
-这时，在之前打开的 `监控日志终端窗口` 中，应该可以看到日志：
+6. view logs
+At this point, you should be able to see the logs in the `Monitor Log Terminal Window` that you opened earlier:
 
 ```
 envoy filter	original_dst: new connection accepted
@@ -220,31 +221,31 @@ envoy pool	[C12991] response complete
 envoy pool	[C12991] destroying stream: 0 remaining
 ```
 
-下图说明日志相关的组件与源码链接：
+The following figure illustrates logging related components with source code links:
 
-:::{figure-md} 图：Istio里的 Envoy Inbound 组件与日志
+:::{figure-md} Figure: Envoy Inbound components and logging in Istio
 :class: full-width
-<img src="envoy@istio-conf-eg.assets/log-envoy@istio-conf-eg-inbound.drawio.svg" alt="图：Istio里的 Envoy Inbound 组件与日志">
+<img src="envoy@istio-conf-eg.assets/log-envoy@istio-conf-eg-inbound.drawio.svg" alt="Diagram: Envoy Inbound component and logging in Istio">
 
-*图：Istio里的 Envoy Inbound 组件与日志*
+*Diagram: Envoy Inbound component in Istio with logs*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Flog-envoy@istio-conf-eg-inbound.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Flog-envoy@istio-conf-eg-inbound.drawio.svg)*
 
 
-## Outbound 数据流 “推断”
+## Outbound data stream "extrapolation"
 
-分析上面获取到的 Envoy 配置，可以 “推断” 到下面 Outbound 数据流图：
+Analyzing the Envoy configuration obtained above, the following Outbound data flow diagram can be "extrapolated":
 
-:::{figure-md} 图：Istio里的 Envoy Outbound 配置举例
+:::{figure-md} Figure: Example of Envoy Outbound configuration in Istio.
 :class: full-width
-<img src="envoy@istio-conf-eg.assets/envoy@istio-conf-eg-outbound.drawio.svg" alt="图：Istio里的 Envoy Outbound 配置举例">
+<img src="envoy@istio-conf-eg.assets/envoy@istio-conf-eg-outbound.drawio.svg" alt="Diagram: Envoy Outbound configuration example in Istio">
 
-*图：Istio里的 Envoy Outbound 配置举例*
+*Diagram: Envoy Outbound Configuration Example from Istio*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy@istio-conf-eg-outbound.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy@istio-conf-eg-outbound.drawio.svg)*
 
 
 
-## 用 bpftrace 检查数据流
+## Checking the stream with bpftrace
 
-见我的 Blog: [逆向工程与云原生现场分析 Part3 —— eBPF 跟踪 Istio/Envoy 事件驱动模型、连接建立、TLS 握手与 filter_chain 选择](https://blog.mygraphql.com/zh/posts/low-tec/trace/trace-istio/trace-istio-part3/)
+See my Blog: [Reverse Engineering and Cloud Native Site Analysis Part3 -- eBPF Trace Istio/Envoy Event Driven Model, Connection Establishment, TLS Handshake and filter_chain Selection (Chinese)](https://blog.mygraphql.com/zh/posts/low-tec/trace/trace-istio/trace-istio-part3/)
