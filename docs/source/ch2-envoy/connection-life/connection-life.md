@@ -1,4 +1,4 @@
-## HTTP Connection Lifecycle Management
+# HTTP Connection Lifecycle Management
 
 ## Upstream/Downstream connection uncoupling
 
