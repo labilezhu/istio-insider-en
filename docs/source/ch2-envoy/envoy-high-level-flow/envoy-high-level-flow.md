@@ -1,47 +1,47 @@
-# Envoy 抽象主流程与概念
+## Envoy abstracts the main stream process and concepts
 
-## 再说 upstream/upstream
+## upstream/upstream
 
-让我们回到 {doc}`/ch2-envoy/envoy@istio-conf-eg` 的例子：
+Let's go back to the {doc}`/ch2-envoy/envoy@istio-conf-eg` example:
 
 
 :::{figure-md}
 
-<img src="/ch1-istio-arch/istio-data-panel-arch.assets/istio-data-panel-arch.drawio.svg" alt="Inbound与Outbound概念">
+<img src="/ch1-istio-arch/istio-data-panel-arch.assets/istio-data-panel-arch.drawio.svg" alt="Istio Data Panel Arch">
 
-*图:Istio 里的 Envoy 配置 - 部署*
+*Figure:Envoy Configuration in Istio - Deployment*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fistio-data-panel-arch.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fistio-data-panel-arch.drawio.svg)*
 
 
-这里，我们只分析 `fortio-server(pod)` 内的事情。从 POD 的流量角度来讲，它可以再分为两部分：
- - inbound : 入站（被调用）
- - outbound : 出站（对外调用）
+I will only analyze what is going on inside `fortio-server(pod)` here. In terms of POD traffic, it can be subdivided into two parts:
+ - inbound : inbound (called)
+ - outbound : outbound (invoked)
 
-但单单从 Envoy 实现角度看，其实很少使用 `inbound` 或 `outbound` `这个概念的。inbound`/`outbound` 主要是 Istio 里的概念。详见： {doc}`/ch1-istio-arch/service-mesh-base-concept`
- 一节。 Envoy 主要使用 `upstream` 与 `downstream` 的概念。  
+But from an Envoy implementation point of view alone, the concepts of `inbound` or `outbound` are rarely used. inbound`/`outbound` are concepts mainly used in Istio. See: {doc}`/ch1-istio-arch/service-mesh-base-concept`.
+ section. Envoy uses the concepts of `upstream` and `downstream`.  
 
-对于 `fortio-server(pod)` 的 inbound:
+For `fortio-server(pod)` inbound.
   - downstream: client pod
   - upstream: app:8080
 
-对于 `fortio-server(pod)` 的 outbound:
+outbound: downstream: client pod upstream: app:8080 for `fortio-server(pod)`.
  - downstream: app
  - upstream: `fortio-server-l2(pod)`:8080
 
-当初，我开始学习 Istio 时，最难理解的就是上面的概念了。这个弯太难转了。即：
+When I first started learning Istio, the hardest thing to understand was the above concept. The bend was too hard to turn. To wit:
 
 ```{attention}
-在 Istio 里，从 POD 内的 Envoy Proxy 角度看，同一 POD 内的 app/service 进程，只是一个普通的 `upstream cluster`。而当这个 app 调用其它 POD 上运行的 service 时，目标 POD 也是一个 `upstream cluster`。 概念上是一样的。
+In Istio, from the point of view of the Envoy Proxy within a POD, an app/service process within the same POD is just an ordinary `upstream cluster`. When the app calls a service running on another POD, the target POD is also an `upstream cluster`. It's conceptually the same.
 ```
 
-:::{figure-md} 从 Envoy 概念看 upstream 与 downstream 抽象流程
+:::{figure-md} upstream and downstream abstraction flow from Envoy concepts
 
-<img src="/ch2-envoy/envoy-high-level-flow/envoy-high-level-flow.assets/envoy-high-level-flow-abstract.drawio.svg" alt="从 Envoy 概念看 upstream 与 downstream 抽象流程">
+<img src="/ch2-envoy/envoy-high-level-flow/envoy-high-level-flow.assets/envoy-high-level-flow-abstract.drawio.svg" alt="Upstream and downstream abstract flows from Envoy concepts. upstream vs. downstream abstract flow">
 
-*从 Envoy 概念看 upstream 与 downstream 抽象流程*
+*upstream and downstream abstraction flows from Envoy concepts*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-high-level-flow-abstract.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-high-level-flow-abstract.drawio.svg)*
 
 
 
