@@ -111,7 +111,7 @@ dev-istio/dev-istio.md
 ## Appendix
 
 ```{toctree}
-:caption: appendix
+:caption: Appendix
 :maxdepth: 5
 :includehidden: 
 

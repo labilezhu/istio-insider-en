@@ -1,4 +1,4 @@
-# Troubleshooting - 问题排查
+# Troubleshooting
 
 ```{toctree}
 tls-traffic/decrypt-dump-tls-traffic.md
