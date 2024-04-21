@@ -1,4 +1,4 @@
-# 架构
+# Envoy Architecture
 
 ```{toctree}
 oop/oop.md
