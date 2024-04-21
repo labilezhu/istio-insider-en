@@ -1,52 +1,52 @@
-# Istio 数据面架构
+# Istio Data Plane Architecture
 
-如果要了解一个系统的核心机理，那么首先应该看看系统的主要数据流。Istio 也不例外。下面我们看看 Istio数据面的部署架构。
+If you want to understand the core mechanics of a system, you should first look at the main data flows of the system, and Istio is no exception. Below we look at the deployment architecture of the Istio data plane.
 
 ```{note}
-本节的实验环境说明见于： {ref}`appendix-lab-env/appendix-lab-env-base:简单分层实验环境`
+A description of the lab environment for this section can be found at: {ref}`appendix-lab-env/appendix-lab-env-base:Simple layered lab environment`
 ```
 
-:::{figure-md} 图：Istio数据面架构
+:::{figure-md} Figure: Istio Data Plane Architecture
 
-<img src="istio-data-panel-arch.assets/istio-data-panel-arch.drawio.svg" alt="Inbound与Outbound概念">
+<img src="istio-data-panel-arch.assets/istio-data-panel-arch.drawio.svg" alt="Inbound and Outbound concepts">
 
-*图：Istio 数据面架构*
+*Figure: Istio Data Plane Architecture*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fistio-data-panel-arch.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fistio-data-panel-arch.drawio.svg)*
 
-{ref}`图：Istio数据面架构` 就是调用链: `client ➔ fortio-server:8080 ➔ fortio-server-l2:8080` 的数据面关系图。图中的数字是端口号。 
+{ref}`Figure: Istio Data Plane Architecture` is the data-plane relationship diagram for the call chain: `client ➔ fortio-server:8080 ➔ fortio-server-l2:8080`. The numbers in the diagram are port numbers. 
 
 
 ## netfilter/iptables
 
-{ref}`图：Istio数据面架构`  中的 `kernel netfilter`  是一些 TCP 连接的拦截与转发规则，可以这样查看：
+{ref}`Figure: Istio Data Plane Architecture` The `kernel netfilter` in the diagram is some interception and forwarding rules for TCP connections, which can be inspected like this:
 
 ```bash
-export WORKNODE=xzy #关注的 POD 运行的 worknode
+export WORKNODE=xzy # The worker node on which the POD of interest is running.
 ssh $WORKNODE
-export POD=fortio-server #关注的 POD 名字
+export POD=fortio-server # name of POD of interest
 ENVOY_PIDS=$(pgrep envoy)
 while IFS= read -r ENVOY_PID; do
     if [ $(sudo nsenter -u -t $ENVOY_PID hostname)=="$POD" ]; then
         export TARGET_ENVOY_PID=$ENVOY_PID
-    fi
+    export TARGET_ENVOY_PID=$ENVOY_PID
 done <<< "$ENVOY_PIDS"
 
 sudo nsenter -n -t $TARGET_ENVOY_PID iptables-save
 ```
 
-输出：
+Output:
 
 ```
 *nat
 :PREROUTING ACCEPT [1112:66720]
 :INPUT ACCEPT [1112:66720]
 :OUTPUT ACCEPT [152:13538]
-:POSTROUTING ACCEPT [152:13538]
-:ISTIO_INBOUND - [0:0]
-:ISTIO_IN_REDIRECT - [0:0]
-:ISTIO_OUTPUT - [0:0]
-:ISTIO_REDIRECT - [0:0]
+:postprocessing accpt [152:13538] :istio_inbounds
+:istio_inbound - [0:0] :istio_in_routing - [0:0
+:ISTIO_IN_REDIRECT - [0:0] :ISTIO_OUTPUT - [0:0
+:ISTIO_OUTPUT - [0:0] :ISTIO_REDIRECT - [0:0] :ISTIO_REDIRECT - [0:0
+:ISTIO_REDIRECT - [0:0] :ISTIO_REDIRECT - [0:0]
 -A PREROUTING -p tcp -j ISTIO_INBOUND
 -A OUTPUT -p tcp -j ISTIO_OUTPUT
 -A ISTIO_INBOUND -p tcp -m tcp --dport 15008 -j RETURN

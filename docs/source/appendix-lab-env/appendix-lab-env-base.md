@@ -1,29 +1,28 @@
-# 简单分层实验环境
+# Simple layered lab environment
 
 
 ```{note}
-开始前，请确保您已经看过： {ref}`appendix-lab-env/index:实验环境总述`
+Before you start, make sure you've seen: {ref}`appendix-lab-env/index:General description of the lab environment`
 ```
 
-安装成功后的架构图见：
+For a diagram of the architecture after a successful installation see:
 
-:::{figure-md} 图:简单分层实验环境部署
+:::{figure-md} Figure:Simple layered lab environment deployment
 
-<img src="/ch1-istio-arch/istio-data-panel-arch.assets/istio-data-panel-arch.drawio.svg" alt="Inbound与Outbound概念">
+<img src="/ch1-istio-arch/istio-data-panel-arch.assets/istio-data-panel-arch.drawio.svg" alt="Inbound and Outbound concepts">
 
-*图:简单分层实验环境部署*
+*Figure:Simple layered lab environment deployment*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fistio-data-panel-arch.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fistio-data-panel-arch.drawio.svg)*
 
 
-## 安装过程
+## Installation process
 
 ```bash
-kubectl create secret docker-registry docker-registry-key --docker-server=https://index.docker.io/v1/ --docker-username=labile --docker-password=<your-pword> --docker-email=labile.zhu@gmail.com
+kubectl create secret docker-registry docker-registry-key --docker-server=https://index.docker.io/v1/ --docker-username=labile --docker- password=<your-pword> --docker-email=labile.zhu@gmail.com
 
 
 kubectl get secret docker-registry-key --output=yaml
-
 ```
 
 ### fortio
