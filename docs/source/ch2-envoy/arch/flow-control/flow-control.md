@@ -34,31 +34,31 @@ The following is a simple TCP implementation detailing the flow control process,
 - `drained` - The emptying of a Buffer. Generally refers to the processing and draining of a buffer from above the low watermark, down to below the low watermark after consumption, or even empty.
 - `HTTP/2 window` - The HTTP/2 standard implementation of flow control that indicates, via the `WINDOW_UPDATE` frame, the number of octets the sender may transmit in addition to the existing flow control window. See "[Hypertext Transfer Protocol Version 2 (HTTP/2) - 5.2. Flow Control](https://httpwg.org/specs/rfc7540.html#FlowControl) for details. "
 - `http stream` - The HTTP/2 standard for streams. For details, see "[Hypertext Transfer Protocol Version 2 (HTTP/2) - 5. Streams and Multiplexing](https://httpwg.org/specs/rfc7540.html#StreamsLayer)"
-- High/Low Watermark - High and low watermark design patterns for controlling memory or buffer consumption but not wanting to trigger control operations with frequent high-frequency jitter, see "[What are high and low water marks in bit streaming](https://stackoverflow.com/questions/45489405/what-are-high-and-low-water-marks-in-bit-streaming) for details.
+- High/Low Watermark - High and low watermark design patterns for controlling memory or buffer consumption but not wanting to trigger control operations with frequent high-frequency jitter, see "[What are high and low water marks in bit streaming](https://stackoverflow.com/questions/45489405/what-are-high-and-low-water-marks-in-bit-streaming)" for details.
 
 
 
 ## TCP flow control implementation
-Flow control for TCP and `TLS endpoints` is handled through the coordination between the ``Network::ConnectionImpl`` Write Buffer and the ``Network::TcpProxy `` Filter" Coordination between them is handled.
+Flow control for TCP and `TLS endpoints` is handled through the coordination between the `Network::ConnectionImpl` Write Buffer and the `Network::TcpProxy` Filter.
 
 The flow control for `Downstream` is as follows.
-- Downstream `Network::ConnectionImpl::write_buffer_` buffers too much data. It calls ``Network::ConnectionCallbacks::onAboveWriteBufferHighWatermark()``.
+- Downstream `Network::ConnectionImpl::write_buffer_` buffers too much data. It calls `Network::ConnectionCallbacks::onAboveWriteBufferHighWatermark()`.
 - `Network::TcpProxy::DownstreamCallbacks` receives `onAboveWriteBufferHighWatermark()` and calls `readDisable(true)` on the Upstream connection.
 - When the Downstream is finished processing (`drained`), it calls `Network::ConnectionCallbacks::onBelowWriteBufferLowWatermark()` on the Upstream connection.
 - `Network::TcpProxy::DownstreamCallbacks` receives `onBelowWriteBufferLowWatermark()` and calls `readDisable(false)` on the Upstream connection.
 The flow control for `Upstream` is roughly the same.
-- Upstream `Network::ConnectionImpl::write_buffer_` buffers too much data. It calls ``Network::ConnectionCallbacks::onAboveWriteBufferHighWatermark()``.
+- Upstream `Network::ConnectionImpl::write_buffer_` buffers too much data. It calls `Network::ConnectionCallbacks::onAboveWriteBufferHighWatermark()`.
 - `Network::TcpProxy::UpstreamCallbacks` receives `onAboveWriteBufferHighWatermark()` and calls `readDisable(true)` on the Downstream connection.
 - When the Upstream has finished processing (`drained`), it calls `Network::ConnectionCallbacks::onBelowWriteBufferLowWatermark()` on the Downstream connection.
 - `Network::TcpProxy::UpstreamCallbacks` receives `onBelowWriteBufferLowWatermark()` and calls `readDisable(false)` on Downstream connections.
 
 
-The subsystem and Callback mechanism can be found in this book in the section:{ref}`ch2-envoy/arch/oop/oop:Callback Callback Design Patterns`.
+The subsystem and Callback mechanism can be found in this book in the section: {ref}`ch2-envoy/arch/oop/oop:Callback design pattern`.
 
 
 
 ## HTTP2 Flow Control Implementation
-Because the various Buffers in the HTTP/2 technology stack are quite cumbersome, each segment of the path from Buffer exceeding the ``Watermark`` limit to pausing data from the data source is described in a separate Envoy document.
+Because the various Buffers in the HTTP/2 technology stack are quite cumbersome, each segment of the path from Buffer exceeding the `Watermark` limit to pausing data from the data source is described in a separate Envoy document.
 
 
 ```{note}
