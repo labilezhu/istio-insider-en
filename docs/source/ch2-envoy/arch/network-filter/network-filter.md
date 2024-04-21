@@ -2,105 +2,105 @@
 typora-root-url: ../../..
 ---
 
-# Network Filter
+## Network Filter
 
 ## Network Filter Chains
-在前面章節的 {ref}`图：Istio里的 Envoy Inbound 配置举例` 中，可以看出，一个 Listener 可以包含多个 `Network Filter Chain`。而其中每个 Chain 都有自己的 `filter_chain_match`  ，用于配置新建立的 `Inbound Connection` 选定 `Network Filter Chain` 的策略。
+In the {ref}`Figure: Example of Envoy Inbound Configuration in Istio` in the previous chapter, it can be seen that a Listener can contain multiple `Network Filter Chains`. Each of these chains has its own `filter_chain_match`, which is used to configure the policy of the `Network Filter Chain` selected by the newly created `Inbound Connection`.
 
-每个 `Network Filter Chain` 都有自己的名字。需要注意的是，`Network Filter Chain` 的名字是允许重复的。
+Each `Network Filter Chain` has its own name. *Note that duplicate `Network Filter Chain` names are allowed.*
 
-每个 `Network Filter Chain` 又由顺序化的 `Network Filter` 组成。 
+Each `Network Filter Chain` consists of sequential `Network Filters`. 
 
 ## Network Filter
 
-Envoy 对为保证扩展性，采用多层插件化的设计模式。其中，`Network Filter` 就是 L2 / L3 (IP/TCP) 层的组件。如，上面的 {ref}`图：Istio里的 Envoy Inbound 配置举例` 中，顺序地有：
-1. istio.metadata_exchange
-2. envoy.filters.network.http_connection_manager
+Envoy uses a multi-layer plug-in design pattern to ensure scalability. The `Network Filter` is the L2 / L3 (IP/TCP) layer component. For example, in the {ref}`Figure: Example of Envoy Inbound Configuration in Istio` above, there are, in order, the following:
+1. istio.metadata_exchange `Network Filter`
+2. envoy.filters.network.http_connection_manager `Network Filter`
 
-两个 Network Filter。其中，主要逻辑当然在 `http_connection_manager` 了。
+Two network filters, of course, the heavy HTTP proxy tasks is done on `http_connection_manager` network filter.
 
-### Network Filter 框架设计概念
+### Network Filter Framework Design Concepts
 
-我在学习 Envoy 的  Network Filter 框架设计时，发现它和我想像中的 Filter 设计非常不同。甚至有点违反我的直觉。见下图：
+As I was learning about Envoy's Network Filter framework design, I realized that it is very different from what I thought a Filter design would be. It was even a bit counter-intuitive. See the following diagram:
 
-:::{figure-md} 图：Model of Network Filter Framework
+:::{figure-md} Figure: Model of Network Filter Framework
 
-<img src="/ch2-envoy/arch/network-filter/network-filter-framework-concept.drawio.svg" alt="图：Model of Network Filter Framework">
+<img src="/ch2-envoy/arch/network-filter/network-filter-framework-concept.drawio.svg" alt="Figure: Model of Network Filter Framework">
 
-*图：Model of Network Filter Framework*
+*Figure: Model of Network Filter Framework*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fnetwork-filter-framework-concept.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fnetwork-filter-framework-concept.drawio.svg)*
 
-以下仅以 ReadFilter 说说：
+Here's just a word in terms of `ReadFilter`:
 
-`我直觉中的模型(My intuition Ideal model)` 是：
- 1. Filter 框架层有 `Upstream` 这个概念
- 2. 一个 Filter 的输出数据和事件，会是下一个 Filter 的输入数据和事件。因为这叫 Chain，应该和 Linux 的 `cat myfile | grep abc | grep def` 类似。
- 3. Filter 之间逻辑上的 Buffer 应该是隔离的。
-
-
-而 `现实的模型(Realistic model)` 中
-1. 框架层面，没有 `Upstream` 这个概念。Filter 实现自行实现/不实现 Upstream，包括连接建立和数据读写，事件通知。所以，框架层面，更没有 Cluster / Connection Pool 等等概念了。
-2. 见下面一项
-3. Filter 之间共享了 Buffer，前面的 Filter 对 Buffer 的读操作，如果沒进行 `drained(排干)` ，后面的 Filter 将会重复读取数据。前面的 Filter 也可以在 Buffer 中插入新数据。 而这个有状态的 Buffer，会传递到后面的 Filter 。
-4. 由于 “框架层面，没有 `Upstream` 这个概念” 所以 `WriteFilter` 也不是直觉中的向 `Upstream` 写 Request/Data 的模块，而是向 `Downsteam` 写 Response/Data 的模块。
-
-### Network Filter 对象关系
-
-写到这里，是时候看看代码了。不过，不是直接看，先看看 C++ 类图吧。
+`My intuition Ideal model` is:
+ 1. the concept of `Upstream` exists in the Filter framework layer.
+ 2. the output data and events of one Filter will be the input data and events of the next Filter. Since this is called Chain, it should be similar to Linux's `cat myfile | grep abc | grep def`. 
+ 3. The Buffer between Filters should be isolated.
 
 
-:::{figure-md} 图：Network Filter 对象关系
+In the `realistic model`, there is no `framework` level.
+1. at the framework level, there is no concept of `Upstream`, the Filter implementation implements or does not implement `Upstream`, including connection establishment and data read/write, event notification. So, at the framework level, there is no concept of Cluster / Connection Pool, etc. 
+2. See the following item
+3. Filters share the Buffer with each other, if the previous Filter reads the Buffer without `drained`, the following Filter will read the data repeatedly. The previous Filter can also insert new data into the Buffer. And this stateful Buffer will be passed to the later Filter.
+4. Since "at the framework level, there is no concept of `Upstream`", `WriteFilter` is not a module that intuitively writes Request/Data to `Upstream`, but a module that writes Response/Data to `Downstream`.
 
-<img src="/ch2-envoy/arch/network-filter/network-filter-hierarchy.drawio.svg" alt="图：Network Filter 对象关系">
+### Network Filter object relationships
 
-*图：Network Filter 对象关系*
+Now that I've written this, it's time to look at the code. But not directly. Let's look at the C++ class diagram first.
+
+
+:::{figure-md} Figure: Network Filter object relationships
+
+<img src="/ch2-envoy/arch/network-filter/network-filter-hierarchy.drawio.svg" alt="Figure: Network Filter object relationships">
+
+*Figure: Network Filter Object Relationships*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fnetwork-filter-hierarchy.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fnetwork-filter-hierarchy.drawio.svg)*
 
 
-可见，大家日常生活中，WriteFilter 并不常用 :) 。
+As you can see, `WriteFilter` is not commonly used in our daily life :) .
 
 
-### Network Filter 框架设计细说
-在代码实现层， Network Filter 框架下，抽象对象间的协作关系如下：
+### Network Filter Framework Design Details
+At the code implementation level, the Network Filter framework has the following collaboration between abstract objects:
 
-:::{figure-md} 图：网络过滤器框架抽象协作
+:::{figure-md} Figure: Network Filter framework abstraction collaboration
 
-<img src="/ch2-envoy/arch/network-filter/network-filter-framework.drawio.svg" alt="图：网络过滤器框架抽象协作">
+<img src="/ch2-envoy/arch/network-filter/network-filter-framework.drawio.svg" alt="Figure: Network Filter framework abstraction collaboration">
 
-*图：网络过滤器框架抽象协作*
+*Figure: Network Filter framework abstraction collaboration*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fnetwork-filter-framework.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fnetwork-filter-framework.drawio.svg)*
 
 
-下面，以经典的 TCP Proxy Fitler 为例，说明一下。
+Below, the classic TCP Proxy Filter is used as an example.
 
 
-:::{figure-md} 图：Network Filter Framework - TCP 代理过滤器示例
+:::{figure-md} Figure : Network Filter Framework - TCP Proxy Filter Example
 
-<img src="/ch2-envoy/arch/network-filter/network-filter-tcpproxy.drawio.svg" alt="图：Network Filter Framework - TCP 代理过滤器示例">
+<img src="/ch2-envoy/arch/network-filter/network-filter-tcpproxy.drawio.svg" alt="Figure : Network Filter Framework - TCP Proxy Filter Example">
 
-*图：Network Filter Framework - TCP 代理过滤器示例*
+*Figure : Network Filter Framework - TCP Proxy Filter Example*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fnetwork-filter-tcpproxy.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fnetwork-filter-tcpproxy.drawio.svg)*
 
 
-#### Network Filter - ReadFilter 协作
+#### Network Filter - ReadFilter Collaboration
 
-:::{figure-md} 图：Network Filter - ReadFilter 协作
+:::{figure-md} Figure : Network Filter - ReadFilter Collaboration
 
-<img src="/ch2-envoy/arch/network-filter/network-filter-readfilter.drawio.svg" alt="图：Network Filter - ReadFilter 协作">
+<img src="/ch2-envoy/arch/network-filter/network-filter-readfilter.drawio.svg" alt="Figure : Network Filter - ReadFilter Collaboration">
 
-*图：Network Filter - ReadFilter 协作*
+*Figure : Network Filter - ReadFilter Collaboration*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fnetwork-filter-readfilter.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fnetwork-filter-readfilter.drawio.svg)*
 
-ReadFilter 协作比较复杂，也是 Network Filter Framework 的核心逻辑。所以要细说。
-如前所言， Framework 本身没的直接提供 Upstream / Upstream Connection Pool / Cluster / Route 这些抽象对象和相关事件。而这里，我们暂且把这些称为：`外部对象与事件`。Filter 实现需要自己去创建或获取这些 `外部对象`，也需要自己去监听这些 `外部事件` 。`外部事件` 可能包括：
+The `ReadFilter` collaboration is a bit more complex and is the core logic of the Network Filter Framework. That's why it's important to talk about it in detail.
+As mentioned before, the Framework itself does not directly provide the Upstream / Upstream Connection Pool / Cluster / Route abstractions and related events. Instead, we'll refer to these as `External Objects and Events`, and the Filter implementation needs to create or get these `External Objects` and listen for these `External Events` itself. External events may include:
 
-- Upstream 域名解释完成
-- Upstream Connection Pool 连接可用
+- Upstream Domain Name Interpretation Completed
+- Upstream Connection Pool connection available
 - Upstream socket read ready
 - Upstream write buffer full
 - ...
@@ -108,21 +108,21 @@ ReadFilter 协作比较复杂，也是 Network Filter Framework 的核心逻辑�
 
 
 
-#### Network Filter - WriteFilter 协作
+#### Network Filter - WriteFilter Collaboration
 
-:::{figure-md} 图：NNetwork Filter - WriteFilter 协作
+:::{figure-md} Figure: Network Filter - WriteFilter Collaboration
 
-<img src="/ch2-envoy/arch/network-filter/network-filter-writefilter.drawio.svg" alt="图：Network Filter - WriteFilter 协作">
+<img src="/ch2-envoy/arch/network-filter/network-filter-writefilter.drawio.svg" alt="Figure: Network Filter - WriteFilter Collaboration">
 
-*图：Network Filter - WriteFilter 协作*
+*Figure: Network Filter - WriteFilter Collaboration*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fnetwork-filter-writefilter.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fnetwork-filter-writefilter.drawio.svg)*
 
-由于 `WriteFilter` 在 Envoy 中使用场景有限，只有 MySQLFilter / PostgresFilter / KafkaBrokerFilter 和 Istio 的 MetadataExchangeFilter 。所以这里就不展开说明了。
+Since `WriteFilter` has limited usage scenarios in Envoy, only MySQLFilter / PostgresFilter / KafkaBrokerFilter and Istio's MetadataExchangeFilter. So I won't expand on that here.
 
-## 扩展阅读
+## Extended Reading
 
-如果有兴趣研究 Listener 的实现细节，建议看看我 Blog 的文章：
- - [逆向工程与云原生现场分析 Part2 —— eBPF 跟踪 Istio/Envoy 之启动、监听与线程负载均衡](https://blog.mygraphql.com/zh/posts/low-tec/trace/trace-istio/trace-istio-part2/)
- - [逆向工程与云原生现场分析 Part3 —— eBPF 跟踪 Istio/Envoy 事件驱动模型、连接建立、TLS 握手与 filter_chain 选择](https://blog.mygraphql.com/zh/posts/low-tec/trace/trace-istio/trace-istio-part3/)
+If you are interested in studying the implementation details of Listener, I recommend checking out my blog posts:
+ - [Reverse Engineering and Cloud Native Field Analysis Part2 -- eBPF Trace Istio/Envoy Startup, Listening and Thread Load Balancing](https://blog.mygraphql.com/zh/posts/low-tec/trace/trace-istio/trace-istio-part2/)
+ - [Reverse Engineering and Cloud Native Field Analysis Part3 -- eBPF Trace Istio/Envoy Event-Driven Model, Connection Establishment, TLS Handshake and Filter_Chain Selection](https://blog.mygraphql.com/zh/posts/low-tec/trace/trace-istio/trace-istio-part3/)
  - [Taming a Network Filter](https://blog.envoyproxy.io/taming-a-network-filter-44adcf91517)

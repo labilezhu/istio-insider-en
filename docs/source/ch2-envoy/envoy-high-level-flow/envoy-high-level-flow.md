@@ -1,4 +1,4 @@
-## Envoy abstracts the main stream process and concepts
+## Envoy main process and concepts
 
 ## upstream/upstream
 

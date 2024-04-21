@@ -2,79 +2,79 @@
 typora-root-url: ../../..
 ---
 
-# 事件驱动与线程模型
+# Event-driven vs. threaded model
 
 ![event loop](/ch2-envoy/arch/event-driven/event-driven.assets/envoy-event-model-loop.drawio.svg)
 
-不出意外，Envoy 使用了 libevent 这个 C 事件 library， libevent 使用了 Linux Kernel 的 epoll 事件驱动 API。
+Unsurprisingly, Envoy uses `libevent`, a C event library, which uses the Linux Kernel's epoll event driver API.
 
-说明一下图中的流程：
-1. Envoy worker 线程挂起在 `epoll_wait()` 方法中，在内核中注册等待 epoll 关注的 socket 发生事件。线程被移出 kernel 的 runnable queue。线程睡眠。
-2. 内核收到 TCP 网络包，触发事件
-3. 操作系统把 Envoy worker 线程被移入 kernel 的 runnable queue。Envoy worker 线程被唤醒，变成 runnable。操作系统发现可用 cpu 资源，把 runnable 的 envoy worker 线程调度上 cpu。（注意，runnable 和 调度上 cpu 不是一次完成的）
-4. Envoy 分析事件列表，按事件列表的 fd 调度到不同的 `FileEventImpl` 类的回调函数（实现见：`FileEventImpl::assignEvents`）
-5. `FileEventImpl` 类的回调函数调用实际的业务回调函数
-6. 执行 Envoy 的实际代理行为
-7. 完事后，回到步骤 1 。
+Let's explain the flow in the diagram:
+1. The Envoy worker thread hangs in the `epoll_wait()` method, registering with the kernel to wait for an event to occur on the socket of interest to epoll. The thread is moved out of the kernel's runnable queue, and the thread sleeps. 
+2. The kernel receives a TCP network packet, which triggers an event. 
+3. the operating system moves the Envoy worker thread into the kernel's runnable queue. the Envoy worker thread wakes up and becomes runnable. the operating system finds an available cpu resource and schedules the runnable Envoy worker thread onto the cpu. (Note that thread runnable and scheduling on a cpu are not completed at once)
+4. Envoy analyzes the event list and schedules to different callback functions of `FileEventImpl` class according to the fd of the event list (see `FileEventImpl::assignEvents` for implementation).
+5. the callback function of the `FileEventImpl` class calls the actual upper layer callback function
+6. Execute the actual proxy behavior of the Envoy
+7. When callback tasks done, go back to step 1.
 
 
 
-## HTTP 反向代理的总流程
+## General flow of HTTP Reverse Proxy
 
-整体看，Socket 事件驱动的 HTTP 反向代理总流程如下：
-![图：Socket 事件驱动的 HTTP 反向代理总流程](/ch2-envoy/arch/event-driven/event-driven.assets/envoy-event-model-proxy.drawio.svg)
+The overall flow of the socket event-driven HTTP reverse proxy is as follows:
+![Figure: Socket event-driven HTTP reverse proxy general flow](/ch2-envoy/arch/event-driven/event-driven.assets/envoy-event-model-proxy.drawio.svg)
 
-图中看出，有4种事件驱动了整个流程。后面几节会逐个分析。
+The diagram shows that there are 5 types of events driving the whole process. Each of them will be analyzed in later sections.
 
-## Downstream TCP 连接建立
+## Downstream TCP connection establishment
 
-现在看看，事件驱动和连接的建立的过程和关系：
+Now let's look at the process and the relationship between the event drivers and the connection establishment:
 ![envoy-event-model-accept](/ch2-envoy/arch/event-driven/event-driven.assets/envoy-event-model-accept.drawio.svg)
 
 
-1. Envoy worker 线程挂起在 `epoll_wait()` 方法中。线程被移出 kernel 的 runnable queue。线程睡眠。
-2. client 建立连接，server 内核完成3次握手，触发 listen socket 事件。
-   - 操作系统把 Envoy worker 线程被移入 kernel 的 runnable queue。Envoy worker 线程被唤醒，变成 runnable。操作系统发现可用 cpu 资源，把 runnable 的 envoy worker 线程调度上 cpu。（注意，runnable 和 调度上 cpu 不是一次完成的）
-3. Envoy 分析事件列表，按事件列表的 fd 调度到不同的 FileEventImpl 类的回调函数（实现见：`FileEventImpl::assignEvents`）
-4. FileEventImpl 类的回调函数调用实际的业务回调函数，进行 syscall `accept`，完成 socket 连接。得到新 socket 的 FD: `$new_socket_fd`。
-5. 业务回调函数把 调用 `epoll_ctl` 把 `$new_socket_fd ` 加到 epoll 监听中。
-6. 回到步骤 1 。
+1. The Envoy worker thread hangs in the `epoll_wait()` method. The thread is moved out of the kernel's runnable queue. the thread sleeps.
+2. client establishes a connection. server kernel completes 3 step handshakes, triggering a listen socket event.
+   - The operating system moves the Envoy worker thread into the kernel's runnable queue. the Envoy worker thread wakes up and becomes runnable. the operating system discovers the available cpu resources and schedules the runnable Envoy worker thread onto the cpu (note that runnable and scheduling onto the cpu are not done at the same time).
+3. Envoy analyzes the event list and schedules to different callback functions of `FileEventImpl` class according to the fd of the event list (see `FileEventImpl::assignEvents` for implementation).
+4. The callback function of `FileEventImpl` class calls the actual upper layer callback function, performs syscall `accept` and completes the socket connection. Get the FD of the new socket: `$new_socket_fd`. 5.
+5. The business callback function adds `$new_socket_fd` to the epoll listener by calling `epoll_ctl`. 6.
+6. Return to step 1.
 
 
 
-## 事件处理抽象框架
+## Event Handling Abstraction Framework
 
-上面主要在 kernel syscall 层面上介绍事件处理的底层过程。下面介绍在 Envoy 代码层面，如何抽象和封装事件。
+The above describes the underlying process of event handling at the kernel syscall level. The following section describes how events are abstracted and encapsulated at the Envoy code level.
 
-Envoy 使用了 libevent 这个 C 编写的事件 library。还在其上作了 C++ OOP 方面的封装。
+Envoy uses `libevent`, an event library written in C, with C++ OOP encapsulation.
 
 ![](/ch2-envoy/arch/event-driven/event-driven.assets/abstract-event-model.drawio.svg)
 
 
-如何快速在一个重度（甚至过度）使用 OOP 封装和 OOP Design Pattern 的项目中读懂核心流程逻辑，而不是在源码海洋中无方向地漂流? 答案是：找到主线。 对于 Envoy 的事件处理，主线当然是 `libevent` 的 `event_base` ，`event` 。如果你对 libevent 还不了解，可以看看本书的 `libevent 核心思想` 一节。
+How do you quickly read the core process logic in a project that is heavy (or even excessive) on OOP encapsulation and OOP Design Patterns, instead of drifting directionlessly in a sea of source code? The answer is: find the main flow. For Envoy's event handling, the main flow is, of course, `libevent`'s `event_base`, `event`. If you're not familiar with `libevent`, check out the `libevent Core Ideas` section of this book.
 
-- `event` 封装到 `ImplBase` 对象中。 
-- `event_base` 包含在 `LibeventScheduler` <- `DispatcherImpl` <- `WorkerImpl` <- `ThreadImplPosix` 下
+- `event` is encapsulated in an `ImplBase` object. 
+- `event_base` is included under `LibeventScheduler` <- `DispatcherImpl` <- `WorkerImpl` <- `ThreadImplPosix`.
 
-然后，不同类型的 `event` ，又封装到不同的  `ImplBase` 子类中：
+The different types of `event` are then encapsulated into different `ImplBase` subclasses:
 - TimerImpl
 - SchedulableCallbackImpl
 - FileEventImpl
 
-其它信息上图已经比较详细，不再多言了。
+Other information is already detailed in the diagram above, so I won't go into more detail.
 
-## libevent 核心思想
+## libevent Core Ideas
 
 ```{toctree}
 libevent.md
 ```
 
 
-## 扩展阅读
+## Extended reading
 
-如果有兴趣研究实现细节，建议看看我 Blog 的文章：
+If you are interested in studying the implementation details, I recommend checking out the articles on my Blog:
 
- - [逆向工程与云原生现场分析 Part3 —— eBPF 跟踪 Istio/Envoy 事件驱动模型、连接建立、TLS 握手与 filter_chain 选择](https://blog.mygraphql.com/zh/posts/low-tec/trace/trace-istio/trace-istio-part3/)
- - [逆向工程与云原生现场分析 Part4 —— eBPF 跟踪 Istio/Envoy 之 upstream/downstream 事件驱动协作下的 HTTP 反向代理流程](https://blog.mygraphql.com/zh/posts/low-tec/trace/trace-istio/trace-istio-part4/)
+ - [Reverse Engineering and Cloud Native Field Analysis Part3 -- eBPF Trace Istio/Envoy Event Driven Model, Connection Establishment, TLS Handshake and filter_chain Selection](https://blog.mygraphql.com/zh/posts/low-tec/trace/trace-istio/trace-istio-part3/)
+ - [BPF tracing istio/Envoy - Part4: Upstream/Downstream Event-Driven Collaboration of Envoy@Istio](https://blog.mygraphql.com/en/posts/low-tec/trace/trace-istio/trace-istio-part4/)
 
-与 Envoy 作者 Matt Klein 的： [Envoy threading model](https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310)
+And last but not least: Envoy author Matt Klein: [Envoy threading model](https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310)

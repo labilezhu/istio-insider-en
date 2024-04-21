@@ -2,22 +2,22 @@
 typora-root-url: ../../..
 ---
 
-# libevent 核心思想
+# libevent Core Ideas
 
-`libevent` 的有两个重要的概念： `event_base` 、`event` 。
+There are two important concepts in `libevent`: `event_base` and `event`.
 
 
 ![](/ch2-envoy/arch/event-driven/libevent.assets/libevent.drawio.svg)
 
 
 ## event
-event 这个词意义大广大，libevent 中的 `event` 对象，到底是什么意思？ 理解 OOP 方法编写的某个对象的功能或定位，有一个窍门，就是看对象的属性名和方法名。从上图看了， `event` 是指在某个 fd(file descriptor 文件描述符/句柄) 上可能会发生的信号，如 Read Ready 、 Write Ready 等等。 注意，这里是可能会发生的事件，包括：未来可能发生、正在发生、曾经发生过的事件。
+The word event means a lot. What does the `event` object in libevent mean? One trick to understanding the function or positioning of an object written in an OOP method is to look at the object's property and method names. As you can see from the picture above, `event` refers to a signal that may occur on a certain fd (file descriptor file descriptor/handle), such as Read Ready, Write Ready, etc. Note that this is a signal that may occur on a certain fd (file descriptor/handle). Note that this is a possible event, which includes events that may occur in the future, are occurring now, or have occurred before.
 
-应用可能对 `event` 进行很多操作，包括监听或订阅事件，以在事件真正发生后，可以 callback 到应用代码。
+There are a number of things that an application might do with `event`, including listening or subscribing to the event so that it can callback to the application code when the event actually occurs.
 
 ## event_base
 
-可以认为是 `event` 的集合。多数事件驱动型的应用实现，每个工作线程拥有自己的 `event_base` 。并执行自己的 `event_base`的事件循环，包括 Envoy 。
+Can be thought of as a collection of `event`s. Most event-driven applications implement that each worker thread has its own `event_base`. Each worker thread has its own `event_base` and executes its own `event_base` event loop, including the Envoy.
 
 > http://www.wangafu.net/~nickm/libevent-book/Ref2_eventbase.html
 

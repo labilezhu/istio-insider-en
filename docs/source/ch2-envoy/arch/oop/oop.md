@@ -28,7 +28,6 @@ In Envoy, its main purpose is to allow subsystems to be designed independently o
 
 
 ![*OOP Subsystem Callback Design Pattern*](./oop-subsystem-callback.drawio.svg)
-*OOP Subsystem Callback Design Pattern*
 
 
 
@@ -45,7 +44,7 @@ Envoy is designed to be modular, with many subsystems that are independent of ea
 - `Buffer` - the buffer block
 - `Api` - operating system calls
 - `Config` - Configurations such as XDS.
-- `Event` - event drivers
+- `Event` - Event-driven
 - `Http` - HTTP related
   - `Http::ConnectionPool` - HTTP connection pooling related
   - `Http1` - HTTP/1.1 related
