@@ -6,8 +6,9 @@ Router process in a nutshell:
 :::{figure-md} Figure: Router Router process in a nutshell
 :class: full-width
 <img src="/ch2-envoy/arch/http/router/router.assets/router-filter-base-flow.drawio.svg" alt="Diagram - Router flow sketch">
+
 *Figure: Router Router process in a nutshell*
-:::.
+:::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Frouter-filter-base-flow.drawio.svg)*
 
 

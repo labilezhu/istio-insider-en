@@ -3,7 +3,7 @@ typora-root-url: ../../..
 ---
 
 # Flow Control - Flow Control
-As with all http proxy software, Envoy takes flow control very seriously. Because CPU/memory resources are limited, it is also important to avoid situations where a single flow can take up too much resources. It is important to note that, as with any software implemented in an asynchronous/threaded multiplexed architecture, flow control is never a simple task.
+As any http proxy software, Envoy takes flow control very seriously. Because CPU/memory resources are limited, it is also important to avoid situations where a single flow can take up too much resources. It is important to note that, as with any software implemented in an asynchronous/threaded multiplexed architecture, flow control is never a simple task.
 
 If someone asked me what was the hardest part of learning the Envoy implementation? My answer must be the flow control part. And there is very little information about it on the web. Or there are readers ask, so difficult, why study, this study has any value? In my opinion, this study has at least the following values:
 
