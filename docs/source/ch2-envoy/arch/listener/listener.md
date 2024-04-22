@@ -67,6 +67,7 @@ As you can see, the name Istio gives to the Listener is a bit hard to understand
 ## Listener internal components
 :::{figure-md} Figure: Listener Internal Components
 <img src="/ch2-envoy/arch/listener/listener.assets/listener.drawio.svg" alt="Figure - Listener Internal Components">
+
 *Figure: Listener Internal Components*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Flistener.drawio.svg)*
