@@ -1,22 +1,22 @@
 # Lab Environment
 
-这里列出了本书用到的实现环境和相关的重要配置。
+Here is a list of the implementation environments used in this book and the related important configurations.
 
-- Istio: 1.14 , Envoy 版本： 1.22 patch 3
+- Istio: 1.14 , Envoy version: 1.22 patch 3
 - Kubernetes: 1.20  
-- 操作系统： Ubuntu 22.04.1 LTS
+- OS: Ubuntu 22.04.1 LTS
 - shell: Oh My ZSH
 
 
-shell 环境配置：
+shell environment configuration:
 ```bash
 alias k=kubectl
 ```
 
-## 基础环境安装
+## Basic environment installation
 
 
-### 默认 namespace
+### Default namespace
 
 ```yaml
 cat <<"EOF" | kubectl apply -f -
@@ -38,7 +38,7 @@ kubectl config set-context mark --user=kubernetes-admin --namespace=mark --clust
 kubectl config use-context mark
 ```
 
-### 安装 istio
+### Install istio
 
 ```bash
 curl -L https://istio.io/downloadIstio | sh -
@@ -53,7 +53,7 @@ export ISTIO_HOME=$HOME/istio/istio-1.14.3
 export PATH=$ISTIO_HOME/bin:$PATH
 ```
 
-## 安装工具服务
+## Install tools
 
 
 ### netshoot
@@ -154,7 +154,7 @@ EOF
 
 ```
 
-## 配置 Shell 环境
+## Setup shell
 
 ### istio gateway & node port
 
@@ -166,7 +166,7 @@ export INGRESS_HOST=$(kubectl get po -l istio=ingressgateway -n istio-system -o 
 ```
 
 
-## 实验环境列表
+## List of lab environment
 
 ```{toctree}
 appendix-lab-env-base.md
