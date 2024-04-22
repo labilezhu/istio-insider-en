@@ -15,7 +15,7 @@ In this book, I've tried to think as systematically as possible from a design an
 - Why Istio is what it is
 - The Truth Behind Those Magic Configurations: Linux + Envoy
   - How traffic is intercepted to the Envoy using Linux's netfilter technology.
-  - How istiod programs the Envoy to fulfill the traffic policies of the Service Grid.
+  - How istiod programs the Envoy to fulfill the traffic policies of the Service Mesh.
 - What Istio might look like in the future
 
 
