@@ -81,7 +81,7 @@ and productive life. To my dear wife and our amazing kid - thanks for all your l
 If you reproduce or modify any text or image, please give credit to the original source.
 
 ### Feedback
-As this is an open source interactive book, feedback from readers is of course very important. If you find a mistake in the book, or have a better suggestion, you may want to submit an Issue: []().  
+As this is an open source interactive book, feedback from readers is of course very important. If you find a mistake in the book, or have a better suggestion, you may want to submit an Issue:
 [https://github.com/labilezhu/istio-insider/issues](https://github.com/labilezhu/istio-insider/issues)
 
 
