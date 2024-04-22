@@ -91,7 +91,7 @@ For example, in the {ref}`Figure: Example of Envoy Inbound Configuration in Isti
 The functionality has been stated in the diagram.
 
 ### Network Filter Chains
-For example, in the {ref}`figure: Envoy Inbound Configuration Example in Istio` above, you can see several Network Filter Chains with repeatable names. Each of these has its own `filter_chain_match`, which Envoy uses to match connections to different `Network Filter Chains`.  
+For example, in the {ref}`Figure: Example of Envoy Inbound Configuration in Istio` above, you can see several Network Filter Chains with repeatable names. Each of these has its own `filter_chain_match`, which Envoy uses to match connections to different `Network Filter Chains`.  
 Each `Network Filter Chain` consists of sequentialized `Network Filters`. The `Network Filters` are described in a later section.
 
 
