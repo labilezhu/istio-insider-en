@@ -97,6 +97,7 @@ Each `Network Filter Chain` consists of sequentialized `Network Filters`. The `N
 ## Listener related components and startup sequence
 :::{figure-md} Figure: Listener core objects and startup sequence
 <img src="/ch2-envoy/arch/listener/listener.assets/listener-core-classes-startup-process.drawio.svg" alt="Figure - Listener core objects and startup sequence">
+
 *Figure: Listener core objects and startup sequence*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Flistener-core-classes-startup-process.drawio.svg)*

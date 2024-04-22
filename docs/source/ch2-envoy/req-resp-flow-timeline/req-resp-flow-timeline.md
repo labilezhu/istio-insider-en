@@ -135,7 +135,7 @@ Let's start with the request component flow part, the flowchart can be reasoned 
 
 <img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline-flowchart.drawio.svg" alt="Figure - Envoy Request Scheduling Flowchart">
 
-*Figure: Envoy Request Scheduling Flowchart
+*Figure: Envoy Request Scheduling Flowchart*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline-flowchart.drawio.svg)*
 

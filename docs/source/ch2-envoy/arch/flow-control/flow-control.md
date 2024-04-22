@@ -142,7 +142,7 @@ Example:
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fflow-control-2-upstream-backs-up-counter.drawio.svg)*
 
-#### Collaboration of Router::Filter during Upstream back-up
+#### Collaboration of `Router::Filter` during Upstream back-up
 
 
 > The two main parties involved in flow control are the router filter (`Envoy::Router::Filter`) and the connection manager (`Envoy::Http::ConnectionManagerImpl`). The router is responsible for intercepting watermark events for its own buffers, the individual upstream streams (if codec buffers fill up) and the upstream connection (if the network buffer fills up). It passes any events to the connection manager, which has the ability to call `readDisable()` to enable and disable further data from downstream. 
