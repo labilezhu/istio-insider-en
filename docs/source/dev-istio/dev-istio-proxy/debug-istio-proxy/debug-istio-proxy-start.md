@@ -1,45 +1,45 @@
-# 调试与观察 istio-proxy Envoy sidecar 的启动过程
+# Debugging and observing the startup of the istio-proxy Envoy sidecar
 
 
 
-学习 Istio 下 Envoy sidecar 的初始化过程，有助于理解 Envoy 是如何构建起整个事件驱动和线程互动体系的。其中 Listener socket 事件监初始化是重点。而获取这个知识最直接的方法是 debug Envoy 启动初始化过程，这样可以直接观察运行状态的 Envoy 代码，而不是直接读无聊的 OOP 代码去猜现实行为。但要 debug sidecar 初始化有几道砍要过。本文记录了我通关打怪的过程。
+Learning about the initialization of the Envoy sidecar under Istio will help you understand how Envoy builds its entire event-driven and threaded interaction system. Listener socket event monitor initialization is the key point. The most direct way to get this knowledge is to debug the Envoy initialization process, so that you can directly observe the running Envoy code, rather than reading boring OOP code to guess the real behavior. However, there are a few hurdles to overcome in order to debug sidecar initialization. This article documents the process of getting through it.
 
 
 
-> 本文基于我之前写的：[《调试 Istio 网格中运行的 Envoy sidecar C++ 代码》](https://blog.mygraphql.com/zh/posts/cloud/istio/debug-istio-proxy/)。你可能需要看看前者的背景，才比较容易读懂本文。
+> This article is based on my previous article: [Remote debugging an Envoy sidecar running in an Istio mesh by lldb at C++ source code level](https://blog.mygraphql.com/en/posts/cloud/istio/debug-istio-proxy/). You may need to look at the former for context to read this article more easily.
 
 
 
-## debug 初始化之难
+## The Difficulty of initialization debugging
 
-有经验的程序员都知道，debug 的难度和要 debug 的目标场景出现频率成反比。而 sidecar 的初始化只有一次。
+Experienced programmers know that the difficulty of debugging is inversely proportional to the frequency of the target scenario to be debugged. The initialization of sidecar only happens once.
 
-要 debug istio-proxy(Envoy) 的启动过程，需要经过几道砍：
+To debug istio-proxy(Envoy), you need to go through several steps:
 
- 1. Istio auto inject sidecar 在容器启动时就自动启动 Envoy，很难在初始化前完成 remote debug attach 和 breakpoint 设置。
- 2. `/usr/local/bin/pilot-agent` 负责运行 `/usr/local/bin/envoy` 进程，并作为其父进程，即不可以直接控制 envoy 进程的启动。
+ 1. Istio auto inject sidecar starts Envoy automatically when the container starts, it is difficult to complete the remote debug attach and breakpoint settings before initialization.
+ 2. `/usr/local/bin/pilot-agent` is responsible for running the `/usr/local/bin/envoy` process and acts as its parent, i.e., you can't directly control the startup of the envoy process.
 
-下面我解释一下如何避坑。
-
-
-
-## Envoy 的启动 attach 方法
-
-下面研究一下，两种场景下，Envoy 的启动 attach 方法：
-
-1. Istio auto inject 的 istio-proxy container (我没有使用这种方法，见附录部分)
-2. 手工 inject 的 istio-proxy container (我使用这种方法)
+I'll explain how to avoid this.
 
 
 
-### 手工 inject 的 istio-proxy container
+## Envoy's startup attach method
 
-要方便精准地在 envoy 开始初始化前 attach envoy 进程，一个方法是不要在容器启动时自动启动 envoy。要手工启动  `pilot-agent`，一个方法是不要 auto inject sidecar，用 `istioctl` 手工 inject：
+There are two scenarios in which the Envoy startup attach method can be used.
 
-#### 1. 定制手工拉起的 istio-proxy 环境
+1. istio-proxy container with Istio auto inject (I didn't use this method, see appendix section)
+2. manually injected istio-proxy container (I use this method)
+
+
+
+### Manually injected istio-proxy container
+
+One way to easily and precisely attach the envoy process before envoy starts initializing is to not automatically start envoy when the container starts. to manually start `pilot-agent`, one way is to not auto inject sidecar, and manually inject it with `istioctl`:
+
+#### 1. Customizing the istio-proxy environment for manual pull-ups
 
 ```bash
-# fortio-server.yaml 是定义 pod 的 k8s StatefulSet/deployment
+# fortio-server.yaml is the k8s StatefulSet/deployment where the pod is defined
 $ ./istioctl kube-inject -f fortio-server.yaml > fortio-server-injected.yaml
 ```
 
@@ -70,7 +70,7 @@ spec:
         prometheus.io/port: "15020"
         prometheus.io/scrape: "true"
         sidecar.istio.io/proxyImage: 192.168.122.1:5000/proxyv2:1.17.2-debug
-        sidecar.istio.io/inject: "false" #加入这行
+        sidecar.istio.io/inject: "false" # insert this line
       creationTimestamp: null
       labels:
         app: fortio-server
@@ -83,7 +83,7 @@ spec:
       - args:
         - 10d
         command:
-        - /bin/sleep #不启动 pilot-agent
+        - /bin/sleep #do not run pilot-agent
         image: docker.io/nicolaka/netshoot:latest
         imagePullPolicy: IfNotPresent
         name: main-app
@@ -228,14 +228,14 @@ status:
 $ kubectl apply -f fortio-server-injected.yaml  
 ```
 
-为避免 kubectl exec 在容器中启动进程的意外退出，和可以多次接入同一个 shell 实例，我使用了 `tmux`：
+To avoid unexpected exits of kubectl exec starting processes in containers, and to allow multiple accesses to the same shell instance, I use `tmux`:
 
 ```bash
 kubectl exec -it fortio-server-0 -c istio-proxy -- bash
 sudo apt install -y tmux
 ```
 
-我只希望一个 app(uid=1000) 用户的 outbound 流量流经 envoy，其它 outbound 流量不经过 envoy：
+I only want one app(uid=1000) user's outbound traffic to go through the envoy, and no other outbound traffic to go through the envoy:
 
 
 ```bash
@@ -249,7 +249,7 @@ adduser -u 1000 app
 
 ```bash
 kubectl exec -it fortio-server-0 -c istio-proxy -- bash
-tmux #开启 tmux server
+tmux # start tmux server
 
 sudo iptables-restore <<"EOF"
 *nat
@@ -292,49 +292,49 @@ EOF
 
 
 
-#### 2. 启动 remote debug server 与 vscode debug session
+#### 2. Start remote debug server and vscode debug session
 
 
 
-在 isto-proxy 运行的 worker node 上启动 remote debug server:
+Start the remote debug server on the worker node where istio-proxy is running.
 
 ```bash
-ssh labile@192.168.122.55 #  ssh 到运行 istio-proxy 的 worker node
+ssh labile@192.168.122.55 # ssh to the worker node where istio-proxy is running.
 
-# 获取 istio-proxy 容器内一个进程的 PID
+# Get the PID of a process in the istio-proxy container
 export POD="fortio-server-0"
-ENVOY_PIDS=$(pgrep sleep) #容器中有个叫 /usr/bin/sleep 的进程
+ENVOY_PIDS=$(pgrep sleep) # There is a process called /usr/bin/sleep in the container.
 while IFS= read -r ENVOY_PID; do
     HN=$(sudo nsenter -u -t $ENVOY_PID hostname)
     if [[ "$HN" = "$POD" ]]; then # space between = is important
         sudo nsenter -u -t $ENVOY_PID hostname
         export POD_PID=$ENVOY_PID
-    fi
+    sudo nsenter -u -t $ENVOY_PID
 done <<< "$ENVOY_PIDS"
 echo $POD_PID
 export PID=$POD_PID
 
-# 启动 remote debug server
-sudo nsenter -t $PID -u -p -m bash -c 'lldb-server platform --server --listen *:2159' #注意没有 -n: 
-```
+# Start the remote debug server
+sudo nsenter -t $PID -u -p -m bash -c 'lldb-server platform --server --listen *:2159' # Note the absence of -n. 
+``.
 
 
 
-> 为何不使用 kubectl port forward?
+> Why not use kubectl port forward?
 >
-> 我尝试过：
+> I tried:
 >
 > ```bash
 > kubectl port-forward --address 0.0.0.0 pods/fortio-server-0 2159:2159
 > ```
 >
-> 可能由于 debug 的流量很大，forward 很不稳定。
+> Possibly due to heavy debug traffic, the forward is very unstable.
 
 
 
 
 
-在 `lldb-vscode-server` 的 `.vscode/launch.json` 文件中，加入一个 debug 配置：
+In the `.vscode/launch.json` file of `lldb-vscode-server`, add a debug configuration:
 
 ```json
 {
@@ -359,24 +359,24 @@ sudo nsenter -t $PID -u -p -m bash -c 'lldb-server platform --server --listen *:
         } 
 ```
 
-然后在 vscode 中启动 AttachLLDBWaitRemote 。这将与 lldb-server 建立连接，并分析 `/usr/local/bin/envoy`。由于这是一个 1GB 的 ELF，这步在我的机器中用了 100% CPU 和 16GB RSS 内存，耗时 1 分钟以上。完成后，可见 istio-proxy 中有一个 100% CPU 占用的 `lldb-server` 进程，其实就是 `"waitFor": true` 命令 lldb-server 不断扫描进程列表。
+Then start AttachLLDBWaitRemote in vscode. This establishes a connection to lldb-server and analyzes `/usr/local/bin/envoy`. Since this is a 1GB ELF, this step took over a minute on my machine with 100% CPU and 16GB RSS memory. When it's done, you can see that istio-proxy has a 100% CPU `lldb-server` process, which is actually `"waitFor": true` commanding lldb-server to keep scanning the process list.
 
 
 
-##### 2.1 设置断点
+##### 2.1 Setting breakpoints
 
-你可以在设置断点在你的兴趣点上，我是：
+You can set breakpoints at your point of interest, I am:
 
-`envoy/source/exe/main.cc` 即：`Envoy::MainCommon::main(...)`
+`envoy/source/exe/main.cc` ie: `Envoy::MainCommon::main(...) `
 
 
 
-#### 3. 启动 pilot-agent 和 envoy
+#### 3. Start pilot-agent and envoy
 
 ``` bash
 kubectl exec -it fortio-server-0 -c istio-proxy -- bash
 
-tmux a #连接上之前启动的 tmux server
+tmux a # start tmux server before any new connection
 
 /usr/local/bin/pilot-agent proxy sidecar --domain ${POD_NAMESPACE}.svc.cluster.local --proxyLogLevel=warning --proxyComponentLogLevel=misc:error --log_output_level=default:info --concurrency 2
 
@@ -405,7 +405,7 @@ tracing:
 
 #### 4. 开始 debug
 
-这时，lldb-server 会扫描到 envoy 进程的启动，并 attach 和 挂起 envoy 进程，然后通知到 vscode。vscode 设置断点，然后继续 envoy 的运行，然后进程跑到断点， vscode 反馈到 GUI:
+At this point, lldb-server scans for envoy process starts, attaches and hangs the envoy process, and then notifies vscode. vscode sets a breakpoint and continues the envoy run, then the process runs to the breakpoint, and vscode feeds back to the GUI.
 
 
 
@@ -413,12 +413,12 @@ tracing:
 
 
 
-### 常用断点
+### Common breakpoints
 
-以下是一些我常用的断点：
+Here are some of the breakpoints I commonly use:
 
 ```
-# Envoy 直接调用的系统调用 syscall
+# Envoy directly invoked system call
 breakpoint set --func-regex .*OsSysCallsImpl.*
 
 # libevent 的 syscall
@@ -432,93 +432,91 @@ breakpoint set --shlib libc.so.6 --basename 'epoll_ctl'
 
 
 
-## 附录 - 写给自己的一些备忘
+## Appendices - some memos to myself
 
 
 
-### Istio auto inject 的 sidecar container  (我没有使用这种方法)
+### Istio auto inject for sidecar container (I did not use this method)
 
-做过 k8s 运维的同学都知道，一个时常遇到，但又缺少非入侵方法定位的问题是：容器启动时出错。很难有办法让出错的启动进程暂停下来，留充足的时间，让人工进入环境中去做 troubleshooting。而 gdb/lldb 这类 debuger 天生就有这种让任意进程挂起的 “魔法”。
-
-
-
-对于 Istio auto inject 的 sidecar container，是很难在 envoy 初始化前 attach 到刚启动的 envoy 进程的。理论上有几个可能的方法（**注意：我未测试过**）：
+Anyone who has done k8s Ops knows that a problem that is encountered from time to time, but lacks a non-invasive way to locate it, is that containers start up with errors. It's hard to find a way to pause the startup process with an error, leaving plenty of time for a human to get into the environment and do troubleshooting, and debuggers like gdb/lldb have this innate "magic" of making arbitrary processes hang.
 
 
 
--  在 worker node 上 Debugger wait process
-
--  debugger follow process fork
-
--  debugger wrapper script
+For the Istio auto inject sidecar container, it is very difficult to attach to a freshly started envoy process before the envoy is initialized. There are a couple of theoretically possible ways to do this (**note: I have not tested this**):
 
 
 
-下面简单说明一下理论。
+- Debugger wait process on worker node
+- debugger follow process fork
+- debugger wrapper script
 
-#### 在 worker node 上 Debugger wait process
+
+
+Here is a brief explanation of the theory.
+
+#### Debugger wait process on worker node
 
 在 worker node 上，让 gdb/lldb 不断扫描进程列表，发现 envoy 立即 attach
 
-对于 gdb， [网上](https://stackoverflow.com/a/11147567) 有个 script:
+For gdb, [online](https://stackoverflow.com/a/11147567) there's a script.
 
 ```bash
-#!/bin/sh
-# 以下脚本启动前，要求 worker node 下未有 envoy 进程运行
+/bin/sh /bin/sh
+# The following script requires that there is no envoy process running on the worker node before it starts
 progstr=envoy
-progpid=`pgrep -o $progstr`
+progpid = `pgrep -o $progstr`
 while [ "$progpid" = "" ]; do
   progpid=`pgrep -o $progstr`
-done
+continue -p
 gdb -ex continue -p $progpid
 ```
 
-对于 本文的主角 lldb，有内置的方法：
+For lldb, the subject of this article, there are built-in methods:
 
 ```
 (lldb) process attach --name /usr/local/bin/envoy --waitfor
 ```
 
-这个方法缺点是 debugger(gdb/lldb) 与 debuggee(envoy) 运行在不同的 pid namespace 和 mount namespace，会让 debugger 发生很多奇怪的问题，所以不建议使用。
+The downside of this method is that debugger(gdb/lldb) and debuggee(envoy) are running in different pid namespace and mount namespace, which can cause a lot of strange problems with debugger, so it is not recommended.
 
 
 
 #### Debugger follow process fork
 
-我们知道：
+We know:
 
--  `envoy` 进程由容器的 pid 1 进程（这里为 `pilot-agent`）启动
--  `pilot-agent` 由短命进程 `runc` 启动
--  `runc` 由 `/usr/local/bin/containerd-shim-runc-v2` 启动
--  `containerd-shim-runc-v2` 由 `/usr/local/bin/containerd` 启动
+- The `envoy` process is started by the container's pid 1 process, in this case `pilot-agent`.
+- The `pilot-agent` process is started by the short-lived `runc` process.
+- The `runc` process is started by the `/usr/local/bin/containerd-shim-runc-v2` process.
+- `containerd-shim-runc-v2` started by `/usr/local/bin/containerd`.
 
-> 参考：https://iximiuz.com/en/posts/implementing-container-runtime-shim/
-
-
-
-只要用 debugger 跟踪 containerd ，一步步 follow process fork 就可以跟踪到 exec /usr/local/bin/envoy 。
+> Reference: https://iximiuz.com/en/posts/implementing-container-runtime-shim/
 
 
 
-对于 gdb 可以用
+Just use debugger to trace containerd, follow process fork step by step to exec /usr/local/bin/envoy.
+
+
+
+For gdb you can use
 
 ```
 (gdb) set follow-fork-mode child
 ```
 
-> 参见：
+> See also:
 >
-> [https://visualgdb.com/gdbreference/commands/set_follow-fork-mode](https://visualgdb.com/gdbreference/commands/set_follow-fork-mode)
+> [https://visualgdb.com/gdbreference/commands/set_follow-fork-mode](https://visualgdb.com/gdbreference/commands/set_follow-fork- mode)
 
 
 
-对于 lldb 可以用：
+Works for lldb:
 
 ```
 (lldb) settings set target.process.follow-fork-mode child
 ```
 
-> 参见：
+> See also:
 >
 > - [Debugging binaries invoked from scripts with GDB](https://developers.redhat.com/articles/2022/12/27/debugging-binaries-invoked-scripts-gdb#)
 > - [LLDB support for fork(2) and vfork(2)](https://www.moritz.systems/blog/lldb-support-for-fork-and-vfork/)
@@ -529,13 +527,13 @@ gdb -ex continue -p $progpid
 
 #### Debugger wrapper script
 
-我们没办法直接修改 `pilot-agent` 注入 debugger，但可以用一个 `wrapper script` 替换 `/usr/local/bin/envoy`，然后由这个`wrapper script`  启动 debugger , 让 debugger 启动 真正的 envoy ELF。
+There is no way to directly modify `pilot-agent` to inject the debugger, but you can replace `/usr/local/bin/envoy` with a `wrapper script` and start the debugger from that `wrapper script` , and let the debugger start the real envoy. ELF.
 
-可以通过修改 istio-proxy docker image 的方法，去实现：
+This can be done by modifying the istio-proxy docker image:
 
-如：
+As:
 
-```bash
+``bash
 mv /usr/local/bin/envoy /usr/local/bin/real_envoy_elf
 vi /usr/local/bin/envoy
 ...
@@ -544,10 +542,10 @@ chmod +x /usr/local/bin/envoy
 
 
 
-`/usr/local/bin/envoy` 写成这样：
+``/usr/local/bin/envoy` Write this:
 
 ```bash
-#!/bin/bash
+/usr/local/bin/envoy` Write this: ``bash /bin/bash
 
 # This is a gdb wrapper script.
 # Get the arguments passed to the script.
@@ -562,9 +560,9 @@ gdb -ex=run --args /usr/local/bin/real_envoy_elf $args
 
 
 
-### 流量 debug
+### Traffic debug
 
-发起一些 经过 envoy 的 outbound 流量：
+Initiate some outbound traffic through envoy:
 
 ```bash
 kubectl exec -it fortio-server-0 -c main-app -- bash
@@ -575,7 +573,7 @@ curl -v www.baidu.com
 
 
 
-### lldb 常用命令单
+### lldb common command list
 
 ```
 lldb

@@ -1,14 +1,15 @@
 # Istio/Envoy Performance
 
 
-## 我的一些文章
+## Articles from my blog
 
-- [记一次 Istio 冲刺调优](https://blog.mygraphql.com/zh/posts/cloud/istio/istio-tunning/istio-filter-tunning-thread/)
-- [记一次 Istio 调优 Part 2 —— 饥饿的线程与 SO_REUSEPORT](https://blog.mygraphql.com/zh/posts/cloud/istio/istio-tunning/istio-thread-balance/)
+- [My real-life Istio Performance Tuning - Part 1](https://blog.mygraphql.com/en/posts/cloud/istio/istio-tunning/istio-filter-tunning-thread/)
+- [My real-life Istio Performance Tuning Part 2 - Starvating threads and SO_REUSEPORT socket](https://blog.mygraphql.com/en/posts/cloud/istio/istio-tunning/istio-thread-balance/)
+s/cloud/istio/istio-tunning/istio-thread-balance/)
 
 
 
-## 影响性能的因素 - 设计容量
+## Factors Affecting Performance - Design Capacity
 
 > [https://github.com/istio/istio/wiki/Performance-Questionnaire](https://github.com/istio/istio/wiki/Performance-Questionnaire)
 

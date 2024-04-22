@@ -1,4 +1,4 @@
-# Decrypt and Dump TLS Traffic - 解密与监听 TLS 流量
+# Decrypt and Dump TLS Traffic
 
 ## TLS key log feature
 
@@ -10,11 +10,11 @@ Now more and more traffic will use TLS to encrypt the traffic for security consi
 
 Use `SSLKEYLOGFILE`.
 
-### Envoy Key Log 配置
+### Envoy Key Log configuration
 
 
-- [Envoy Key Log 配置](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/tls/v3/tls.proto#:~:text=TLS%20handshaking%20behavior.-,key_log,-(extensions.transport_sockets)
-- [Envoy Key Log 配置 envoy-v3-api-msg-extensions-transport-sockets-tls-v3-tlskeylog](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/tls/v3/tls.proto#envoy-v3-api-msg-extensions-transport-sockets-tls-v3-tlskeylog)
+- [Envoy Key Log configuration](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/tls/v3/tls.proto#:~:text=TLS%20handshaking%20behavior.-,key_log,-(extensions.transport_sockets)
+- [Envoy Key Log configuration envoy-v3-api-msg-extensions-transport-sockets-tls-v3-tlskeylog](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/tls/v3/tls.proto#envoy-v3-api-msg-extensions-transport-sockets-tls-v3-tlskeylog)
 
 #### extensions.transport\_sockets.tls.v3.TlsKeyLog
 
