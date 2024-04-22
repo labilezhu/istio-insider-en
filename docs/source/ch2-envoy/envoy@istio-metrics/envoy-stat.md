@@ -250,7 +250,7 @@ This section is referenced in:
 
 ### config.bootstrap.v3.Bootstrap
 
-[Envoy 文档:config.bootstrap.v3.Bootstrap proto](https://github.com/envoyproxy/envoy/blob/255af425e1d51066cc8b69a39208b70e18d07073/api/envoy/config/bootstrap/v3/bootstrap.proto#L44)
+[Envoy docs:config.bootstrap.v3.Bootstrap proto](https://github.com/envoyproxy/envoy/blob/255af425e1d51066cc8b69a39208b70e18d07073/api/envoy/config/bootstrap/v3/bootstrap.proto#L44)
 
 ```json
 {
@@ -283,7 +283,7 @@ What is `stats sink`? This book does not explain it.Istio does not customize the
 
 ### config.metrics.v3.StatsConfig
 
-[Envoy 文档:config-metrics-v3-statsconfig](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/metrics/v3/stats.proto#config-metrics-v3-statsconfig)
+[Envoy docs:config-metrics-v3-statsconfig](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/metrics/v3/stats.proto#config-metrics-v3-statsconfig)
 
 ```json
 {

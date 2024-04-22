@@ -1,14 +1,14 @@
-# Istio 指标
+# Istio metrics
 
-## Istio 自己的 Metrics
+## Istio’s own Metrics
 
-### 标准指标说明
+### Standard indicator description
 
-> 参考：https://istio.io/latest/docs/reference/config/metrics/
+> Reference: https://istio.io/latest/docs/reference/config/metrics/
 
 #### Metrics
 
-对于 HTTP、HTTP/2 和 GRPC 流量，Istio 默认生成以下指标：
+For HTTP, HTTP/2, and GRPC traffic, Istio generates the following metrics by default:
 
 - **Request Count** (`istio_requests_total`): This is a `COUNTER` incremented for every request handled by an Istio proxy.
 - **Request Duration** (`istio_request_duration_milliseconds`): This is a `DISTRIBUTION` which measures the duration of requests.
@@ -17,14 +17,14 @@
 - **gRPC Request Message Count** (`istio_request_messages_total`): This is a `COUNTER` incremented for every gRPC message sent from a client.
 - **gRPC Response Message Count** (`istio_response_messages_total`): This is a `COUNTER` incremented for every gRPC message sent from a server.
 
-对于 TCP 流量，Istio 生成以下指标：
+For TCP traffic, Istio generates the following metrics:
 
 - **Tcp Bytes Sent** (`istio_tcp_sent_bytes_total`): This is a `COUNTER` which measures the size of total bytes sent during response in case of a TCP connection.
 - **Tcp Bytes Received** (`istio_tcp_received_bytes_total`): This is a `COUNTER` which measures the size of total bytes received during request in case of a TCP connection.
 - **Tcp Connections Opened** (`istio_tcp_connections_opened_total`): This is a `COUNTER` incremented for every opened connection.
 - **Tcp Connections Closed** (`istio_tcp_connections_closed_total`): This is a `COUNTER` incremented for every closed connection.
 
-#### Prometheus 的 Labels
+#### Labels of Prometheus
 
 - **Reporter**: This identifies the reporter of the request. It is set to `destination` if report is from a server Istio proxy and `source` if report is from a client Istio proxy or a gateway.
 
@@ -62,7 +62,7 @@
 
 - **Response Flags**: Additional details about the response or connection from proxy. In case of Envoy, see `%RESPONSE_FLAGS%` in [Envoy Access Log](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#config-access-log-format-response-flags) for more detail.
 
-例如，想统计 upstream circuit breaker 相关的 失败请求数：
+For example, if you want to count the number of failed requests related to upstream circuit breaker:
 ```
 sum(istio_requests_total{response_code="503", response_flags="UO"}) by (source_workload, destination_workload, response_code)
 ```
@@ -84,35 +84,35 @@ sum(istio_requests_total{response_code="503", response_flags="UO"}) by (source_w
 
 - **gRPC Response Status**: This identifies the response status of the gRPC. This label is present only on gRPC metrics.
 
-### 使用
+### Usage
 
-#### istio-proxy 与应用的 Metrics 整合输出
+#### istio-proxy integrates output with application Metrics
 
-:::{figure-md} 图：istio-proxy 与应用的 Metrics 整合输出
+:::{figure-md} Figure: Integrated output of istio-proxy and application Metrics
 :class: full-width
 
-<img src="/ch1-istio-arch/istio-ports-components.assets/istio-ports-components.drawio.svg" alt="Istio端口与组件">
+<img src="/ch1-istio-arch/istio-ports-components.assets/istio-ports-components.drawio.svg" alt="Figure - Integrated output of istio-proxy and application Metrics">
 
-*图：istio-proxy 与应用的 Metrics 整合输出*  
+*Figure: Integrated output of istio-proxy and application Metrics*  
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fistio-ports-components.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fistio-ports-components.drawio.svg)*
 
 
-> 参考：https://istio.io/v1.14/docs/ops/integrations/prometheus/#option-1-metrics-merging
+> Ref: https://istio.io/v1.14/docs/ops/integrations/prometheus/#option-1-metrics-merging
 
 
-Istio 能够完全通过 `prometheus.io`  annotations 来控制抓取。虽然 `prometheus.io`  annotations 不是 Prometheus 的核心部分，但它们已成为配置抓取的事实标准。
+Istio is able to control scraping entirely through `prometheus.io` annotations. While `prometheus.io` annotations are not a core part of Prometheus, they have become the de facto standard for configuring scraping.
 
-此选项默认启用，但可以通过在 [安装](https://istio.io/v1.14/docs/setup/install/istioctl/) 期间传递 `--set meshConfig.enablePrometheusMerge=false` 来禁用。启用后，将向所有数据平面 pod 添加适当的 `prometheus.io`  annotations 以设置抓取。如果这些注释已经存在，它们将被覆盖。使用此选项，Envoy sidecar 会将 Istio 的指标与应用程序指标合并。合并后的指标将从 `/stats/prometheus:15020` 中抓取。
+This option is enabled by default, but can be disabled by passing `-set meshConfig.enablePrometheusMerge=false` during [install](https://istio.io/v1.14/docs/setup/install/istioctl/). When enabled, appropriate `prometheus.io` annotations will be added to all dataplane pods to set up the scraping. If these annotations already exist, they will be overridden. With this option, the Envoy sidecar will merge Istio metrics with application metrics. The merged metrics will be grabbed from `/stats/prometheus:15020`.
 
-此选项以明文形式公开所有指标。
+This option exposes all metrics in plaintext.
 
 
-#### 定制：为 Metrics 增加维度
+#### Customization: Adding dimensions to Metrics
 
-> 参考： https://istio.io/latest/docs/tasks/observability/metrics/customize-metrics/#custom-statistics-configuration
+> Reference: https://istio.io/latest/docs/tasks/observability/metrics/customize-metrics/#custom-statistics-configuration
 
-如，增加端口、与 HTTP HOST 头 维度。
+e.g. add port, and HTTP HOST header dimensions.
 
 1.
 
@@ -146,9 +146,9 @@ spec:
 
 ```
 
-2. 使用以下命令将以下 annotation 应用到所有注入的 pod，其中包含要提取到 Prometheus [时间序列](https://en.wikipedia.org/wiki/Time_series) 的维度列表：
+2. Use the following command to apply the following annotation to all injected pods containing the list of dimensions to be extracted into the Prometheus [Time Series](https://en.wikipedia.org/wiki/Time_series):
 
-仅当您的维度不在 [DefaultStatTags 列表] 中时才需要此步骤（https://github.com/istio/istio/blob/release-1.14/pkg/bootstrap/config.go）
+This step is only required if your dimension is not in the [DefaultStatTags list](https://github.com/istio/istio/blob/release-1.14/pkg/bootstrap/config.go)
 
 ```yaml
 apiVersion: apps/v1
@@ -160,7 +160,7 @@ spec:
         sidecar.istio.io/extraStatTags: destination_port,request_host
 ```
 
-要在网格范围内启用额外 `Tag` ，您可以将 `extraStatTags` 添加到网格配置中：
+To enable additional `Tags` in the mesh scope, you can add `extraStatTags` to the mesh configuration:
 
 ```yaml
 meshConfig:
@@ -170,20 +170,20 @@ meshConfig:
      - request_host
 ```
 
-> 参考 : https://istio.io/latest/docs/reference/config/proxy_extensions/stats/#MetricConfig
+> Ref: https://istio.io/latest/docs/reference/config/proxy_extensions/stats/#MetricConfig
 
-#### 定制：加入 request / response 元信息维度
+#### Customization: adding dimension of request/response metrics
 
-可以把 request 或 repsonse 里一些基础信息 加入到 指标的维度。如，URL Path，这在需要为相同服务分隔统计不同 REST API 的指标时，相当有用。
+It is possible to add some basic information from the request or response to the metrics dimension. For example, URL Path, which is useful when you need to segregate metrics for different REST APIs for the same service.
 
-> 参考 : https://istio.io/latest/docs/tasks/observability/metrics/classify-metrics/
+> Reference: https://istio.io/latest/docs/tasks/observability/metrics/classify-metrics/
 
 
-### 工作原理
+### How it works
 
-#### istio stat filter 使用
+#### istio stat filter usage
 
-Istio 在自己的定制版本 Envoy 中，加入了 stats-filter 插件，用于计算 Istio 自己想要的指标：
+Istio has added the stats-filter plugin to its own customized version of Envoy to calculate the metrics Istio wants:
 
 ```yaml
 $ k -n istio-system get envoyfilters.networking.istio.io stats-filter-1.14 -o yaml
@@ -316,11 +316,11 @@ spec:
 ```
 
 
-#### istio stat Plugin 实现
+#### istio stat Plugin Implementation
 
 https://github.com/istio/proxy/blob/release-1.14/extensions/stats/plugin.cc
 
-内置的 Metric:
+Internal Metric:
 
 ```c++
 const std::vector<MetricFactory>& PluginRootContext::defaultMetrics() {
@@ -396,15 +396,15 @@ void PluginRootContext::report(::Wasm::Common::RequestInfo& request_info,
 ```
 
 
-> 关于 Istio 的指标原理，这是一个很好的参考文章：https://blog.christianposta.com/understanding-istio-telemetry-v2/
+> This is a good reference article on the principles of Istio's metrics: https://blog.christianposta.com/understanding-istio-telemetry-v2/
 
 
-## Envoy 内置的 Metrics
+## Envoy Internal Metrics
 
-Istio 默认用 istio-agent 去整合 Envoy 的 metrics。
-而 Istio 默认打开的 Envoy 内置 Metrics 很少：
+Istio uses istio-agent to integrate Envoy metrics by default.
+Istio opens few built-in Envoy metrics by default:
 
-> 见：https://istio.io/latest/docs/ops/configuration/telemetry/envoy-stats/
+> See: https://istio.io/latest/docs/ops/configuration/telemetry/envoy-stats/
 
 ```
 cluster_manager
@@ -413,13 +413,13 @@ server
 cluster.xds-grpc
 ```
 
-### 定制 Envoy 内置的 Metrics
+### Customizing Envoy's built-in Metrics
 
-> 参考：https://istio.io/latest/docs/ops/configuration/telemetry/envoy-stats/
+> Reference: https://istio.io/latest/docs/ops/configuration/telemetry/envoy-stats/
 
-如果要配置 Istio Proxy 以记录 其它 Envoy 原生的指标，您可以将 [`ProxyConfig.ProxyStatsMatcher`](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyStatsMatcher) 添加到网格配置中。 例如，要全局启用断路器、重试和上游连接的统计信息，您可以指定 stats matcher，如下所示：
+To configure Istio Proxy to log other Envoy-native metrics, you can add [`ProxyConfig.ProxyStatsMatcher`](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyStatsMatcher) to the grid configuration. For example, to globally enable statistics for circuit breakers, retries, and upstream connections, you can specify stats matcher as follows:
 
-代理需要重新启动以获取统计匹配器配置。
+The proxy needs to be restarted to get the stats matcher configuration.
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -435,7 +435,7 @@ spec:
           - "upstream_cx"
 ```
 
-您还可以使用 `proxy.istio.io/config` annotation 为个别代码指定配置。 例如，要配置与上面相同的统计信息，您可以将 annotation 添加到 gateway proxy 或 workload，如下所示：
+You can also use the `proxy.istio.io/config` annotation to specify configurations for individual pieces of code. For example, to configure the same statistics as above, you can add the annotation to the gateway proxy or workload as shown below:
 
 ```yaml
 metadata:
@@ -450,40 +450,40 @@ metadata:
 ```
 
 
-### 原理
+### Principle
 
-下面，看看 Istio 默认配置下，如何配置 Envoy。
+Below, see how the Envoy is configured in the Istio default configuration.
 
 ```bash
 istioctl proxy-config bootstrap fortio-server | yq eval -P  > envoy-config-bootstrap-default.yaml
 ```
-输出：
+Output:
 
 ```yaml
 bootstrap:
 ...
-  statsConfig:
-    statsTags: # 从指标名中抓取 Tag(prometheus label)
+  statsConfig.
+    statsTags: # Grab Tag(prometheus label) from metrics name
       - tagName: cluster_name
-        regex: ^cluster\.((.+?(\..+?\.svc\.cluster\.local)?)\.)
+        regex: ^cluster\. ((. +? (\...+? +? \.svc\.cluster\.local)?) \...)
       - tagName: tcp_prefix
-        regex: ^tcp\.((.*?)\.)\w+?$
+        regex: ^tcp\. ((. *?) \...) \w+? \w+?
       - tagName: response_code
-        regex: (response_code=\.=(.+?);\.;)|_rq(_(\.d{3}))$
+        regex: (response_code=\. =(. +?) ;\. ;)|_rq(_(\.d{3}))$
       - tagName: response_code_class
         regex: _rq(_(\dxx))$
       - tagName: http_conn_manager_listener_prefix
-        regex: ^listener(?=\.).*?\.http\.(((?:[_.[:digit:]]*|[_\[\]aAbBcCdDeEfF[:digit:]]*))\.)
+        regex: ^listener(? =\.) . *? \.http\. ((((? :[_. [:digit:]]*|[_\[\]aAbBcCdDeEfF[:digit:]]*))\.)
 ...
     useAllDefaultTags: false
-    statsMatcher:
-      inclusionList:
-        patterns: # 选择要记录的指标
+    statsMatcher.
+      inclusionList.
+        patterns: # Select the metrics to record
           - prefix: reporter=
           - prefix: cluster_manager
           - prefix: listener_manager
           - prefix: server
-          - prefix: cluster.xds-grpc ## 只记录 xDS cluster. 即不记录用户自己服务的 cluster !!!
+          - prefix: cluster.xds-grpc ## Log only xDS clusters. i.e. do not log clusters that the user serves themselves !!!!
           - prefix: wasm
           - suffix: rbac.allowed
           - suffix: rbac.denied
@@ -492,20 +492,20 @@ bootstrap:
           - prefix: component
 ```
 
-这时，如果修改 pod 的定义为：
+At this point, if you modify the definition of the pod to:
 
 ```yaml
-    annotations:
+    annotations.
       proxy.istio.io/config: |-
-        proxyStatsMatcher:
-          inclusionRegexps:
-          - "cluster\\..*fortio.*" #proxy upstream(outbound)
-          - "cluster\\..*inbound.*" #proxy upstream(inbound，这里一般就是指到同一 pod 中运行的应用了)
-          - "http\\..*"
-          - "listener\\..*"
+        proxyStatsMatcher: |- proxy.istio.io/config: |-
+          | proxyStatsMatcher: | inclusionRegexps.
+          - "cluster\... *fortio.*" #proxy upstream(outbound)
+          - "cluster\... *inbound.*" #proxy upstream(inbound, which generally means applications running in the same pod)
+          - "http\... *"
+          - "listener\... *"
 ```
 
-产生新的 Envoy 配置：
+Generate a new Envoy configuration:
 
 ```json
  "stats_matcher": {
@@ -554,19 +554,19 @@ bootstrap:
        },
 ```
 
-## 总结：Istio-Proxy 指标地图
+## Summary: Istio-Proxy Metrics Map
 
-要做好监控，首先要深入了解指标原理。而要了解指标原理，当然要知道指标是产生流程中的什么位置，什么组件。看完上面关于 Envoy 与 Istio 的指标说明后。可以大概得到以下结论：
+To do a good job of monitoring, you first need to have a deep understanding of the metrics principle. And to understand the principle of metrics, of course, you need to know where and what components are in the process of generating metrics. After reading the above description of Envoy and Istio's metrics. You can probably get the following conclusions:
 
-:::{figure-md} 图：Istio-Proxy 指标地图
+:::{figure-md} Figure: Map of istio-proxy metrics
 :class: full-width
 
-<img src="/ch2-envoy/envoy@istio-metrics/index.assets/envoy@istio-metrics.drawio.svg" alt="Inbound与Outbound概念">
+<img src="/ch2-envoy/envoy@istio-metrics/index.assets/envoy@istio-metrics.drawio.svg" alt="Figure - Map of istio-proxy metrics">
 
-*图：Istio-Proxy 指标地图*
+*Figure: Map of istio-proxy metrics*
 :::
-*[用 Draw.io 打开](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy@istio-metrics.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy@istio-metrics.drawio.svg)*
 
 ```{note}
-本节的实验环境说明见于： {ref}`appendix-lab-env/appendix-lab-env-base:简单分层实验环境`
+A description of the experimental environment for this section can be found in: {ref}`appendix-lab-env/appendix-lab-env-base:Simple layered lab environment`
 ```
