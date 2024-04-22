@@ -19,9 +19,9 @@ As a mix of back-end jianghu for many years old Cheng (old programmer), there ar
 
 With that out of the way, let's get back to Istio and Envoy, the main characters in this book. Their metrics documentation is a bit better than that of the older open source software. At least each indicator has a line of text, although the text is very short and vague.
 
-## Istio 与 Envoy 指标概述
+## Overview of Istio and Envoy metrics
 
-Istio's istio-proxy data plane metrics are based on Envoy's metrics architecture. So, I will start with Envoy's metrics architecture.
+Istio's istio-proxy data plane metrics are based on the architecture of Envoy metrics. So, I will start with Envoy's metrics architecture.
 
 
 ```{hint}

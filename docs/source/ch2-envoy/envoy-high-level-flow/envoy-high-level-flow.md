@@ -18,7 +18,7 @@ I will only analyze what is going on inside `fortio-server(pod)` here. In terms 
  - inbound : inbound (called)
  - outbound : outbound (invoked)
 
-But from an Envoy implementation point of view alone, the concepts of `inbound` or `outbound` are rarely used. inbound`/`outbound` are concepts mainly used in Istio. See: {doc}`/ch1-istio-arch/service-mesh-base-concept`.
+But from an Envoy implementation point of view alone, the concepts of `inbound` or `outbound` are rarely used. `inbound`/`outbound` are concepts mainly used in Istio. See: {doc}`/ch1-istio-arch/service-mesh-base-concept`.
  section. Envoy uses the concepts of `upstream` and `downstream`.  
 
 For `fortio-server(pod)` inbound.
