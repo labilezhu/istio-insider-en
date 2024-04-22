@@ -1,10 +1,10 @@
-# Istio 开发入门参考列表
+## Reference list for getting started with Istio development
 
-## 代码说明
+## Code Description
 
 - [Using the Code Base](https://github.com/istio/istio/wiki/Using-the-Code-Base)
 
-## 设计文档
+## Design documentations
 
 > - [Istio Community Google Driver - Design Docs](https://drive.google.com/drive/folders/0ADmbrU7ueGOUUk9PVA)
 >
@@ -21,17 +21,17 @@ When documenting a new design, we recommend a 2-step approach:
 
 To use either template, open the template and select "Use Template" in order to bootstrap your document.
 
-## 开发环境
+## Development environment
 
  - [Preparing for Development](https://github.com/istio/istio/wiki/Preparing-for-Development)
 
-## Istio 项目健康监控
+## Istio project health dashboard
 
 The CNCF maintains a large number of dashboards helping us understand the overall health of the Istio project. Head to [https://istio.teststats.cncf.io](https://istio.teststats.cncf.io) for the goodies.
 
 
 
-## 论坛
+## discuss
 
 [https://discuss.istio.io/latest](https://discuss.istio.io/latest)
 
@@ -39,15 +39,15 @@ The CNCF maintains a large number of dashboards helping us understand the overal
 
 
 
-## 参与开发 Istio
+## Participation in the development of Istio
 
  - [Get involved](https://istio.io/latest/get-involved/)
- - [开通开发文档协同 Google Driver](https://groups.google.com/g/istio-team-drive-access)
- - [开发文档协同 Google Driver](https://drive.google.com/drive/folders/0ADmbrU7ueGOUUk9PVA)
+ - [Open Development Documentation with Google Driver](https://groups.google.com/g/istio-team-drive-access)
+ - [Developing Documentation with Google Driver](https://drive.google.com/drive/folders/0ADmbrU7ueGOUUk9PVA)
 
 
 
-### 工作组
+### Workgroup
 
 > [https://github.com/istio/community/blob/master/WORKING-GROUPS.md](https://github.com/istio/community/blob/master/WORKING-GROUPS.md)
 
