@@ -88,7 +88,7 @@ As this is an open source interactive book, feedback from readers is of course v
 
 ## Chinese version
 
-There is an Chinese version: [中文版](https://istio-insider.mygraphql.com/zh-cn/latest) .
+There is a Chinese version: [中文版](https://istio-insider.mygraphql.com/zh-cn/latest) .
 
 ## Catalog
 
