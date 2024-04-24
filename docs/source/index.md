@@ -90,6 +90,10 @@ As this is an open source interactive book, feedback from readers is of course v
 
 There is a Chinese version: [中文版](https://istio-insider.mygraphql.com/zh-cn/latest) .
 
+
+![](wechat-reward-qrcode.jpg)
+
+
 ## Catalog
 
 
