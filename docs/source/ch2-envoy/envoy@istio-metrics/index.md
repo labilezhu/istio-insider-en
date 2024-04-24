@@ -12,8 +12,8 @@ After all, people have to solve things, and more data, if:
 
 Then the more metrics, the more people get lost in the sea of metrics.
 
-As a mix of back-end jianghu for many years old Cheng (old programmer), there are always a lot of things do not understand, but it is difficult to say. One of them is the meaning of some specific metrics. Let's take two examples. 1:
-1. I used a tool called `nstat` to locate a network problem under Linux, it outputs a lot of metrics, but many will find that some of the metrics are dead on arrival to find the documentation. This has always been a problem with open source software, it changes so fast that the documentation can't keep up, or is even incorrect or out of date.
+As a mix of back-end jianghu for many years old Cheng (old programmer), there are always a lot of things do not understand, but it is difficult to say. One of them is the meaning of some specific metrics. Let's take two examples.
+1. I previously used a tool called `nstat` to locate a network problem under Linux. It outputs a lot of metrics, but many people found that there were no documentation for some metrics. This is also a problem that open source software has always had. It changes quickly, the documentation cannot keep up, and it may even be wrong or out of date and has not been updated.
 2. I used a tool called `ss` to locate a TCP connection problem under Linux, it outputs a god metric that search engines can't do anything to explain. In the end, I had to look at the original code. Luckily, I recorded my findings in Blog: ["Probably the most complete description of the TCP connection health metrics tool, ss"](https://blog.mygraphql.com/zh/notes/low-tec/network/tcp-inspect/), so I hope there will be some references for those who come after me.
 
 
