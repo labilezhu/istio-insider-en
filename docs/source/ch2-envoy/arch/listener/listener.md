@@ -117,8 +117,11 @@ First, let's introduce the core classes:
   - Create and bind `TcpListenSocket`.
   - Create `WorkerImpl` with configuration parameters.
   - Trigger creation of `TcpListenerImpl`.
+
 Or maybe you're like me and you're just looking at Envoy's code and you're getting confused with classes that have similar names. For example: `TcpListenerImpl`, `TcpListenSocket`.
 If you look at the illustration, you will know that the black and red lines represent different types of threads. The main flow in the diagram:
+
+
 1. the `main thread` indirectly call ListenerManagerImpl
 2. bind socket to ip and port
 3. start a new worker thread
