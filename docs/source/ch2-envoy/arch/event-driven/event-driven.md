@@ -48,7 +48,14 @@ The above describes the underlying process of event handling at the kernel sysca
 
 Envoy uses `libevent`, an event library written in C, with C++ OOP encapsulation.
 
-![](/ch2-envoy/arch/event-driven/event-driven.assets/abstract-event-model.drawio.svg)
+:::{figure-md} Figure: Abstract encapsulation model of Envoy events
+
+<img src="/ch2-envoy/arch/event-driven/event-driven.assets/abstract-event-model.drawio.svg" alt="Figure - Abstract encapsulation model of Envoy events">
+
+*Figure: Abstract encapsulation model of Envoy events*
+:::
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fabstract-event-model.drawio.svg)*
+
 
 
 How do you quickly read the core process logic in a project that is heavy (or even excessive) on OOP encapsulation and OOP Design Patterns, instead of drifting directionlessly in a sea of source code? The answer is: find the main flow. For Envoy's event handling, the main flow is, of course, `libevent`'s `event_base`, `event`. If you're not familiar with `libevent`, check out the `libevent Core Ideas` section of this book.

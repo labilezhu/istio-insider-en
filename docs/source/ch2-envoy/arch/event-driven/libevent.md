@@ -11,7 +11,7 @@ There are two important concepts in `libevent`: `event_base` and `event`.
 
 
 ## event
-The word event means a lot. What does the `event` object in libevent mean? One trick to understanding the function or positioning of an object written in an OOP method is to look at the object's property and method names. As you can see from the picture above, `event` refers to a signal that may occur on a certain fd (file descriptor file descriptor/handle), such as Read Ready, Write Ready, etc. Note that this is a signal that may occur on a certain fd (file descriptor/handle). Note that this is a possible event, which includes events that may occur in the future, are occurring now, or have occurred before.
+The word `event` means a lot. What does the `event` object in libevent mean? One trick to understanding the function of an object written in an OOP method is to look at the  name of properties and methods of that object. As you can see from the picture above, `event` refers to a signal that may occur on a certain fd (file descriptor file descriptor/handle), such as Read Ready, Write Ready, etc. Note that this is a signal that may occur on a certain fd (file descriptor/handle). Note that this is a possible event, which includes events that may occur in the future, are occurring now, or have occurred before.
 
 There are a number of things that an application might do with `event`, including listening or subscribing to the event so that it can callback to the application code when the event actually occurs.
 
@@ -182,9 +182,9 @@ Events have similar lifecycles:
 
 
 
-![libevent-6-事件状态图.png](/ch2-envoy/arch/event-driven/libevent.assets/1538970316042-d588bff5-1f5f-4f49-ad6a-e078ba0f9df9.png)
+![libevent-6-event-state.png](/ch2-envoy/arch/event-driven/libevent.assets/1538970316042-d588bff5-1f5f-4f49-ad6a-e078ba0f9df9.png)
 
-[Libevent状态转换图 from https://developer.aliyun.com/article/659277#fromHistory]
+[Event State Transform Diagram of Libevent - from https://developer.aliyun.com/article/659277#fromHistory]
 
 
 
