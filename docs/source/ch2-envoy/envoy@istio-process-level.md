@@ -1,8 +1,3 @@
+# Envoy's process perspective in Istio (not yet started)
 
-# Istio 里的 Envoy 的进程视角(未开始)
-
-这节，聊聊 Istio 控制下的 Envoy，在操作系统的视角来看，是什么样子的。即他的接口长什么样子。注意，接口不一定就是 API.
-
-
-
-
+In this section, let’s talk about what Envoy controlled by Istio looks like from the perspective of the operating system. That is, what its interface looks like. Note that an interface is not necessarily an API.
