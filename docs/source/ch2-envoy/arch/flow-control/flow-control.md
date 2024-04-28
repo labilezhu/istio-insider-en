@@ -58,16 +58,14 @@ The subsystem and Callback mechanism can be found in this book in the section: {
 
 
 ## HTTP2 Flow Control Implementation
-Because the various Buffers in the HTTP/2 technology stack are quite cumbersome, each segment of the path from Buffer exceeding the `Watermark` limit to pausing data from the data source is described in a separate Envoy document.
+Because the various buffers in the HTTP/2 stack are fairly complicated, each path from a buffer going over the watermark limit to disabling data from the data source is documented separately.
 
 
 ```{note}
 Readers who don't know much about Envoy's http-connection-manager and http filter chain are advised to read the following section of this book: {doc}`/ch2-envoy/arch/http/http-connection-manager/http-connection-manager` section. The following assumes that the reader already knows this.
 ```
 
-
 ### HTTP2 flow control general flow
-
 
 
 
@@ -75,6 +73,8 @@ Readers who don't know much about Envoy's http-connection-manager and http filte
 
 
 > For HTTP/2, when filters, streams, or connections back up, the end result is `readDisable(true)` being called on the source stream. This results in the stream ceasing to consume window, and so not sending further flow control window updates to the peer. This will result in the peer eventually stopping sending data when the available window is consumed (or nghttp2 closing the connection if the peer violates the flow control limit) and so limiting the amount of data Envoy will buffer for each stream. 
+>
+> When `readDisable(FALSE)` is called, any outstanding unconsumed data is immediately consumed, which results in resuming window updates to the peer and the resumption of data.
 
 
 :::{figure-md} Figure: Upstream connection back up and backpressure
@@ -88,12 +88,11 @@ Readers who don't know much about Envoy's http-connection-manager and http filte
 
 The `Unbounded buffer` above does not mean that the buffer does not have a limit, it means that the limit is a `soft limit`.
 
-
 #### Upstream connection and Upstream http stream back-up at the same time
 
+> Note that `readDisable(true)` on a stream may be called by multiple entities. It is called when any filter buffers too much, when the stream backs up and has too much data buffered, or the connection has too much data buffered. Because of this, `readDisable()` maintains a count of the number of times it has been called to both enable and disable the stream, resuming reads when each caller has called the equivalent low watermark callback. 
 
-> When `readDisable(false)` is called, any outstanding unconsumed data is immediately consumed, which results in resuming window updates to the peer and the resumption of data.
-
+Source code:
 
 ```c++
 void ConnectionImpl::StreamImpl::readDisable(bool disable) {
@@ -115,7 +114,9 @@ void ConnectionImpl::StreamImpl::readDisable(bool disable) {
 }
 ```
 
-> Note that `readDisable(true)` on a stream may be called by multiple entities. It is called when any filter buffers too much, when the stream backs up and has too much data buffered, or the connection has too much data buffered. Because of this, `readDisable()` maintains a count of the number of times it has been called to both enable and disable the stream, resuming reads when each caller has called the equivalent low watermark callback. 
+
+
+
 
 > For example, if the TCP window upstream fills up and results in the network buffer backing up, all the streams associated with that connection will `readDisable(true)` their downstream data sources. 
 >
@@ -124,6 +125,10 @@ void ConnectionImpl::StreamImpl::readDisable(bool disable) {
 > When the upstream TCP socket drains, the connection will go below its low watermark and each stream will call `readDisable(false)` to resume the flow of data. The stream which had both a network level block and a H2 flow control block will still not be fully enabled. 
 >
 > Once the upstream peer sends window updates, the stream buffer will drain and the second `readDisable(false)` will be called on the downstream data source, which will finally result in data flowing from downstream again.
+
+
+
+
 
 
 Example:
@@ -217,7 +222,6 @@ Example:
 > - When `Envoy::Http::ConnectionManagerImpl::ActiveStreamEncoderFilter` receives `onEncoderFilterBelowWriteBufferLowWatermark()` it calls `ConnectionManagerImpl::ActiveStream::callLowWatermarkCallbacks()`
 > - `callLowWatermarkCallbacks()` then in turn calls `DownstreamWatermarkCallbacks::onBelowWriteBufferLowWatermark()` for all filters which registered to receive watermark events
 > - `Envoy::Router::Filter` receives `onBelowWriteBufferLowWatermark()` and calls `readDisable(false)` on the upstream request.
-
 
 ### HTTP and HTTP/2 codec upstream send buffer
 
