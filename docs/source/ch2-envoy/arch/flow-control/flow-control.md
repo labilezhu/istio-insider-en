@@ -285,7 +285,7 @@ The low watermark path is as follows:
 
 - When `Envoy::Network::ConnectionImpl::write_buffer_` is drained it calls `Network::ConnectionCallbacks::onBelowWriteBufferLowWatermark()`.
 - When `Envoy::Http::CodecClient` receives `onBelowWriteBufferLowWatermark()` it calls `onUnderlyingConnectionBelowWriteBufferLowWatermark()` on `codec_`.
-- When `Envoy::Http::ConnectionManagerImpl` receives `onBelowWriteBufferLowWatermark()` it calls `runLowWatermarkCallbacks()` for each stream of the connection.
+- When `Http::Http2::ConnectionImpl`*(the original document use `Envoy::Http::ConnectionManagerImpl` incorrectly)* receives `onBelowWriteBufferLowWatermark()` it calls `runLowWatermarkCallbacks()` for each stream of the connection.
 - `runLowWatermarkCallbacks()` results in all subscribers of `Envoy::Http::StreamCallback` receiving a `onBelowWriteBufferLowWatermark()` callback.
 - When `Envoy::Router::Filter` receives `onBelowWriteBufferLowWatermark()` it calls `StreamDecoderFilterCallback::onDecoderFilterBelowWriteBufferLowWatermark()`.
 - When `Envoy::Http::ConnectionManagerImpl` receives `onDecoderFilterBelowWriteBufferLowWatermark()` it calls `readDisable(false)` on the downstream stream to resume data.
