@@ -43,7 +43,7 @@ This book focuses on the design and implementation mechanism of Istio/Envoy. It 
 
 
 ### About the Author
-My name is Mark Zhu, a middle-aged programmer with little hair. I'm not an Istio expert, not even an Istio Committer, not even an employee of a major Internet company.
+My name is Mark Zhu, a middle-aged programmer with little hair. I am just an entry-level Istio/Envoy contributor, and for the time being I have only raised some github issues and documentation Pull Requests.
 
 Why do I learn from others and write a book when my level is limited? Because of this sentence:
 > You don't need to be great to get started, but you do need to get started to be great.

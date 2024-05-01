@@ -266,7 +266,7 @@ For the low watermark path:
 
 ### HTTP and HTTP/2 network upstream network buffer
 
-Below I am using [the original document](https://github.com/envoyproxy/envoy/blob/main/source/docs/flow_control.md) directly. However, I have included diagrams that I have drawn to make it easier to understand. **go further, I found a bug in [the original document](https://github.com/envoyproxy/envoy/blob/main/source/docs/flow_control.md) that should be fixed.**
+Below I am using [the original document](https://github.com/envoyproxy/envoy/blob/main/source/docs/flow_control.md) directly. However, I have included diagrams that I have drawn to make it easier to understand. **At the same time, I discovered a BUG in the official documentation and submitted a Pull Request to correct it: [Docs: flow control - Add a figure and fix suspected incorrect use of Envoy::Http::ConnectionManagerImpl #33847](https:// github.com/envoyproxy/envoy/pull/33847)**
 
 
 
