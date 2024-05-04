@@ -13,8 +13,8 @@ Most of the diagrams here are complex, not like PPT charts. So, basically, they 
 
 For complex diagrams, it is recommended to `open with draw.io`:
 - Some figure provide links to `open with draw.io` for a more interactive browser view: `*.drawio.svg`.
-  - <u>underlined text</u>, links to related documentation and lines of code.
-  - 💡 icon on diagrams, When your mouse over, a `hover` window pops up with more information. For example, the contents of a configuration file.
+  - <u>underlined text</u> or 🔗 icon on diagrams, links to related documentation and lines of code.
+  - 💡 or 🛈 icon on diagrams, When your mouse over, a `hover` window pops up with more information. For example, the contents of a configuration file.
 
 If you don't like draw.io, then open the SVG file by your browser.
 - The proper way to view an SVG image is to right-click on the image in your browser and select `Open Image in New Tab`. For large SVG images, press the middle mouse button and scroll/drag freely.
