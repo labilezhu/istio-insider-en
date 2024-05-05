@@ -2,7 +2,7 @@
 typora-root-url: ../../..
 ---
 
-# Event-driven vs. threaded model
+# Event-driven
 
 ![event loop](/ch2-envoy/arch/event-driven/event-driven.assets/envoy-event-model-loop.drawio.svg)
 
