@@ -39,9 +39,11 @@ HttpFilter is called `StreamFilter` or more precisely `Http::StreamFilterBase` i
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fhttp-filter-abstract.drawio.svg)*
 
 ## http filter C++ class relationships
+
 :::{figure-md} Figure: http filter C++ class relationship
 :class: full-width
 <img src="/ch2-envoy/arch/http/http-connection-manager/http-connection-manager.assets/http-filter-code-oop.drawio.svg" alt="Figure - http filter C++ class relationship">
+
 *Figure: http filter C++ class relationships*
 ::.
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fhttp-filter-code-oop.drawio.svg)*
