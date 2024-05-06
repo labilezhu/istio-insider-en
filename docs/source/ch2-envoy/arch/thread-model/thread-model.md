@@ -23,7 +23,62 @@ Unlike the single thread of Node.JS, Envoy supports multiple Worker Threads to r
 
 
 
+## Threading overview
+
+![image-20240506232521005](./thread-model.assets/threading-overview.png)
+
+*Figure : Threading overview*
+
+*Source: [Envoy threading model - Matt Klein](https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310)*
+
+
+
+> Envoy uses some different types of threads, as shown above. The two importance threads are selected below for illustration:
+>
+> - **Main**: This thread owns server startup and shutdown, all [xDS API](https://lyft.github.io/envoy/docs/intro/arch_overview/dynamic_configuration.html) handling (including [DNS](https://lyft.github.io/envoy/docs/intro/arch_overview/service_discovery.html), [health checking](https://lyft.github.io/envoy/docs/intro/arch_overview/health_checking.html), and general [cluster management](https://lyft.github.io/envoy/docs/intro/arch_overview/cluster_manager.html)), [runtime](https://lyft.github.io/envoy/docs/intro/arch_overview/runtime.html), stat flushing, admin, and general process management (signals, [hot restart](https://lyft.github.io/envoy/docs/intro/arch_overview/hot_restart.html), etc.). Everything that happens on this thread is asynchronous and “non-blocking.” In general the main thread coordinates all critical process functionality that does not require a large amount of CPU to accomplish. This allows the majority of management code to be written as if it were single threaded.
+> - **Worker**: By default, Envoy spawns a worker thread for every hardware thread in the system. (This is controllable via the `--concurrency`[ option](https://lyft.github.io/envoy/docs/operations/cli.html)). Each worker thread runs a “non-blocking” event loop that is responsible for listening on every listener (there is currently no listener sharding), accepting new connections, instantiating a filter stack for the connection, and processing all IO for the lifetime of the connection. Again, this allows the majority of connection handling code to be written as if it were single threaded.
+
+
+
+
+
+
+
 ## Thread Local
+
+
+
+> Because of the way Envoy separates main thread responsibilities from worker thread responsibilities, there is a requirement that complex processing can be done on the main thread and then made available to each worker thread in a highly concurrent way. This section describes Envoy’s Thread Local Storage (TLS) system at a high level. In the next section I will describe how it is used for handling cluster management.
+
+
+
+
+
+![image-20240506233017636](./thread-model.assets/thread-local-storage-system.png)
+
+
+
+*Source: [Envoy threading model - Matt Klein](https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310)*
+
+*Figure : Thread Local Storage (TLS) system*
+
+
+
+
+
+
+
+![image-20240506233250458](./thread-model.assets/cluster-manager-threading.png)
+
+*Source: [Envoy threading model - Matt Klein](https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310)*
+
+*Figure : Cluster manager threading*
+
+
+
+
+
+
 
 If the shared data is locked for write and read access, the concurrency will definitely decrease. So the Envoy author referred to the Linux kernel's [read-copy-update (RCU)] (https://en.wikipedia.org/wiki/Read-copy) under the condition that the real-time consistency requirements for data synchronization updates are not high. They have implemented a set of Thread Local data synchronization mechanism. The underlying implementation is based on C++11's `thread_local` function and libevent's `libevent::event_active(&raw_event_, EV_TIMEOUT, 0)`.
 
