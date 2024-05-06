@@ -1,16 +1,25 @@
 # Thread model
 
+If you were given an open source middleware and asked to analyze its implementation, what would you start with? The answer might be:
+- Source code modules
+- Abstract concepts and design patterns
+- Threads
+
+For modern open source middleware, I think the thread/process model is most importance. This is because modern middleware basically uses multi-processing or multi-threading to fully utilize hardware resources. No matter how well the abstraction is encapsulated or how elegantly the design patterns are applied, the program has to run on the cpu as a thread. And how multi-threading is divided by function, how to synchronize the communication between threads, these things are the difficulty and focus.
+
+
 Simply put, Envoy uses the thread design pattern of non-blocking + Event Driven + Multi-Worker-Thread. In the history of software design, there are many names for similar design patterns, such as:
 - [staged event-driven architecture (SEDA)](https://en.wikipedia.org/wiki/Staged_event-driven_architecture)
 - [Reactor pattern](https://en.wikipedia.org/wiki/Reactor_pattern)
 - [Event-driven architecture (EDA)](https://en.wikipedia.org/wiki/Event-driven_architecture)
 
-> This section assumes that the reader has been introduced to Envoy's event-driven model. If not, you can read the book's {doc}`ch2-envoy/arch/event-driven/event-driven`.
+> This section assumes that the reader has been introduced to Envoy's event-driven model. If not, you can read the book's {doc}`/ch2-envoy/arch/event-driven/event-driven`.
+> This section references: [Envoy threading model - Matt Klein](https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310) 
 
 Unlike the single thread of Node.JS, Envoy supports multiple Worker Threads to run their own independent event loops in order to take full advantage of multi-Core CPUs. This design comes at a cost, because multiple worker threads / main threads are not completely independent from each other. They need to share some data, such as:
 
 - Upstream Cluster's endpoints, health status...
-- Various monitoring statistical indicators
+- Various monitoring statistical metrics
 
 
 
