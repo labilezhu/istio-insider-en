@@ -4,7 +4,14 @@ typora-root-url: ../../..
 
 # Event-driven
 
-![event loop](/ch2-envoy/arch/event-driven/event-driven.assets/envoy-event-model-loop.drawio.svg)
+:::{figure-md} Figure: Event Loop of Envoy
+
+<img src="/ch2-envoy/arch/event-driven/event-driven.assets/envoy-event-model-loop.drawio.svg" alt="Figure - Event Loop of Envoy">
+
+*Figure: Event Loop of Envoy*
+:::
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-event-model-loop.drawio.svg)*
+
 
 Unsurprisingly, Envoy uses `libevent`, a C event library, which uses the Linux Kernel's epoll event driver API.
 

@@ -5,6 +5,8 @@ Simply put, Envoy uses the thread design pattern of non-blocking + Event Driven 
 - [Reactor pattern](https://en.wikipedia.org/wiki/Reactor_pattern)
 - [Event-driven architecture (EDA)](https://en.wikipedia.org/wiki/Event-driven_architecture)
 
+> This section assumes that the reader has been introduced to Envoy's event-driven model. If not, you can read the book's {doc}`ch2-envoy/arch/event-driven/event-driven`.
+
 Unlike the single thread of Node.JS, Envoy supports multiple Worker Threads to run their own independent event loops in order to take full advantage of multi-Core CPUs. This design comes at a cost, because multiple worker threads / main threads are not completely independent from each other. They need to share some data, such as:
 
 - Upstream Cluster's endpoints, health status...
