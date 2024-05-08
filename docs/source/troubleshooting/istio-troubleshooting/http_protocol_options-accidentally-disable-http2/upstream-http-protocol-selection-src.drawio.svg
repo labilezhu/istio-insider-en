@@ -1,0 +1,1482 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="5735px" height="5318px" viewBox="-0.5 -0.5 5735 5318" content="&lt;mxfile scale=&quot;1&quot; border=&quot;20&quot;&gt;&lt;diagram name=&quot;upstream-http-protocol-selection-src.drawio.svg&quot; id=&quot;ynux_H9hfVYit68Aa14Y&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);">
+    <defs>
+        <clipPath id="mx-clip-544-1978-352-26-0">
+            <rect x="544" y="1978" width="352" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-544-2168-352-26-0">
+            <rect x="544" y="2168" width="352" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-544-2202-352-26-0">
+            <rect x="544" y="2202" width="352" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-1534-1968-572-26-0">
+            <rect x="1534" y="1968" width="572" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-2394-1928-572-26-0">
+            <rect x="2394" y="1928" width="572" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-2394-2048-572-26-0">
+            <rect x="2394" y="2048" width="572" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-2394-2198-572-26-0">
+            <rect x="2394" y="2198" width="572" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-2394-2224-572-26-0">
+            <rect x="2394" y="2224" width="572" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-2394-2250-572-26-0">
+            <rect x="2394" y="2250" width="572" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-2394-2276-572-26-0">
+            <rect x="2394" y="2276" width="572" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-2394-2310-572-26-0">
+            <rect x="2394" y="2310" width="572" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-3049-2048-572-26-0">
+            <rect x="3049" y="2048" width="572" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-3049-2082-572-60-0">
+            <rect x="3049" y="2082" width="572" height="60"/>
+        </clipPath>
+        <clipPath id="mx-clip-1014-2348-482-26-0">
+            <rect x="1014" y="2348" width="482" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-1014-2382-482-26-0">
+            <rect x="1014" y="2382" width="482" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-2394-2508-572-26-0">
+            <rect x="2394" y="2508" width="572" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-2394-2542-572-26-0">
+            <rect x="2394" y="2542" width="572" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-1664-2362-572-26-0">
+            <rect x="1664" y="2362" width="572" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-1664-2396-572-26-0">
+            <rect x="1664" y="2396" width="572" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-1664-2538-572-26-0">
+            <rect x="1664" y="2538" width="572" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-1664-2572-572-26-0">
+            <rect x="1664" y="2572" width="572" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-3534-1658-572-26-0">
+            <rect x="3534" y="1658" width="572" height="26"/>
+        </clipPath>
+    </defs>
+    <g>
+        <rect x="2560" y="5177" width="490" height="120" rx="18" ry="18" fill="none" stroke="none" pointer-events="all"/>
+        <path d="M 2564.39 5181.63 C 2564.39 5181.63 2564.39 5181.63 2564.39 5181.63 M 2564.39 5181.63 C 2564.39 5181.63 2564.39 5181.63 2564.39 5181.63 M 2563.47 5188.78 C 2566.73 5185.96 2568.85 5182.13 2571.34 5179.73 M 2563.47 5188.78 C 2565.37 5186.54 2567.17 5185.14 2571.34 5179.73 M 2561.9 5196.69 C 2567.82 5191.55 2574.38 5181.95 2578.3 5177.82 M 2561.9 5196.69 C 2567.04 5189.92 2573.21 5182.43 2578.3 5177.82 M 2561.63 5203.09 C 2568.04 5196.35 2574.57 5184.76 2583.94 5177.43 M 2561.63 5203.09 C 2567.38 5195.49 2574.11 5186.96 2583.94 5177.43 M 2562.03 5208.73 C 2571.53 5199.79 2578.84 5191.46 2588.93 5177.79 M 2562.03 5208.73 C 2569.39 5199.92 2575.84 5191.69 2588.93 5177.79 M 2561.77 5215.13 C 2572.77 5200.63 2589.34 5183.22 2594.57 5177.39 M 2561.77 5215.13 C 2571.89 5204.32 2582.2 5192.26 2594.57 5177.39 M 2562.16 5220.77 C 2578.55 5204.54 2592.71 5184.89 2599.56 5177.75 M 2562.16 5220.77 C 2571.23 5209.12 2581.49 5198.23 2599.56 5177.75 M 2561.9 5227.17 C 2571.46 5218.48 2581.72 5206.64 2605.2 5177.36 M 2561.9 5227.17 C 2578.84 5207.17 2595.04 5187.92 2605.2 5177.36 M 2562.3 5232.81 C 2578.61 5215.86 2594.29 5195.92 2610.19 5177.72 M 2562.3 5232.81 C 2576.9 5215.75 2592.38 5196.82 2610.19 5177.72 M 2562.03 5239.21 C 2579.14 5219.7 2597.46 5197.36 2615.83 5177.32 M 2562.03 5239.21 C 2577.96 5220.85 2592.91 5202.5 2615.83 5177.32 M 2561.77 5245.61 C 2578.87 5225.61 2591.47 5209.96 2620.82 5177.68 M 2561.77 5245.61 C 2580.48 5225.07 2597.26 5205.62 2620.82 5177.68 M 2562.17 5251.25 C 2584.35 5224.17 2610.29 5195.5 2626.46 5177.29 M 2562.17 5251.25 C 2581.27 5229.37 2598.81 5207.74 2626.46 5177.29 M 2561.91 5257.65 C 2580.53 5234.55 2598.31 5212.94 2631.45 5177.65 M 2561.91 5257.65 C 2578.4 5239.3 2593.72 5222.36 2631.45 5177.65 M 2562.3 5263.29 C 2588.06 5232.32 2612.05 5205.22 2637.09 5177.25 M 2562.3 5263.29 C 2585.65 5234.98 2609.63 5206.9 2637.09 5177.25 M 2562.04 5269.69 C 2580.85 5245.75 2599.17 5224.21 2642.08 5177.61 M 2562.04 5269.69 C 2581.25 5249.66 2598.98 5228.95 2642.08 5177.61 M 2562.43 5275.33 C 2586.73 5242.64 2614.95 5215.53 2647.72 5177.22 M 2562.43 5275.33 C 2581.83 5251.8 2601.52 5229.08 2647.72 5177.22 M 2560.86 5283.24 C 2586.71 5253.49 2612.7 5224.24 2652.71 5177.58 M 2560.86 5283.24 C 2581.69 5261.83 2600.39 5237.87 2652.71 5177.58 M 2562.57 5287.37 C 2583.86 5260.31 2609.2 5236.46 2658.35 5177.19 M 2562.57 5287.37 C 2592.49 5252.21 2620.29 5220.67 2658.35 5177.19 M 2564.27 5291.51 C 2591.31 5261.92 2615.55 5233.93 2663.34 5177.55 M 2564.27 5291.51 C 2600.72 5249.4 2638.94 5206.81 2663.34 5177.55 M 2566.64 5294.89 C 2593.52 5265.39 2615.49 5234.36 2668.33 5177.91 M 2566.64 5294.89 C 2603 5253.2 2637.62 5213.34 2668.33 5177.91 M 2570.97 5296 C 2596.29 5269.01 2617.86 5240.86 2673.97 5177.51 M 2570.97 5296 C 2598.03 5263.94 2628.1 5230.44 2673.97 5177.51 M 2574.64 5297.87 C 2611.6 5250.93 2652.46 5209.58 2678.96 5177.87 M 2574.64 5297.87 C 2599.35 5270.02 2624.07 5240.84 2678.96 5177.87 M 2580.29 5297.48 C 2610.89 5265.61 2637.74 5228.34 2684.6 5177.48 M 2580.29 5297.48 C 2619.82 5251.52 2659.27 5205.45 2684.6 5177.48 M 2585.27 5297.84 C 2610.61 5269.79 2634.04 5238.23 2689.59 5177.84 M 2585.27 5297.84 C 2619.98 5258.63 2653.06 5218.77 2689.59 5177.84 M 2590.92 5297.44 C 2617.93 5267 2647.07 5235.94 2695.23 5177.44 M 2590.92 5297.44 C 2625.21 5257.04 2659.05 5219.46 2695.23 5177.44 M 2595.9 5297.8 C 2631.88 5257.25 2671.66 5212.06 2700.22 5177.8 M 2595.9 5297.8 C 2622.59 5268.68 2648.87 5238.72 2700.22 5177.8 M 2601.55 5297.41 C 2625.39 5273.51 2647.01 5244.36 2705.86 5177.41 M 2601.55 5297.41 C 2623.94 5271.79 2647.02 5244.58 2705.86 5177.41 M 2606.53 5297.77 C 2629.26 5270.38 2654.44 5239.37 2710.85 5177.77 M 2606.53 5297.77 C 2642.73 5255.43 2679.69 5214.48 2710.85 5177.77 M 2612.18 5297.37 C 2649.95 5252.2 2692.94 5205.33 2716.49 5177.37 M 2612.18 5297.37 C 2652.79 5251.17 2691.02 5207.07 2716.49 5177.37 M 2617.16 5297.73 C 2645.29 5265.91 2672.31 5234 2721.48 5177.73 M 2617.16 5297.73 C 2639.06 5273.75 2661.24 5247.05 2721.48 5177.73 M 2622.81 5297.34 C 2645.31 5273 2665.24 5249.39 2727.12 5177.34 M 2622.81 5297.34 C 2662.96 5252.5 2700.98 5208.64 2727.12 5177.34 M 2627.79 5297.7 C 2655.62 5268.64 2679.86 5235.83 2732.11 5177.7 M 2627.79 5297.7 C 2663.25 5258.08 2698.07 5216.52 2732.11 5177.7 M 2633.44 5297.3 C 2663.56 5263.65 2692.82 5228.8 2737.75 5177.3 M 2633.44 5297.3 C 2674.25 5250.26 2714.72 5203.7 2737.75 5177.3 M 2638.42 5297.66 C 2666.79 5263.02 2696.11 5234.32 2742.74 5177.66 M 2638.42 5297.66 C 2669.6 5262.4 2700.97 5226.13 2742.74 5177.66 M 2643.41 5298.02 C 2672.48 5265.25 2699.5 5232.95 2748.38 5177.27 M 2643.41 5298.02 C 2670.49 5267.55 2695.71 5236.7 2748.38 5177.27 M 2649.05 5297.63 C 2686.62 5253.76 2727.48 5205.11 2753.37 5177.63 M 2649.05 5297.63 C 2686.55 5254.24 2723.83 5212.18 2753.37 5177.63 M 2654.04 5297.99 C 2689.95 5257.21 2726.35 5218.01 2759.01 5177.24 M 2654.04 5297.99 C 2678.34 5268.78 2702.09 5241.52 2759.01 5177.24 M 2659.68 5297.59 C 2699.28 5252.68 2735.66 5208.92 2764 5177.6 M 2659.68 5297.59 C 2681.72 5270.76 2705.03 5244.22 2764 5177.6 M 2664.67 5297.95 C 2695.57 5259.77 2729.94 5224.72 2768.98 5177.96 M 2664.67 5297.95 C 2687.39 5272.35 2708.83 5247.14 2768.98 5177.96 M 2670.31 5297.56 C 2708.71 5248.4 2750.02 5201.18 2774.63 5177.56 M 2670.31 5297.56 C 2706.86 5254.59 2744.03 5212.77 2774.63 5177.56 M 2675.3 5297.92 C 2710.8 5255.55 2748.06 5211.42 2779.61 5177.92 M 2675.3 5297.92 C 2708.2 5260.67 2741.64 5223.85 2779.61 5177.92 M 2680.94 5297.53 C 2711.99 5262.55 2743.98 5224.27 2785.26 5177.53 M 2680.94 5297.53 C 2703.97 5271.98 2726.15 5245.6 2785.26 5177.53 M 2685.93 5297.89 C 2716.74 5262.87 2747.06 5224.94 2790.24 5177.89 M 2685.93 5297.89 C 2717.87 5260.49 2749.7 5224.34 2790.24 5177.89 M 2691.57 5297.49 C 2726.79 5257.2 2763.42 5214.97 2795.89 5177.49 M 2691.57 5297.49 C 2715.24 5268.75 2738.71 5241.55 2795.89 5177.49 M 2696.56 5297.85 C 2724.02 5265.6 2753.81 5229.29 2800.87 5177.85 M 2696.56 5297.85 C 2732.15 5253.94 2769.49 5212.07 2800.87 5177.85 M 2702.2 5297.46 C 2730.27 5267.99 2751.77 5241.53 2806.52 5177.46 M 2702.2 5297.46 C 2727.23 5268.25 2752.74 5240.6 2806.52 5177.46 M 2707.19 5297.82 C 2736.53 5262.51 2770.9 5223.34 2811.5 5177.82 M 2707.19 5297.82 C 2738.94 5260.64 2773.03 5221.57 2811.5 5177.82 M 2712.83 5297.42 C 2747.42 5256.52 2781.04 5216.15 2817.15 5177.42 M 2712.83 5297.42 C 2734.88 5269.29 2757.98 5243.72 2817.15 5177.42 M 2717.82 5297.78 C 2748.15 5262.31 2779.92 5227.85 2822.13 5177.78 M 2717.82 5297.78 C 2741.43 5271.73 2765.19 5244.4 2822.13 5177.78 M 2723.46 5297.39 C 2749.06 5270.16 2774.25 5242.68 2827.78 5177.39 M 2723.46 5297.39 C 2762.11 5252.6 2801.95 5207.38 2827.78 5177.39 M 2728.45 5297.75 C 2754.84 5268.45 2775.94 5242.23 2832.76 5177.75 M 2728.45 5297.75 C 2767.51 5252.03 2805.55 5207.41 2832.76 5177.75 M 2733.44 5298.11 C 2772.68 5252.81 2810.99 5211.2 2838.41 5177.35 M 2733.44 5298.11 C 2759.68 5266.56 2788.09 5237.07 2838.41 5177.35 M 2739.08 5297.71 C 2767.45 5268.24 2790.75 5237.72 2843.39 5177.71 M 2739.08 5297.71 C 2768.46 5263.89 2798.35 5230.54 2843.39 5177.71 M 2744.07 5298.07 C 2765.92 5272.63 2792.43 5242.9 2849.04 5177.32 M 2744.07 5298.07 C 2769.79 5269.79 2794.13 5242.66 2849.04 5177.32 M 2749.71 5297.68 C 2779.63 5259.89 2813.46 5224.37 2854.02 5177.68 M 2749.71 5297.68 C 2782.06 5261.2 2812.88 5222.83 2854.02 5177.68 M 2754.7 5298.04 C 2786.43 5259.28 2817.15 5225.46 2859.01 5178.04 M 2754.7 5298.04 C 2778.44 5272.08 2801.74 5246.33 2859.01 5178.04 M 2760.34 5297.64 C 2791.86 5263.57 2821.02 5230.15 2864.65 5177.65 M 2760.34 5297.64 C 2786.31 5269.29 2810.81 5240.27 2864.65 5177.65 M 2765.33 5298 C 2784.63 5275.17 2808.71 5249.29 2869.64 5178.01 M 2765.33 5298 C 2801.54 5255.94 2837.57 5214.21 2869.64 5178.01 M 2770.97 5297.61 C 2810.76 5252.1 2848.73 5207.59 2875.28 5177.61 M 2770.97 5297.61 C 2802 5261.35 2831.45 5226.36 2875.28 5177.61 M 2775.96 5297.97 C 2807.29 5259.35 2840.3 5223.82 2880.27 5177.97 M 2775.96 5297.97 C 2807.15 5261.71 2839.71 5224.4 2880.27 5177.97 M 2781.6 5297.57 C 2803.24 5270.33 2827.46 5241.2 2885.91 5177.58 M 2781.6 5297.57 C 2816.64 5257.84 2849.79 5221.37 2885.91 5177.58 M 2786.59 5297.94 C 2815.12 5264.27 2844.38 5229.63 2890.9 5177.94 M 2786.59 5297.94 C 2826.59 5253.42 2866.18 5208.02 2890.9 5177.94 M 2792.23 5297.54 C 2834.54 5251.91 2877.24 5204.25 2896.54 5177.54 M 2792.23 5297.54 C 2815.54 5273.02 2837.81 5246.96 2896.54 5177.54 M 2797.22 5297.9 C 2838.32 5250.62 2875.65 5205.47 2901.53 5177.9 M 2797.22 5297.9 C 2820.9 5270.34 2843.66 5243.02 2901.53 5177.9 M 2802.86 5297.51 C 2837.99 5256.3 2874.88 5211.73 2907.17 5177.51 M 2802.86 5297.51 C 2831.02 5264.48 2860.87 5231.67 2907.17 5177.51 M 2807.85 5297.87 C 2847.33 5252.47 2887.1 5205.44 2912.16 5177.87 M 2807.85 5297.87 C 2839.93 5261.58 2870.94 5224.74 2912.16 5177.87 M 2813.49 5297.47 C 2835.6 5271.92 2855.84 5247.54 2917.8 5177.47 M 2813.49 5297.47 C 2844.62 5263.54 2874.15 5229.32 2917.8 5177.47 M 2818.48 5297.83 C 2843.54 5272.18 2865.71 5241.82 2922.79 5177.83 M 2818.48 5297.83 C 2842.76 5271.61 2868.15 5243.45 2922.79 5177.83 M 2824.12 5297.44 C 2848.27 5273.01 2868.27 5245.31 2928.43 5177.44 M 2824.12 5297.44 C 2864.85 5248.92 2906.2 5202.74 2928.43 5177.44 M 2829.11 5297.8 C 2867.31 5255.55 2903.77 5212.29 2933.42 5177.8 M 2829.11 5297.8 C 2853.21 5270.55 2878.64 5240.63 2933.42 5177.8 M 2834.1 5298.16 C 2863.95 5263.11 2893.3 5227.74 2939.06 5177.4 M 2834.1 5298.16 C 2859.37 5269.83 2885.46 5238.58 2939.06 5177.4 M 2839.74 5297.76 C 2859.17 5272.8 2883.59 5244.91 2944.05 5177.76 M 2839.74 5297.76 C 2869.35 5262.04 2900.64 5226.85 2944.05 5177.76 M 2844.73 5298.12 C 2874.05 5266.16 2903.85 5234.49 2949.69 5177.37 M 2844.73 5298.12 C 2873.66 5266.8 2901.84 5232.93 2949.69 5177.37 M 2850.37 5297.73 C 2883.6 5259.39 2916.43 5222.89 2954.68 5177.73 M 2850.37 5297.73 C 2871.71 5271.39 2893.9 5247.89 2954.68 5177.73 M 2855.36 5298.09 C 2880.11 5268.67 2907.68 5239.27 2959.67 5178.09 M 2855.36 5298.09 C 2892.71 5254.33 2931.61 5211.1 2959.67 5178.09 M 2861 5297.69 C 2900.52 5253.1 2939.63 5205.69 2965.31 5177.69 M 2861 5297.69 C 2894.53 5259.33 2925.97 5220.54 2965.31 5177.69 M 2865.99 5298.05 C 2889.91 5269.82 2916.09 5240.02 2970.3 5178.05 M 2865.99 5298.05 C 2890.15 5271 2913.94 5243.59 2970.3 5178.05 M 2871.63 5297.66 C 2892.71 5271.2 2918.07 5242.23 2975.94 5177.66 M 2871.63 5297.66 C 2911.99 5250.28 2953.66 5204.83 2975.94 5177.66 M 2876.62 5298.02 C 2907.96 5262.56 2939.95 5224.99 2980.93 5178.02 M 2876.62 5298.02 C 2899.13 5271.66 2922.66 5243.34 2980.93 5178.02 M 2882.26 5297.62 C 2908.37 5265.27 2934.81 5237.65 2986.57 5177.63 M 2882.26 5297.62 C 2915.84 5260.15 2947.72 5221.84 2986.57 5177.63 M 2887.25 5297.98 C 2916.91 5265.06 2944.59 5231.4 2991.56 5177.99 M 2887.25 5297.98 C 2921.66 5258.46 2955.65 5219.95 2991.56 5177.99 M 2892.89 5297.59 C 2931.21 5256.31 2966.44 5212.46 2997.2 5177.59 M 2892.89 5297.59 C 2917.24 5270.45 2943.08 5241.8 2997.2 5177.59 M 2897.88 5297.95 C 2919.15 5272.66 2939.31 5249.55 3002.19 5177.95 M 2897.88 5297.95 C 2936.33 5255.29 2971.65 5212.32 3002.19 5177.95 M 2903.52 5297.56 C 2925.33 5273.55 2947.26 5245.33 3007.83 5177.56 M 2903.52 5297.56 C 2927.26 5270.1 2952.07 5241.96 3007.83 5177.56 M 2908.51 5297.92 C 2935.14 5266.47 2965.35 5235.48 3012.82 5177.92 M 2908.51 5297.92 C 2942.23 5257.42 2979.47 5216.32 3012.82 5177.92 M 2914.15 5297.52 C 2938.67 5271.62 2962.65 5242.27 3018.46 5177.52 M 2914.15 5297.52 C 2955.88 5249.79 2995.88 5202.85 3018.46 5177.52 M 2919.14 5297.88 C 2952.9 5258.35 2989.15 5219.89 3023.45 5177.88 M 2919.14 5297.88 C 2957.91 5253.79 2998.48 5207.01 3023.45 5177.88 M 2924.78 5297.49 C 2961.13 5255.64 2996.34 5213.74 3029.09 5177.49 M 2924.78 5297.49 C 2961.3 5257.81 2997.66 5216.19 3029.09 5177.49 M 2929.77 5297.85 C 2964.94 5254.26 3003.49 5211.53 3034.08 5177.85 M 2929.77 5297.85 C 2969.06 5254.74 3007.08 5210.45 3034.08 5177.85 M 2934.75 5298.21 C 2961.3 5268.76 2989.54 5238.31 3038.41 5178.96 M 2934.75 5298.21 C 2971.13 5254.71 3010.24 5211.78 3038.41 5178.96 M 2940.4 5297.81 C 2976.07 5251.87 3015.88 5211.92 3042.09 5180.83 M 2940.4 5297.81 C 2967.75 5265.16 2994.44 5233.63 3042.09 5180.83 M 2945.38 5298.17 C 2985.08 5253.29 3025.75 5208.41 3046.42 5181.95 M 2945.38 5298.17 C 2969.68 5270.54 2995.09 5242.33 3046.42 5181.95 M 2951.03 5297.78 C 2985.69 5257.33 3018.8 5221.35 3048.12 5186.08 M 2951.03 5297.78 C 2973.55 5270.23 2997.93 5244.09 3048.12 5186.08 M 2956.01 5298.14 C 2988.38 5265.9 3015.61 5231.79 3049.83 5190.21 M 2956.01 5298.14 C 2975.45 5275.52 2996.95 5250.87 3049.83 5190.21 M 2961.66 5297.74 C 2985.25 5267.17 3012.44 5238.15 3052.19 5193.59 M 2961.66 5297.74 C 2989.81 5264.51 3019.3 5230.27 3052.19 5193.59 M 2966.64 5298.1 C 3000.39 5259.72 3028.24 5227.16 3052.59 5199.24 M 2966.64 5298.1 C 2987.33 5274.05 3010.32 5247.42 3052.59 5199.24 M 2972.29 5297.71 C 2998.15 5269.81 3023.25 5240.52 3052.33 5205.63 M 2972.29 5297.71 C 2998.28 5267.82 3022.75 5238.87 3052.33 5205.63 M 2977.27 5298.07 C 3004.27 5265.64 3033.83 5231.6 3052.72 5211.28 M 2977.27 5298.07 C 3003.83 5266.77 3031.05 5238.2 3052.72 5211.28 M 2982.92 5297.67 C 2999.65 5277.71 3019.14 5253.54 3052.46 5217.68 M 2982.92 5297.67 C 3007.44 5270.26 3030.17 5243.61 3052.46 5217.68 M 2987.9 5298.03 C 3010.73 5270.87 3033.45 5244.22 3052.2 5224.07 M 2987.9 5298.03 C 3001.81 5281.9 3017.37 5265.56 3052.2 5224.07 M 2993.55 5297.64 C 3008.6 5282.19 3022.2 5262.36 3052.59 5229.72 M 2993.55 5297.64 C 3010.66 5278.74 3026.84 5261.29 3052.59 5229.72 M 2998.53 5298 C 3011.35 5284.17 3025.06 5266.63 3052.33 5236.11 M 2998.53 5298 C 3011.66 5282.12 3025.17 5267.27 3052.33 5236.11 M 3004.18 5297.61 C 3015.03 5283.8 3027.45 5269.67 3052.72 5241.76 M 3004.18 5297.61 C 3018.2 5283 3032 5267.62 3052.72 5241.76 M 3009.16 5297.97 C 3023.11 5278.73 3038.7 5263.27 3052.46 5248.15 M 3009.16 5297.97 C 3022.83 5281.62 3037.69 5265.78 3052.46 5248.15 M 3014.81 5297.57 C 3029.07 5280.87 3043.16 5265.8 3052.2 5254.55 M 3014.81 5297.57 C 3025.72 5284.47 3037.37 5271.27 3052.2 5254.55 M 3019.79 5297.93 C 3028.62 5286.93 3037.14 5276.08 3052.6 5260.2 M 3019.79 5297.93 C 3031.8 5283.88 3043.38 5269.77 3052.6 5260.2 M 3024.78 5298.29 C 3033.43 5286.94 3047.38 5273.24 3052.34 5266.59 M 3024.78 5298.29 C 3035.77 5285.51 3045.19 5273.41 3052.34 5266.59 M 3030.42 5297.9 C 3040.66 5287.75 3046.64 5279.07 3052.73 5272.24 M 3030.42 5297.9 C 3035.18 5292.2 3040.84 5285.53 3052.73 5272.24 M 3034.75 5299.01 C 3040.34 5290.7 3049.33 5281.68 3052.47 5278.63 M 3034.75 5299.01 C 3041.22 5292.61 3046.54 5285.74 3052.47 5278.63" fill="none" stroke="#ffccff" stroke-width="0.5" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 488px; height: 1px; padding-top: 5237px; margin-left: 2561px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; font-style: italic; white-space: normal; overflow-wrap: normal;">
+                                <font style="">
+                                    Istio Upstream HTTP protocol selection
+                                    <br/>
+                                    <br/>
+                                    upstream-http-protocol-selection-src.drawio.svg
+                                    <br/>
+                                </font>
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="2805" y="5241" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle" font-style="italic">
+                    Istio Upstream HTTP protocol selection...
+                </text>
+            </switch>
+        </g>
+        <rect x="1640" y="37" width="955" height="400" rx="60" ry="60" fill="#000000" stroke="#000000" stroke-dasharray="3 3" pointer-events="all" transform="translate(2,3)" opacity="0.25"/>
+        <rect x="1640" y="37" width="955" height="400" rx="60" ry="60" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-dasharray="3 3" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-end; justify-content: unsafe center; width: 953px; height: 1px; padding-top: 34px; margin-left: 1641px;">
+                        <div data-drawio-colors="color: #000000; " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                Legend
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="2118" y="34" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Legend
+                </text>
+            </switch>
+        </g>
+        <path d="M 1735 117 L 1959.29 117" fill="none" stroke="#66cc00" stroke-width="6" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 1968.29 117 L 1956.29 123 L 1959.29 117 L 1956.29 111 Z" fill="#66cc00" stroke="#66cc00" stroke-width="6" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 117px; margin-left: 1840px;">
+                        <div data-drawio-colors="color: #000000; background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                buffer transfer: move-partial
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1840" y="120" fill="#000000" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    buffer tra...
+                </text>
+            </switch>
+        </g>
+        <path d="M 1735 197 L 1959.29 197" fill="none" stroke="#3399ff" stroke-width="6" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 1968.29 197 L 1956.29 203 L 1959.29 197 L 1956.29 191 Z" fill="#3399ff" stroke="#3399ff" stroke-width="6" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 197px; margin-left: 1840px;">
+                        <div data-drawio-colors="color: #000000; background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                buffer transfer:  move-slice
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1840" y="200" fill="#000000" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    buffer tra...
+                </text>
+            </switch>
+        </g>
+        <path d="M 1720 317 C 1720 308.72 1755.82 302 1800 302 C 1821.22 302 1841.57 303.58 1856.57 306.39 C 1871.57 309.21 1880 313.02 1880 317 L 1880 367 C 1880 375.28 1844.18 382 1800 382 C 1755.82 382 1720 375.28 1720 367 Z" fill="#f8cecc" stroke="#b85450" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 1880 317 C 1880 325.28 1844.18 332 1800 332 C 1755.82 332 1720 325.28 1720 317" fill="none" stroke="#b85450" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 158px; height: 1px; padding-top: 355px; margin-left: 1721px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                Unbounded buffer
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1800" y="359" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Unbounded buffer
+                </text>
+            </switch>
+        </g>
+        <path d="M 1940 317 C 1940 308.72 1973.58 302 2015 302 C 2034.89 302 2053.97 303.58 2068.03 306.39 C 2082.1 309.21 2090 313.02 2090 317 L 2090 367 C 2090 375.28 2056.42 382 2015 382 C 1973.58 382 1940 375.28 1940 367 Z" fill="#d5e8d4" stroke="#82b366" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 2090 317 C 2090 325.28 2056.42 332 2015 332 C 1973.58 332 1940 325.28 1940 317" fill="none" stroke="#82b366" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 148px; height: 1px; padding-top: 355px; margin-left: 1941px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                Bounded buffer
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="2015" y="359" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Bounded buffer
+                </text>
+            </switch>
+        </g>
+        <path d="M 2248.25 537.5 L 2248.25 397.71" fill="none" stroke="#3399ff" stroke-width="6" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 2248.25 388.71 L 2254.25 400.71 L 2248.25 397.71 L 2242.25 400.71 Z" fill="#3399ff" stroke="#3399ff" stroke-width="6" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 461px; margin-left: 2248px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                1. send response from backend
+                                <br style="border-color: var(--border-color); font-size: 12px;"/>
+                                (upstream)
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="2248" y="465" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    1. send r...
+                </text>
+            </switch>
+        </g>
+        <path d="M 2625.48 4909.5 L 2657.75 4720.23" fill="none" stroke="#3399ff" stroke-width="6" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 2660.8 4726.11 L 2658.87 4713.61 L 2652.91 4724.77" fill="none" stroke="#3399ff" stroke-width="6" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 4805px; margin-left: 2648px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                To client
+                                <br style="border-color: var(--border-color);"/>
+                                downstream)
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="2648" y="4808" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    To client...
+                </text>
+            </switch>
+        </g>
+        <rect x="2580" y="4909.5" width="78" height="76" fill="none" stroke="none" pointer-events="all"/>
+        <path d="M 2653 4909.5 L 2585.01 4909.5 C 2582.43 4909.5 2580.34 4911.59 2580.34 4914.17 L 2580.34 4959.06 C 2580.34 4961.63 2582.43 4963.72 2585.01 4963.72 L 2653 4963.72 C 2655.57 4963.72 2657.66 4961.63 2657.66 4959.06 L 2657.66 4914.17 C 2657.66 4911.59 2655.57 4909.5 2653 4909.5 Z M 2654.13 4959.06 C 2654.13 4959.68 2653.62 4960.19 2653 4960.19 L 2585.01 4960.19 C 2584.38 4960.19 2583.87 4959.68 2583.87 4959.06 L 2583.87 4914.17 C 2583.87 4913.54 2584.38 4913.03 2585.01 4913.03 L 2653 4913.03 C 2653.62 4913.03 2654.13 4913.54 2654.13 4914.17 Z M 2648.92 4915.68 L 2589.03 4915.68 C 2587.64 4915.68 2586.52 4916.81 2586.52 4918.19 L 2586.52 4955.03 C 2586.52 4956.42 2587.64 4957.54 2589.03 4957.54 L 2648.92 4957.54 C 2650.3 4957.54 2651.43 4956.42 2651.43 4955.03 L 2651.43 4918.19 C 2651.43 4916.81 2650.3 4915.68 2648.92 4915.68 Z M 2590.05 4954.01 L 2590.05 4919.21 L 2647.9 4919.21 L 2647.9 4954.01 Z M 2653 4966.65 L 2585.01 4966.65 C 2582.43 4966.65 2580.34 4968.74 2580.34 4971.32 L 2580.34 4980.83 C 2580.34 4983.4 2582.43 4985.5 2585.01 4985.5 L 2653 4985.5 C 2655.57 4985.5 2657.66 4983.4 2657.66 4980.83 L 2657.66 4971.32 C 2657.66 4968.74 2655.57 4966.65 2653 4966.65 Z M 2654.13 4980.83 C 2654.13 4981.46 2653.62 4981.97 2653 4981.97 L 2585.01 4981.97 C 2584.38 4981.97 2583.87 4981.46 2583.87 4980.83 L 2583.87 4971.32 C 2583.87 4970.69 2584.38 4970.18 2585.01 4970.18 L 2653 4970.18 C 2653.62 4970.18 2654.13 4970.69 2654.13 4971.32 Z M 2651.49 4974.43 L 2651.49 4977.82 C 2651.49 4978.6 2650.86 4979.22 2650.09 4979.22 L 2631.12 4979.22 C 2630.34 4979.22 2629.72 4978.6 2629.72 4977.82 L 2629.72 4974.43 C 2629.72 4973.65 2630.34 4973.03 2631.12 4973.03 L 2650.09 4973.03 C 2650.86 4973.03 2651.49 4973.65 2651.49 4974.43 Z" fill="#232f3d" stroke="none" pointer-events="all"/>
+        <path d="M 2210 613.37 L 2210 546.26 L 2245.53 537.5 L 2275.31 546.51 L 2275.31 614.37 L 2240.28 622.64 Z" fill="#abb4c5" stroke="none" pointer-events="all"/>
+        <path d="M 2210 546.26 L 2245.53 537.5 L 2275.31 546.51 L 2240.28 555.03 Z" fill="#b8bfd1" stroke="none" pointer-events="all"/>
+        <path d="M 2240.28 555.03 L 2275.31 546.51 L 2275.31 614.37 L 2240.28 622.64 Z" fill="#5b6369" stroke="none" pointer-events="all"/>
+        <path d="M 2240.63 591.94 C 2234.11 589.42 2227.87 586.24 2222.01 582.42 C 2219.2 580.47 2216.81 577.97 2215 575.06 C 2213.76 572.79 2213.12 570.24 2213.15 567.65 C 2213.05 564.86 2213.1 562.07 2213.3 559.29 C 2213.45 556.8 2213.71 554.33 2214.1 551.87 C 2214.47 550.52 2215.03 549.22 2215.76 548.02 C 2217.28 546.99 2219 546.15 2220.86 545.51 C 2224.03 544.43 2227.26 543.51 2230.52 542.76 C 2233.92 541.85 2237.38 541.18 2240.88 540.76 C 2243.25 540.46 2245.65 540.37 2248.04 540.5 C 2251.93 540.78 2255.75 541.63 2259.4 543.01 L 2271.26 547.37 C 2272.3 549.1 2272.98 551.02 2273.26 553.03 C 2273.59 555.72 2273.78 558.43 2273.81 561.14 C 2274 567.12 2273.84 573.11 2273.31 579.07 C 2273.24 581.7 2272.35 584.24 2270.76 586.33 C 2268.44 588.89 2265.31 590.57 2261.9 591.09 C 2259.17 591.51 2256.41 591.72 2253.64 591.69 Z" fill-opacity="0.4" fill="#ffffff" stroke="none" pointer-events="all"/>
+        <rect x="2210" y="537.5" width="0" height="0" fill="none" stroke="none" pointer-events="all"/>
+        <path d="M 2213.5 556.53 L 2213.5 554.78 L 2236.28 561.79 L 2236.28 563.54 Z M 2217.26 609.62 L 2217.26 607.86 L 2231.27 611.87 L 2231.27 613.62 Z" fill="#52595e" stroke="none" pointer-events="all"/>
+        <path d="M 2210 613.37 L 2210 546.26 L 2245.53 537.5 L 2275.31 546.51 L 2275.31 614.37 L 2240.28 622.64 Z" fill="none" stroke="#000000" stroke-width="0.6" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="2210" y="537.5" width="0" height="0" fill="none" stroke="none" pointer-events="all"/>
+        <ellipse cx="2267.01" cy="608.67" rx="18.818449460255152" ry="18.830337766401424" fill="#008cce" stroke="none" pointer-events="all"/>
+        <path d="M 2254.16 595.18 C 2254.35 595.7 2254.61 596.2 2254.92 596.65 C 2255.44 596.7 2255.95 596.86 2256.4 597.12 C 2256.27 597.65 2256.5 598.2 2256.96 598.49 C 2257.31 598.69 2257.55 599.05 2257.6 599.45 C 2257.61 599.65 2257.71 599.84 2257.86 599.97 C 2258.02 600.1 2258.22 600.16 2258.42 600.15 C 2258.65 600.11 2258.89 600.1 2259.12 600.1 C 2259.63 600.03 2260.15 600.14 2260.58 600.4 L 2262.17 601.55 C 2262.42 601.72 2262.61 601.99 2262.68 602.28 C 2262.77 602.57 2262.77 602.89 2262.68 603.18 C 2262.55 603.21 2262.42 603.2 2262.3 603.14 C 2262.21 602.89 2262.03 602.68 2261.79 602.56 C 2261.49 602.44 2261.14 602.44 2260.84 602.56 C 2260.43 602.79 2259.96 602.87 2259.5 602.8 C 2259.12 602.81 2258.77 603 2258.54 603.3 C 2258.37 603.56 2258.09 603.72 2257.78 603.74 C 2257.47 603.77 2257.17 603.65 2256.96 603.43 C 2256.77 603.18 2256.47 603.04 2256.15 603.07 C 2255.84 603.1 2255.57 603.3 2255.43 603.58 C 2255.27 603.95 2255.17 604.33 2255.13 604.73 C 2255.14 605.24 2255.04 605.75 2254.85 606.23 C 2254.74 606.47 2254.57 606.68 2254.34 606.82 C 2253.97 606.92 2253.73 607.27 2253.78 607.65 C 2254.08 608.01 2254.31 608.41 2254.47 608.85 C 2254.61 609.12 2254.5 609.44 2254.21 609.61 C 2253.93 609.85 2253.79 610.22 2253.86 610.58 C 2253.42 610.59 2252.98 610.52 2252.56 610.38 C 2252.4 610.17 2252.18 610.02 2251.93 609.94 C 2251.69 609.89 2251.44 609.98 2251.29 610.17 C 2251 610.58 2250.79 611.04 2250.68 611.52 C 2250.58 611.85 2250.53 612.2 2250.52 612.54 C 2250.85 613.15 2251.01 613.83 2250.99 614.52 L 2251.24 616.56 C 2251.26 616.83 2251.19 617.1 2251.05 617.32 C 2250.89 617.53 2250.67 617.68 2250.42 617.75 C 2246.43 610.25 2247.95 601.01 2254.14 595.18 Z" fill="#00527f" stroke="none" pointer-events="all"/>
+        <path d="M 2277.18 593.02 C 2277.09 593.3 2276.91 593.55 2276.67 593.71 C 2276.44 593.8 2276.2 593.85 2275.95 593.86 L 2274.56 594.04 C 2273.96 593.97 2273.35 594.03 2272.78 594.24 C 2272.83 594.44 2272.75 594.65 2272.58 594.78 C 2272.42 594.9 2272.19 594.91 2272.02 594.8 C 2271.65 594.81 2271.31 594.97 2271.07 595.24 C 2270.89 595.44 2270.64 595.57 2270.36 595.62 C 2269.98 595.7 2269.65 595.95 2269.47 596.3 C 2269.31 596.61 2269.01 596.68 2268.79 596.45 C 2268.65 596.18 2268.56 595.88 2268.53 595.57 C 2268.28 594.97 2267.83 594.47 2267.26 594.17 C 2266.68 593.91 2266.14 593.57 2265.66 593.15 C 2265.35 592.92 2265.17 592.57 2265.15 592.18 C 2265.13 591.95 2265.16 591.72 2265.22 591.5 C 2265.03 591.1 2264.65 590.83 2264.21 590.78 C 2263.88 590.7 2263.61 590.46 2263.5 590.14 C 2268.34 589.24 2273.34 590.28 2277.43 593.02 Z" fill="#64aadc" stroke="none" pointer-events="all"/>
+        <path d="M 2285.06 613.76 C 2285 613.18 2284.78 612.62 2284.42 612.16 C 2284.03 612.13 2283.65 612.32 2283.46 612.67 C 2283.15 613.11 2282.67 613.41 2282.14 613.51 C 2281.76 613.09 2281.84 612.51 2282.32 612.16 C 2282.63 611.69 2282.7 611.11 2282.52 610.58 C 2282.48 610.35 2282.39 610.14 2282.27 609.94 C 2281.91 609.59 2281.65 609.15 2281.5 608.67 C 2281.17 608.89 2280.77 608.85 2280.46 608.59 C 2280.15 608.32 2279.98 607.86 2280.02 607.4 C 2280.04 606.85 2279.84 606.32 2279.47 605.93 C 2279.5 605.06 2279.23 604.2 2278.7 603.51 C 2278.17 602.98 2277.47 602.66 2276.72 602.61 C 2276.09 602.63 2275.57 602.25 2275.56 601.78 C 2275.55 601.31 2276.04 600.92 2276.67 600.91 C 2277.62 601.02 2278.58 600.99 2279.52 600.83 C 2280.43 600.72 2281.32 600.45 2282.14 600.02 L 2283.03 598.8 C 2285.76 603.28 2286.5 608.71 2285.06 613.76 Z" fill="#0a79b9" stroke="none" pointer-events="all"/>
+        <path d="M 2283.15 618.47 C 2282.72 619.01 2282.15 619.42 2281.5 619.66 C 2280.99 619.82 2280.64 620.28 2280.61 620.81 C 2280.55 621 2280.5 620.9 2280.45 620.54 C 2280.4 620.18 2280.37 619.58 2280.35 618.9 C 2280.43 618.26 2280.67 617.64 2281.04 617.12 C 2281.45 616.74 2281.82 616.31 2282.14 615.85 C 2282.25 615.66 2282.25 615.43 2282.14 615.24 C 2282.03 615.05 2281.82 614.95 2281.6 614.97 C 2281.38 614.99 2281.2 615.14 2281.12 615.34 C 2280.65 615.9 2280.22 616.49 2279.85 617.12 C 2279.23 618.05 2278.33 618.43 2277.48 618.14 C 2276.97 617.89 2276.4 617.76 2275.83 617.75 C 2275.49 617.89 2275.28 618.11 2275.25 618.35 C 2275.23 618.59 2275.4 618.82 2275.7 618.98 C 2276.18 619.12 2276.59 619.44 2276.85 619.87 C 2277.25 620.55 2276.44 621.25 2274.89 621.58 C 2273.82 621.6 2272.77 621.8 2271.76 622.16 C 2271.17 622.7 2270.77 623.41 2270.61 624.19 C 2270.43 624.54 2269.49 624.8 2268.33 624.83 C 2267.5 624.71 2266.67 624.75 2265.86 624.96 C 2265.19 625.2 2264.43 625.08 2263.88 624.63 C 2263.75 624.36 2263.48 624.18 2263.18 624.17 C 2262.88 624.15 2262.6 624.3 2262.44 624.56 C 2262.29 624.81 2262.28 625.13 2262.43 625.39 C 2262.69 625.86 2263.22 626.12 2263.75 626.03 C 2264.13 625.81 2264.62 625.72 2265.1 625.77 C 2265.39 625.84 2265.63 626.01 2265.73 626.23 C 2265.9 626.36 2266.23 626.47 2266.64 626.52 C 2267.06 626.57 2267.51 626.56 2267.9 626.48 C 2268.53 626.29 2269.33 626.17 2270.18 626.15 C 2270.79 626.11 2271.35 626.03 2271.84 625.9 C 2272.31 625.54 2272.9 625.36 2273.49 625.39 C 2273.83 625.32 2274.09 625.23 2274.25 625.14 C 2274.49 624.96 2274.78 624.87 2275.07 624.88 C 2275.21 624.99 2275.27 625.18 2275.19 625.34 C 2275 625.61 2274.77 625.85 2274.51 626.05 C 2278.11 624.49 2281.13 621.84 2283.15 618.47 Z" fill="#266792" stroke="none" pointer-events="all"/>
+        <ellipse cx="2265.86" cy="600.66" rx="13.6058390578999" ry="9.415168883200712" fill-opacity="0.3" fill="#ffffff" stroke="none" pointer-events="all"/>
+        <ellipse cx="2259.65" cy="598.86" rx="3.9413640824337586" ry="2.8721273162317065" fill-opacity="0.4" fill="#ffffff" stroke="none" pointer-events="all"/>
+        <rect x="2210" y="537.5" width="0" height="0" fill="none" stroke="none" pointer-events="all"/>
+        <ellipse cx="2267.01" cy="608.67" rx="18.818449460255152" ry="18.830337766401424" fill="none" stroke="#000000" stroke-width="0.49" pointer-events="all"/>
+        <path d="M 1737 263 L 1958.76 263" fill="none" stroke="rgb(0, 0, 0)" stroke-width="2" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 1964.76 263 L 1956.76 267 L 1958.76 263 L 1956.76 259 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-width="2" stroke-miterlimit="10" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <rect fill="rgb(255, 255, 255)" stroke="none" x="1818" y="257" width="74" height="15" stroke-width="0"/>
+            <text x="1854.15" y="267.5">
+                backpressure
+            </text>
+        </g>
+        <rect x="1985" y="107" width="555" height="30" fill="none" stroke="none" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 553px; height: 1px; padding-top: 122px; margin-left: 1987px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                <b>
+                                    move-partial
+                                </b>
+                                a non-blocking buffer transfer  that will return the number of buffer bytes moved, caller is reponsible for buffering the rest.
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1987" y="126" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px">
+                    move-partial  a non-blocking buffer transfer  that will return the number of buffer bytes mo...
+                </text>
+            </switch>
+        </g>
+        <rect x="1985" y="187" width="575" height="30" fill="none" stroke="none" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 573px; height: 1px; padding-top: 202px; margin-left: 1987px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                <b>
+                                    move-slice
+                                </b>
+                                a non-blocking buffer transfer  that will transfer the entire buffer slice provided by the caller.
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1987" y="206" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px">
+                    move-slice   a non-blocking buffer transfer  that will transfer the entire buffer slice provided...
+                </text>
+            </switch>
+        </g>
+        <path d="M 540 1973 L 540 1947 L 900 1947 L 900 1973" fill="#dae8fc" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 540 1973 L 540 2007 L 900 2007 L 900 1973" fill="none" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 540 1973 L 900 1973" fill="none" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="719.5" y="1964.5">
+                Network::TransportSocketOptions
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-544-1978-352-26-0)" font-size="12px">
+            <text x="545.5" y="1990.5">
+                vector&lt;std::string&gt;&amp; applicationProtocolListOverride()
+            </text>
+        </g>
+        <path d="M 540 2003 L 900 2003" fill="none" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 540 2163 L 540 2137 L 900 2137 L 900 2163" fill="#dae8fc" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 540 2163 L 540 2223 L 900 2223 L 900 2163" fill="none" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 540 2163 L 900 2163" fill="none" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="719.5" y="2154.5">
+                Network::TransportSocketOptionsImpl
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-544-2168-352-26-0)" font-size="12px">
+            <text x="545.5" y="2180.5">
+                - vector&lt;std::string&gt; override_alpn_list_
+            </text>
+        </g>
+        <path d="M 540 2193 L 900 2193" fill="none" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-544-2202-352-26-0)" font-size="12px">
+            <text x="545.5" y="2214.5">
+                vector&lt;std::string&gt;&amp; applicationProtocolListOverride()
+            </text>
+        </g>
+        <path d="M 720 2137 L 720 2021.12" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 720 2008.12 L 726.5 2021.12 L 713.5 2021.12 Z" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 1530 1963 L 1530 1937 L 2110 1937 L 2110 1963" fill="#dae8fc" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 1530 1963 L 1530 1997 L 2110 1997 L 2110 1963" fill="none" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 1530 1963 L 2110 1963" fill="none" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="1819.5" y="1954.5">
+                Network::TransportSocketOptionsUtility
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1534-1968-572-26-0)" font-size="12px">
+            <text x="1535.5" y="1980.5">
+                TransportSocketOptionsConstSharedPtr fromFilterState(const StreamInfo::FilterState&amp; filter_state)
+            </text>
+        </g>
+        <path d="M 1530 1993 L 2110 1993" fill="none" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="none"/>
+        <rect x="900" y="1407" width="1180" height="350" fill="#f7f7f7" stroke="none" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1178px; height: 1px; padding-top: 1582px; margin-left: 902px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: &quot;Courier New&quot;; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: normal; overflow-wrap: normal;">
+                                absl::string_view server_name;
+                                <br/>
+                                std::vector&lt;std::string&gt; application_protocols;
+                                <br/>
+                                std::vector&lt;std::string&gt; alpn_fallback;
+                                <br/>
+                                ...
+                                <br/>
+                                bool needs_transport_socket_options = false;
+                                <br/>
+                                <br/>
+                                if (auto typed_data = filter_state.
+                                <font color="#ff3333">
+                                    getDataReadOnly&lt;Network::ApplicationProtocols&gt;(
+                                    <br/>
+                                    Network::ApplicationProtocols::key());
+                                </font>
+                                <font color="#00cc00">
+                                    //get ApplicationProtocols(HTTP version) from a filter state map, key: Network::ApplicationProtocols::key().
+                                </font>
+                                <br/>
+                                typed_data != nullptr) {
+                                <br/>
+                                application_protocols = typed_data-&gt;value();
+                                <br/>
+                                needs_transport_socket_options = true;
+                                <br/>
+                                }
+                                <br/>
+                                ...
+                                <br/>
+                                if (needs_transport_socket_options) {
+                                <br/>
+                                return std::make_shared&lt;Network::TransportSocketOptionsImpl&gt;(
+                                <br/>
+                                server_name, std::move(subject_alt_names), std::move(application_protocols),
+                                <br/>
+                                std::move(alpn_fallback), proxy_protocol_options, std::move(objects),
+                                <br/>
+                                std::move(proxy_info));
+                                <br/>
+                                } else {
+                                <br/>
+                                return nullptr;
+                                <br/>
+                                }
+                                <br/>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="902" y="1586" fill="rgb(0, 0, 0)" font-family="Courier New" font-size="12px">
+                    absl::string_view server_name;...
+                </text>
+            </switch>
+        </g>
+        <path d="M 1809.11 1963 L 1636.57 1757" fill="none" stroke="rgb(0, 0, 0)" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="2 6" pointer-events="none"/>
+        <path d="M 2390 1923 L 2390 1897 L 2970 1897 L 2970 1923" fill="#d5e8d4" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2390 1923 L 2390 1957 L 2970 1957 L 2970 1923" fill="none" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2390 1923 L 2970 1923" fill="none" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="2679.5" y="1914.5">
+                Upstream::LoadBalancerContext
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-2394-1928-572-26-0)" font-size="12px">
+            <text x="2395.5" y="1940.5">
+                Network::TransportSocketOptionsConstSharedPtr upstreamTransportSocketOptions()
+            </text>
+        </g>
+        <path d="M 2390 1953 L 2970 1953" fill="none" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2390 2043 L 2390 2017 L 2970 2017 L 2970 2043" fill="#d5e8d4" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2390 2043 L 2390 2077 L 2970 2077 L 2970 2043" fill="none" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2390 2043 L 2970 2043" fill="none" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="2679.5" y="2034.5">
+                Upstream::LoadBalancerContextBase
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-2394-2048-572-26-0)" font-size="12px">
+            <text x="2395.5" y="2060.5">
+                Network::TransportSocketOptionsConstSharedPtr upstreamTransportSocketOptions()
+            </text>
+        </g>
+        <path d="M 2390 2073 L 2970 2073" fill="none" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2680 2017 L 2680 1971.12" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 2680 1958.12 L 2686.5 1971.12 L 2673.5 1971.12 Z" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2390 2193 L 2390 2167 L 2970 2167 L 2970 2193" fill="#e1d5e7" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2390 2193 L 2390 2331 L 2970 2331 L 2970 2193" fill="none" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2390 2193 L 2970 2193" fill="none" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="2679.5" y="2184.5">
+                Router::Filter
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-2394-2198-572-26-0)" font-size="12px">
+            <text x="2395.5" y="2210.5">
+                Http::FilterHeadersStatus Filter::decodeHeaders(Http::RequestHeaderMap&amp; headers, bool end_stream)
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-2394-2224-572-26-0)" font-size="12px"/>
+        <rect x="2390" y="2245" width="580" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-2394-2250-572-26-0)" font-size="12px"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-2394-2276-572-26-0)" font-size="12px">
+            <text x="2395.5" y="2288.5">
+                - Network::TransportSocketOptionsConstSharedPtr transport_socket_options_
+            </text>
+        </g>
+        <path d="M 2390 2301 L 2970 2301" fill="none" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-2394-2310-572-26-0)" font-size="12px">
+            <text x="2395.5" y="2322.5">
+                Network::TransportSocketOptionsConstSharedPtr Filter::upstreamTransportSocketOptions()
+            </text>
+        </g>
+        <path d="M 2680 2219 L 2680 2268.76" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 2673.5 2256.88 L 2680 2269.88 L 2686.5 2256.88" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 2245px; margin-left: 2680px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                set
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="2680" y="2248" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    set
+                </text>
+            </switch>
+        </g>
+        <path d="M 2680 2167 L 2680 2091.12" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 2680 2078.12 L 2686.5 2091.12 L 2673.5 2091.12 Z" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2631.39 2193 L 1870.77 1989.58" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 1883.93 1986.37 L 1869.69 1989.29 L 1880.57 1998.93" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 2091px; margin-left: 2250px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                get
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="2250" y="2094" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    get
+                </text>
+            </switch>
+        </g>
+        <path d="M 3045 2043 L 3045 2017 L 3625 2017 L 3625 2043" fill="#d5e8d4" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 3045 2043 L 3045 2137 L 3625 2137 L 3625 2043" fill="none" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 3045 2043 L 3625 2043" fill="none" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="3334.5" y="2034.5">
+                Upstream::ClusterManagerImpl::ThreadLocalClusterManagerImpl::ClusterEntry
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-3049-2048-572-26-0)" font-size="12px">
+            <text x="3050.5" y="2060.5">
+                Host::CreateConnectionData tcpConn( LoadBalancerContext* context)
+            </text>
+        </g>
+        <path d="M 3045 2073 L 3625 2073" fill="none" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-3049-2082-572-60-0)" font-size="12px">
+            <text x="3050.5" y="2094.5">
+                Http::ConnectionPool::Instance* httpConnPoolImpl(
+            </text>
+            <text x="3050.5" y="2108.5">
+                ResourcePriority priority, absl::optional&lt;Http::Protocol&gt; downstream_protocol,
+            </text>
+            <text x="3050.5" y="2122.5">
+                LoadBalancerContext* context, bool peek)
+            </text>
+        </g>
+        <rect x="3990" y="1822" width="650" height="210" fill="#f7f7f7" stroke="none" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 648px; height: 1px; padding-top: 1927px; margin-left: 3992px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: &quot;Courier New&quot;; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: normal; overflow-wrap: normal;">
+                                HostConstSharedPtr logical_host = chooseHost(context);
+                                <br/>
+                                if (logical_host) {
+                                <br/>
+                                auto conn_info = logical_host-&gt;createConnection(
+                                <br/>
+                                parent_.thread_local_dispatcher_, nullptr,
+                                <br/>
+                                context == nullptr ? nullptr : context-&gt;upstreamTransportSocketOptions());
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="3992" y="1931" fill="rgb(0, 0, 0)" font-family="Courier New" font-size="12px">
+                    HostConstSharedPtr logical_host = chooseHost(context);...
+                </text>
+            </switch>
+        </g>
+        <path d="M 3433.76 2043 L 3990 1969.78" fill="none" stroke="rgb(0, 0, 0)" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="2 6" pointer-events="none"/>
+        <path d="M 3264.04 2043 L 2753.16 1949.4" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 2766.02 1945.15 L 2752.06 1949.2 L 2763.67 1957.94" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 1996px; margin-left: 3007px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                Use
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="3007" y="2000" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Use
+                </text>
+            </switch>
+        </g>
+        <path d="M 1010 2343 L 1010 2317 L 1500 2317 L 1500 2343" fill="#f8cecc" stroke="#b85450" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 1010 2343 L 1010 2403 L 1500 2403 L 1500 2343" fill="none" stroke="#b85450" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 1010 2343 L 1500 2343" fill="none" stroke="#b85450" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="1254.5" y="2334.5">
+                Extensions::TransportSockets::Tls::ClientContextImpl
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1014-2348-482-26-0)" font-size="12px">
+            <text x="1015.5" y="2360.5">
+                bssl::UniquePtr&lt;SSL&gt; newSsl(TransportSocketOptionsConstSharedPtr&amp; options)
+            </text>
+        </g>
+        <path d="M 1010 2373 L 1500 2373" fill="none" stroke="#b85450" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1014-2382-482-26-0)" font-size="12px"/>
+        <path d="M 1236.2 2343 L 740.64 2000.27" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 754.11 2001.68 L 739.72 1999.64 L 746.71 2012.38" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 2171px; margin-left: 988px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                Use
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="988" y="2175" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Use
+                </text>
+            </switch>
+        </g>
+        <rect x="20" y="2527" width="760" height="350" fill="#f7f7f7" stroke="none" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 758px; height: 1px; padding-top: 2702px; margin-left: 22px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: &quot;Courier New&quot;; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: normal; overflow-wrap: normal;">
+                                // We determine what ALPN using the following precedence:
+                                <br/>
+                                // 1. Option-provided ALPN override.
+                                <br/>
+                                // 2. ALPN statically configured in the upstream TLS context.
+                                <br/>
+                                // 3. Option-provided ALPN fallback.
+                                <br/>
+                                <br/>
+                                // At this point in the code the ALPN has already been set (if present) to the value specified in
+                                <br/>
+                                // the TLS context. We've stored this value in parsed_alpn_protocols_ so we can check that to see
+                                <br/>
+                                // if it's already been set.
+                                <br/>
+                                bool has_alpn_defined = !parsed_alpn_protocols_.empty();
+                                <br/>
+                                if (options) {
+                                <br/>
+                                <font color="#ff3333">
+                                    // ALPN override takes precedence over TLS context specified, so blindly overwrite it.
+                                    <br/>
+                                    has_alpn_defined |= parseAndSetAlpn(options-&gt;applicationProtocolListOverride()
+                                </font>
+                                , *ssl_con);
+                                <br/>
+                                }
+                                <br/>
+                                <br/>
+                                if (options &amp;&amp; !has_alpn_defined &amp;&amp; !options-&gt;applicationProtocolFallback().empty()) {
+                                <br/>
+                                // If ALPN hasn't already been set (either through TLS context or override), use the fallback.
+                                <br/>
+                                parseAndSetAlpn(options-&gt;applicationProtocolFallback(), *ssl_con);
+                                <br/>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="22" y="2706" fill="rgb(0, 0, 0)" font-family="Courier New" font-size="12px">
+                    // We determine what ALPN using the following precedence:...
+                </text>
+            </switch>
+        </g>
+        <path d="M 1222.88 2369 L 780 2548.22" fill="none" stroke="rgb(0, 0, 0)" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="2 6" pointer-events="none"/>
+        <path d="M 1749.9 1989 L 902.2 2146.21" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 912.7 2137.65 L 901.1 2146.41 L 915.07 2150.43" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 2068px; margin-left: 1325px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                Create
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1325" y="2071" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Create
+                </text>
+            </switch>
+        </g>
+        <path d="M 2390 2503 L 2390 2477 L 2970 2477 L 2970 2503" fill="#e1d5e7" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2390 2503 L 2390 2563 L 2970 2563 L 2970 2503" fill="none" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2390 2503 L 2970 2503" fill="none" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="2679.5" y="2494.5">
+                Http::Alpn (from istio-proxy)
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-2394-2508-572-26-0)" font-size="12px">
+            <text x="2395.5" y="2520.5">
+                Http::FilterHeadersStatus AlpnFilter::decodeHeaders(Http::RequestHeaderMap&amp;, bool)
+            </text>
+        </g>
+        <path d="M 2390 2533 L 2970 2533" fill="none" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-2394-2542-572-26-0)" font-size="12px"/>
+        <path d="M 1660 2357 L 1660 2331 L 2240 2331 L 2240 2357" fill="#e1d5e7" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 1660 2357 L 1660 2417 L 2240 2417 L 2240 2357" fill="none" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 1660 2357 L 2240 2357" fill="none" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="1949.5" y="2348.5">
+                Http::StreamDecoderFilter
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1664-2362-572-26-0)" font-size="12px">
+            <text x="1665.5" y="2374.5">
+                FilterHeadersStatus decodeHeaders(RequestHeaderMap&amp; headers, bool end_stream)
+            </text>
+        </g>
+        <path d="M 1660 2387 L 2240 2387" fill="none" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1664-2396-572-26-0)" font-size="12px"/>
+        <path d="M 1660 2533 L 1660 2507 L 2240 2507 L 2240 2533" fill="#e1d5e7" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 1660 2533 L 1660 2593 L 2240 2593 L 2240 2533" fill="none" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 1660 2533 L 2240 2533" fill="none" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="1949.5" y="2524.5">
+                Http::PassThroughDecoderFilter
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1664-2538-572-26-0)" font-size="12px">
+            <text x="1665.5" y="2550.5">
+                FilterHeadersStatus decodeHeaders(RequestHeaderMap&amp; headers, bool end_stream)
+            </text>
+        </g>
+        <path d="M 1660 2563 L 2240 2563" fill="none" stroke="#9673a6" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1664-2572-572-26-0)" font-size="12px"/>
+        <path d="M 1950 2507 L 1950 2435.12" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 1950 2418.12 L 1958.5 2435.12 L 1941.5 2435.12 Z" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2390 2298.66 L 2218.98 2327.94" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2202.22 2330.81 L 2217.54 2319.56 L 2220.41 2336.32 Z" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2390 2531.92 L 2258.1 2537.34" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 2241.12 2538.04 L 2257.75 2528.85 L 2258.45 2545.83 Z" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <rect x="3030" y="2424" width="800" height="643" fill="#f7f7f7" stroke="none" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 798px; height: 1px; padding-top: 2746px; margin-left: 3032px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: &quot;Courier New&quot;; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: normal; overflow-wrap: normal;">
+                                Router::RouteConstSharedPtr route = decoder_callbacks_-&gt;route();
+                                <br/>
+                                const Router::RouteEntry* route_entry;
+                                <br/>
+                                if (!route || !(route_entry = route-&gt;routeEntry())) {
+                                <br/>
+                                ENVOY_LOG(debug, "cannot find route entry");
+                                <br/>
+                                return Http::FilterHeadersStatus::Continue;
+                                <br/>
+                                }
+                                <br/>
+                                <br/>
+                                Upstream::ThreadLocalCluster* cluster =
+                                <br/>
+                                config_-&gt;clusterManager().getThreadLocalCluster(route_entry-&gt;clusterName());
+                                <br/>
+                                if (!cluster || !cluster-&gt;info()) {
+                                <br/>
+                                ENVOY_LOG(debug, "cannot find cluster {}", route_entry-&gt;clusterName());
+                                <br/>
+                                return Http::FilterHeadersStatus::Continue;
+                                <br/>
+                                }
+                                <br/>
+                                <br/>
+                                const auto&amp; filter_metadata = cluster-&gt;info()-&gt;metadata().filter_metadata();
+                                <br/>
+                                const auto&amp; istio = filter_metadata.find("istio");
+                                <br/>
+                                if (istio != filter_metadata.end()) {
+                                <br/>
+                                const auto&amp; alpn_override = istio-&gt;second.fields().find("alpn_override");
+                                <br/>
+                                if (alpn_override != istio-&gt;second.fields().end()) {
+                                <br/>
+                                const auto alpn_override_value = alpn_override-&gt;second.string_value();
+                                <br/>
+                                if (alpn_override_value == "false") {
+                                <br/>
+                                // Skip ALPN header rewrite
+                                <br/>
+                                ENVOY_LOG(debug,
+                                <br/>
+                                "Skipping ALPN header rewrite because istio.alpn_override metadata is false");
+                                <br/>
+                                return Http::FilterHeadersStatus::Continue;
+                                <br/>
+                                }
+                                <br/>
+                                }
+                                <br/>
+                                }
+                                <br/>
+                                <br/>
+                                auto protocols =
+                                <br/>
+                                <font color="#ff3333">
+                                    cluster-&gt;info()-&gt;upstreamHttpProtocol(decoder_callbacks_-&gt;streamInfo().protocol())
+                                </font>
+                                ;
+                                <br/>
+                                const auto&amp; alpn_override = config_-&gt;alpnOverrides(protocols[0]);
+                                <br/>
+                                <br/>
+                                if (!alpn_override.empty()) {
+                                <br/>
+                                ENVOY_LOG(debug, "
+                                <font color="#ff3333">
+                                    override with {} ALPNs
+                                </font>
+                                ", alpn_override.size());
+                                <br/>
+                                decoder_callbacks_-&gt;streamInfo().filterState()-&gt;
+                                <font color="#ff3333">
+                                    setData(
+                                    <br/>
+                                    Network::ApplicationProtocols::key(),
+                                </font>
+                                <br/>
+                                std::make_unique&lt;Network::ApplicationProtocols&gt;(alpn_override),
+                                <br/>
+                                Envoy::StreamInfo::FilterState::StateType::ReadOnly);
+                                <br/>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="3032" y="2749" fill="rgb(0, 0, 0)" font-family="Courier New" font-size="12px">
+                    Router::RouteConstSharedPtr route = decoder_callbacks_-&gt;route();...
+                </text>
+            </switch>
+        </g>
+        <path d="M 2722.48 2529 L 3030 2623.1" fill="none" stroke="rgb(0, 0, 0)" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="2 6" pointer-events="none"/>
+        <path d="M 2080 1581.94 L 3420.06 1581.94 Q 3430.06 1581.94 3430.06 1591.94 L 3430.06 2421.76" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 3423.56 2409.88 L 3430.06 2422.88 L 3436.56 2409.88" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 1582px; margin-left: 3176px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                get from http filter  state map key:
+                                <span style="font-family: &quot;Courier New&quot;; text-align: left; background-color: rgb(251, 251, 251);">
+                                    Network::ApplicationProtocols::key()
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="3176" y="1586" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    get from http filter  state...
+                </text>
+            </switch>
+        </g>
+        <rect x="2010" y="3147" width="1020" height="860" fill="#f0f1f7" stroke="none" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1018px; height: 1px; padding-top: 3577px; margin-left: 2012px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: &quot;Courier New&quot;; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: normal; overflow-wrap: normal;">
+                                dynamic_listeners:
+                                <br/>
+                                - name: 0.0.0.0_8080
+                                <br/>
+                                active_state:
+                                <br/>
+                                version_info: 2024-04-16T09:30:41Z/90
+                                <br/>
+                                listener:
+                                <br/>
+                                '@type': type.googleapis.com/envoy.config.listener.v3.Listener
+                                <br/>
+                                name: 0.0.0.0_8080
+                                <br/>
+                                address:
+                                <br/>
+                                socket_address:
+                                <br/>
+                                address: 0.0.0.0
+                                <br/>
+                                port_value: 8080
+                                <br/>
+                                filter_chains:
+                                <br/>
+                                - filter_chain_match:
+                                <br/>
+                                transport_protocol: raw_buffer
+                                <br/>
+                                application_protocols:
+                                <br/>
+                                - http/1.1
+                                <br/>
+                                - h2c
+                                <br/>
+                                filters:
+                                <br/>
+                                - name: envoy.filters.network.http_connection_manager
+                                <br/>
+                                typed_config:
+                                <br/>
+                                '@type': type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                                <br/>
+                                stat_prefix: outbound_0.0.0.0_8080
+                                <br/>
+                                rds:
+                                <br/>
+                                ...
+                                <br/>
+                                http_filters:
+                                <br/>
+                                - name: envoy.filters.http.grpc_stats
+                                <br/>
+                                typed_config:
+                                <br/>
+                                '@type': type.googleapis.com/envoy.extensions.filters.http.grpc_stats.v3.FilterConfig
+                                <br/>
+                                emit_filter_state: true
+                                <br/>
+                                stats_for_all_methods: false
+                                <br/>
+                                - name: istio.alpn
+                                <br/>
+                                typed_config:
+                                <br/>
+                                '@type': type.googleapis.com/istio.envoy.config.filter.http.alpn.v2alpha1.FilterConfig
+                                <br/>
+                                alpn_override:
+                                <br/>
+                                - alpn_override:
+                                <br/>
+                                - istio-http/1.0
+                                <br/>
+                                - istio
+                                <br/>
+                                - http/1.0
+                                <br/>
+                                <font color="#ff3333">
+                                    - upstream_protocol: HTTP11
+                                    <br/>
+                                    alpn_override:
+                                    <br/>
+                                    - istio-http/1.1
+                                    <br/>
+                                    - istio
+                                    <br/>
+                                    - http/1.1
+                                </font>
+                                <br/>
+                                - upstream_protocol: HTTP2
+                                <br/>
+                                alpn_override:
+                                <br/>
+                                - istio-h2
+                                <br/>
+                                - istio
+                                <br/>
+                                - h2
+                                <br/>
+                                <br/>
+                                ...
+                                <br/>
+                                - name: envoy.filters.http.router
+                                <br/>
+                                typed_config:
+                                <br/>
+                                '@type': type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="2012" y="3581" fill="rgb(0, 0, 0)" font-family="Courier New" font-size="12px">
+                    dynamic_listeners:...
+                </text>
+            </switch>
+        </g>
+        <path d="M 3078.15 3067 L 2992.25 3145.49" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 2996.63 3132.68 L 2991.42 3146.25 L 3005.4 3142.28" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 3107px; margin-left: 3035px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                Use
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="3035" y="3110" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Use
+                </text>
+            </switch>
+        </g>
+        <rect x="3270" y="3177" width="1020" height="420" fill="#f0f1f7" stroke="none" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1018px; height: 1px; padding-top: 3387px; margin-left: 3272px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: &quot;Courier New&quot;; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: normal; overflow-wrap: normal;">
+                                dynamic_active_clusters:
+                                <br/>
+                                cluster:
+                                <br/>
+                                '@type': type.googleapis.com/envoy.config.cluster.v3.Cluster
+                                <br/>
+                                name: outbound|8080|version|serviceB.ns.svc.cluster.local
+                                <br/>
+                                type: EDS
+                                <br/>
+                                eds_cluster_config:
+                                <br/>
+                                eds_config:
+                                <br/>
+                                ads: {}
+                                <br/>
+                                initial_fetch_timeout: 0s
+                                <br/>
+                                resource_api_version: V3
+                                <br/>
+                                service_name: outbound|8080|version|serviceB.ns.svc.cluster.local
+                                <br/>
+                                <br/>
+                                <br/>
+                                typed_extension_protocol_options:
+                                <br/>
+                                envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
+                                <br/>
+                                '@type': type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
+                                <br/>
+                                <font color="#ff3333">
+                                    explicit_http_config
+                                </font>
+                                :
+                                <br/>
+                                <font color="#ff3333">
+                                    http_protocol_options
+                                </font>
+                                :
+                                <br/>
+                                header_key_format:
+                                <br/>
+                                stateful_formatter:
+                                <br/>
+                                name: preserve_case
+                                <br/>
+                                typed_config:
+                                <br/>
+                                '@type': type.googleapis.com/envoy.extensions.http.header_formatters.preserve_case.v3.PreserveCaseFormatterConfig
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="3272" y="3391" fill="rgb(0, 0, 0)" font-family="Courier New" font-size="12px">
+                    dynamic_active_clusters:...
+                </text>
+            </switch>
+        </g>
+        <path d="M 3546.15 2424 L 3814.54 1681.1" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 3816.62 1694.49 L 3814.92 1680.05 L 3804.39 1690.07" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 2051px; margin-left: 3681px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                Use
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="3681" y="2055" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Use
+                </text>
+            </switch>
+        </g>
+        <path d="M 3530 1653 L 3530 1627 L 4110 1627 L 4110 1653" fill="#d5e8d4" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 3530 1653 L 3530 1687 L 4110 1687 L 4110 1653" fill="none" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 3530 1653 L 4110 1653" fill="none" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="3819.5" y="1644.5">
+                Upstream::ClusterInfoImpl
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-3534-1658-572-26-0)" font-size="12px">
+            <text x="3535.5" y="1670.5">
+                vector&lt;Http::Protocol&gt; upstreamHttpProtocol(optional&lt;Http::Protocol&gt; downstream_protocol)
+            </text>
+        </g>
+        <path d="M 3530 1683 L 4110 1683" fill="none" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 3856.18 1653 L 4286.24 1498.45" fill="none" stroke="rgb(0, 0, 0)" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="2 6" pointer-events="none"/>
+        <rect x="4286.24" y="1157" width="703.76" height="430" fill="#f7f7f7" stroke="none" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 702px; height: 1px; padding-top: 1372px; margin-left: 4288px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: &quot;Courier New&quot;; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: normal; overflow-wrap: normal;">
+                                if (downstream_protocol.has_value() &amp;&amp;
+                                <br/>
+                                features_ &amp; Upstream::ClusterInfo::Features::
+                                <font color="#ff3333">
+                                    USE_DOWNSTREAM_PROTOCOL
+                                </font>
+                                ) {
+                                <br/>
+                                if (downstream_protocol.value() == Http::Protocol::Http3 &amp;&amp;
+                                <br/>
+                                !(features_ &amp; Upstream::ClusterInfo::Features::HTTP3)) {
+                                <br/>
+                                return {Http::Protocol::Http2};
+                                <br/>
+                                }
+                                <br/>
+                                // use HTTP11 since HTTP10 upstream is not supported yet.
+                                <br/>
+                                if (downstream_protocol.value() == Http::Protocol::Http10) {
+                                <br/>
+                                return {Http::Protocol::Http11};
+                                <br/>
+                                }
+                                <br/>
+                                return {downstream_protocol.value()};
+                                <br/>
+                                }
+                                <br/>
+                                <br/>
+                                if (features_ &amp; Upstream::ClusterInfo::Features::
+                                <font color="#ff3333">
+                                    USE_ALPN
+                                </font>
+                                ) {
+                                <br/>
+                                if (!(features_ &amp; Upstream::ClusterInfo::Features::HTTP3)) {
+                                <br/>
+                                return {Http::Protocol::Http2, Http::Protocol::Http11};
+                                <br/>
+                                }
+                                <br/>
+                                return {Http::Protocol::Http3, Http::Protocol::Http2, Http::Protocol::Http11};
+                                <br/>
+                                }
+                                <br/>
+                                <br/>
+                                if (features_ &amp; Upstream::ClusterInfo::Features::HTTP3) {
+                                <br/>
+                                return {Http::Protocol::Http3};
+                                <br/>
+                                }
+                                <br/>
+                                <br/>
+                                return {(features_ &amp; Upstream::ClusterInfo::Features::HTTP2) ? Http::Protocol::Http2
+                                <br/>
+                                : Http::Protocol::Http11};
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="4288" y="1376" fill="rgb(0, 0, 0)" font-family="Courier New" font-size="12px">
+                    if (downstream_protocol.has_value() &amp;&amp;...
+                </text>
+            </switch>
+        </g>
+        <rect x="5010" y="1497" width="703.76" height="430" fill="#f7f7f7" stroke="none" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 702px; height: 1px; padding-top: 1712px; margin-left: 5012px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: &quot;Courier New&quot;; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: normal; overflow-wrap: normal;">
+                                if (downstream_protocol.has_value() &amp;&amp;
+                                <br/>
+                                features_ &amp; Upstream::ClusterInfo::Features::
+                                <font color="#ff3333">
+                                    USE_DOWNSTREAM_PROTOCOL
+                                </font>
+                                ) {
+                                <br/>
+                                if (downstream_protocol.value() == Http::Protocol::Http3 &amp;&amp;
+                                <br/>
+                                !(features_ &amp; Upstream::ClusterInfo::Features::HTTP3)) {
+                                <br/>
+                                return {Http::Protocol::Http2};
+                                <br/>
+                                }
+                                <br/>
+                                // use HTTP11 since HTTP10 upstream is not supported yet.
+                                <br/>
+                                if (downstream_protocol.value() == Http::Protocol::Http10) {
+                                <br/>
+                                return {Http::Protocol::Http11};
+                                <br/>
+                                }
+                                <br/>
+                                return {downstream_protocol.value()};
+                                <br/>
+                                }
+                                <br/>
+                                <br/>
+                                if (features_ &amp; Upstream::ClusterInfo::Features::
+                                <font color="#ff3333">
+                                    USE_ALPN
+                                </font>
+                                ) {
+                                <br/>
+                                if (!(features_ &amp; Upstream::ClusterInfo::Features::HTTP3)) {
+                                <br/>
+                                return {Http::Protocol::Http2, Http::Protocol::Http11};
+                                <br/>
+                                }
+                                <br/>
+                                return {Http::Protocol::Http3, Http::Protocol::Http2, Http::Protocol::Http11};
+                                <br/>
+                                }
+                                <br/>
+                                <br/>
+                                if (features_ &amp; Upstream::ClusterInfo::Features::HTTP3) {
+                                <br/>
+                                return {Http::Protocol::Http3};
+                                <br/>
+                                }
+                                <br/>
+                                <br/>
+                                return {(features_ &amp; Upstream::ClusterInfo::Features::HTTP2) ? Http::Protocol::Http2
+                                <br/>
+                                : Http::Protocol::Http11};
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="5012" y="1716" fill="rgb(0, 0, 0)" font-family="Courier New" font-size="12px">
+                    if (downstream_protocol.has_value() &amp;&amp;...
+                </text>
+            </switch>
+        </g>
+        <path d="M 4546.56 1587 L 3870.31 3174.94" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 3868.98 3161.46 L 3869.87 3175.97 L 3880.94 3166.56" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 2381px; margin-left: 4208px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                Use
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="4208" y="2385" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Use
+                </text>
+            </switch>
+        </g>
+        <a xlink:href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/upstreams/http/v3/http_protocol_options.proto#extensions-upstreams-http-v3-httpprotocoloptions">
+            <rect x="3930" y="3667" width="1600" height="390" fill="#fff2cc" stroke="none"/>
+            <g transform="translate(-0.5 -0.5)">
+                <switch>
+                    <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 3862px; margin-left: 3932px;">
+                            <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                                <div style="display: inline-block; font-size: 12px; font-family: &quot;Courier New&quot;; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: nowrap;">
+                                    🔗
+                                    <u>
+                                        extensions.upstreams.http.v3.HttpProtocolOptions
+                                    </u>
+                                    <br/>
+                                    <br/>
+                                    <font color="#ff3333">
+                                        explicit_http_config
+                                    </font>
+                                    <br/>
+                                    (extensions.upstreams.http.v3.HttpProtocolOptions.ExplicitHttpConfig) To explicitly configure
+                                    <font color="#ff3333">
+                                        either HTTP/1 or HTTP/2 (but not both!)
+                                    </font>
+                                    use explicit_http_config. If the explicit_http_config is empty, HTTP/1.1 is used.
+                                    <br/>
+                                    <br/>
+                                    This controls the actual protocol to be used upstream.
+                                    <br/>
+                                    <br/>
+                                    Precisely one of explicit_http_config, use_downstream_protocol_config, auto_config must be set.
+                                    <br/>
+                                    <br/>
+                                    <font color="#ff3333">
+                                        use_downstream_protocol_config
+                                    </font>
+                                    <br/>
+                                    (extensions.upstreams.http.v3.HttpProtocolOptions.UseDownstreamHttpConfig) This allows switching on protocol based on what protocol the downstream connection used.
+                                    <br/>
+                                    <br/>
+                                    This controls the actual protocol to be used upstream.
+                                    <br/>
+                                    <br/>
+                                    Precisely one of explicit_http_config, use_downstream_protocol_config, auto_config must be set.
+                                    <br/>
+                                    <br/>
+                                    auto_config
+                                    <br/>
+                                    (extensions.upstreams.http.v3.HttpProtocolOptions.AutoHttpConfig) This allows switching on protocol based on ALPN
+                                    <br/>
+                                    <br/>
+                                    This controls the actual protocol to be used upstream.
+                                    <br/>
+                                    <br/>
+                                    Precisely one of explicit_http_config, use_downstream_protocol_config, auto_config must be set.
+                                </div>
+                            </div>
+                        </div>
+                    </foreignObject>
+                    <text x="3932" y="3866" fill="rgb(0, 0, 0)" font-family="Courier New" font-size="12px">
+                        🔗 extensions.upstreams.http.v3.HttpProtocolOptions...
+                    </text>
+                </switch>
+            </g>
+        </a>
+        <path d="M 4340 3667 L 4200 3597" fill="none" stroke="rgb(0, 0, 0)" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="2 6"/>
+        <rect x="3045" y="4177" width="1020" height="700" fill="#f0f1f7" stroke="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1018px; height: 1px; padding-top: 4527px; margin-left: 3047px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: &quot;Courier New&quot;; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: normal; overflow-wrap: normal;">
+                                apiVersion: networking.istio.io/v1alpha3
+                                <br/>
+                                kind: EnvoyFilter
+                                <br/>
+                                metadata:
+                                <br/>
+                                annotations:
+                                <br/>
+                                meta.helm.sh/release-name: mycom-myprd-mesh
+                                <br/>
+                                meta.helm.sh/release-namespace: ns
+                                <br/>
+                                labels:
+                                <br/>
+                                app.kubernetes.io/managed-by: Helm
+                                <br/>
+                                name: mycom-myprd-mesh-preserve-header-case
+                                <br/>
+                                namespace: ns
+                                <br/>
+                                spec:
+                                <br/>
+                                configPatches:
+                                <br/>
+                                - applyTo: CLUSTER
+                                <br/>
+                                patch:
+                                <br/>
+                                operation: MERGE
+                                <br/>
+                                value:
+                                <br/>
+                                typed_extension_protocol_options:
+                                <br/>
+                                envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
+                                <br/>
+                                '@type': type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
+                                <br/>
+                                <font color="#ff3333">
+                                    explicit_http_config:
+                                    <br/>
+                                    http_protocol_options:
+                                </font>
+                                <br/>
+                                header_key_format:
+                                <br/>
+                                stateful_formatter:
+                                <br/>
+                                name: preserve_case
+                                <br/>
+                                typed_config:
+                                <br/>
+                                '@type': type.googleapis.com/envoy.extensions.http.header_formatters.preserve_case.v3.PreserveCaseFormatterConfig
+                                <br/>
+                                <br/>
+                                - applyTo: NETWORK_FILTER
+                                <br/>
+                                match:
+                                <br/>
+                                listener:
+                                <br/>
+                                filterChain:
+                                <br/>
+                                filter:
+                                <br/>
+                                name: envoy.filters.network.http_connection_manager
+                                <br/>
+                                patch:
+                                <br/>
+                                operation: MERGE
+                                <br/>
+                                value:
+                                <br/>
+                                typed_config:
+                                <br/>
+                                '@type': type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                                <br/>
+                                http_protocol_options:
+                                <br/>
+                                header_key_format:
+                                <br/>
+                                stateful_formatter:
+                                <br/>
+                                name: preserve_case
+                                <br/>
+                                typed_config:
+                                <br/>
+                                '@type': type.googleapis.com/envoy.extensions.http.header_formatters.preserve_case.v3.PreserveCaseFormatterConfig
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="3047" y="4531" fill="rgb(0, 0, 0)" font-family="Courier New" font-size="12px">
+                    apiVersion: networking.istio.io/v1alpha3...
+                </text>
+            </switch>
+        </g>
+        <path d="M 3624.08 4177 L 3738.12 3599.19" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3"/>
+        <path d="M 3742.2 3612.11 L 3738.34 3598.1 L 3729.44 3609.59" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 3887px; margin-left: 3681px;">
+                        <div data-drawio-colors="color: #FF3333; background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(255, 51, 51); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                Generate:
+                                <span style="font-family: &quot;Courier New&quot;; text-align: left; background-color: rgb(251, 251, 251);">
+                                    explicit_http_config
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="3681" y="3891" fill="#FF3333" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Generate: explicit_http_con...
+                </text>
+            </switch>
+        </g>
+        <path d="M 3367.99 2077 L 3804.05 1680.5" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3"/>
+        <path d="M 3799.63 1693.31 L 3804.88 1679.75 L 3790.88 1683.69" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 1878px; margin-left: 3586px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                Use
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="3586" y="1882" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Use
+                </text>
+            </switch>
+        </g>
+        <path d="M 3605.41 3067 L 3664.35 3175.04" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3"/>
+        <path d="M 3652.96 3167.72 L 3664.89 3176.02 L 3664.37 3161.49" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 3122px; margin-left: 3635px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                indirect Use
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="3635" y="3125" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    indirect Use
+                </text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Text is not SVG - cannot display
+            </text>
+        </a>
+    </switch>
+</svg>
