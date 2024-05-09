@@ -14,7 +14,7 @@ Let's start by an example:
 [serviceA app --h2c--> serviceA istio-proxy] ----(http over mTLS)---> [serviceB istio-proxy --h2c--> serviceB app]
 ```
 
-One basic design principle `Istio proxy` is know the downstream/upstream meta-data of a new connection as early as possible. Because this allows you to implement some decisions as early as possible. 
+One basic design principle of `Istio proxy` is know the downstream/upstream meta-data of a new connection as early as possible. Because this allows you to implement some decisions as early as possible. 
 
 
 
@@ -67,7 +67,7 @@ Above section show that outbound and inbound istio-proxy should cooperate to sel
 
 :::{figure-md} Figure: HTTP meta-data exchange at high level
 
-<img src="ch4-istio-data-plane/data-plane-tunnel/alpn-http-meta-exchange/alpn-http-meta-exchange-high-level.drawio.svg" alt="Figure - HTTP meta-data exchange at high level">
+<img src="/ch4-istio-data-plane/data-plane-tunnel/alpn-http-meta-exchange/alpn-http-meta-exchange-high-level.drawio.svg" alt="Figure - HTTP meta-data exchange at high level">
 
 *Figure: HTTP meta-data exchange at high level*
 :::
