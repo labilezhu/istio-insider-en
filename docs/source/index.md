@@ -105,6 +105,7 @@ There is a Chinese version: [中文版](https://istio-insider.mygraphql.com/zh-c
 ch0/index
 ch1-istio-arch/index
 ch2-envoy/index
+ch4-istio-data-plane/index
 performance/performance.md
 disruptions/disruptions.md
 observability/observability.md
