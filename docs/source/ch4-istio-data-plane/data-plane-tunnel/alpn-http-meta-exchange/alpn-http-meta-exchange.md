@@ -2,12 +2,12 @@
 typora-root-url: ../../..
 ---
 
-# ALPN HTTP Meta Exchange
+# HTTP Meta-data Exchange on ALPN/TLS handshake
 
 
+Let's say you are an HR person in a large company and you have to contact and communicate with different colleagues every day. So what do you do before you start the formal communication content? Introduce yourself and let the other person introduce themselves. Each identifies himself or herself. This information can come from the greeting before the formal conversation starts, or you can look at the other person's personal information on Outlook before starting the conversation.
 
-
-
+Similarly, in order for Istio to implement a service mesh, the Istio Proxies needs to exchange meta-information during the interconnection handshake. Therefore, Istio customized the transport layer protocols on top of the native Envoy to enable meta-information exchange.
 
 Let's start by an example:
 ```
