@@ -380,11 +380,13 @@ It seems above configuration is copy from [HTTP/1.1 Header Casing - from officia
 
 
 
-There are many github issues about preserve HTTP/1.1 header case :
+There are many github issues on Istio about preserve HTTP/1.1 header case, below list these issues in chronological order:
+
+
 
 - [Issue: Enable preserve HTTP Header casing #32008](https://github.com/istio/istio/issues/32008#issuecomment-988865470)
 
-  >We do not intend to ever merge this feature into Istio, as we have medium term plans to use HTTP2 ~everywhere and any http2 hop destroys casing. You can apply EnvoyFilter at your own risk, with the knowledge that it *will* break sooner or later
+- [PR: add support for preserving header key case #33030 - Fixes #32008](https://github.com/istio/istio/pull/33030)
 
 - [Istio Technical Oversight Committee Meeting Notes - 2021/06/7](https://docs.google.com/document/d/13lxJqtlaQhmV2EwsNnS6h-_O4pobZQZuMjrzOeMgVI0/edit?usp=sharing)
 
@@ -397,9 +399,23 @@ There are many github issues about preserve HTTP/1.1 header case :
   >   - - For new users, it seems better in all cases to preserve the case. I don't see a need to allow an API to lowercase it
   >     - For existing users, they might have come to rely on the lowercasing. It seems a bit odd, as most apps probably assume title casing if anything, so hopefully when they adopt Istio they fix to being case insensitive instead of assuming lowercase, but I am sure in practice it may break users
 
+- [PR: Revert "add support for preserving header key case" #33122 - Reverts #33030](https://github.com/istio/istio/pull/33122)
+
 - [PR: support HTTP/1.1 case preserve #2817](https://github.com/istio/api/pull/2817)
 
-  
+
+
+The conclusion of the discussion is Istio will not support preserve HTTP/1.1 header casing officially:
+
+> [Issue: Enable preserve HTTP Header casing #32008](https://github.com/istio/istio/issues/32008#issuecomment-988865470)
+>
+> We do not intend to ever merge this feature into Istio, as we have medium term plans to use HTTP2 ~everywhere and any http2 hop destroys casing. You can apply EnvoyFilter at your own risk, with the knowledge that it *will* break sooner or later
+
+
+
+So we have to support preserve header casing by `Istio Envoy Filter`. But for a HTTP/1.1 and HTTP2 hybrid mesh, if you follow  [HTTP/1.1 Header Casing - from official documentation of Envoy](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/header_casing#stateful-formatters) , and use `explicit_http_config`,  you may end up accidentally disabled HTTP/2. So generally speaking `use_downstream_protocol_config` is a more compatibility and safer choice.
+
+
 
 So we can fix it now:
 
