@@ -76,15 +76,13 @@ Above section show that outbound and inbound istio-proxy should cooperate to sel
 
 - Outbound istio-proxy
 
-Base on the  `istio.alpn HTTP filter` and `Upstream Cluster` meta-data.
+  Base on the  `istio.alpn HTTP filter` and `Upstream Cluster` meta-data.
 
 
 
 - Inbound istio-proxy
 
   Base on the `Listener->filter_chains->filter_chain_match->application_protocols`  configuration and the ALPN provided by Outbound istio-proxy
-
-
 
 
 
@@ -108,5 +106,4 @@ Below figure deep dive into the related source code of Envoy Proxy and Istio Pro
 ## Read more
 - [Better Default Networking – Protocol sniffing](https://docs.google.com/document/d/1l0oVAneaLLp9KjVOQSb3bwnJJpjyxU_xthpMKFM_l7o/edit#heading=h.edsodfixs1x7)
 - [Istio MTLS Smartness Explained](https://devops-insider.mygraphql.com/zh-cn/latest/service-mesh/istio/istio-mtls/istio-mtls-smartness-explained.html#alpn)
-
 
