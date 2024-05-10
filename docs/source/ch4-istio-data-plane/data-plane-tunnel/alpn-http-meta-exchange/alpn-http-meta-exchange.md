@@ -76,7 +76,7 @@ Above section show that outbound and inbound istio-proxy should cooperate to sel
 
 - Outbound istio-proxy
 
-Base on the  `istio.alpn` HTTP filter and `Upstream Cluster` meta-data.
+Base on the  `istio.alpn HTTP filter` and `Upstream Cluster` meta-data.
 
 
 
