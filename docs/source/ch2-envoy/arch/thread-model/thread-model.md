@@ -82,7 +82,11 @@ Unlike the single thread of Node.JS, Envoy supports multiple Worker Threads to r
 
 If the shared data is locked for write and read access, the concurrency will definitely decrease. So the Envoy author referred to the Linux kernel's [read-copy-update (RCU)] (https://en.wikipedia.org/wiki/Read-copy) under the condition that the real-time consistency requirements for data synchronization updates are not high. They have implemented a set of Thread Local data synchronization mechanism. The underlying implementation is based on C++11's `thread_local` function and libevent's `libevent::event_active(&raw_event_, EV_TIMEOUT, 0)`.
 
-The following diagram, based on [Envoy threading model - Matt Klein](https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310), attempts to illustrate how Envoy uses the Thread Local mechanism to share data between threads.
+
+
+The following figure is based on [Envoy threading model - Matt Klein](https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310), trying to use Cluster Manager as an example to illustrate how Envoy use Thread Local mechanism   the share data between threads at source code  level. 
+
+
 
 :::{figure-md} Figure: ThreadLocal Classes
 
@@ -91,6 +95,20 @@ The following diagram, based on [Envoy threading model - Matt Klein](https://blo
 *Figure: ThreadLocal Classes*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fthread-local-classes.drawio.svg)*
+
+
+
+The above figure can be briefly described as follows:
+
+
+
+1. The main thread initializes `ThreadLocal::InstanceImpl` and registers each `Dispatcher` to `ThreadLocal::InstanceImpl`
+2. The main thread notifies all worker threads to create local `ThreadLocalClusterManagerImpl`
+3. When the main thread senses that a Cluster has been deleted, it notifies the `ThreadLocalClusterManagerImpl` of each worker thread to delete the Cluster.
+4. When `TCPProxy` on the worker thread tries to connect to an `OnDemand Cluster (unknown cluster)`, it get the thread-local `ThreadLocalClusterManagerImpl`
+
+
+
 
 
 ## Ref
