@@ -26,7 +26,7 @@ Essentially, Envoy is an proxy. When talking about proxies, the first thought sh
 2. do some logic, modify the `Request` if necessary, and determine the `upstream` destination
 3. forward the (modified) `Request` to `upstream`
 4. if the protocol is a `Request` & `Response` style protocol (e.g. HTTP)
-   1. the proxy usually receives a `Response` from the `upstream`. 2.
+   1. the proxy usually receives a `Response` from the `upstream`.
    2. does some logic and modifies the `Response` if necessary 
    3. forward the `Response` to the `downstream`.
 Indeed, this is the outline of how Envoy proxies the HTTP protocol. But there are many more features that Envoy has to implement:
@@ -37,7 +37,7 @@ Indeed, this is the outline of how Envoy proxies the HTTP protocol. But there ar
    2. peak shaving and troughing of unexpected traffic ➡️ request queuing: pending request
    3. cope with abnormal upstream, Circuit breaking, protect service from avalanche ➡️ various timeout configurations, health checking, Outlier detection, Circuit breaking
    4. elastic retry ➡️ retry
-4. observability ➡️ ubiquitous performance indicators
+4. observability ➡️ ubiquitous performance metrics
 5. dynamic programming configuration interface ➡️ xDS: EDS/LDS/...
 
 To implement these features, the request and response process must not simple.  
@@ -99,7 +99,8 @@ Note that the above parameters are for the entire upstream cluster, i.e. the max
 
 
 ### Related monitoring metrics
-We categorize metrics using a methodology similar to the well-known [Utilization Saturation and Errors (USE)] (https://www.brendangregg.com/usemethod.html) methodology.
+We categorize metrics using a methodology similar to the well-known [Utilization Saturation and Errors (USE)](https://www.brendangregg.com/usemethod.html) methodology.
+
 Resource overload type metrics:
 - [downstream_cx_overflow](https://www.envoyproxy.io/docs/envoy/v1.15.2/configuration/listeners/stats#listener:~:text=downstream_cx_overflow)
 - upstream_rq_retry_overflow

@@ -31,7 +31,7 @@ The steps are:
 4. create a new connection-specific `ListenerFilterChain`. 
 5. create an `ActiveTcpSocket` dedicated to the new connection and initiate the `ListenerFilterChain` process
 6. Execute the `ListenerFilterChain` process:
-   1. e.g., TlsInspector::Filter registers to listen for events on the new socket, so that it can read the socket and extract the TLS SNI/ALPN when subsequent events occur on the new socket. 2.
+   1. e.g., TlsInspector::Filter registers to listen for events on the new socket, so that it can read the socket and extract the TLS SNI/ALPN when subsequent events occur on the new socket.
    2. When all `ListenerFilter`s in the `ListenerFilterChain` have completed all their data exchange and extraction tasks in the new event and event cycle, control of this fd is handed over to one session.
 7. call the core function `ActiveTcpListener::newConnection()`
 8. call findFilterChain() to find the best matching `network filter chain configuration` based on the data extracted by the `ListenerFilter` and the match conditions of each `network filter chain configuration`.

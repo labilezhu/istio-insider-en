@@ -308,7 +308,7 @@ What is `stats sink`? This book does not explain it.Istio does not customize the
 
 [Envoy docs:config-metrics-v3-statsmatcher](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/metrics/v3/stats.proto#config-metrics-v3-statsmatcher)
 
-Configuration for disabling/enabling the calculation and output of statistical indicators.
+Configuration for disabling/enabling the calculation and output of statistical metrics.
 
 ```json
 {

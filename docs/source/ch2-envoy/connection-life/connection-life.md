@@ -7,7 +7,7 @@
 Therefore, headers like `Connection: Close` and `Connection: Keepalive` from Downstream will not be forwarded to Upstream by the Envoy. The lifecycle of the Downstream connection is of course controlled by the `Connection: xyz` directive. However, the connection lifecycle of the Upstream connection is not affected by the connection lifecycle of the Downstream connection. That is, there are two separate connection lifecycles.
 
 
-> [Github Issue: HTTP filter before and after evaluation of Connection: Close header sent by upstream#15788](https://github.com/envoyproxy/envoy/issues/15788#issuecomment-811429722) 说明了这个问题：
+> [Github Issue: HTTP filter before and after evaluation of Connection: Close header sent by upstream#15788](https://github.com/envoyproxy/envoy/issues/15788#issuecomment-811429722) :
 > This doesn't make sense in the context of Envoy, where downstream and upstream are decoupled and can use different protocols. I'm still not completely understanding the actual problem you are trying to solve?
 
 ## Connection timeout related configuration parameters
