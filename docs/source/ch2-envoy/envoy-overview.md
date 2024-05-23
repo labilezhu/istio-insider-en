@@ -1,4 +1,4 @@
-# Native Programmable Proxy `Envoy Proxy` Architecture
+# Native Programmable Proxy Envoy Proxy Architecture
 
 ## A little history
 

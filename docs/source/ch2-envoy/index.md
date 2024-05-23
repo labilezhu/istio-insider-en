@@ -6,6 +6,10 @@ To understand Istio in depth, it is important to understand the Envoy Proxy at t
 3. understand how istiod can programmatically control `Istio's customized Envoy Proxy` to implement Service Grid functionality
 
 ```{toctree}
+:caption: Catalog
+:maxdepth: 5
+:includehidden: 
+
 envoy-overview.md
 envoy-istio-conf-eg.md
 envoy-high-level-flow/envoy-high-level-flow.md
