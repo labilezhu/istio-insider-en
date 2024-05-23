@@ -94,7 +94,7 @@ There is a Chinese version: [中文版](https://istio-insider.mygraphql.com/zh-c
 ![](wechat-reward-qrcode.jpg)
 
 
-## Catalog
+# Catalog
 
 
 ```{toctree}
@@ -113,7 +113,7 @@ troubleshooting/troubleshooting.md
 dev-istio/dev-istio.md
 ```
 
-## Appendix
+# Appendix
 
 ```{toctree}
 :caption: Appendix
