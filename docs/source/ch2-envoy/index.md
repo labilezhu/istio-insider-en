@@ -7,12 +7,12 @@ To understand Istio in depth, it is important to understand the Envoy Proxy at t
 
 ```{toctree}
 envoy-overview.md
-envoy@istio-conf-eg.md
+envoy-istio-conf-eg.md
 envoy-high-level-flow/envoy-high-level-flow.md
 arch/arch.md
 req-resp-flow-timeline/req-resp-flow-timeline.md
 connection-life/connection-life.md
 circuit-breaking/circuit-breaking.md
-envoy@istio-metrics/index.md
+envoy-istio-metrics/index.md
 upstream/upstream.md
 ```

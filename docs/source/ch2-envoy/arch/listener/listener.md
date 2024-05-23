@@ -5,10 +5,10 @@ typora-root-url: ../../..
 # Listener
 A `Listener`, as the name suggests, is a component that passively listens and accepts connections. Does every Listener listen to a socket? Let's take a look at this question.
 
-Before we start learning about Listener, let's review the example in {doc}`/ch2-envoy/envoy@istio-conf-eg` in the previous section.
+Before we start learning about Listener, let's review the example in {doc}`/ch2-envoy/envoy-istio-conf-eg` in the previous section.
 
 ```{note}
-Download the Envoy configuration here yaml {download}`envoy@istio-conf-eg-inbound.envoy_conf.yaml </ch2-envoy/envoy@istio-conf-eg.assets/envoy@istio-conf-eg-inbound.envoy_conf.yaml>` .
+Download the Envoy configuration here yaml {download}`envoy@istio-conf-eg-inbound.envoy_conf.yaml </ch2-envoy/envoy-istio-conf-eg.assets/envoy@istio-conf-eg-inbound.envoy_conf.yaml>` .
 ```
 
 :::{figure-md}
@@ -23,7 +23,7 @@ Download the Envoy configuration here yaml {download}`envoy@istio-conf-eg-inboun
 :::{figure-md}
 :class: full-width
 
-<img src="/ch2-envoy/envoy@istio-conf-eg.assets/envoy@istio-conf-eg-inbound.drawio.svg" alt="Inbound vs Outbound concepts">
+<img src="/ch2-envoy/envoy-istio-conf-eg.assets/envoy@istio-conf-eg-inbound.drawio.svg" alt="Inbound vs Outbound concepts">
 
 *Figure - Example of Envoy Inbound configuration in Istio*
 
@@ -32,7 +32,7 @@ Download the Envoy configuration here yaml {download}`envoy@istio-conf-eg-inboun
 
 :::{figure-md}
 :class: full-width
-<img src="/ch2-envoy/envoy@istio-conf-eg.assets/envoy@istio-conf-eg-outbound.drawio.svg" alt="Diagram - Example of Envoy Outbound configuration in Istio">
+<img src="/ch2-envoy/envoy-istio-conf-eg.assets/envoy@istio-conf-eg-outbound.drawio.svg" alt="Diagram - Example of Envoy Outbound configuration in Istio">
 
 *Figure - Envoy Outbound Configuration Example in Istio*
 :::

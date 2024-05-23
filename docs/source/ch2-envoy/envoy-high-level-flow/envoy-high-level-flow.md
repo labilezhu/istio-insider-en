@@ -2,7 +2,7 @@
 
 ## upstream/upstream
 
-Let's go back to the {doc}`/ch2-envoy/envoy@istio-conf-eg` example:
+Let's go back to the {doc}`/ch2-envoy/envoy-istio-conf-eg` example:
 
 
 :::{figure-md}

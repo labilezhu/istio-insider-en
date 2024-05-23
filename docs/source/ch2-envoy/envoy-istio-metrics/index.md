@@ -30,11 +30,11 @@ If you're like me, you're a hothead. Then the image below is Istio & Envoy's met
 
 :::{figure-md} Figure: Envoy@Istio metrics
 
-<img src="/ch2-envoy/envoy@istio-metrics/index.assets/envoy@istio-metrics.drawio.svg" alt="Figure - Envoy@Istio metrics">
+<img src="/ch2-envoy/envoy-istio-metrics/index.assets/envoy-istio-metrics.drawio.svg" alt="Figure - Envoy@Istio metrics">
 
 *Figure: Envoy@Istio metrics*
 :::
-*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy@istio-metrics.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-istio-metrics.drawio.svg)*
 
 
 
@@ -53,5 +53,5 @@ If you're like me, you're a hothead. Then the image below is Istio & Envoy's met
 envoy-stat.md
 istio-stat.md
 envoy-stat-impl.md
-metrics@req-resp-flow-timeline.md
+metrics-req-resp-flow-timeline.md
 ```

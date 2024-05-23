@@ -561,11 +561,11 @@ To do a good job of monitoring, you first need to have a deep understanding of t
 :::{figure-md} Figure: Map of istio-proxy metrics
 :class: full-width
 
-<img src="/ch2-envoy/envoy@istio-metrics/index.assets/envoy@istio-metrics.drawio.svg" alt="Figure - Map of istio-proxy metrics">
+<img src="/ch2-envoy/envoy-istio-metrics/index.assets/envoy-istio-metrics.drawio.svg" alt="Figure - Map of istio-proxy metrics">
 
 *Figure: Map of istio-proxy metrics*
 :::
-*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy@istio-metrics.drawio.svg)*
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-istio-metrics.drawio.svg)*
 
 ```{note}
 A description of the experimental environment for this section can be found in: {ref}`appendix-lab-env/appendix-lab-env-base:Simple layered lab environment`

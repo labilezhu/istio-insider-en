@@ -29,7 +29,7 @@ yq eval -P > envoy@istio-conf-eg-inbound.envoy_conf.yaml
 ```
 
 ```{note}
-Download here {download}`envoy@istio-conf-eg-inbound.envoy_conf.yaml </ch2-envoy/envoy@istio-conf-eg.assets/envoy@istio-conf-eg-inbound.envoy_conf.yaml>` .
+Download here {download}`envoy@istio-conf-eg-inbound.envoy_conf.yaml </ch2-envoy/envoy-istio-conf-eg.assets/envoy@istio-conf-eg-inbound.envoy_conf.yaml>` .
 ```
 
 Without go through the description of the configuration file for now, let's just look at the analysis process, then, in the end, will return to this configuration.
@@ -40,7 +40,7 @@ Analyzing the Envoy configuration obtained above, you can "infer" the following 
 
 :::{figure-md} Figure: Example of Envoy Inbound Configuration in Istio
 :class: full-width
-<img src="envoy@istio-conf-eg.assets/envoy@istio-conf-eg-inbound.drawio.svg" alt="Figure - Example of Envoy Inbound Configuration in Istio">
+<img src="envoy-istio-conf-eg.assets/envoy@istio-conf-eg-inbound.drawio.svg" alt="Figure - Example of Envoy Inbound Configuration in Istio">
 
 *Figure: Example of Envoy Inbound Configuration in Istio*
 :::
@@ -225,7 +225,7 @@ The following figure illustrates logging related components with source code lin
 
 :::{figure-md} Figure: Envoy Inbound components and logging in Istio
 :class: full-width
-<img src="envoy@istio-conf-eg.assets/log-envoy@istio-conf-eg-inbound.drawio.svg" alt="Diagram - Envoy Inbound component and logging in Istio">
+<img src="envoy-istio-conf-eg.assets/log-envoy@istio-conf-eg-inbound.drawio.svg" alt="Diagram - Envoy Inbound component and logging in Istio">
 
 *Figure: Envoy Inbound component in Istio with logs*
 :::
@@ -238,7 +238,7 @@ Analyzing the Envoy configuration obtained above, the following Outbound data fl
 
 :::{figure-md} Figure: Example of Envoy Outbound configuration in Istio.
 :class: full-width
-<img src="envoy@istio-conf-eg.assets/envoy@istio-conf-eg-outbound.drawio.svg" alt="Diagram - Envoy Outbound configuration example in Istio">
+<img src="envoy-istio-conf-eg.assets/envoy@istio-conf-eg-outbound.drawio.svg" alt="Diagram - Envoy Outbound configuration example in Istio">
 
 *Figure: Envoy Outbound Configuration Example from Istio*
 :::

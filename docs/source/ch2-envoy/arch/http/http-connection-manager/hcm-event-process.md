@@ -8,7 +8,7 @@ The overall HTTP reverse proxy flow for socket event driven collaboration is as 
 The diagram shows that there are 4 types of events driving the whole process. Each of them will be analyzed in later sections.
 
 To avoid getting lost in the details of the individual steps at once, the reader is advised to review the total flow of all the steps in the previous examples: 
-{doc}`/ch2-envoy/envoy@istio-conf-eg`.
+{doc}`/ch2-envoy/envoy-istio-conf-eg`.
 
 The following is a 5-step explanation of the HTTP proxy process, using HTTP/1.1 as an example:
 1. Downstream Read Request module collaboration
