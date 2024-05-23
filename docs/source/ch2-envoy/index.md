@@ -41,7 +41,7 @@ This is an architectural diagram from several years ago, but it doesn't look lik
 Note that I do not intend to analyze the Istio control plane in complete isolation from the Envoy. That would be of limited relevance. If you talk about the Envoy in isolation from Istio, often times you won't understand why the Envoy is designed the way it is. But when we explain the design of the Envoy in the context of Istio's use of the Envoy, it becomes easier to understand why.
 ```
 
-## Catalog
+# Catalog
 
 ```{toctree}
 :hidden:
