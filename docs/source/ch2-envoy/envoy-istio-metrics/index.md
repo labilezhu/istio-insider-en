@@ -1,5 +1,15 @@
 # Istio and Envoy Metrics
 
+
+```{toctree}
+:hidden:
+:maxdepth: 3
+envoy-stat.md
+istio-stat.md
+envoy-stat-impl.md
+metrics-req-resp-flow-timeline.md
+```
+
 Metrics monitoring is probably the most important aspect of DevOps monitoring. But it can also be the hardest. You can find Grafana monitoring dashboards for all sorts of systems and middleware on the web, and most of them are beautifully designed to make it feel like the monitoring is already perfect.  
 
 But I don't know if you've had the same experience as me: having a bunch of metrics and monitoring dashboards at hand when your system is experiencing a problem.
@@ -48,10 +58,3 @@ If you're like me, you're a hothead. Then the image below is Istio & Envoy's met
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline.drawio.svg)*
 
 
-```{toctree}
-:maxdepth: 1
-envoy-stat.md
-istio-stat.md
-envoy-stat-impl.md
-metrics-req-resp-flow-timeline.md
-```
