@@ -100,7 +100,7 @@ There is a Chinese version: [中文版](https://istio-insider.mygraphql.com/zh-c
 ```{toctree}
 :caption: Catalog
 :maxdepth: 5
-:includehidden: 
+:includehidden:
 
 ch0/index
 ch1-istio-arch/index

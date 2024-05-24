@@ -1,4 +1,4 @@
-## HTTP Reverse Proxy for HCM upstream/downstream Event-Driven Collaboration
+# HTTP Reverse Proxy for HCM upstream/downstream Event-Driven Collaboration
 
 ## General flow of HTTP reverse proxy
 
@@ -42,6 +42,7 @@ A rough description of the process:
 
 :::{figure-md} Figure: Downstream Request Router Module Collaboration
 <img src="/ch2-envoy/arch/http/http-connection-manager/hcm-event-process.assets/envoy-hcm-router-on-down-req-complete.drawio.svg" alt="Figure - Downstream Request Router Module Collaboration">
+
 *Figure: Downstream Request Router Module Collaboration*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-hcm-router-on-down-req-complete.drawio.svg)*
@@ -65,6 +66,7 @@ A rough description of the process:
 
 :::{figure-md} Figure: Upstream connect & write module collaboration
 <img src="/ch2-envoy/arch/http/http-connection-manager/hcm-event-process.assets/envoy-hcm-upstream-flow-connected-write.drawio.svg" alt="Figure - Upstream connect & write module collaboration">
+
 *Figure: Upstream connect & write module collaboration*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-hcm-upstream-flow-connected-write.drawio.svg)*
@@ -81,6 +83,7 @@ A rough description of the flow:
 ### Upstream Read Response Module Collaboration
 :::{figure-md} Figure: Upstream Read-Response Module Collaboration
 <img src="/ch2-envoy/arch/http/http-connection-manager/hcm-event-process.assets/envoy-hcm-upstream-flow-read-resp.drawio.svg" alt="Figure - Upstream Read-Response Module Collaboration">
+
 *Figure: Upstream Read-Response Module Collaboration*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-hcm-upstream-flow-read-resp.drawio.svg)*
@@ -89,6 +92,7 @@ A rough description of the flow:
 
 :::{figure-md} Figure: Downstream Write Response Module Collaboration
 <img src="/ch2-envoy/arch/http/http-connection-manager/hcm-event-process.assets/envoy-hcm-write-down-resp.drawio.svg" alt="Figure - Downstream Write Response module collaboration">
+
 *Figure: Downstream Write Response Module Collaboration*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-hcm-write-down-resp.drawio.svg)*
