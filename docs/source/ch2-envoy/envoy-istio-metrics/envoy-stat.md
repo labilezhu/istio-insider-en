@@ -211,8 +211,8 @@ If you are interested in the watchdog mechanism, see:
 > https://github.com/envoyproxy/envoy/issues/11388
 
 
- ### Event loop 
- [Envoy documentation: Event loop](https://www.envoyproxy.io/docs/envoy/latest/operations/performance)
+### Event loop 
+[Envoy documentation: Event loop](https://www.envoyproxy.io/docs/envoy/latest/operations/performance)
 
 The Envoy architecture is designed to optimize scalability and resource utilization by running the event loop on a small number of threads. The `"main"` thread is responsible for control plane processing, and each `"worker"` thread shares a portion of the data plane tasks. Envoy exposes two statistics to monitor the performance of all these threaded event loops.
 
