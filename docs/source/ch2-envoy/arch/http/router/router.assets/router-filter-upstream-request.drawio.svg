@@ -1,0 +1,469 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1346px" height="1641px" viewBox="-0.5 -0.5 1346 1641" content="&lt;mxfile scale=&quot;1&quot; border=&quot;20&quot;&gt;&lt;diagram id=&quot;ZR1o3rxdakW-VgO3uDKI&quot; name=&quot;router-filter-upstream-request.drawio.svg&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);">
+    <defs>
+        <clipPath id="mx-clip-404-451-342-26-0">
+            <rect x="404" y="451" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-485-342-26-0">
+            <rect x="404" y="485" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-511-342-26-0">
+            <rect x="404" y="511" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-537-342-26-0">
+            <rect x="404" y="537" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-563-342-26-0">
+            <rect x="404" y="563" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-589-342-26-0">
+            <rect x="404" y="589" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-615-342-26-0">
+            <rect x="404" y="615" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-641-342-26-0">
+            <rect x="404" y="641" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-667-342-26-0">
+            <rect x="404" y="667" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-693-342-26-0">
+            <rect x="404" y="693" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-719-342-26-0">
+            <rect x="404" y="719" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-745-342-26-0">
+            <rect x="404" y="745" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-771-342-26-0">
+            <rect x="404" y="771" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-797-342-26-0">
+            <rect x="404" y="797" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-823-342-26-0">
+            <rect x="404" y="823" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-849-342-26-0">
+            <rect x="404" y="849" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-875-342-26-0">
+            <rect x="404" y="875" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-901-342-26-0">
+            <rect x="404" y="901" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-799-221-382-44-0">
+            <rect x="799" y="221" width="382" height="44"/>
+        </clipPath>
+        <clipPath id="mx-clip-799-273-382-26-0">
+            <rect x="799" y="273" width="382" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-439-221-272-26-0">
+            <rect x="439" y="221" width="272" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-439-255-272-26-0">
+            <rect x="439" y="255" width="272" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-79-221-302-26-0">
+            <rect x="79" y="221" width="302" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-79-255-302-26-0">
+            <rect x="79" y="255" width="302" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-24-51-412-26-0">
+            <rect x="24" y="51" width="412" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-24-85-412-26-0">
+            <rect x="24" y="85" width="412" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-1031-342-26-0">
+            <rect x="404" y="1031" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-1065-342-26-0">
+            <rect x="404" y="1065" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-1091-342-26-0">
+            <rect x="404" y="1091" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-1117-342-26-0">
+            <rect x="404" y="1117" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-1143-342-26-0">
+            <rect x="404" y="1143" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-1169-342-26-0">
+            <rect x="404" y="1169" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-404-1195-342-26-0">
+            <rect x="404" y="1195" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-949-851-372-26-0">
+            <rect x="949" y="851" width="372" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-949-885-372-26-0">
+            <rect x="949" y="885" width="372" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-949-911-372-26-0">
+            <rect x="949" y="911" width="372" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-949-937-372-26-0">
+            <rect x="949" y="937" width="372" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-949-963-372-26-0">
+            <rect x="949" y="963" width="372" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-949-989-372-26-0">
+            <rect x="949" y="989" width="372" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-899-1351-342-26-0">
+            <rect x="899" y="1351" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-899-1385-342-26-0">
+            <rect x="899" y="1385" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-899-1411-342-26-0">
+            <rect x="899" y="1411" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-899-1437-342-26-0">
+            <rect x="899" y="1437" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-899-1463-342-26-0">
+            <rect x="899" y="1463" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-899-1489-342-26-0">
+            <rect x="899" y="1489" width="342" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-899-1515-342-26-0">
+            <rect x="899" y="1515" width="342" height="26"/>
+        </clipPath>
+    </defs>
+    <g>
+        <rect x="365" y="1580" width="290" height="40" rx="6" ry="6" fill="none" stroke="none" pointer-events="all"/>
+        <path d="M 366.69 1581.29 C 366.69 1581.29 366.69 1581.29 366.69 1581.29 M 366.69 1581.29 C 366.69 1581.29 366.69 1581.29 366.69 1581.29 M 368.39 1585.42 C 369.33 1584.92 370.21 1583.8 372.33 1580.89 M 368.39 1585.42 C 370.14 1583.66 371.31 1581.94 372.33 1580.89 M 368.13 1591.82 C 371.12 1589.98 373.83 1585.19 377.32 1581.25 M 368.13 1591.82 C 370.72 1588.8 374.24 1585.41 377.32 1581.25 M 367.87 1598.21 C 372.05 1591.65 381 1583.23 382.96 1580.86 M 367.87 1598.21 C 372.13 1593.88 375.74 1588.25 382.96 1580.86 M 367.61 1604.61 C 376.22 1597.58 381.96 1587.87 387.95 1581.22 M 367.61 1604.61 C 371.75 1599.95 378.21 1594.41 387.95 1581.22 M 368 1610.26 C 379.29 1598.21 386.64 1587.34 393.59 1580.82 M 368 1610.26 C 374.49 1603.43 380.78 1593.8 393.59 1580.82 M 367.74 1616.65 C 377.86 1603.93 388.68 1595.06 398.58 1581.18 M 367.74 1616.65 C 374.37 1608.25 383.04 1599.47 398.58 1581.18 M 369.45 1620.79 C 378.83 1609.4 388.8 1598.63 404.22 1580.79 M 369.45 1620.79 C 379.56 1609.8 389.94 1598.28 404.22 1580.79 M 373.78 1621.9 C 385.52 1605.27 401.56 1591.25 409.21 1581.15 M 373.78 1621.9 C 384.41 1608.61 395.96 1596.35 409.21 1581.15 M 378.77 1622.26 C 394 1606.31 404.05 1592.14 414.85 1580.75 M 378.77 1622.26 C 388.25 1613.06 396.62 1601.97 414.85 1580.75 M 384.41 1621.87 C 396.51 1608.49 409.82 1591.96 419.84 1581.11 M 384.41 1621.87 C 398.06 1607.38 410.06 1593.17 419.84 1581.11 M 389.4 1622.23 C 399.72 1612.85 405.88 1602.4 425.48 1580.72 M 389.4 1622.23 C 396.55 1612.75 405.56 1603.22 425.48 1580.72 M 395.04 1621.83 C 406.83 1610.08 417.19 1597.09 430.47 1581.08 M 395.04 1621.83 C 402.84 1613.64 410.15 1604.41 430.47 1581.08 M 400.03 1622.19 C 414.06 1607.55 424.57 1592.96 436.11 1580.68 M 400.03 1622.19 C 411.4 1609.64 422.59 1595.54 436.11 1580.68 M 405.01 1622.55 C 417.51 1607.67 428.4 1596.22 441.1 1581.04 M 405.01 1622.55 C 412.34 1612.7 421.59 1603.98 441.1 1581.04 M 410.66 1622.16 C 420.38 1611.51 429.58 1601.01 446.08 1581.4 M 410.66 1622.16 C 421.29 1610.87 433.17 1598.24 446.08 1581.4 M 415.64 1622.52 C 429.74 1605.46 444.46 1589.17 451.73 1581.01 M 415.64 1622.52 C 427.21 1610.22 437.88 1597.26 451.73 1581.01 M 421.29 1622.12 C 431.46 1608.06 444.04 1597.32 456.71 1581.37 M 421.29 1622.12 C 430.42 1613.47 437.75 1603.95 456.71 1581.37 M 426.27 1622.48 C 438.53 1606.5 454.73 1593.35 462.36 1580.97 M 426.27 1622.48 C 435.68 1612.69 444.49 1602.76 462.36 1580.97 M 431.92 1622.09 C 445.87 1607.89 457.41 1590.28 467.34 1581.33 M 431.92 1622.09 C 442.3 1609.39 452.46 1599.32 467.34 1581.33 M 436.9 1622.45 C 448.44 1611.06 457.92 1598.32 472.99 1580.94 M 436.9 1622.45 C 443.71 1612.51 452.56 1604.95 472.99 1580.94 M 442.55 1622.05 C 454.52 1608.68 462.6 1596.12 477.97 1581.3 M 442.55 1622.05 C 451.13 1612.33 461.54 1601.2 477.97 1581.3 M 447.53 1622.41 C 454.46 1614.51 464.26 1603.88 483.62 1580.91 M 447.53 1622.41 C 456.68 1611.05 466.68 1599.86 483.62 1580.91 M 453.18 1622.02 C 463.15 1612.13 468.94 1603.9 488.6 1581.27 M 453.18 1622.02 C 460.93 1612.65 469.13 1603.33 488.6 1581.27 M 458.16 1622.38 C 470.36 1607.82 482.75 1592.12 494.25 1580.87 M 458.16 1622.38 C 471.39 1605.67 486.54 1590 494.25 1580.87 M 463.81 1621.99 C 472.01 1608.36 483.25 1596.15 499.23 1581.23 M 463.81 1621.99 C 477.57 1605.59 490.71 1590.73 499.23 1581.23 M 468.79 1622.35 C 481.82 1607.41 493.79 1594.62 504.88 1580.84 M 468.79 1622.35 C 478.01 1610.7 490.03 1597.74 504.88 1580.84 M 474.44 1621.95 C 485.4 1606.06 500.65 1591.31 509.86 1581.2 M 474.44 1621.95 C 488.46 1605.79 500.97 1590.6 509.86 1581.2 M 479.42 1622.31 C 494.94 1604.7 508.58 1588.04 515.51 1580.8 M 479.42 1622.31 C 487.96 1611.67 497.57 1600.29 515.51 1580.8 M 485.07 1621.92 C 495.68 1610.37 503.34 1601.29 520.49 1581.16 M 485.07 1621.92 C 494.95 1609.73 506.17 1596.12 520.49 1581.16 M 490.05 1622.28 C 504.59 1606.79 517.82 1592.48 526.14 1580.77 M 490.05 1622.28 C 497.88 1613.82 505.63 1603.41 526.14 1580.77 M 495.7 1621.88 C 506.77 1606.26 517.67 1594.54 531.12 1581.13 M 495.7 1621.88 C 509.25 1605.56 524.42 1590.47 531.12 1581.13 M 500.68 1622.24 C 509.12 1610.55 519.64 1596.5 536.77 1580.73 M 500.68 1622.24 C 511.67 1608.78 522.87 1597.47 536.77 1580.73 M 506.33 1621.85 C 518.24 1609.74 527.38 1596.03 541.76 1581.09 M 506.33 1621.85 C 518.07 1609.31 528.52 1597.6 541.76 1581.09 M 511.31 1622.21 C 523 1606.22 536.64 1592.83 547.4 1580.7 M 511.31 1622.21 C 522.84 1607.85 534.28 1593.44 547.4 1580.7 M 516.3 1622.57 C 525.61 1612.63 533.88 1599.23 552.39 1581.06 M 516.3 1622.57 C 530.58 1605.98 544.22 1589.98 552.39 1581.06 M 521.94 1622.17 C 532.94 1610.98 538.77 1601.07 558.03 1580.66 M 521.94 1622.17 C 530.98 1610.17 539.91 1600.29 558.03 1580.66 M 526.93 1622.53 C 533.23 1615.73 541.79 1604.26 563.02 1581.02 M 526.93 1622.53 C 537.79 1609.46 547.35 1599 563.02 1581.02 M 532.58 1622.14 C 543.05 1608.18 555.17 1593.19 568 1581.38 M 532.58 1622.14 C 545.16 1607.21 557.47 1593.6 568 1581.38 M 537.56 1622.5 C 549.36 1612.72 558.83 1600.33 573.65 1580.99 M 537.56 1622.5 C 549.75 1609.82 560.02 1596.97 573.65 1580.99 M 543.21 1622.1 C 553.7 1609.45 563.8 1600.77 578.63 1581.35 M 543.21 1622.1 C 551.86 1611.87 560.89 1602.87 578.63 1581.35 M 548.19 1622.46 C 563.73 1606.94 577.69 1591.93 584.28 1580.96 M 548.19 1622.46 C 555.9 1613.06 563.4 1605.62 584.28 1580.96 M 553.84 1622.07 C 564.48 1610.94 571.89 1599.11 589.26 1581.32 M 553.84 1622.07 C 563.37 1611.56 571.89 1602.58 589.26 1581.32 M 558.82 1622.43 C 568.24 1614.39 573.36 1605.71 594.91 1580.92 M 558.82 1622.43 C 569.14 1611.28 577.53 1600.48 594.91 1580.92 M 564.47 1622.04 C 578 1608.01 587.45 1593.64 599.89 1581.28 M 564.47 1622.04 C 571.84 1612.61 579.72 1604.72 599.89 1581.28 M 569.45 1622.4 C 583.76 1608.86 596.84 1593.69 605.54 1580.89 M 569.45 1622.4 C 576.78 1613.21 584.75 1604.96 605.54 1580.89 M 575.1 1622 C 587.36 1608.64 595.1 1597.72 610.52 1581.25 M 575.1 1622 C 586.67 1608.91 599.2 1593.02 610.52 1581.25 M 580.08 1622.36 C 594.15 1607.88 605.34 1594.32 616.17 1580.85 M 580.08 1622.36 C 588.76 1610.97 599.46 1599.53 616.17 1580.85 M 585.73 1621.97 C 600.21 1605.88 612.86 1592.45 621.15 1581.21 M 585.73 1621.97 C 598.62 1608.08 609.97 1591.73 621.15 1581.21 M 590.71 1622.33 C 600.98 1607.35 614.4 1596.61 626.8 1580.82 M 590.71 1622.33 C 601.98 1610.1 612.12 1597.07 626.8 1580.82 M 596.36 1621.93 C 611.61 1606.03 621.19 1591.63 631.78 1581.18 M 596.36 1621.93 C 606.05 1610.11 615.61 1599.67 631.78 1581.18 M 601.34 1622.29 C 612.03 1610.84 625.09 1594.42 637.43 1580.78 M 601.34 1622.29 C 611.37 1609.75 622.21 1596.34 637.43 1580.78 M 606.99 1621.9 C 616.82 1606.71 628.55 1595.23 642.41 1581.14 M 606.99 1621.9 C 616.74 1610.12 625.86 1599.12 642.41 1581.14 M 611.97 1622.26 C 625.66 1608.47 636.01 1593.27 648.06 1580.75 M 611.97 1622.26 C 622.59 1609.89 633.46 1597.27 648.06 1580.75 M 617.62 1621.86 C 623.94 1615.2 633.4 1603.98 653.04 1581.11 M 617.62 1621.86 C 625.65 1612.07 634.67 1601.89 653.04 1581.11 M 622.6 1622.22 C 630.93 1610.49 642.81 1601.14 655.41 1584.49 M 622.6 1622.22 C 629.75 1614.27 635.2 1606.95 655.41 1584.49 M 628.25 1621.83 C 636.06 1614.33 643 1607.36 655.8 1590.13 M 628.25 1621.83 C 632.78 1614.97 640.18 1608.95 655.8 1590.13 M 633.23 1622.19 C 642.84 1611.71 648.4 1604.29 655.54 1596.53 M 633.23 1622.19 C 638.02 1617.62 642.23 1611.81 655.54 1596.53 M 638.22 1622.55 C 641.51 1618.88 648.24 1610.27 655.93 1602.17 M 638.22 1622.55 C 642.93 1615.65 647.77 1610.1 655.93 1602.17 M 643.86 1622.15 C 648.41 1618.45 650.25 1614.8 655.67 1608.57 M 643.86 1622.15 C 646.51 1618.72 648.47 1616.28 655.67 1608.57 M 650.16 1621 C 650.91 1618.79 652.52 1617.16 655.41 1614.97 M 650.16 1621 C 651.54 1619.7 652.37 1618.63 655.41 1614.97" fill="none" stroke="#ffccff" stroke-width="0.5" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 288px; height: 1px; padding-top: 1600px; margin-left: 366px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; font-style: italic; white-space: normal; overflow-wrap: normal;">
+                                <font style="font-size: 12px;">
+                                    router-filter-upstream-request.drawio.svg
+                                </font>
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="510" y="1604" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle" font-style="italic">
+                    router-filter-upstream-request.drawio.svg
+                </text>
+            </switch>
+        </g>
+        <path d="M 399.64 446 L 399.64 420 L 749.88 420 L 749.88 446" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 399.64 446 L 399.64 922 L 749.88 922 L 749.88 446" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 399.64 446 L 749.88 446" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="574.26" y="437.5">
+                UpstreamRequest
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-451-342-26-0)" font-size="12px">
+            <text x="405.14" y="463.5">
+                startStream()
+            </text>
+        </g>
+        <path d="M 399.64 476 L 749.88 476" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-485-342-26-0)" font-size="12px">
+            <text x="405.14" y="497.5">
+                resetStream(StreamResetReason reason)
+            </text>
+        </g>
+        <rect x="399.64" y="506" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-511-342-26-0)" font-size="12px">
+            <text x="405.14" y="523.5">
+                onUpstreamHostSelected(Upstream::HostDescriptionConstSharedPtr host)
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-537-342-26-0)" font-size="12px">
+            <text x="405.14" y="549.5">
+                encodeBufferToUpstream(Buffer::Instance&amp; buffer)
+            </text>
+        </g>
+        <rect x="399.64" y="558" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-563-342-26-0)" font-size="12px">
+            <text x="405.14" y="575.5">
+                bool stream_reset_
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-589-342-26-0)" font-size="12px">
+            <text x="405.14" y="601.5">
+                uint64_t stream_id_
+            </text>
+        </g>
+        <rect x="399.64" y="610" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-615-342-26-0)" font-size="12px">
+            <text x="405.14" y="627.5">
+                bool wait_response_
+            </text>
+        </g>
+        <rect x="399.64" y="636" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-641-342-26-0)" font-size="12px">
+            <text x="405.14" y="653.5">
+                optional&lt;Upstream::TcpPoolData&gt; tcp_pool_data_
+            </text>
+        </g>
+        <rect x="399.64" y="662" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-667-342-26-0)" font-size="12px">
+            <text x="405.14" y="679.5">
+                unique_ptr&lt;UpstreamManagerImpl&gt; upstream_manager_
+            </text>
+        </g>
+        <rect x="399.64" y="688" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-693-342-26-0)" font-size="12px">
+            <text x="405.14" y="705.5">
+                Network::ClientConnection* upstream_conn_
+            </text>
+        </g>
+        <rect x="399.64" y="714" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-719-342-26-0)" font-size="12px">
+            <text x="405.14" y="731.5">
+                Upstream::HostDescriptionConstSharedPtr upstream_host_
+            </text>
+        </g>
+        <rect x="399.64" y="740" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-745-342-26-0)" font-size="12px">
+            <text x="405.14" y="757.5">
+                bool response_complete_
+            </text>
+        </g>
+        <rect x="399.64" y="766" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-771-342-26-0)" font-size="12px">
+            <text x="405.14" y="783.5">
+                Buffer::OwnedImpl upstream_request_buffer_
+            </text>
+        </g>
+        <rect x="399.64" y="792" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-797-342-26-0)" font-size="12px">
+            <text x="405.14" y="809.5">
+                StreamInfoImpl stream_info_
+            </text>
+        </g>
+        <rect x="399.64" y="818" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-823-342-26-0)" font-size="12px"/>
+        <rect x="399.64" y="844" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-849-342-26-0)" font-size="12px"/>
+        <rect x="399.64" y="870" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-875-342-26-0)" font-size="12px"/>
+        <rect x="399.64" y="896" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-901-342-26-0)" font-size="12px"/>
+        <path d="M 795 216 L 795 190 L 1185 190 L 1185 216" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 795 216 L 795 294 L 1185 294 L 1185 216" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 795 216 L 1185 216" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="989.5" y="207.5">
+                UpstreamBindingCallback
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-799-221-382-44-0)" font-size="12px">
+            <text x="800.5" y="233.5">
+                onBindSuccess(Network::ClientConnection&amp; conn,
+            </text>
+            <text x="800.5" y="247.5">
+                Upstream::HostDescriptionConstSharedPtr host)
+            </text>
+        </g>
+        <path d="M 795 264 L 1185 264" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-799-273-382-26-0)" font-size="12px"/>
+        <path d="M 749.88 490.08 L 929.85 304.14" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 938.89 294.8 L 934.52 308.66 L 925.18 299.62 Z" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 434.52 216 L 434.52 190 L 715 190 L 715 216" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 434.52 216 L 434.52 276 L 715 276 L 715 216" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 434.52 216 L 715 216" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="574.26" y="207.5">
+                RequestEncoderCallback
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-439-221-272-26-0)" font-size="12px">
+            <text x="440.02" y="233.5">
+                onEncodingSuccess(Buffer::Instance&amp; buffer)
+            </text>
+        </g>
+        <path d="M 434.52 246 L 715 246" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-439-255-272-26-0)" font-size="12px"/>
+        <path d="M 574.76 420 L 574.76 290.12" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 574.76 277.12 L 581.26 290.12 L 568.26 290.12 Z" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 75 216 L 75 190 L 385 190 L 385 216" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 75 216 L 75 276 L 385 276 L 385 216" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 75 216 L 385 216" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="229.5" y="207.5">
+                PendingResponseCallback
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-79-221-302-26-0)" font-size="12px">
+            <text x="80.5" y="233.5">
+                onConnectionClose(Network::ConnectionEvent event)
+            </text>
+        </g>
+        <path d="M 75 246 L 385 246" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-79-255-302-26-0)" font-size="12px"/>
+        <path d="M 399.64 448.52 L 272.58 287.09" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 264.54 276.88 L 277.69 283.07 L 267.47 291.11 Z" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 20.24 46 L 20.24 20 L 439.76 20 L 439.76 46" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 20.24 46 L 20.24 106 L 439.76 106 L 439.76 46" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 20.24 46 L 439.76 46" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="229.5" y="37.5">
+                ResponseDecoderCallback
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-24-51-412-26-0)" font-size="12px">
+            <text x="25.74" y="63.5">
+                onDecodingSuccess(ResponsePtr response, ExtendedOptions options)
+            </text>
+        </g>
+        <path d="M 20.24 76 L 439.76 76" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-24-85-412-26-0)" font-size="12px">
+            <text x="25.74" y="97.5">
+                writeToConnection(Buffer::Instance&amp; buffer)
+            </text>
+        </g>
+        <path d="M 230 190 L 230 120.12" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 230 107.12 L 236.5 120.12 L 223.5 120.12 Z" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 399.64 1026 L 399.64 1000 L 749.88 1000 L 749.88 1026" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 399.64 1026 L 399.64 1216 L 749.88 1216 L 749.88 1026" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 399.64 1026 L 749.88 1026" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="574.26" y="1017.5">
+                Router::Filter
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-1031-342-26-0)" font-size="12px">
+            <text x="405.14" y="1043.5">
+                startStream()
+            </text>
+        </g>
+        <path d="M 399.64 1056 L 749.88 1056" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-1065-342-26-0)" font-size="12px">
+            <text x="405.14" y="1077.5">
+                resetStream(StreamResetReason reason)
+            </text>
+        </g>
+        <rect x="399.64" y="1086" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-1091-342-26-0)" font-size="12px">
+            <text x="405.14" y="1103.5">
+                setDecoderFilterCallbacks(DecoderFilterCallback&amp; callbacks)
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-1117-342-26-0)" font-size="12px"/>
+        <rect x="399.64" y="1138" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-1143-342-26-0)" font-size="12px"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-1169-342-26-0)" font-size="12px"/>
+        <rect x="399.64" y="1190" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-404-1195-342-26-0)" font-size="12px"/>
+        <path d="M 399.64 528 L 305 528 Q 295 528 295 538 L 295 1098 Q 295 1108 305 1108 L 397.4 1108" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 385.52 1114.5 L 398.52 1108 L 385.52 1101.5" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 818px; margin-left: 295px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                parent_
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="295" y="822" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    parent_
+                </text>
+            </switch>
+        </g>
+        <path d="M 945 846 L 945 820 L 1325 820 L 1325 846" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 945 846 L 945 1010 L 1325 1010 L 1325 846" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 945 846 L 1325 846" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="1134.5" y="837.5">
+                DecoderFilterCallback
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-949-851-372-26-0)" font-size="12px">
+            <text x="950.5" y="863.5">
+                sendLocalReply(Status status, ResponseUpdateFunction&amp;&amp; cb = nullptr)
+            </text>
+        </g>
+        <path d="M 945 876 L 1325 876" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-949-885-372-26-0)" font-size="12px">
+            <text x="950.5" y="897.5">
+                continueDecoding()
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-949-911-372-26-0)" font-size="12px">
+            <text x="950.5" y="923.5">
+                upstreamResponse(ResponsePtr response, ExtendedOptions options)
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-949-937-372-26-0)" font-size="12px">
+            <text x="950.5" y="949.5">
+                completeDirectly()
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-949-963-372-26-0)" font-size="12px">
+            <text x="950.5" y="975.5">
+                bindUpstreamConn(Upstream::TcpPoolData&amp;&amp; tcp_pool_data)
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-949-989-372-26-0)" font-size="12px">
+            <text x="950.5" y="1001.5">
+                OptRef&lt;UpstreamManager&gt; boundUpstreamConn()
+            </text>
+        </g>
+        <path d="M 749.88 671 L 837.4 671 Q 847.4 671 847.4 681 L 847.4 905 Q 847.4 915 857.4 915 L 942.76 915" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 930.88 921.5 L 943.88 915 L 930.88 908.5" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 793px; margin-left: 847px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                decoder_callbacks_
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="847" y="797" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    decoder_callbacks_
+                </text>
+            </switch>
+        </g>
+        <path d="M 895 1346 L 895 1320 L 1245.24 1320 L 1245.24 1346" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 895 1346 L 895 1536 L 1245.24 1536 L 1245.24 1346" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 895 1346 L 1245.24 1346" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="1069.62" y="1337.5">
+                Router::UpstreamCodecFilter
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-899-1351-342-26-0)" font-size="12px"/>
+        <path d="M 895 1376 L 1245.24 1376" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-899-1385-342-26-0)" font-size="12px"/>
+        <rect x="895" y="1406" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-899-1411-342-26-0)" font-size="12px"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-899-1437-342-26-0)" font-size="12px"/>
+        <rect x="895" y="1458" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-899-1463-342-26-0)" font-size="12px"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-899-1489-342-26-0)" font-size="12px"/>
+        <rect x="895" y="1510" width="350.24" height="26" fill="none" stroke="rgb(0, 0, 0)" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-899-1515-342-26-0)" font-size="12px"/>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Text is not SVG - cannot display
+            </text>
+        </a>
+    </switch>
+</svg>
