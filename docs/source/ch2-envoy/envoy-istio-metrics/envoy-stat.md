@@ -285,7 +285,7 @@ What is `stats sink`? This book does not explain it.Istio does not customize the
 
 [Envoy docs:config-metrics-v3-statsconfig](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/metrics/v3/stats.proto#config-metrics-v3-statsconfig)
 
-```json
+```
 {
   "stats_tags": [],
   "use_all_default_tags": {...},

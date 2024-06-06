@@ -11,7 +11,7 @@ Each `Network Filter Chain` has its own name. *Note that duplicate `Network Filt
 
 Each `Network Filter Chain` consists of sequential `Network Filters`. 
 
-## Network Filter
+## Network Filter Overview
 
 Envoy uses a multi-layer plug-in design pattern to ensure scalability. The `Network Filter` is the L2 / L3 (IP/TCP) layer component. For example, in the {ref}`Figure: Example of Envoy Inbound Configuration in Istio` above, there are, in order, the following:
 1. istio.metadata_exchange `Network Filter`

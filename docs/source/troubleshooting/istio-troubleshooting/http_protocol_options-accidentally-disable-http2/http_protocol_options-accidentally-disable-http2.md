@@ -77,7 +77,7 @@ kubectl logs --tail=1 -f serviceB-ver-6b54d8c7bc-6vclp -c istio-proxy
 
 
 
-```log
+```
 [2024-05-07T07:18:41.470Z] "GET /resource1?p1=v1 HTTP/1.1" 200 - via_upstream - "-" 0 48 16 14 "-" "curl/8.0.1" "6add007-7242-4983-9862-63cd108e5" "serviceB:8080" "[p8]192.168.88.94[/p8]:8080" outbound|8080|ver|serviceB.ns.svc.cluster.local [p8]192.168.33.5[/p8]:48344 [p8]10.110.152.25[/p8]:8080 [p8]192.168.33.5[/p8]:36650 - -
 ```
 
@@ -96,11 +96,11 @@ We can see the istio-proxy of serviceB use HTTP/1.1 protocol.
 
 Before the investigation, assuming you have base knowledge of {doc}`/ch4-istio-data-plane/data-plane-tunnel/alpn-http-meta-exchange/alpn-http-meta-exchange` .
 
-:::{figure-md} Figure: HTTP protocol meta-data exchange at high level
+:::{figure-md} Figure: HTTP protocol meta-data exchange at high level 2
 
-<img src="/ch4-istio-data-plane/data-plane-tunnel/alpn-http-meta-exchange/alpn-http-meta-exchange-high-level.drawio.svg" alt="Figure - HTTP protocol meta-data exchange at high level">
+<img src="/ch4-istio-data-plane/data-plane-tunnel/alpn-http-meta-exchange/alpn-http-meta-exchange-high-level.drawio.svg" alt="Figure - HTTP protocol meta-data exchange at high level 2">
 
-*Figure: HTTP protocol meta-data exchange at high level*
+*Figure: HTTP protocol meta-data exchange at high level 2*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Falpn-http-meta-exchange-high-level.drawio.svg)*
 
@@ -128,7 +128,7 @@ tshark -r /tmp/tcpdump.pcap -d tcp.port==8080,ssl -2R "ssl" -V | less
 
 
 
-```log
+```
 ...
 Transport Layer Security
     TLSv1.3 Record Layer: Handshake Protocol: Client Hello
@@ -167,7 +167,7 @@ curl -XPOST http://localhost:15000/logging\?filter\=trace
 
 Get the log:
 
-```log
+```
 {"level":"debug","time":"2024-05-07T07:18:41.471107Z","scope":"envoy filter","msg":"override with 3 ALPNs"}
 ```
 

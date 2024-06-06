@@ -11,7 +11,7 @@ The process and relationship between event-driven and connection establishment:
 5. The business callback function adds `$new_socket_fd` to the epoll listener by calling `epoll_ctl`.
 6. Return to step 1.
 
-### TCP Connection Establishment Procedure
+## TCP Connection Establishment Procedure
 Take a look at the code to get a general idea of how the connection is established and how it is implemented:
 
 :::{figure-md}
