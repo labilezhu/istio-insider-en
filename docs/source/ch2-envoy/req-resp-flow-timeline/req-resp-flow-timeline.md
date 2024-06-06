@@ -131,14 +131,25 @@ Since the figure already illustrates the relationship between metrics, component
 Let's start with the request component flow part, the flowchart can be reasoned from the relevant documentation as (not fully verified, partial reasoning exists):
 
 
-:::{figure-md} Figure: Envoy Request Scheduling Flowchart
+:::{figure-md} Figure: Envoy Request Scheduling Flowchart of HTTP/1
 :class: full-width
 
-<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline-flowchart.drawio.svg" alt="Figure - Envoy Request Scheduling Flowchart">
+<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline-flowchart.drawio.svg" alt="Figure - Envoy Request Scheduling Flowchart of HTTP/1">
 
-*Figure: Envoy Request Scheduling Flowchart*
+*Figure: Envoy Request Scheduling Flowchart of HTTP/1*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline-flowchart.drawio.svg)*
+
+
+:::{figure-md} Figure: Envoy Request Scheduling Flowchart of HTTP/2
+:class: full-width
+
+<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline-flowchart-h2.drawio.svg" alt="Figure - Envoy Request Scheduling Flowchart of HTTP/2">
+
+*Figure: Envoy Request Scheduling Flowchart of HTTP/2*
+:::
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline-flowchart-h2.drawio.svg)*
+
 
 ## Request and Response Scheduling Timeline
 
