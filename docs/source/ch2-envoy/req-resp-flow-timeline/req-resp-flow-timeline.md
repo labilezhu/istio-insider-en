@@ -243,12 +243,6 @@ It's not just Envoy, it's all the middleware that does proxying, and probably th
 
 
 
-```{toctree}
-:maxdepth: 3
-http-timeout.md
-```
-
-
 
 ## Some interesting extended reading
 
