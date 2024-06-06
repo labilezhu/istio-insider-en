@@ -252,7 +252,7 @@ This section is referenced in:
 
 [Envoy docs:config.bootstrap.v3.Bootstrap proto](https://github.com/envoyproxy/envoy/blob/255af425e1d51066cc8b69a39208b70e18d07073/api/envoy/config/bootstrap/v3/bootstrap.proto#L44)
 
-```json
+```
 {
   "node": {...},
   "static_resources": {...},
@@ -310,7 +310,7 @@ What is `stats sink`? This book does not explain it.Istio does not customize the
 
 Configuration for disabling/enabling the calculation and output of statistical metrics.
 
-```json
+```
 {
   "reject_all": ...,
   "exclusion_list": {...},

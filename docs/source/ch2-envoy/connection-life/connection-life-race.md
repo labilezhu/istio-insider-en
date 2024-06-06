@@ -235,21 +235,20 @@ The final approach is:
 >
 > [https://github.com/envoyproxy/envoy/pull/2871/files](https://github.com/envoyproxy/envoy/pull/2871/files)
 >
-
-```cpp
-@@ -209,25 +215,48 @@ void ConnPoolImpl::onResponseComplete(ActiveClient& client) {
-    host_->cluster().stats().upstream_cx_max_requests_.inc();
-    onDownstreamReset(client);
-  } else {
--    processIdleClient(client);
-    // Upstream connection might be closed right after response is complete. Setting delay=true
-    // here to attach pending requests in next dispatcher loop to handle that case.
-    // https://github.com/envoyproxy/envoy/issues/2715
-+    processIdleClient(client, true);
-  }
-}
-```
-
+> ```
+> @@ -209,25 +215,48 @@ void ConnPoolImpl::onResponseComplete(ActiveClient& client) {
+>     host_->cluster().stats().upstream_cx_max_requests_.inc();
+>     onDownstreamReset(client);
+>   } else {
+> -    processIdleClient(client);
+>     // Upstream connection might be closed right after response is complete. Setting delay=true
+>     // here to attach pending requests in next dispatcher loop to handle that case.
+>     // https://github.com/envoyproxy/envoy/issues/2715
+> +    processIdleClient(client, true);
+>   }
+> }
+> ```
+>
 > Some description:[https://github.com/envoyproxy/envoy/issues/23625#issuecomment-1301108769](https://github.com/envoyproxy/envoy/issues/23625#issuecomment-1301108769)
 >
 > There's an inherent race condition that an upstream can close a connection at any point and Envoy may not yet know, assign it to be used, and find out it is closed. We attempt to avoid that by returning all connections to the pool to give the kernel a chance to inform us of `FINs` but can't avoid the race entirely. 
