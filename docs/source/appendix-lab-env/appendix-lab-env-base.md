@@ -2,7 +2,7 @@
 
 
 ```{note}
-Before you start, make sure you've seen: {doc}`appendix-lab-env/index`
+Before you start, make sure you've seen: {doc}`/appendix-lab-env/index`
 ```
 
 For a diagram of the architecture after a successful installation see:

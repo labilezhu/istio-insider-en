@@ -1,4 +1,4 @@
-## Reference list for getting started with Istio development
+# Reference list for getting started with Istio development
 
 ## Code Description
 

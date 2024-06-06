@@ -22,6 +22,7 @@ The following is a 5-step explanation of the HTTP proxy process, using HTTP/1.1 
 ### Downstream Read Request Module Collaboration
 :::{figure-md} Figure : Downstream Read-Ready Module Collaboration
 <img src="/ch2-envoy/arch/http/http-connection-manager/hcm-event-process.assets/envoy-hcm-read-down-req.drawio.svg" alt="Figure - Downstream Read-Ready Module Collaboration">
+
 *Diagram: Downstream Read-Ready Module Collaboration*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Fenvoy-hcm-read-down-req.drawio.svg)*

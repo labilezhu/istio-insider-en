@@ -20,7 +20,7 @@ But in most cases, it's a combination of these two methods.
 
 
 ```{toctree}
-:hidden.
+:hidden:
 istio-arch-overview
 service-mesh-base-concept
 istio-ports-components
