@@ -67,14 +67,28 @@ Interactive book:
  - Dual monitors, one for the diagrams and one for the text, is the recommended way of reading for this book. If you're reading it on your phone, well, ignore me 🤦
 ```
 
-:::{figure-md} Figure : Envoy Request and Response Scheduling
+:::{figure-md} Figure : Envoy Request and Response Scheduling of HTTP1
 :class: full-width
 
-<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline-schedule.drawio.svg" alt="Figure - Envoy Request and Response Scheduling">
+<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/req-resp-flow-timeline-schedule.drawio.svg" alt="Figure - Envoy Request and Response Scheduling of HTTP1">
 
-*Figure : Envoy Request and Response Scheduling*
+*Figure : Envoy Request and Response Scheduling of HTTP1*
 :::
 *[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Freq-resp-flow-timeline-schedule.drawio.svg)*
+
+
+
+:::{figure-md} Figure : Envoy Request and Response Scheduling of HTTP/2
+:class: full-width
+
+<img src="/ch2-envoy/req-resp-flow-timeline/req-resp-flow-timeline.assets/life-of-a-request-overview-h2.drawio.svg" alt="Figure - Envoy Request and Response Scheduling of HTTP/2">
+
+*Figure : Envoy Request and Response Scheduling of HTTP/2*
+:::
+*[Open with Draw.io](https://app.diagrams.net/?ui=sketch#Uhttps%3A%2F%2Fistio-insider.mygraphql.com%2Fzh_CN%2Flatest%2F_images%2Flife-of-a-request-overview-h2.drawio.svg)*
+
+
+
 
 ### Related Components
 The above figure attempt to illustrate the `Envoy Request and Response Scheduling` process, and the components associated with it in tandem. Some of the components can be seen here:
