@@ -6,7 +6,7 @@ Recently, I needed to do some HA / Chaos Testing on a k8s cluster + VIP load bal
 1. request success rate impact
 2. performance (TPS/Response Time) impacts
 
-The impact on performance (TPS/Response Time) [](. /socket-options.assets/tcp-half-open-env-k8s-istio.drawio.svg)
+![](./socket-options.assets/tcp-half-open-env-k8s-istio.drawio.svg)
 
 The above figure needs some clarification:
 
@@ -255,7 +255,7 @@ Why do we need `TCP_USER_TIMEOUT` when we have `TCP keepalive`? The reason is th
 
 At this point, let's go back to the "beginning" of the following figure to see if all the pitfalls have been solved:
 
-! [](. /socket-options.assets/tcp-half-open-env-k8s-istio.drawio.svg)
+![](./socket-options.assets/tcp-half-open-env-k8s-istio.drawio.svg)
 
 Obviously, only the red line from `External Client` to `k8s worker node B` is resolved. The other red and green lines, not investigated. Are these `tcp half-opent` connections shut down quickly with `tcp keepalive`, `tcp retransmit timeout`, `Envoy layer timeout` mechanisms, or are they not shut down in a timely manner due to long term undetected problems, or even connection leaks?
 
