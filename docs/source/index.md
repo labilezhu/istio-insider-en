@@ -30,7 +30,7 @@ This book is not a user's manual. It does not teach how to learn Istio from a us
 > 🤷 : [Yet, another](https://en.wikipedia.org/wiki/Yet_another) Istio User Guide?  
 > 🙅 : No!
 
-
+If you want to focus on the native Envoy Proxy instead of Istio, I recommend reading my other book: [Envoy Proxy Insider](https://envoy-insider.mygraphql.com/en/latest/). This book is a sister book of Istio & Envoy Insider, focusing on the design and implementation of the native Envoy Proxy.
 
 ### Target Audience
 
